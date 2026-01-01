@@ -1,0 +1,152 @@
+model ResumeTemplate {
+    id        String   @id @default(cuid())
+    name      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    resume    Resume[]
+
+    @@index([name])
+}
+
+model Resume {
+    id         String   @id @default(cuid())
+    templateId String
+    ownerId    String
+    resumeName String
+    jobTitle   String
+    firstName  String
+    lastName   String
+    email      String
+    phone      String
+    country    String
+    city       String
+    summary    String
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+
+    template       ResumeTemplate   @relation(fields: [templateId], references: [id])
+    owner          User             @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+    workExperience WorkExperience[]
+    education      Education[]
+    projects       Project[]
+    links          Link[]
+    skills         Skill[]
+    languages      Language[]
+    courses        Course[]
+}
+
+model WorkExperience {
+    id          String    @id @default(cuid())
+    resumeId    String
+    jobTitle    String
+    employer    String
+    city        String
+    startDate   DateTime?
+    endDate     DateTime?
+    description String    @db.Text
+    sortOrder   Int
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    resume Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+    @@index([resumeId, sortOrder])
+}
+
+model Education {
+    id          String    @id @default(cuid())
+    resumeId    String
+    school      String
+    degree      String
+    city        String
+    startDate   DateTime?
+    endDate     DateTime?
+    description String    @db.Text
+    sortOrder   Int
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    resume Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+    @@index([resumeId, sortOrder])
+}
+
+model Project {
+    id          String @id @default(cuid())
+    resumeId    String
+    title       String
+    url         String
+    repoUrl     String
+    description String @db.Text
+    sortOrder   Int
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    resume Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+    @@index([resumeId, sortOrder])
+}
+
+model Link {
+    id        String @id @default(cuid())
+    resumeId  String
+    title     String
+    url       String
+    sortOrder Int
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    resume Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+    @@index([resumeId, sortOrder])
+}
+
+model Skill {
+    id        String @id @default(cuid())
+    resumeId  String
+    title     String
+    level     String
+    sortOrder Int
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    resume Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+    @@index([resumeId, sortOrder])
+}
+
+model Language {
+    id        String @id @default(cuid())
+    resumeId  String
+    language  String
+    level     String
+    sortOrder Int
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    resume Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+    @@index([resumeId, sortOrder])
+}
+
+model Course {
+    id          String    @id @default(cuid())
+    resumeId    String
+    title       String
+    institution String
+    date        DateTime?
+    sortOrder   Int
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    resume Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+    @@index([resumeId, sortOrder])
+}

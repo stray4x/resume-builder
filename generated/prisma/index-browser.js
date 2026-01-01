@@ -121,24 +121,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.PostScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  createdById: 'createdById'
-};
-
-exports.Prisma.UserScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  email: 'email',
-  emailVerified: 'emailVerified',
-  image: 'image',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
 exports.Prisma.SessionScalarFieldEnum = {
   id: 'id',
   expiresAt: 'expiresAt',
@@ -175,6 +157,121 @@ exports.Prisma.VerificationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ResumeTemplateScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ResumeScalarFieldEnum = {
+  id: 'id',
+  templateId: 'templateId',
+  ownerId: 'ownerId',
+  resumeName: 'resumeName',
+  jobTitle: 'jobTitle',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  phone: 'phone',
+  country: 'country',
+  city: 'city',
+  summary: 'summary',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.WorkExperienceScalarFieldEnum = {
+  id: 'id',
+  resumeId: 'resumeId',
+  jobTitle: 'jobTitle',
+  employer: 'employer',
+  city: 'city',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  description: 'description',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.EducationScalarFieldEnum = {
+  id: 'id',
+  resumeId: 'resumeId',
+  school: 'school',
+  degree: 'degree',
+  city: 'city',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  description: 'description',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProjectScalarFieldEnum = {
+  id: 'id',
+  resumeId: 'resumeId',
+  title: 'title',
+  url: 'url',
+  repoUrl: 'repoUrl',
+  description: 'description',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.LinkScalarFieldEnum = {
+  id: 'id',
+  resumeId: 'resumeId',
+  title: 'title',
+  url: 'url',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SkillScalarFieldEnum = {
+  id: 'id',
+  resumeId: 'resumeId',
+  title: 'title',
+  level: 'level',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.LanguageScalarFieldEnum = {
+  id: 'id',
+  resumeId: 'resumeId',
+  language: 'language',
+  level: 'level',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CourseScalarFieldEnum = {
+  id: 'id',
+  resumeId: 'resumeId',
+  title: 'title',
+  institution: 'institution',
+  date: 'date',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  emailVerified: 'emailVerified',
+  image: 'image',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -192,11 +289,19 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Post: 'Post',
-  User: 'User',
   Session: 'Session',
   Account: 'Account',
-  Verification: 'Verification'
+  Verification: 'Verification',
+  ResumeTemplate: 'ResumeTemplate',
+  Resume: 'Resume',
+  WorkExperience: 'WorkExperience',
+  Education: 'Education',
+  Project: 'Project',
+  Link: 'Link',
+  Skill: 'Skill',
+  Language: 'Language',
+  Course: 'Course',
+  User: 'User'
 };
 
 /**
