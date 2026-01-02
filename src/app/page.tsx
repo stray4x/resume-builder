@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { clientUrls } from "@/utils/urls";
 
 export default async function Home() {
   return (
@@ -13,7 +14,7 @@ export default async function Home() {
       </h3>
       <div className="flex items-center gap-4">
         <Button size="lg" asChild>
-          <Link href="/sign-in">Sign in</Link>
+          <Link href={clientUrls.authSignIn}>Sign in</Link>
         </Button>
         <Button size="lg">Create Resume</Button>
       </div>

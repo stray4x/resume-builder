@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 
 import { Navbar } from "@/components/navbar/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -23,10 +24,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geist.variable}`} suppressHydrationWarning>
-      <body>
+      <body className="relative">
         <ThemeProvider defaultTheme="system" attribute="class" enableSystem>
           <TRPCReactProvider>
             <Navbar />
+            <Toaster />
             {children}
           </TRPCReactProvider>
         </ThemeProvider>
