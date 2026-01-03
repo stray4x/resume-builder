@@ -71,7 +71,7 @@ export const SignUpForm: React.FC = () => {
         password: data.password,
       });
       if (res.data) {
-        router.push(clientUrls.account);
+        router.push(clientUrls.resumes);
       } else if (res.error) {
         toast.error(res.error.message ?? "Something went wrong");
       }

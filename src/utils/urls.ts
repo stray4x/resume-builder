@@ -2,5 +2,7 @@ export const clientUrls = {
   home: "/",
   authSignIn: "/auth/sign-in",
   authSignUp: "/auth/sign-up",
-  account: "/account",
+  resumes: "/resumes",
+  createResume: "/resumes/new",
+  resumeId: (id: string) => `/resumes/${id}`,
 };
