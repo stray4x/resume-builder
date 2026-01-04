@@ -10,18 +10,6 @@ export const resumeRouter = createTRPCRouter({
     };
   }),
 
-  getAllUserResumes: protectedProcedure.query(async ({ ctx }) => {
-    const data = await ctx.db.resume.findMany({
-      where: {
-        ownerId: ctx.session.user.id,
-      },
-    });
-
-    return {
-      resumes: data ?? [],
-    };
-  }),
-
   createNewResume: protectedProcedure
     .input(z.object({ templateId: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {

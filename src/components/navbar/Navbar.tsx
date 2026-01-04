@@ -7,6 +7,9 @@ import { DarkModeButton } from "./DarkModeButton";
 import { Button } from "../ui/button";
 import { GithubIcon } from "../ui/icons/Github";
 import { getSession } from "@/server/better-auth/server";
+import { auth } from "@/server/better-auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 export const Navbar: React.FC = async () => {
   const session = await getSession();
@@ -23,12 +26,27 @@ export const Navbar: React.FC = async () => {
         </Link>
       </Button>
       <DarkModeButton />
-      <Button variant="link" asChild>
-        <Link href={session ? clientUrls.resumes : clientUrls.authSignIn}>
-          sign in
-        </Link>
-      </Button>
-      <Button>create resume</Button>
+      {session ? (
+        <form>
+          <Button
+            variant="link"
+            formAction={async () => {
+              "use server";
+              await auth.api.signOut({
+                headers: await headers(),
+              });
+              redirect("/");
+            }}
+          >
+            sign out
+          </Button>
+        </form>
+      ) : (
+        <Button variant="link" asChild>
+          <Link href={clientUrls.authSignIn}>sign in</Link>
+        </Button>
+      )}
+      {/* <Button>create resume</Button> */}
     </header>
   );
 };

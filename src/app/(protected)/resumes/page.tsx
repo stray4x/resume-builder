@@ -1,15 +1,24 @@
 import { DeleteResumeButton } from "@/components/resume/DeleteResumeButton";
 import { Button } from "@/components/ui/button";
+import { getSession, requireSession } from "@/server/better-auth/server";
+import { db } from "@/server/db";
 import { api } from "@/trpc/server";
 import { clientUrls } from "@/utils/urls";
+
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 
 export default async function ResumesPage() {
-  const { resumes } = await api.resume.getAllUserResumes();
+  const session = await requireSession();
+
+  const resumes = await db.resume.findMany({
+    where: {
+      ownerId: session.user.id,
+    },
+  });
 
   return (
-    <div>
+    <div className="mx-auto w-full max-w-10/12 lg:max-w-8/12">
       <div className="mb-16">
         <Button>
           <Link href={clientUrls.createResume}>Create new resume</Link>
@@ -19,7 +28,7 @@ export default async function ResumesPage() {
         {resumes.map((resume, idx) => (
           <li
             key={resume.id}
-            className="bg-card flex items-center justify-between gap-4 p-2"
+            className="bg-card mb-2 flex items-center justify-between gap-4 p-2"
           >
             <div>
               <span>{idx + 1}.</span>{" "}

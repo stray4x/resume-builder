@@ -72,6 +72,7 @@ export const SignUpForm: React.FC = () => {
       });
       if (res.data) {
         router.push(clientUrls.resumes);
+        router.refresh();
       } else if (res.error) {
         toast.error(res.error.message ?? "Something went wrong");
       }
