@@ -1,0 +1,166 @@
+"use client";
+
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+// import moment from "moment";
+
+interface IBackgroundDescProps {
+  id: string;
+  inputOne: string;
+  inputTwo: string;
+  inputLabelOne: string;
+  inputLabelTwo: string;
+  description?: string;
+  city?: string;
+  type: "workExperience" | "education" | "course";
+  //   handleDeleteItem: () => void;
+  updateDescription?: (value: string) => void;
+  //   updateDescriptionDelta?: (value: string) => void;
+  //   updateStartEndDate: (value: string) => void;
+  updateCity?: (value: string) => void;
+  updateInputOne: (value: string) => void;
+  updateInputTwo: (value: string) => void;
+}
+
+// const convertDateString = (date: string | undefined) => {
+//   return date && moment(date).isValid()
+//     ? moment(date, "MMM, YYYY").toDate()
+//     : null;
+// };
+
+const getItemTitle = (inpOne: string, inpTwo: string) => {
+  if (inpOne && inpTwo) {
+    return `${inpOne} at ${inpTwo}`;
+  }
+  return inpOne || inpTwo || "(Empty)";
+};
+
+// const getValueFromFormattedDate = (
+//   startEndDate: string,
+// ): [Date | null, Date | null, boolean] => {
+//   const [formattedStart, formattedEnd] = startEndDate.split(" - ");
+//   const toPresent = !!(
+//     formattedStart?.includes("Present") || formattedEnd?.includes("Present")
+//   );
+//   const startDate = convertDateString(formattedStart);
+//   const endDate = convertDateString(formattedEnd);
+//   return [startDate, endDate, toPresent];
+// };
+
+// const getSummaryDate = (
+//   startDate: Date | null,
+//   endDate: Date | null,
+//   toPresent: boolean,
+// ) => {
+//   const formattedStartDate = startDate
+//     ? moment(startDate).format("MMM, YYYY")
+//     : "";
+//   const formattedEndDate = endDate ? moment(endDate).format("MMM, YYYY") : "";
+//   if (startDate && (endDate || toPresent)) {
+//     return `${formattedStartDate} - ${toPresent ? "Present" : formattedEndDate}`;
+//   }
+//   if (startDate) return formattedStartDate;
+//   return formattedEndDate;
+// };
+
+export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
+  id,
+  inputOne,
+  inputTwo,
+  inputLabelOne,
+  inputLabelTwo,
+  type,
+  city,
+  description,
+  //   handleDeleteItem,
+  updateDescription,
+  //   updateStartEndDate,
+  updateCity,
+  updateInputOne,
+  updateInputTwo,
+}) => {
+  const userModifiedDateRef = useRef(false);
+
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
+  const [toPresent, setToPresent] = useState(false);
+
+  //   useEffect(() => {
+  //     if (startEndDate) {
+  //       const [start, end, present] = getValueFromFormattedDate(startEndDate);
+  //       setStartDate(start);
+  //       setEndDate(end);
+  //       setToPresent(present);
+  //     }
+  //   }, [startEndDate]);
+
+  //   const formattedDate = useMemo(
+  //     () => getSummaryDate(startDate, endDate, toPresent),
+  //     [startDate, endDate, toPresent],
+  //   );
+
+  //   useEffect(() => {
+  //     if (userModifiedDateRef.current) {
+  //       updateStartEndDate(formattedDate);
+  //       userModifiedDateRef.current = false;
+  //     }
+  //   }, [formattedDate]);
+
+  return (
+    <Accordion type="single" collapsible className="border px-4 py-2">
+      <AccordionItem value={id}>
+        <AccordionTrigger>{getItemTitle(inputOne, inputTwo)}</AccordionTrigger>
+        <AccordionContent className="h-fit">
+          <div className="mt-1 mb-8 grid grid-cols-2 gap-8">
+            <div className="flex flex-col gap-4">
+              <Input
+                // className=""
+                value={inputOne}
+                placeholder={inputLabelOne}
+                onChange={(e) => updateInputOne(e.target.value)}
+              />
+              <Input placeholder="Date" />
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <Input
+                value={inputTwo}
+                placeholder={inputLabelTwo}
+                onChange={(e) => updateInputTwo(e.target.value)}
+              />
+              {type !== "course" && (
+                <Input
+                  value={city || ""}
+                  placeholder="City"
+                  onChange={(e) => updateCity?.(e.target.value)}
+                />
+              )}
+            </div>
+          </div>
+
+          {type !== "course" && (
+            <>
+              <Label htmlFor={`desc-${id}`} className="mb-2">
+                Description
+              </Label>
+              <Textarea
+                id={`desc-${id}`}
+                value={description || ""}
+                placeholder="Description"
+                onChange={(e) => updateDescription?.(e.target.value)}
+              />
+            </>
+          )}
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+};

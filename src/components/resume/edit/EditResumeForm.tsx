@@ -25,8 +25,8 @@ export const EditResumeForm: React.FC<Props> = ({ resume }) => {
   }, [resume]);
 
   return (
-    <div>
-      <div className="mb-8">
+    <div className="flex flex-col gap-12">
+      <div>
         <Label htmlFor="resumeName" className="mb-2">
           Resume Name
         </Label>

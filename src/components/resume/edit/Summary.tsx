@@ -9,11 +9,10 @@ export const Summary: React.FC = () => {
   const updateSummary = useResume((state) => state.setField);
 
   return (
-    <div className="mb-8">
+    <div>
       <h6 className="mb-4 text-xl font-bold">Summary</h6>
       <Textarea
         rows={10}
-        className="h-50 resize-none"
         value={summary}
         onChange={(e) => updateSummary("summary", e.target.value)}
       />

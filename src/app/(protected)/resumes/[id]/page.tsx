@@ -26,7 +26,7 @@ export default async function ResumePage({
 
   return (
     <div className="grid h-[calc(100vh-64px)] grid-cols-2 overflow-y-hidden">
-      <div className="no-arrow-scroll h-[calc(screen-64px)] overflow-y-auto p-8">
+      <div className="no-arrow-scroll h-[calc(screen-64px)] overflow-y-auto p-12">
         <EditResumeForm resume={resume as ResumeWithRelations} />
       </div>
       <div className="bg-amber-50 p-4">resume preview</div>

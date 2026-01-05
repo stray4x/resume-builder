@@ -54,31 +54,33 @@ export const useResume = create<ResumeStore>((set, get, store) => ({
   setResume: (resume: ResumeDraft) => set(() => ({ ...resume })),
 
   addSectionItem: (section) => {
-    let newItem: any = { id: `new-item-${Date.now()}` };
+    let newItem = {} as ResumeSectionDrafts[typeof section];
 
     switch (section) {
       case "workExperience":
-        newItem = { ...newItem, ...defaultWorkExperience };
+        newItem = { ...defaultWorkExperience };
         break;
       case "education":
-        newItem = { ...newItem, ...defaultEducation };
+        newItem = { ...defaultEducation };
         break;
       case "projects":
-        newItem = { ...newItem, ...defaultProject };
+        newItem = { ...defaultProject };
         break;
       case "links":
-        newItem = { ...newItem, ...defaultLink };
+        newItem = { ...defaultLink };
         break;
       case "skills":
-        newItem = { ...newItem, ...defaultSkill };
+        newItem = { ...defaultSkill };
         break;
       case "languages":
-        newItem = { ...newItem, ...defaultLanguage };
+        newItem = { ...defaultLanguage };
         break;
       case "courses":
-        newItem = { ...newItem, ...defaultCourse };
+        newItem = { ...defaultCourse };
         break;
     }
+
+    newItem.id = `new-item-${Date.now()}`;
 
     set((state) => ({
       ...state,
