@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import type { ResumeDraft, ResumeWithRelations } from "@/store/types";
 import { useResume } from "@/store/store";
 import { normalizeResume } from "@/utils/normalizeResume";
+import { Projects } from "./Projects";
 
 type Props = {
   resume: ResumeWithRelations;
@@ -40,6 +41,7 @@ export const EditResumeForm: React.FC<Props> = ({ resume }) => {
       <Details />
       <Summary />
       <WorkExperience />
+      <Projects />
       <Education />
     </div>
   );

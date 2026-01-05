@@ -29,9 +29,6 @@ export const WorkExperience: React.FC = () => {
       <div className="flex flex-col gap-4">
         {workExp.map((item) => {
           return (
-            // <div key={item.id}>
-            //   {item.jobTitle} {item.id}
-            // </div>
             <BackgroundDescription
               key={item.id}
               id={item.id}

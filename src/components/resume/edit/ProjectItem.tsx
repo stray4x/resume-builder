@@ -10,38 +10,31 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import type { ProjectDraft } from "@/store/types";
 // import moment from "moment";
 
-interface IBackgroundDescProps {
+type Props = {
   id: string;
-  inputOne: string;
-  inputTwo: string;
-  inputLabelOne: string;
-  inputLabelTwo: string;
+  title: string;
+  url: string;
+  repoUrl: string;
   description?: string;
-  city?: string;
-  type: "workExperience" | "education" | "course";
   //   handleDeleteItem: () => void;
-  updateDescription?: (value: string) => void;
+  handleUpdateItem: (
+    id: string,
+    value: string,
+    field: keyof ProjectDraft,
+  ) => void;
+  updateDescription: (value: string) => void;
   //   updateDescriptionDelta?: (value: string) => void;
   //   updateStartEndDate: (value: string) => void;
-  updateCity?: (value: string) => void;
-  updateInputOne: (value: string) => void;
-  updateInputTwo: (value: string) => void;
-}
+};
 
 // const convertDateString = (date: string | undefined) => {
 //   return date && moment(date).isValid()
 //     ? moment(date, "MMM, YYYY").toDate()
 //     : null;
 // };
-
-const getItemTitle = (inpOne: string, inpTwo: string) => {
-  if (inpOne && inpTwo) {
-    return `${inpOne} at ${inpTwo}`;
-  }
-  return inpOne || inpTwo || "(Empty)";
-};
 
 // const getValueFromFormattedDate = (
 //   startEndDate: string,
@@ -71,21 +64,16 @@ const getItemTitle = (inpOne: string, inpTwo: string) => {
 //   return formattedEndDate;
 // };
 
-export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
+export const ProjectItem: React.FC<Props> = ({
   id,
-  inputOne,
-  inputTwo,
-  inputLabelOne,
-  inputLabelTwo,
-  type,
-  city,
+  title,
+  url,
+  repoUrl,
   description,
   //   handleDeleteItem,
+  handleUpdateItem,
   updateDescription,
   //   updateStartEndDate,
-  updateCity,
-  updateInputOne,
-  updateInputTwo,
 }) => {
   const userModifiedDateRef = useRef(false);
 
@@ -117,72 +105,62 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
   return (
     <Accordion type="single" collapsible className="border px-4 py-2">
       <AccordionItem value={id}>
-        <AccordionTrigger>{getItemTitle(inputOne, inputTwo)}</AccordionTrigger>
+        <AccordionTrigger>{title || "(Empty)"}</AccordionTrigger>
         <AccordionContent className="h-fit">
           <div className="mt-1 mb-8 grid grid-cols-2 gap-8">
             <div className="flex flex-col gap-4">
               <div>
-                <Label htmlFor={`inp-one-${id}`} className="mb-2">
-                  {inputLabelOne}
+                <Label htmlFor={`proj-title-${id}`} className="mb-2">
+                  Project Name
                 </Label>
                 <Input
-                  id={`inp-one-${id}`}
-                  value={inputOne}
-                  placeholder={inputLabelOne}
-                  onChange={(e) => updateInputOne(e.target.value)}
+                  id={`proj-title-${id}`}
+                  value={title}
+                  placeholder="Project Name"
+                  onChange={(e) =>
+                    handleUpdateItem(id, e.target.value, "title")
+                  }
                 />
               </div>
-
               <div>
-                <Label htmlFor={`date-${id}`} className="mb-2">
-                  Date
+                <Label htmlFor={`proj-repo-${id}`} className="mb-2">
+                  Repository Link
                 </Label>
-                <Input id={`date-${id}`} placeholder="Date" />
+                <Input
+                  id={`proj-repo-${id}`}
+                  value={repoUrl}
+                  placeholder="Repository Link"
+                  onChange={(e) =>
+                    handleUpdateItem(id, e.target.value, "repoUrl")
+                  }
+                />
               </div>
             </div>
 
             <div className="flex flex-col gap-4">
               <div>
-                <Label htmlFor={`inp-two-${id}`} className="mb-2">
-                  {inputLabelTwo}
+                <Label htmlFor={`proj-url-${id}`} className="mb-2">
+                  Project Link
                 </Label>
                 <Input
-                  id={`inp-two-${id}`}
-                  value={inputTwo}
-                  placeholder={inputLabelTwo}
-                  onChange={(e) => updateInputTwo(e.target.value)}
+                  id={`proj-url-${id}`}
+                  value={url}
+                  placeholder="Project Link"
+                  onChange={(e) => handleUpdateItem(id, e.target.value, "url")}
                 />
               </div>
-
-              {type !== "course" && (
-                <div>
-                  <Label htmlFor={`city-${id}`} className="mb-2">
-                    City
-                  </Label>
-                  <Input
-                    id={`city-${id}`}
-                    value={city || ""}
-                    placeholder="City"
-                    onChange={(e) => updateCity?.(e.target.value)}
-                  />
-                </div>
-              )}
             </div>
           </div>
 
-          {type !== "course" && (
-            <>
-              <Label htmlFor={`desc-${id}`} className="mb-2">
-                Description
-              </Label>
-              <Textarea
-                id={`desc-${id}`}
-                value={description || ""}
-                placeholder="Description"
-                onChange={(e) => updateDescription?.(e.target.value)}
-              />
-            </>
-          )}
+          <Label htmlFor={`desc-${id}`} className="mb-2">
+            Description
+          </Label>
+          <Textarea
+            id={`desc-${id}`}
+            value={description || ""}
+            placeholder="Description"
+            onChange={(e) => updateDescription(e.target.value)}
+          />
         </AccordionContent>
       </AccordionItem>
     </Accordion>
