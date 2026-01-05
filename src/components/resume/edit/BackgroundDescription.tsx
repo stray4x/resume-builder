@@ -121,27 +121,55 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
         <AccordionContent className="h-fit">
           <div className="mt-1 mb-8 grid grid-cols-2 gap-8">
             <div className="flex flex-col gap-4">
-              <Input
-                // className=""
-                value={inputOne}
-                placeholder={inputLabelOne}
-                onChange={(e) => updateInputOne(e.target.value)}
-              />
-              <Input placeholder="Date" />
+              <div>
+                <Label htmlFor={`inp-one-${id}`} className="mb-2">
+                  {inputLabelOne}
+                </Label>
+                <Input
+                  id={`inp-one-${id}`}
+                  value={inputOne}
+                  placeholder={inputLabelOne}
+                  onChange={(e) => updateInputOne(e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Label htmlFor={`date-${id}`} className="mb-2">
+                  Date
+                </Label>
+                <Input
+                  id={`date-${id}`}
+                  placeholder="Date"
+                  // value/onChange можна додати, якщо потрібна інтеграція з датами
+                />
+              </div>
             </div>
 
             <div className="flex flex-col gap-4">
-              <Input
-                value={inputTwo}
-                placeholder={inputLabelTwo}
-                onChange={(e) => updateInputTwo(e.target.value)}
-              />
-              {type !== "course" && (
+              <div>
+                <Label htmlFor={`inp-two-${id}`} className="mb-2">
+                  {inputLabelTwo}
+                </Label>
                 <Input
-                  value={city || ""}
-                  placeholder="City"
-                  onChange={(e) => updateCity?.(e.target.value)}
+                  id={`inp-two-${id}`}
+                  value={inputTwo}
+                  placeholder={inputLabelTwo}
+                  onChange={(e) => updateInputTwo(e.target.value)}
                 />
+              </div>
+
+              {type !== "course" && (
+                <div>
+                  <Label htmlFor={`city-${id}`} className="mb-2">
+                    City
+                  </Label>
+                  <Input
+                    id={`city-${id}`}
+                    value={city || ""}
+                    placeholder="City"
+                    onChange={(e) => updateCity?.(e.target.value)}
+                  />
+                </div>
               )}
             </div>
           </div>
