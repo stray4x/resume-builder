@@ -11,7 +11,12 @@ export const Summary: React.FC = () => {
   return (
     <div className="mb-8">
       <h6 className="mb-4 text-xl font-bold">Summary</h6>
-      <Textarea rows={10} className="h-50 resize-none" />
+      <Textarea
+        rows={10}
+        className="h-50 resize-none"
+        value={summary}
+        onChange={(e) => updateSummary("summary", e.target.value)}
+      />
     </div>
   );
 };
