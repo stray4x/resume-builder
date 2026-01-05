@@ -49,7 +49,7 @@ export const WorkExperience: React.FC = () => {
           );
         })}
       </div>
-      <Button onClick={handleAddNew} className="mt-4" size="lg">
+      <Button onClick={handleAddNew} className="mt-4" size="lg" variant="link">
         {!workExp.length ? "Add employment" : "Add one more employment"}
       </Button>
     </div>

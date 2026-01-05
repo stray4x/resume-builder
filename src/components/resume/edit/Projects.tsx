@@ -45,7 +45,7 @@ export const Projects: React.FC = () => {
           );
         })}
       </div>
-      <Button onClick={handleAddNew} className="mt-4" size="lg">
+      <Button onClick={handleAddNew} className="mt-4" size="lg" variant="link">
         {!educ.length ? "Add project" : "Add one more project"}
       </Button>
     </div>

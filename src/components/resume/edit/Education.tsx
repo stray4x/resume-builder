@@ -49,7 +49,7 @@ export const Education: React.FC = () => {
           );
         })}
       </div>
-      <Button onClick={handleAddNew} className="mt-4" size="lg">
+      <Button onClick={handleAddNew} className="mt-4" size="lg" variant="link">
         {!educ.length ? "Add education" : "Add one more education"}
       </Button>
     </div>
