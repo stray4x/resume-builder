@@ -1,3 +1,5 @@
+import { LanguageLevel, SkillLevel } from "generated/prisma";
+
 import type {
   WorkExperienceDraft,
   EducationDraft,
@@ -53,7 +55,7 @@ export const defaultLink: LinkDraft = {
 export const defaultSkill: SkillDraft = {
   id: "",
   title: "",
-  level: "",
+  level: SkillLevel.Novice,
   sortOrder: 0,
   status: "added",
 };
@@ -61,7 +63,7 @@ export const defaultSkill: SkillDraft = {
 export const defaultLanguage: LanguageDraft = {
   id: "",
   language: "",
-  level: "",
+  level: LanguageLevel.A1,
   sortOrder: 0,
   status: "added",
 };

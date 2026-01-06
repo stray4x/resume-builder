@@ -105,11 +105,20 @@ model Link {
     @@index([resumeId, sortOrder])
 }
 
+enum SkillLevel {
+    Novice
+    Apprentice
+    Adept
+    Expert
+    Master
+    Legendary
+}
+
 model Skill {
-    id        String @id @default(cuid())
+    id        String     @id @default(cuid())
     resumeId  String
     title     String
-    level     String
+    level     SkillLevel
     sortOrder Int
 
     createdAt DateTime @default(now())
@@ -120,11 +129,20 @@ model Skill {
     @@index([resumeId, sortOrder])
 }
 
+enum LanguageLevel {
+    A1
+    A2
+    B1
+    B2
+    C1
+    C2
+}
+
 model Language {
-    id        String @id @default(cuid())
+    id        String        @id @default(cuid())
     resumeId  String
     language  String
-    level     String
+    level     LanguageLevel
     sortOrder Int
 
     createdAt DateTime @default(now())

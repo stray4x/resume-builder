@@ -13,6 +13,7 @@ import { Education } from "./Education";
 import { Languages } from "./Languages";
 import { Links } from "./Links";
 import { Projects } from "./Projects";
+import { Skills } from "./Skills";
 import { Summary } from "./Summary";
 import { WorkExperience } from "./WorkExperience";
 
@@ -50,6 +51,7 @@ export const EditResumeForm: React.FC<Props> = ({ resume }) => {
       <Projects />
       <Education />
       <Links />
+      <Skills />
       <Languages />
       <Courses />
     </div>

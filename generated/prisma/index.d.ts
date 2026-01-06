@@ -80,6 +80,43 @@ export type Course = $Result.DefaultSelection<Prisma.$CoursePayload>
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const SkillLevel: {
+  Novice: 'Novice',
+  Apprentice: 'Apprentice',
+  Adept: 'Adept',
+  Expert: 'Expert',
+  Master: 'Master',
+  Legendary: 'Legendary'
+};
+
+export type SkillLevel = (typeof SkillLevel)[keyof typeof SkillLevel]
+
+
+export const LanguageLevel: {
+  A1: 'A1',
+  A2: 'A2',
+  B1: 'B1',
+  B2: 'B2',
+  C1: 'C1',
+  C2: 'C2'
+};
+
+export type LanguageLevel = (typeof LanguageLevel)[keyof typeof LanguageLevel]
+
+}
+
+export type SkillLevel = $Enums.SkillLevel
+
+export const SkillLevel: typeof $Enums.SkillLevel
+
+export type LanguageLevel = $Enums.LanguageLevel
+
+export const LanguageLevel: typeof $Enums.LanguageLevel
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -12448,7 +12485,7 @@ export namespace Prisma {
     id: string | null
     resumeId: string | null
     title: string | null
-    level: string | null
+    level: $Enums.SkillLevel | null
     sortOrder: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -12458,7 +12495,7 @@ export namespace Prisma {
     id: string | null
     resumeId: string | null
     title: string | null
-    level: string | null
+    level: $Enums.SkillLevel | null
     sortOrder: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -12605,7 +12642,7 @@ export namespace Prisma {
     id: string
     resumeId: string
     title: string
-    level: string
+    level: $Enums.SkillLevel
     sortOrder: number
     createdAt: Date
     updatedAt: Date
@@ -12693,7 +12730,7 @@ export namespace Prisma {
       id: string
       resumeId: string
       title: string
-      level: string
+      level: $Enums.SkillLevel
       sortOrder: number
       createdAt: Date
       updatedAt: Date
@@ -13124,7 +13161,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Skill", 'String'>
     readonly resumeId: FieldRef<"Skill", 'String'>
     readonly title: FieldRef<"Skill", 'String'>
-    readonly level: FieldRef<"Skill", 'String'>
+    readonly level: FieldRef<"Skill", 'SkillLevel'>
     readonly sortOrder: FieldRef<"Skill", 'Int'>
     readonly createdAt: FieldRef<"Skill", 'DateTime'>
     readonly updatedAt: FieldRef<"Skill", 'DateTime'>
@@ -13566,7 +13603,7 @@ export namespace Prisma {
     id: string | null
     resumeId: string | null
     language: string | null
-    level: string | null
+    level: $Enums.LanguageLevel | null
     sortOrder: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -13576,7 +13613,7 @@ export namespace Prisma {
     id: string | null
     resumeId: string | null
     language: string | null
-    level: string | null
+    level: $Enums.LanguageLevel | null
     sortOrder: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -13723,7 +13760,7 @@ export namespace Prisma {
     id: string
     resumeId: string
     language: string
-    level: string
+    level: $Enums.LanguageLevel
     sortOrder: number
     createdAt: Date
     updatedAt: Date
@@ -13811,7 +13848,7 @@ export namespace Prisma {
       id: string
       resumeId: string
       language: string
-      level: string
+      level: $Enums.LanguageLevel
       sortOrder: number
       createdAt: Date
       updatedAt: Date
@@ -14242,7 +14279,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Language", 'String'>
     readonly resumeId: FieldRef<"Language", 'String'>
     readonly language: FieldRef<"Language", 'String'>
-    readonly level: FieldRef<"Language", 'String'>
+    readonly level: FieldRef<"Language", 'LanguageLevel'>
     readonly sortOrder: FieldRef<"Language", 'Int'>
     readonly createdAt: FieldRef<"Language", 'DateTime'>
     readonly updatedAt: FieldRef<"Language", 'DateTime'>
@@ -17205,6 +17242,34 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'SkillLevel'
+   */
+  export type EnumSkillLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SkillLevel'>
+    
+
+
+  /**
+   * Reference to a field of type 'SkillLevel[]'
+   */
+  export type ListEnumSkillLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SkillLevel[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'LanguageLevel'
+   */
+  export type EnumLanguageLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LanguageLevel'>
+    
+
+
+  /**
+   * Reference to a field of type 'LanguageLevel[]'
+   */
+  export type ListEnumLanguageLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LanguageLevel[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -17949,7 +18014,7 @@ export namespace Prisma {
     id?: StringFilter<"Skill"> | string
     resumeId?: StringFilter<"Skill"> | string
     title?: StringFilter<"Skill"> | string
-    level?: StringFilter<"Skill"> | string
+    level?: EnumSkillLevelFilter<"Skill"> | $Enums.SkillLevel
     sortOrder?: IntFilter<"Skill"> | number
     createdAt?: DateTimeFilter<"Skill"> | Date | string
     updatedAt?: DateTimeFilter<"Skill"> | Date | string
@@ -17974,7 +18039,7 @@ export namespace Prisma {
     NOT?: SkillWhereInput | SkillWhereInput[]
     resumeId?: StringFilter<"Skill"> | string
     title?: StringFilter<"Skill"> | string
-    level?: StringFilter<"Skill"> | string
+    level?: EnumSkillLevelFilter<"Skill"> | $Enums.SkillLevel
     sortOrder?: IntFilter<"Skill"> | number
     createdAt?: DateTimeFilter<"Skill"> | Date | string
     updatedAt?: DateTimeFilter<"Skill"> | Date | string
@@ -18003,7 +18068,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Skill"> | string
     resumeId?: StringWithAggregatesFilter<"Skill"> | string
     title?: StringWithAggregatesFilter<"Skill"> | string
-    level?: StringWithAggregatesFilter<"Skill"> | string
+    level?: EnumSkillLevelWithAggregatesFilter<"Skill"> | $Enums.SkillLevel
     sortOrder?: IntWithAggregatesFilter<"Skill"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Skill"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Skill"> | Date | string
@@ -18016,7 +18081,7 @@ export namespace Prisma {
     id?: StringFilter<"Language"> | string
     resumeId?: StringFilter<"Language"> | string
     language?: StringFilter<"Language"> | string
-    level?: StringFilter<"Language"> | string
+    level?: EnumLanguageLevelFilter<"Language"> | $Enums.LanguageLevel
     sortOrder?: IntFilter<"Language"> | number
     createdAt?: DateTimeFilter<"Language"> | Date | string
     updatedAt?: DateTimeFilter<"Language"> | Date | string
@@ -18041,7 +18106,7 @@ export namespace Prisma {
     NOT?: LanguageWhereInput | LanguageWhereInput[]
     resumeId?: StringFilter<"Language"> | string
     language?: StringFilter<"Language"> | string
-    level?: StringFilter<"Language"> | string
+    level?: EnumLanguageLevelFilter<"Language"> | $Enums.LanguageLevel
     sortOrder?: IntFilter<"Language"> | number
     createdAt?: DateTimeFilter<"Language"> | Date | string
     updatedAt?: DateTimeFilter<"Language"> | Date | string
@@ -18070,7 +18135,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Language"> | string
     resumeId?: StringWithAggregatesFilter<"Language"> | string
     language?: StringWithAggregatesFilter<"Language"> | string
-    level?: StringWithAggregatesFilter<"Language"> | string
+    level?: EnumLanguageLevelWithAggregatesFilter<"Language"> | $Enums.LanguageLevel
     sortOrder?: IntWithAggregatesFilter<"Language"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Language"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Language"> | Date | string
@@ -19011,7 +19076,7 @@ export namespace Prisma {
   export type SkillCreateInput = {
     id?: string
     title: string
-    level: string
+    level: $Enums.SkillLevel
     sortOrder: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -19022,7 +19087,7 @@ export namespace Prisma {
     id?: string
     resumeId: string
     title: string
-    level: string
+    level: $Enums.SkillLevel
     sortOrder: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -19031,7 +19096,7 @@ export namespace Prisma {
   export type SkillUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19042,7 +19107,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     resumeId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19052,7 +19117,7 @@ export namespace Prisma {
     id?: string
     resumeId: string
     title: string
-    level: string
+    level: $Enums.SkillLevel
     sortOrder: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -19061,7 +19126,7 @@ export namespace Prisma {
   export type SkillUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19071,7 +19136,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     resumeId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19080,7 +19145,7 @@ export namespace Prisma {
   export type LanguageCreateInput = {
     id?: string
     language: string
-    level: string
+    level: $Enums.LanguageLevel
     sortOrder: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -19091,7 +19156,7 @@ export namespace Prisma {
     id?: string
     resumeId: string
     language: string
-    level: string
+    level: $Enums.LanguageLevel
     sortOrder: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -19100,7 +19165,7 @@ export namespace Prisma {
   export type LanguageUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19111,7 +19176,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     resumeId?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19121,7 +19186,7 @@ export namespace Prisma {
     id?: string
     resumeId: string
     language: string
-    level: string
+    level: $Enums.LanguageLevel
     sortOrder: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -19130,7 +19195,7 @@ export namespace Prisma {
   export type LanguageUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19140,7 +19205,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     resumeId?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19902,6 +19967,13 @@ export namespace Prisma {
     sortOrder?: SortOrder
   }
 
+  export type EnumSkillLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.SkillLevel | EnumSkillLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.SkillLevel[] | ListEnumSkillLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SkillLevel[] | ListEnumSkillLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumSkillLevelFilter<$PrismaModel> | $Enums.SkillLevel
+  }
+
   export type SkillCountOrderByAggregateInput = {
     id?: SortOrder
     resumeId?: SortOrder
@@ -19940,6 +20012,23 @@ export namespace Prisma {
     sortOrder?: SortOrder
   }
 
+  export type EnumSkillLevelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SkillLevel | EnumSkillLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.SkillLevel[] | ListEnumSkillLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SkillLevel[] | ListEnumSkillLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumSkillLevelWithAggregatesFilter<$PrismaModel> | $Enums.SkillLevel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumSkillLevelFilter<$PrismaModel>
+    _max?: NestedEnumSkillLevelFilter<$PrismaModel>
+  }
+
+  export type EnumLanguageLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.LanguageLevel | EnumLanguageLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.LanguageLevel[] | ListEnumLanguageLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LanguageLevel[] | ListEnumLanguageLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumLanguageLevelFilter<$PrismaModel> | $Enums.LanguageLevel
+  }
+
   export type LanguageCountOrderByAggregateInput = {
     id?: SortOrder
     resumeId?: SortOrder
@@ -19976,6 +20065,16 @@ export namespace Prisma {
 
   export type LanguageSumOrderByAggregateInput = {
     sortOrder?: SortOrder
+  }
+
+  export type EnumLanguageLevelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.LanguageLevel | EnumLanguageLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.LanguageLevel[] | ListEnumLanguageLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LanguageLevel[] | ListEnumLanguageLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumLanguageLevelWithAggregatesFilter<$PrismaModel> | $Enums.LanguageLevel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLanguageLevelFilter<$PrismaModel>
+    _max?: NestedEnumLanguageLevelFilter<$PrismaModel>
   }
 
   export type CourseCountOrderByAggregateInput = {
@@ -20557,6 +20656,10 @@ export namespace Prisma {
     connect?: ResumeWhereUniqueInput
   }
 
+  export type EnumSkillLevelFieldUpdateOperationsInput = {
+    set?: $Enums.SkillLevel
+  }
+
   export type ResumeUpdateOneRequiredWithoutSkillsNestedInput = {
     create?: XOR<ResumeCreateWithoutSkillsInput, ResumeUncheckedCreateWithoutSkillsInput>
     connectOrCreate?: ResumeCreateOrConnectWithoutSkillsInput
@@ -20569,6 +20672,10 @@ export namespace Prisma {
     create?: XOR<ResumeCreateWithoutLanguagesInput, ResumeUncheckedCreateWithoutLanguagesInput>
     connectOrCreate?: ResumeCreateOrConnectWithoutLanguagesInput
     connect?: ResumeWhereUniqueInput
+  }
+
+  export type EnumLanguageLevelFieldUpdateOperationsInput = {
+    set?: $Enums.LanguageLevel
   }
 
   export type ResumeUpdateOneRequiredWithoutLanguagesNestedInput = {
@@ -20882,6 +20989,40 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumSkillLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.SkillLevel | EnumSkillLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.SkillLevel[] | ListEnumSkillLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SkillLevel[] | ListEnumSkillLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumSkillLevelFilter<$PrismaModel> | $Enums.SkillLevel
+  }
+
+  export type NestedEnumSkillLevelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SkillLevel | EnumSkillLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.SkillLevel[] | ListEnumSkillLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SkillLevel[] | ListEnumSkillLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumSkillLevelWithAggregatesFilter<$PrismaModel> | $Enums.SkillLevel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumSkillLevelFilter<$PrismaModel>
+    _max?: NestedEnumSkillLevelFilter<$PrismaModel>
+  }
+
+  export type NestedEnumLanguageLevelFilter<$PrismaModel = never> = {
+    equals?: $Enums.LanguageLevel | EnumLanguageLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.LanguageLevel[] | ListEnumLanguageLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LanguageLevel[] | ListEnumLanguageLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumLanguageLevelFilter<$PrismaModel> | $Enums.LanguageLevel
+  }
+
+  export type NestedEnumLanguageLevelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.LanguageLevel | EnumLanguageLevelFieldRefInput<$PrismaModel>
+    in?: $Enums.LanguageLevel[] | ListEnumLanguageLevelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LanguageLevel[] | ListEnumLanguageLevelFieldRefInput<$PrismaModel>
+    not?: NestedEnumLanguageLevelWithAggregatesFilter<$PrismaModel> | $Enums.LanguageLevel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLanguageLevelFilter<$PrismaModel>
+    _max?: NestedEnumLanguageLevelFilter<$PrismaModel>
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -21290,7 +21431,7 @@ export namespace Prisma {
   export type SkillCreateWithoutResumeInput = {
     id?: string
     title: string
-    level: string
+    level: $Enums.SkillLevel
     sortOrder: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21299,7 +21440,7 @@ export namespace Prisma {
   export type SkillUncheckedCreateWithoutResumeInput = {
     id?: string
     title: string
-    level: string
+    level: $Enums.SkillLevel
     sortOrder: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21318,7 +21459,7 @@ export namespace Prisma {
   export type LanguageCreateWithoutResumeInput = {
     id?: string
     language: string
-    level: string
+    level: $Enums.LanguageLevel
     sortOrder: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21327,7 +21468,7 @@ export namespace Prisma {
   export type LanguageUncheckedCreateWithoutResumeInput = {
     id?: string
     language: string
-    level: string
+    level: $Enums.LanguageLevel
     sortOrder: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21580,7 +21721,7 @@ export namespace Prisma {
     id?: StringFilter<"Skill"> | string
     resumeId?: StringFilter<"Skill"> | string
     title?: StringFilter<"Skill"> | string
-    level?: StringFilter<"Skill"> | string
+    level?: EnumSkillLevelFilter<"Skill"> | $Enums.SkillLevel
     sortOrder?: IntFilter<"Skill"> | number
     createdAt?: DateTimeFilter<"Skill"> | Date | string
     updatedAt?: DateTimeFilter<"Skill"> | Date | string
@@ -21609,7 +21750,7 @@ export namespace Prisma {
     id?: StringFilter<"Language"> | string
     resumeId?: StringFilter<"Language"> | string
     language?: StringFilter<"Language"> | string
-    level?: StringFilter<"Language"> | string
+    level?: EnumLanguageLevelFilter<"Language"> | $Enums.LanguageLevel
     sortOrder?: IntFilter<"Language"> | number
     createdAt?: DateTimeFilter<"Language"> | Date | string
     updatedAt?: DateTimeFilter<"Language"> | Date | string
@@ -22735,7 +22876,7 @@ export namespace Prisma {
   export type SkillCreateManyResumeInput = {
     id?: string
     title: string
-    level: string
+    level: $Enums.SkillLevel
     sortOrder: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22744,7 +22885,7 @@ export namespace Prisma {
   export type LanguageCreateManyResumeInput = {
     id?: string
     language: string
-    level: string
+    level: $Enums.LanguageLevel
     sortOrder: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22901,7 +23042,7 @@ export namespace Prisma {
   export type SkillUpdateWithoutResumeInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22910,7 +23051,7 @@ export namespace Prisma {
   export type SkillUncheckedUpdateWithoutResumeInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22919,7 +23060,7 @@ export namespace Prisma {
   export type SkillUncheckedUpdateManyWithoutResumeInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22928,7 +23069,7 @@ export namespace Prisma {
   export type LanguageUpdateWithoutResumeInput = {
     id?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22937,7 +23078,7 @@ export namespace Prisma {
   export type LanguageUncheckedUpdateWithoutResumeInput = {
     id?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22946,7 +23087,7 @@ export namespace Prisma {
   export type LanguageUncheckedUpdateManyWithoutResumeInput = {
     id?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
-    level?: StringFieldUpdateOperationsInput | string
+    level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

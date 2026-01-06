@@ -285,7 +285,23 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.SkillLevel = exports.$Enums.SkillLevel = {
+  Novice: 'Novice',
+  Apprentice: 'Apprentice',
+  Adept: 'Adept',
+  Expert: 'Expert',
+  Master: 'Master',
+  Legendary: 'Legendary'
+};
 
+exports.LanguageLevel = exports.$Enums.LanguageLevel = {
+  A1: 'A1',
+  A2: 'A2',
+  B1: 'B1',
+  B2: 'B2',
+  C1: 'C1',
+  C2: 'C2'
+};
 
 exports.Prisma.ModelName = {
   Session: 'Session',

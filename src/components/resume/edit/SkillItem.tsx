@@ -19,41 +19,39 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { LanguageLevel } from "generated/prisma";
+import { SkillLevel } from "generated/prisma";
 
-import type { LanguageDraft } from "@/store/types";
+import type { SkillDraft } from "@/store/types";
 
 type Props = {
-  item: LanguageDraft;
+  item: SkillDraft;
   handleUpdateItem: (
     id: string,
     value: string,
-    field: keyof LanguageDraft,
+    field: keyof SkillDraft,
   ) => void;
 };
 
-export const LanguageItem: React.FC<Props> = ({ item, handleUpdateItem }) => {
-  const { id, language, level } = item;
+export const SkillItem: React.FC<Props> = ({ item, handleUpdateItem }) => {
+  const { id, title, level } = item;
 
   return (
     <Accordion type="single" collapsible className="border py-2">
       <AccordionItem value={id}>
         <AccordionTrigger>
-          {language || "(Empty)"} {level && `- ${level}`}
+          {title || "(Empty)"} {level && `- ${level}`}
         </AccordionTrigger>
         <AccordionContent>
           <div className="flex justify-between gap-8">
             <div className="w-full">
-              <Label htmlFor={`link-title-${id}`} className="mb-2">
-                Language
+              <Label htmlFor={`skill-${id}`} className="mb-2">
+                Skill
               </Label>
               <Input
-                id={`lang-${id}`}
-                value={language}
-                placeholder="Language"
-                onChange={(e) =>
-                  handleUpdateItem(id, e.target.value, "language")
-                }
+                id={`skill-${id}`}
+                value={title}
+                placeholder="Skill"
+                onChange={(e) => handleUpdateItem(id, e.target.value, "title")}
               />
             </div>
             <div className="w-full">
@@ -63,12 +61,12 @@ export const LanguageItem: React.FC<Props> = ({ item, handleUpdateItem }) => {
                 onValueChange={(v) => handleUpdateItem(id, v, "level")}
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a your language level" />
+                  <SelectValue placeholder="Select a your skill level" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectLabel>Select a your language level</SelectLabel>
-                    {Object.values(LanguageLevel).map((lvl) => (
+                    <SelectLabel>Select a your skill level</SelectLabel>
+                    {Object.keys(SkillLevel).map((lvl) => (
                       <SelectItem key={lvl} value={lvl}>
                         {lvl}
                       </SelectItem>

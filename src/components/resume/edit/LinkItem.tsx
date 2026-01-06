@@ -45,6 +45,7 @@ export const LinkItem: React.FC<Props> = ({ item, handleUpdateItem }) => {
               <Input
                 id={`link-url-${id}`}
                 value={url}
+                type="url"
                 placeholder="Link"
                 onChange={(e) => handleUpdateItem(id, e.target.value, "url")}
               />
