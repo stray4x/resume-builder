@@ -1,4 +1,9 @@
-import type { ResumeWithRelations, ResumeDraft } from "@/store/types";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import {
+  type ResumeWithRelations,
+  type ResumeDraft,
+  ItemStatus,
+} from "@/store/types";
 
 export const normalizeResume = (resume: ResumeWithRelations): ResumeDraft => {
   return {
@@ -17,41 +22,41 @@ export const normalizeResume = (resume: ResumeWithRelations): ResumeDraft => {
     workExperience: resume.workExperience.map(
       ({ resumeId, createdAt, updatedAt, ...item }) => ({
         ...item,
-        status: "unchanged",
+        status: ItemStatus.Unchanged,
       }),
     ),
     education: resume.education.map(
       ({ resumeId, createdAt, updatedAt, ...item }) => ({
         ...item,
-        status: "unchanged",
+        status: ItemStatus.Unchanged,
       }),
     ),
     projects: resume.projects.map(
       ({ resumeId, createdAt, updatedAt, ...item }) => ({
         ...item,
-        status: "unchanged",
+        status: ItemStatus.Unchanged,
       }),
     ),
     links: resume.links.map(({ resumeId, createdAt, updatedAt, ...item }) => ({
       ...item,
-      status: "unchanged",
+      status: ItemStatus.Unchanged,
     })),
     skills: resume.skills.map(
       ({ resumeId, createdAt, updatedAt, ...item }) => ({
         ...item,
-        status: "unchanged",
+        status: ItemStatus.Unchanged,
       }),
     ),
-    languages: resume.languages.map(
-      ({ resumeId, createdAt, updatedAt, ...item }) => ({
+    languages: resume.languages
+      .map(({ resumeId, createdAt, updatedAt, ...item }) => ({
         ...item,
-        status: "unchanged",
-      }),
-    ),
+        status: ItemStatus.Unchanged,
+      }))
+      .sort(),
     courses: resume.courses.map(
       ({ resumeId, createdAt, updatedAt, ...item }) => ({
         ...item,
-        status: "unchanged",
+        status: ItemStatus.Unchanged,
       }),
     ),
   };

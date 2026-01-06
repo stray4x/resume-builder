@@ -1,6 +1,7 @@
 import { EditResumeForm } from "@/components/resume/edit/EditResumeForm";
 import { requireSession } from "@/server/better-auth/server";
 import { db } from "@/server/db";
+
 import type { ResumeWithRelations } from "@/store/types";
 
 export default async function ResumePage({
@@ -14,13 +15,13 @@ export default async function ResumePage({
   const resume = await db.resume.findFirst({
     where: { id: resumeId, ownerId: user.id },
     include: {
-      workExperience: true,
-      projects: true,
-      education: true,
-      skills: true,
-      links: true,
-      languages: true,
-      courses: true,
+      workExperience: { orderBy: { sortOrder: "asc" } },
+      projects: { orderBy: { sortOrder: "asc" } },
+      education: { orderBy: { sortOrder: "asc" } },
+      skills: { orderBy: { sortOrder: "asc" } },
+      links: { orderBy: { sortOrder: "asc" } },
+      languages: { orderBy: { sortOrder: "asc" } },
+      courses: { orderBy: { sortOrder: "asc" } },
     },
   });
 
