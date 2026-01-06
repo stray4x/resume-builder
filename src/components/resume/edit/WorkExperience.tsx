@@ -3,28 +3,17 @@
 import React from "react";
 
 import { Button } from "@/components/ui/button";
-import { useResume } from "@/store/store";
+import { useSectionActions, useSectionItems } from "@/store/selectors";
 
 import { BackgroundDescription } from "./BackgroundDescription";
 
 import type { WorkExperienceDraft } from "@/store/types";
 
 export const WorkExperience: React.FC = () => {
-  const workExp = useResume((state) => state.workExperience);
-  const addWorkExp = useResume((state) => state.addSectionItem);
-  const updWorkExp = useResume((state) => state.updateSectionItem);
+  const workExp: WorkExperienceDraft[] = useSectionItems("workExperience");
 
-  const handleAddNew = () => {
-    addWorkExp("workExperience");
-  };
-
-  const handleUpdateItem = (
-    id: string,
-    value: string,
-    field: keyof WorkExperienceDraft,
-  ) => {
-    updWorkExp("workExperience", id, field, value);
-  };
+  const { addItem, updateItem, deleteItem } =
+    useSectionActions("workExperience");
 
   return (
     <div>
@@ -42,17 +31,16 @@ export const WorkExperience: React.FC = () => {
               type="workExperience"
               inputLabelOne="Job Title"
               inputLabelTwo="Employer"
-              updateInputOne={(v) => handleUpdateItem(item.id, v, "jobTitle")}
-              updateInputTwo={(v) => handleUpdateItem(item.id, v, "employer")}
-              updateCity={(v) => handleUpdateItem(item.id, v, "city")}
-              updateDescription={(v) =>
-                handleUpdateItem(item.id, v, "description")
-              }
+              updateInputOne={(v) => updateItem(item.id, v, "jobTitle")}
+              updateInputTwo={(v) => updateItem(item.id, v, "employer")}
+              updateCity={(v) => updateItem(item.id, v, "city")}
+              updateDescription={(v) => updateItem(item.id, v, "description")}
+              handleDeleteItem={deleteItem}
             />
           );
         })}
       </div>
-      <Button onClick={handleAddNew} className="mt-4" size="lg" variant="link">
+      <Button onClick={addItem} className="mt-4" size="lg" variant="link">
         {!workExp.length ? "Add employment" : "Add one more employment"}
       </Button>
     </div>

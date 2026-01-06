@@ -3,28 +3,15 @@
 import React from "react";
 
 import { Button } from "@/components/ui/button";
-import { useResume } from "@/store/store";
+import { useSectionActions, useSectionItems } from "@/store/selectors";
 
 import { LinkItem } from "./LinkItem";
 
 import type { LinkDraft } from "@/store/types";
 
 export const Links: React.FC = () => {
-  const links = useResume((state) => state.links);
-  const addLink = useResume((state) => state.addSectionItem);
-  const updLink = useResume((state) => state.updateSectionItem);
-
-  const handleAddNew = () => {
-    addLink("links");
-  };
-
-  const handleUpdateItem = (
-    id: string,
-    value: string,
-    field: keyof LinkDraft,
-  ) => {
-    updLink("links", id, field, value);
-  };
+  const links: LinkDraft[] = useSectionItems("links");
+  const { addItem, updateItem, deleteItem } = useSectionActions("links");
 
   return (
     <div>
@@ -35,12 +22,13 @@ export const Links: React.FC = () => {
             <LinkItem
               key={item.id}
               item={item}
-              handleUpdateItem={handleUpdateItem}
+              handleUpdateItem={updateItem}
+              handleDeleteItem={deleteItem}
             />
           );
         })}
       </div>
-      <Button onClick={handleAddNew} className="mt-4" size="lg" variant="link">
+      <Button onClick={addItem} className="mt-4" size="lg" variant="link">
         {!links.length ? "Add link" : "Add one more link"}
       </Button>
     </div>

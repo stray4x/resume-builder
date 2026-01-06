@@ -3,28 +3,15 @@
 import React from "react";
 
 import { Button } from "@/components/ui/button";
-import { useResume } from "@/store/store";
+import { useSectionActions, useSectionItems } from "@/store/selectors";
 
 import { SkillItem } from "./SkillItem";
 
 import type { SkillDraft } from "@/store/types";
 
 export const Skills: React.FC = () => {
-  const skills = useResume((state) => state.skills);
-  const addSkill = useResume((state) => state.addSectionItem);
-  const updSkill = useResume((state) => state.updateSectionItem);
-
-  const handleAddNew = () => {
-    addSkill("skills");
-  };
-
-  const handleUpdateItem = (
-    id: string,
-    value: string,
-    field: keyof SkillDraft,
-  ) => {
-    updSkill("skills", id, field, value);
-  };
+  const skills: SkillDraft[] = useSectionItems("skills");
+  const { addItem, updateItem, deleteItem } = useSectionActions("skills");
 
   return (
     <div>
@@ -35,12 +22,13 @@ export const Skills: React.FC = () => {
             <SkillItem
               key={item.id}
               item={item}
-              handleUpdateItem={handleUpdateItem}
+              handleUpdateItem={updateItem}
+              handleDeleteItem={deleteItem}
             />
           );
         })}
       </div>
-      <Button onClick={handleAddNew} className="mt-4" size="lg" variant="link">
+      <Button onClick={addItem} className="mt-4" size="lg" variant="link">
         {!skills.length ? "Add skill" : "Add one more skill"}
       </Button>
     </div>

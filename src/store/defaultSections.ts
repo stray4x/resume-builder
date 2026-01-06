@@ -1,13 +1,14 @@
 import { LanguageLevel, SkillLevel } from "generated/prisma";
 
-import type {
-  WorkExperienceDraft,
-  EducationDraft,
-  ProjectDraft,
-  LinkDraft,
-  SkillDraft,
-  LanguageDraft,
-  CourseDraft,
+import {
+  type WorkExperienceDraft,
+  type EducationDraft,
+  type ProjectDraft,
+  type LinkDraft,
+  type SkillDraft,
+  type LanguageDraft,
+  type CourseDraft,
+  ItemStatus,
 } from "./types";
 
 export const defaultWorkExperience: WorkExperienceDraft = {
@@ -19,7 +20,7 @@ export const defaultWorkExperience: WorkExperienceDraft = {
   endDate: null,
   description: "",
   sortOrder: 0,
-  status: "added",
+  status: ItemStatus.Added,
 };
 
 export const defaultEducation: EducationDraft = {
@@ -31,7 +32,7 @@ export const defaultEducation: EducationDraft = {
   endDate: null,
   description: "",
   sortOrder: 0,
-  status: "added",
+  status: ItemStatus.Added,
 };
 
 export const defaultProject: ProjectDraft = {
@@ -41,7 +42,7 @@ export const defaultProject: ProjectDraft = {
   repoUrl: "",
   description: "",
   sortOrder: 0,
-  status: "added",
+  status: ItemStatus.Added,
 };
 
 export const defaultLink: LinkDraft = {
@@ -49,7 +50,7 @@ export const defaultLink: LinkDraft = {
   title: "",
   url: "",
   sortOrder: 0,
-  status: "added",
+  status: ItemStatus.Added,
 };
 
 export const defaultSkill: SkillDraft = {
@@ -57,7 +58,7 @@ export const defaultSkill: SkillDraft = {
   title: "",
   level: SkillLevel.Novice,
   sortOrder: 0,
-  status: "added",
+  status: ItemStatus.Added,
 };
 
 export const defaultLanguage: LanguageDraft = {
@@ -65,7 +66,7 @@ export const defaultLanguage: LanguageDraft = {
   language: "",
   level: LanguageLevel.A1,
   sortOrder: 0,
-  status: "added",
+  status: ItemStatus.Added,
 };
 
 export const defaultCourse: CourseDraft = {
@@ -74,5 +75,5 @@ export const defaultCourse: CourseDraft = {
   institution: "",
   date: null,
   sortOrder: 0,
-  status: "added",
+  status: ItemStatus.Added,
 };

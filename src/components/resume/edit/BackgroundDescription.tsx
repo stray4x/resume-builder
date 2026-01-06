@@ -2,15 +2,12 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { AccordionContent, AccordionTrigger } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+
+import { EditResumeAccordion } from "./EditResumeAccordion";
 // import moment from "moment";
 
 interface IBackgroundDescProps {
@@ -22,7 +19,7 @@ interface IBackgroundDescProps {
   description?: string;
   city?: string;
   type: "workExperience" | "education" | "course";
-  //   handleDeleteItem: () => void;
+  handleDeleteItem: (id: string) => void;
   updateDescription?: (value: string) => void;
   //   updateDescriptionDelta?: (value: string) => void;
   //   updateStartEndDate: (value: string) => void;
@@ -81,7 +78,7 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
   type,
   city,
   description,
-  //   handleDeleteItem,
+  handleDeleteItem,
   updateDescription,
   //   updateStartEndDate,
   updateCity,
@@ -116,76 +113,74 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
   //   }, [formattedDate]);
 
   return (
-    <Accordion type="single" collapsible className="border py-2">
-      <AccordionItem value={id}>
-        <AccordionTrigger>{getItemTitle(inputOne, inputTwo)}</AccordionTrigger>
-        <AccordionContent>
-          <div className="mt-1 grid grid-cols-2 gap-8">
-            <div className="flex flex-col gap-4">
-              <div>
-                <Label htmlFor={`inp-one-${id}`} className="mb-2">
-                  {inputLabelOne}
-                </Label>
-                <Input
-                  id={`inp-one-${id}`}
-                  value={inputOne}
-                  placeholder={inputLabelOne}
-                  onChange={(e) => updateInputOne(e.target.value)}
-                />
-              </div>
-
-              <div>
-                <Label htmlFor={`date-${id}`} className="mb-2">
-                  Date
-                </Label>
-                <Input id={`date-${id}`} placeholder="Date" type="date" />
-              </div>
+    <EditResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
+      <AccordionTrigger>{getItemTitle(inputOne, inputTwo)}</AccordionTrigger>
+      <AccordionContent>
+        <div className="mt-1 grid grid-cols-2 gap-8">
+          <div className="flex flex-col gap-4">
+            <div>
+              <Label htmlFor={`inp-one-${id}`} className="mb-2">
+                {inputLabelOne}
+              </Label>
+              <Input
+                id={`inp-one-${id}`}
+                value={inputOne}
+                placeholder={inputLabelOne}
+                onChange={(e) => updateInputOne(e.target.value)}
+              />
             </div>
 
-            <div className="flex flex-col gap-4">
-              <div>
-                <Label htmlFor={`inp-two-${id}`} className="mb-2">
-                  {inputLabelTwo}
-                </Label>
-                <Input
-                  id={`inp-two-${id}`}
-                  value={inputTwo}
-                  placeholder={inputLabelTwo}
-                  onChange={(e) => updateInputTwo(e.target.value)}
-                />
-              </div>
-
-              {type !== "course" && (
-                <div>
-                  <Label htmlFor={`city-${id}`} className="mb-2">
-                    City
-                  </Label>
-                  <Input
-                    id={`city-${id}`}
-                    value={city ?? ""}
-                    placeholder="City"
-                    onChange={(e) => updateCity?.(e.target.value)}
-                  />
-                </div>
-              )}
+            <div>
+              <Label htmlFor={`date-${id}`} className="mb-2">
+                Date
+              </Label>
+              <Input id={`date-${id}`} placeholder="Date" type="date" />
             </div>
           </div>
 
-          {type !== "course" && (
-            <>
-              <Label htmlFor={`desc-${id}`} className="mt-8 mb-2">
-                Description
+          <div className="flex flex-col gap-4">
+            <div>
+              <Label htmlFor={`inp-two-${id}`} className="mb-2">
+                {inputLabelTwo}
               </Label>
-              <Textarea
-                id={`desc-${id}`}
-                value={description ?? ""}
-                placeholder="Description"
-                onChange={(e) => updateDescription?.(e.target.value)}
+              <Input
+                id={`inp-two-${id}`}
+                value={inputTwo}
+                placeholder={inputLabelTwo}
+                onChange={(e) => updateInputTwo(e.target.value)}
               />
-            </>
-          )}
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+            </div>
+
+            {type !== "course" && (
+              <div>
+                <Label htmlFor={`city-${id}`} className="mb-2">
+                  City
+                </Label>
+                <Input
+                  id={`city-${id}`}
+                  value={city ?? ""}
+                  placeholder="City"
+                  onChange={(e) => updateCity?.(e.target.value)}
+                />
+              </div>
+            )}
+          </div>
+        </div>
+
+        {type !== "course" && (
+          <>
+            <Label htmlFor={`desc-${id}`} className="mt-8 mb-2">
+              Description
+            </Label>
+            <Textarea
+              id={`desc-${id}`}
+              value={description ?? ""}
+              placeholder="Description"
+              onChange={(e) => updateDescription?.(e.target.value)}
+            />
+          </>
+        )}
+      </AccordionContent>
+    </EditResumeAccordion>
   );
 };

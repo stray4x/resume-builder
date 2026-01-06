@@ -3,6 +3,7 @@
 import React from "react";
 
 import { Button } from "@/components/ui/button";
+import { useSectionActions, useSectionItems } from "@/store/selectors";
 import { useResume } from "@/store/store";
 
 import { BackgroundDescription } from "./BackgroundDescription";
@@ -10,13 +11,9 @@ import { BackgroundDescription } from "./BackgroundDescription";
 import type { CourseDraft } from "@/store/types";
 
 export const Courses: React.FC = () => {
-  const courses = useResume((state) => state.courses);
-  const addCourse = useResume((state) => state.addSectionItem);
+  const courses: CourseDraft[] = useSectionItems("courses");
+  const { addItem, deleteItem } = useSectionActions("courses");
   const updCourse = useResume((state) => state.updateSectionItem);
-
-  const handleAddNew = () => {
-    addCourse("courses");
-  };
 
   const handleUpdateItem = (
     id: string,
@@ -40,6 +37,7 @@ export const Courses: React.FC = () => {
               type="course"
               inputLabelOne="Course"
               inputLabelTwo="Institution"
+              handleDeleteItem={deleteItem}
               updateInputOne={(v) => handleUpdateItem(item.id, v, "title")}
               updateInputTwo={(v) =>
                 handleUpdateItem(item.id, v, "institution")
@@ -48,7 +46,7 @@ export const Courses: React.FC = () => {
           );
         })}
       </div>
-      <Button onClick={handleAddNew} className="mt-4" size="lg" variant="link">
+      <Button onClick={addItem} className="mt-4" size="lg" variant="link">
         {!courses.length ? "Add course" : "Add one more course"}
       </Button>
     </div>

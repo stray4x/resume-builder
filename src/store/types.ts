@@ -36,7 +36,14 @@ export type ResumeDraft = Omit<
 
 type OmitFields = "createdAt" | "updatedAt" | "resumeId";
 
-export type ItemStatus = "unchanged" | "added" | "deleted" | "updated";
+// export type ItemStatus = "unchanged" | "added" | "deleted" | "updated";
+
+export enum ItemStatus {
+  Unchanged = "unchanged",
+  Added = "added",
+  Deleted = "deleted",
+  Updated = "updated",
+}
 
 export type WorkExperienceDraft = Omit<
   ResumeWithRelations["workExperience"][number],

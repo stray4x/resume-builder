@@ -9,8 +9,12 @@ import {
   defaultLanguage,
   defaultCourse,
 } from "./defaultSections";
-
-import type { ResumeDraft, ResumeSectionDrafts, ResumeSections } from "./types";
+import {
+  ItemStatus,
+  type ResumeDraft,
+  type ResumeSectionDrafts,
+  type ResumeSections,
+} from "./types";
 
 export const defaultState: ResumeDraft = {
   id: "",
@@ -92,13 +96,18 @@ export const useResume = create<ResumeStore>((set, get, store) => ({
   updateSectionItem: (section, id, field, value) =>
     set((state: ResumeDraft) => ({
       [section]: state[section].map((item) =>
-        item.id === id ? { ...item, [field]: value } : item,
+        item.id === id && item.status !== ItemStatus.Deleted
+          ? { ...item, [field]: value, status: ItemStatus.Updated }
+          : item,
       ),
     })),
 
   deleteSectionItem: (section: ResumeSections, id: string) =>
     set((state: ResumeDraft) => ({
-      [section]: state[section].filter((item) => item.id !== id),
+      [section]: state[section].map((item) => ({
+        ...item,
+        status: id === item.id ? ItemStatus.Deleted : item.status,
+      })),
     })),
 
   reset: () => {

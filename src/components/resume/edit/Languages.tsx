@@ -3,28 +3,15 @@
 import React from "react";
 
 import { Button } from "@/components/ui/button";
-import { useResume } from "@/store/store";
+import { useSectionActions, useSectionItems } from "@/store/selectors";
 
 import { LanguageItem } from "./LanguageItem";
 
 import type { LanguageDraft } from "@/store/types";
 
 export const Languages: React.FC = () => {
-  const langs = useResume((state) => state.languages);
-  const addLang = useResume((state) => state.addSectionItem);
-  const updLang = useResume((state) => state.updateSectionItem);
-
-  const handleAddNew = () => {
-    addLang("languages");
-  };
-
-  const handleUpdateItem = (
-    id: string,
-    value: string,
-    field: keyof LanguageDraft,
-  ) => {
-    updLang("languages", id, field, value);
-  };
+  const langs: LanguageDraft[] = useSectionItems("languages");
+  const { addItem, updateItem, deleteItem } = useSectionActions("languages");
 
   return (
     <div>
@@ -35,12 +22,13 @@ export const Languages: React.FC = () => {
             <LanguageItem
               key={item.id}
               item={item}
-              handleUpdateItem={handleUpdateItem}
+              handleUpdateItem={updateItem}
+              handleDeleteItem={deleteItem}
             />
           );
         })}
       </div>
-      <Button onClick={handleAddNew} className="mt-4" size="lg" variant="link">
+      <Button onClick={addItem} className="mt-4" size="lg" variant="link">
         {!langs.length ? "Add language" : "Add one more language"}
       </Button>
     </div>

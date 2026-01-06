@@ -3,28 +3,15 @@
 import React from "react";
 
 import { Button } from "@/components/ui/button";
-import { useResume } from "@/store/store";
+import { useSectionActions, useSectionItems } from "@/store/selectors";
 
 import { BackgroundDescription } from "./BackgroundDescription";
 
 import type { EducationDraft } from "@/store/types";
 
 export const Education: React.FC = () => {
-  const educ = useResume((state) => state.education);
-  const addEduc = useResume((state) => state.addSectionItem);
-  const updEduc = useResume((state) => state.updateSectionItem);
-
-  const handleAddNew = () => {
-    addEduc("education");
-  };
-
-  const handleUpdateItem = (
-    id: string,
-    value: string,
-    field: keyof EducationDraft,
-  ) => {
-    updEduc("education", id, field, value);
-  };
+  const educ: EducationDraft[] = useSectionItems("education");
+  const { addItem, updateItem, deleteItem } = useSectionActions("education");
 
   return (
     <div>
@@ -42,17 +29,16 @@ export const Education: React.FC = () => {
               type="education"
               inputLabelOne="School"
               inputLabelTwo="Degree"
-              updateInputOne={(v) => handleUpdateItem(item.id, v, "school")}
-              updateInputTwo={(v) => handleUpdateItem(item.id, v, "degree")}
-              updateCity={(v) => handleUpdateItem(item.id, v, "city")}
-              updateDescription={(v) =>
-                handleUpdateItem(item.id, v, "description")
-              }
+              handleDeleteItem={deleteItem}
+              updateInputOne={(v) => updateItem(item.id, v, "school")}
+              updateInputTwo={(v) => updateItem(item.id, v, "degree")}
+              updateCity={(v) => updateItem(item.id, v, "city")}
+              updateDescription={(v) => updateItem(item.id, v, "description")}
             />
           );
         })}
       </div>
-      <Button onClick={handleAddNew} className="mt-4" size="lg" variant="link">
+      <Button onClick={addItem} className="mt-4" size="lg" variant="link">
         {!educ.length ? "Add education" : "Add one more education"}
       </Button>
     </div>
