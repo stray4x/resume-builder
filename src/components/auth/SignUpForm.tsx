@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -9,7 +10,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { authClient } from "@/server/better-auth/client";
 import { clientUrls } from "@/utils/urls";
-import toast from "react-hot-toast";
 
 const signUpSchema = z.object({
   name: z.string().min(1, "Name is required"),

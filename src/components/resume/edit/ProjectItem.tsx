@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+
 import {
   Accordion,
   AccordionContent,
@@ -8,8 +9,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+
 import type { ProjectDraft } from "@/store/types";
 // import moment from "moment";
 
@@ -157,7 +159,7 @@ export const ProjectItem: React.FC<Props> = ({
           </Label>
           <Textarea
             id={`desc-${id}`}
-            value={description || ""}
+            value={description ?? ""}
             placeholder="Description"
             onChange={(e) => updateDescription(e.target.value)}
           />

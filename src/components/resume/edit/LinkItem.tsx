@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+
 import {
   Accordion,
   AccordionContent,
@@ -8,8 +10,8 @@ import {
 } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+
 import type { LinkDraft } from "@/store/types";
-import React from "react";
 
 type Props = {
   item: LinkDraft;

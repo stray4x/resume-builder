@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+
 import {
   Accordion,
   AccordionContent,
@@ -8,8 +9,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 // import moment from "moment";
 
 interface IBackgroundDescProps {
@@ -161,7 +162,7 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
                   </Label>
                   <Input
                     id={`city-${id}`}
-                    value={city || ""}
+                    value={city ?? ""}
                     placeholder="City"
                     onChange={(e) => updateCity?.(e.target.value)}
                   />
@@ -177,7 +178,7 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
               </Label>
               <Textarea
                 id={`desc-${id}`}
-                value={description || ""}
+                value={description ?? ""}
                 placeholder="Description"
                 onChange={(e) => updateDescription?.(e.target.value)}
               />

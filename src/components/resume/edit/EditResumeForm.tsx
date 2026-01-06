@@ -1,17 +1,20 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { Details } from "./Details";
-import { Summary } from "./Summary";
-import { WorkExperience } from "./WorkExperience";
-import { Education } from "./Education";
+
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import type { ResumeDraft, ResumeWithRelations } from "@/store/types";
 import { useResume } from "@/store/store";
 import { normalizeResume } from "@/utils/normalizeResume";
-import { Projects } from "./Projects";
+
+import { Details } from "./Details";
+import { Education } from "./Education";
 import { Links } from "./Links";
+import { Projects } from "./Projects";
+import { Summary } from "./Summary";
+import { WorkExperience } from "./WorkExperience";
+
+import type { ResumeWithRelations } from "@/store/types";
 
 type Props = {
   resume: ResumeWithRelations;

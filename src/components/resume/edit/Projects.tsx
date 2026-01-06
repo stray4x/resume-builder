@@ -1,11 +1,13 @@
 "use client";
 
+import React from "react";
+
 import { Button } from "@/components/ui/button";
 import { useResume } from "@/store/store";
-import React from "react";
-import { BackgroundDescription } from "./BackgroundDescription";
-import type { EducationDraft, ProjectDraft } from "@/store/types";
+
 import { ProjectItem } from "./ProjectItem";
+
+import type { ProjectDraft } from "@/store/types";
 
 export const Projects: React.FC = () => {
   const educ = useResume((state) => state.projects);

@@ -1,9 +1,12 @@
 "use client";
 
+import React from "react";
+
 import { Button } from "@/components/ui/button";
 import { useResume } from "@/store/store";
-import React from "react";
+
 import { BackgroundDescription } from "./BackgroundDescription";
+
 import type { WorkExperienceDraft } from "@/store/types";
 
 export const WorkExperience: React.FC = () => {

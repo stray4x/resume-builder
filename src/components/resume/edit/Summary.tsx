@@ -1,8 +1,9 @@
 "use client";
 
+import React from "react";
+
 import { Textarea } from "@/components/ui/textarea";
 import { useResume } from "@/store/store";
-import React from "react";
 
 export const Summary: React.FC = () => {
   const summary = useResume((state) => state.summary);

@@ -1,10 +1,13 @@
 "use client";
 
+import React from "react";
+
 import { Button } from "@/components/ui/button";
 import { useResume } from "@/store/store";
-import type { LinkDraft } from "@/store/types";
-import React from "react";
+
 import { LinkItem } from "./LinkItem";
+
+import type { LinkDraft } from "@/store/types";
 
 export const Links: React.FC = () => {
   const links = useResume((state) => state.links);

@@ -1,5 +1,5 @@
-import type { Prisma } from "generated/prisma";
 import { create } from "zustand";
+
 import {
   defaultEducation,
   defaultWorkExperience,
@@ -9,6 +9,7 @@ import {
   defaultLanguage,
   defaultCourse,
 } from "./defaultSections";
+
 import type { ResumeDraft, ResumeSectionDrafts, ResumeSections } from "./types";
 
 export const defaultState: ResumeDraft = {

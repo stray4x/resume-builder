@@ -1,10 +1,11 @@
 "use client";
 
+import React from "react";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useResume } from "@/store/store";
-import React from "react";
 
 export const Details: React.FC = () => {
   const jobTitle = useResume((state) => state.jobTitle);
