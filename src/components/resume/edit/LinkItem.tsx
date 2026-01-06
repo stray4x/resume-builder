@@ -22,10 +22,10 @@ export const LinkItem: React.FC<Props> = ({ item, handleUpdateItem }) => {
   const { id, url, title } = item;
 
   return (
-    <Accordion type="single" collapsible className="border px-4 py-2">
+    <Accordion type="single" collapsible className="border py-2">
       <AccordionItem value={id}>
         <AccordionTrigger>{title || "(Empty)"}</AccordionTrigger>
-        <AccordionContent className="h-fit">
+        <AccordionContent>
           <div className="flex justify-between gap-8">
             <div className="w-full">
               <Label htmlFor={`link-title-${id}`} className="mb-2">

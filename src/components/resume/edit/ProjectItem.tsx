@@ -105,10 +105,10 @@ export const ProjectItem: React.FC<Props> = ({
   //   }, [formattedDate]);
 
   return (
-    <Accordion type="single" collapsible className="border px-4 py-2">
+    <Accordion type="single" collapsible className="border py-2">
       <AccordionItem value={id}>
         <AccordionTrigger>{title || "(Empty)"}</AccordionTrigger>
-        <AccordionContent className="h-fit">
+        <AccordionContent>
           <div className="mt-1 mb-8 grid grid-cols-2 gap-8">
             <div className="flex flex-col gap-4">
               <div>

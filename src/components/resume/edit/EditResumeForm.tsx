@@ -7,8 +7,10 @@ import { Label } from "@/components/ui/label";
 import { useResume } from "@/store/store";
 import { normalizeResume } from "@/utils/normalizeResume";
 
+import { Courses } from "./Courses";
 import { Details } from "./Details";
 import { Education } from "./Education";
+import { Languages } from "./Languages";
 import { Links } from "./Links";
 import { Projects } from "./Projects";
 import { Summary } from "./Summary";
@@ -48,6 +50,8 @@ export const EditResumeForm: React.FC<Props> = ({ resume }) => {
       <Projects />
       <Education />
       <Links />
+      <Languages />
+      <Courses />
     </div>
   );
 };

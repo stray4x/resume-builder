@@ -116,11 +116,11 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
   //   }, [formattedDate]);
 
   return (
-    <Accordion type="single" collapsible className="border px-4 py-2">
+    <Accordion type="single" collapsible className="border py-2">
       <AccordionItem value={id}>
         <AccordionTrigger>{getItemTitle(inputOne, inputTwo)}</AccordionTrigger>
-        <AccordionContent className="h-fit">
-          <div className="mt-1 mb-8 grid grid-cols-2 gap-8">
+        <AccordionContent>
+          <div className="mt-1 grid grid-cols-2 gap-8">
             <div className="flex flex-col gap-4">
               <div>
                 <Label htmlFor={`inp-one-${id}`} className="mb-2">
@@ -138,7 +138,7 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
                 <Label htmlFor={`date-${id}`} className="mb-2">
                   Date
                 </Label>
-                <Input id={`date-${id}`} placeholder="Date" />
+                <Input id={`date-${id}`} placeholder="Date" type="date" />
               </div>
             </div>
 
@@ -173,7 +173,7 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
 
           {type !== "course" && (
             <>
-              <Label htmlFor={`desc-${id}`} className="mb-2">
+              <Label htmlFor={`desc-${id}`} className="mt-8 mb-2">
                 Description
               </Label>
               <Textarea
