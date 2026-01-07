@@ -29,10 +29,14 @@ export const Education: React.FC = () => {
                 inputTwo={item.degree}
                 city={item.city}
                 description={item.description}
+                startDate={item.startDate}
+                endDate={item.endDate}
                 type="education"
                 inputLabelOne="School"
                 inputLabelTwo="Degree"
                 handleDeleteItem={deleteItem}
+                updateStartDate={(v) => updateItem(item.id, v, "startDate")}
+                updateEndDate={(v) => updateItem(item.id, v, "endDate")}
                 updateInputOne={(v) => updateItem(item.id, v, "school")}
                 updateInputTwo={(v) => updateItem(item.id, v, "degree")}
                 updateCity={(v) => updateItem(item.id, v, "city")}

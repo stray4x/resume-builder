@@ -256,7 +256,8 @@ exports.Prisma.CourseScalarFieldEnum = {
   resumeId: 'resumeId',
   title: 'title',
   institution: 'institution',
-  date: 'date',
+  startDate: 'startDate',
+  endDate: 'endDate',
   sortOrder: 'sortOrder',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

@@ -7,7 +7,6 @@ import { useSectionActions, useSectionItems } from "@/store/selectors";
 
 import { BackgroundDescription } from "./BackgroundDescription";
 import { DndContainer } from "./ui/DndContainer";
-import { SortableItem } from "./ui/SortableItem";
 
 import type { WorkExperienceDraft } from "@/store/types";
 
@@ -34,9 +33,13 @@ export const WorkExperience: React.FC = () => {
                 inputTwo={item.employer}
                 city={item.city}
                 description={item.description}
+                startDate={item.startDate}
+                endDate={item.endDate}
                 type="workExperience"
                 inputLabelOne="Job Title"
                 inputLabelTwo="Employer"
+                updateStartDate={(v) => updateItem(item.id, v, "startDate")}
+                updateEndDate={(v) => updateItem(item.id, v, "endDate")}
                 updateInputOne={(v) => updateItem(item.id, v, "jobTitle")}
                 updateInputTwo={(v) => updateItem(item.id, v, "employer")}
                 updateCity={(v) => updateItem(item.id, v, "city")}

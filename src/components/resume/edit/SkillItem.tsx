@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/select";
 import { SkillLevel } from "generated/prisma";
 
-import { EditResumeAccordion } from "./EditResumeAccordion";
+import { ResumeAccordion } from "./ui/EditResumeAccordion";
 
 import type { SkillDraft } from "@/store/types";
 
@@ -38,7 +38,7 @@ export const SkillItem: React.FC<Props> = ({
   const { id, title, level } = item;
 
   return (
-    <EditResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
+    <ResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
       <AccordionTrigger>
         {title || "(Empty)"} {level && `- ${level}`}
       </AccordionTrigger>
@@ -78,6 +78,6 @@ export const SkillItem: React.FC<Props> = ({
           </div>
         </div>
       </AccordionContent>
-    </EditResumeAccordion>
+    </ResumeAccordion>
   );
 };

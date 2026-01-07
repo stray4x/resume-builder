@@ -158,7 +158,8 @@ model Course {
     resumeId    String
     title       String
     institution String
-    date        DateTime?
+    startDate   DateTime?
+    endDate     DateTime?
     sortOrder   BigInt
 
     createdAt DateTime @default(now())

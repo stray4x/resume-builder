@@ -6,7 +6,7 @@ import { AccordionContent, AccordionTrigger } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { EditResumeAccordion } from "./EditResumeAccordion";
+import { ResumeAccordion } from "./ui/EditResumeAccordion";
 
 import type { LinkDraft } from "@/store/types";
 
@@ -24,7 +24,7 @@ export const LinkItem: React.FC<Props> = ({
   const { id, url, title } = item;
 
   return (
-    <EditResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
+    <ResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
       <AccordionTrigger>{title || "(Empty)"}</AccordionTrigger>
       <AccordionContent>
         <div className="flex justify-between gap-8">
@@ -53,6 +53,6 @@ export const LinkItem: React.FC<Props> = ({
           </div>
         </div>
       </AccordionContent>
-    </EditResumeAccordion>
+    </ResumeAccordion>
   );
 };

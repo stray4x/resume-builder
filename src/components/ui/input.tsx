@@ -3,7 +3,7 @@ import * as React from "react";
 import { cn } from "@/lib/cn";
 
 type Props = {
-  error?: string | undefined;
+  error?: string | undefined | false;
 } & React.ComponentProps<"input">;
 
 function Input({ className, type, error, ...props }: Props) {

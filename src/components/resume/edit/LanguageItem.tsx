@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/select";
 import { LanguageLevel } from "generated/prisma";
 
-import { EditResumeAccordion } from "./EditResumeAccordion";
+import { ResumeAccordion } from "./ui/EditResumeAccordion";
 
 import type { LanguageDraft } from "@/store/types";
 
@@ -38,7 +38,7 @@ export const LanguageItem: React.FC<Props> = ({
   const { id, language, level } = item;
 
   return (
-    <EditResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
+    <ResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
       <AccordionTrigger>
         {language || "(Empty)"} {level && `- ${level}`}
       </AccordionTrigger>
@@ -78,6 +78,6 @@ export const LanguageItem: React.FC<Props> = ({
           </div>
         </div>
       </AccordionContent>
-    </EditResumeAccordion>
+    </ResumeAccordion>
   );
 };

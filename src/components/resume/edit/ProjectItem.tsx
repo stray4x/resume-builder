@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-import { EditResumeAccordion } from "./EditResumeAccordion";
+import { ResumeAccordion } from "./ui/EditResumeAccordion";
 
 import type { ProjectDraft } from "@/store/types";
 // import moment from "moment";
@@ -102,7 +102,7 @@ export const ProjectItem: React.FC<Props> = ({
   //   }, [formattedDate]);
 
   return (
-    <EditResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
+    <ResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
       <AccordionTrigger>{title || "(Empty)"}</AccordionTrigger>
       <AccordionContent>
         <div className="mt-1 mb-8 grid grid-cols-2 gap-8">
@@ -158,6 +158,6 @@ export const ProjectItem: React.FC<Props> = ({
           onChange={(e) => updateDescription(e.target.value)}
         />
       </AccordionContent>
-    </EditResumeAccordion>
+    </ResumeAccordion>
   );
 };

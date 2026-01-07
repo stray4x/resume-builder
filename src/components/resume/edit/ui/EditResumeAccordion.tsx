@@ -9,7 +9,7 @@ type Props = {
   handleDeleteItem: (id: string) => void;
 } & React.PropsWithChildren;
 
-export const EditResumeAccordion: React.FC<Props> = ({
+export const ResumeAccordion: React.FC<Props> = ({
   id,
   children,
   handleDeleteItem,
