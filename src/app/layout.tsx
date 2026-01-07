@@ -5,7 +5,7 @@ import { Geist } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 
 import { Navbar } from "@/components/navbar/Navbar";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { TRPCReactProvider } from "@/trpc/react";
 
 export const metadata: Metadata = {

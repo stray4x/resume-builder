@@ -1,3 +1,4 @@
+import { arrayMove } from "@dnd-kit/sortable";
 import { create } from "zustand";
 
 import {
@@ -42,10 +43,15 @@ type ResumeStore = ResumeDraft & {
   setResume: (resume: ResumeDraft) => void;
   addSectionItem: (section: ResumeSections) => void;
   updateSectionItem: <K extends ResumeSections>(
-    section: K,
+    section: ResumeSections,
     id: string,
     field: keyof ResumeSectionDrafts[K],
     value: ResumeSectionDrafts[K][typeof field],
+  ) => void;
+  moveSectionItem: (
+    section: ResumeSections,
+    activeId: string,
+    overId: string,
   ) => void;
   deleteSectionItem: (section: ResumeSections, id: string) => void;
   reset: () => void;
@@ -85,22 +91,59 @@ export const useResume = create<ResumeStore>((set, get, store) => ({
         break;
     }
 
-    newItem.id = `new-item-${Date.now()}`;
-
     set((state) => ({
-      ...state,
-      [section]: [...state[section], newItem],
+      [section]: [
+        ...state[section],
+        {
+          ...newItem,
+          id: `new-item-${Date.now()}`,
+          sortOrder: BigInt(Date.now()),
+        },
+      ],
     }));
   },
 
-  updateSectionItem: (section, id, field, value) =>
+  updateSectionItem: (section, id, field, value) => {
+    if (field === "sortOrder") {
+      throw new Error("oh no");
+    }
     set((state: ResumeDraft) => ({
       [section]: state[section].map((item) =>
         item.id === id && item.status !== ItemStatus.Deleted
           ? { ...item, [field]: value, status: ItemStatus.Updated }
           : item,
       ),
-    })),
+    }));
+  },
+
+  moveSectionItem: (section, activeId, overId) => {
+    set((state) => {
+      const list = [...state[section]];
+      const activeIdx = list.findIndex((a) => a.id === activeId);
+      const overIdx = list.findIndex((a) => a.id === overId);
+
+      if (activeIdx === -1 || overIdx === -1) {
+        return state;
+      }
+
+      const newList = arrayMove(list, activeIdx, overIdx);
+
+      const movedItem = newList[overIdx]!;
+      const prev = newList[overIdx - 1];
+      const next = newList[overIdx + 1];
+
+      const nextOrder = next ? next.sortOrder : BigInt(prev!.sortOrder) + 1n;
+      const prevOrder = prev ? prev.sortOrder : next!.sortOrder - 1n;
+
+      movedItem.sortOrder = (prevOrder + nextOrder) / 2n;
+
+      if (movedItem.status === ItemStatus.Unchanged) {
+        movedItem.status = ItemStatus.Updated;
+      }
+
+      return { ...state, [section]: newList };
+    });
+  },
 
   deleteSectionItem: (section: ResumeSections, id: string) =>
     set((state: ResumeDraft) => ({

@@ -106,7 +106,7 @@ model WorkExperience {
   startDate   DateTime?
   endDate     DateTime?
   description String    @db.Text
-  sortOrder   Int
+  sortOrder   BigInt
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -125,7 +125,7 @@ model Education {
   startDate   DateTime?
   endDate     DateTime?
   description String    @db.Text
-  sortOrder   Int
+  sortOrder   BigInt
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -142,7 +142,7 @@ model Project {
   url         String
   repoUrl     String
   description String @db.Text
-  sortOrder   Int
+  sortOrder   BigInt
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -157,7 +157,7 @@ model Link {
   resumeId  String
   title     String
   url       String
-  sortOrder Int
+  sortOrder BigInt
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -181,7 +181,7 @@ model Skill {
   resumeId  String
   title     String
   level     SkillLevel
-  sortOrder Int
+  sortOrder BigInt
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -205,7 +205,7 @@ model Language {
   resumeId  String
   language  String
   level     LanguageLevel
-  sortOrder Int
+  sortOrder BigInt
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -221,7 +221,7 @@ model Course {
   title       String
   institution String
   date        DateTime?
-  sortOrder   Int
+  sortOrder   BigInt
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

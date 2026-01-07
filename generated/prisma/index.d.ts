@@ -7876,7 +7876,7 @@ export namespace Prisma {
   }
 
   export type WorkExperienceSumAggregateOutputType = {
-    sortOrder: number | null
+    sortOrder: bigint | null
   }
 
   export type WorkExperienceMinAggregateOutputType = {
@@ -7888,7 +7888,7 @@ export namespace Prisma {
     startDate: Date | null
     endDate: Date | null
     description: string | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7902,7 +7902,7 @@ export namespace Prisma {
     startDate: Date | null
     endDate: Date | null
     description: string | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -8069,7 +8069,7 @@ export namespace Prisma {
     startDate: Date | null
     endDate: Date | null
     description: string
-    sortOrder: number
+    sortOrder: bigint
     createdAt: Date
     updatedAt: Date
     _count: WorkExperienceCountAggregateOutputType | null
@@ -8177,7 +8177,7 @@ export namespace Prisma {
       startDate: Date | null
       endDate: Date | null
       description: string
-      sortOrder: number
+      sortOrder: bigint
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["workExperience"]>
@@ -8612,7 +8612,7 @@ export namespace Prisma {
     readonly startDate: FieldRef<"WorkExperience", 'DateTime'>
     readonly endDate: FieldRef<"WorkExperience", 'DateTime'>
     readonly description: FieldRef<"WorkExperience", 'String'>
-    readonly sortOrder: FieldRef<"WorkExperience", 'Int'>
+    readonly sortOrder: FieldRef<"WorkExperience", 'BigInt'>
     readonly createdAt: FieldRef<"WorkExperience", 'DateTime'>
     readonly updatedAt: FieldRef<"WorkExperience", 'DateTime'>
   }
@@ -9046,7 +9046,7 @@ export namespace Prisma {
   }
 
   export type EducationSumAggregateOutputType = {
-    sortOrder: number | null
+    sortOrder: bigint | null
   }
 
   export type EducationMinAggregateOutputType = {
@@ -9058,7 +9058,7 @@ export namespace Prisma {
     startDate: Date | null
     endDate: Date | null
     description: string | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -9072,7 +9072,7 @@ export namespace Prisma {
     startDate: Date | null
     endDate: Date | null
     description: string | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -9239,7 +9239,7 @@ export namespace Prisma {
     startDate: Date | null
     endDate: Date | null
     description: string
-    sortOrder: number
+    sortOrder: bigint
     createdAt: Date
     updatedAt: Date
     _count: EducationCountAggregateOutputType | null
@@ -9347,7 +9347,7 @@ export namespace Prisma {
       startDate: Date | null
       endDate: Date | null
       description: string
-      sortOrder: number
+      sortOrder: bigint
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["education"]>
@@ -9782,7 +9782,7 @@ export namespace Prisma {
     readonly startDate: FieldRef<"Education", 'DateTime'>
     readonly endDate: FieldRef<"Education", 'DateTime'>
     readonly description: FieldRef<"Education", 'String'>
-    readonly sortOrder: FieldRef<"Education", 'Int'>
+    readonly sortOrder: FieldRef<"Education", 'BigInt'>
     readonly createdAt: FieldRef<"Education", 'DateTime'>
     readonly updatedAt: FieldRef<"Education", 'DateTime'>
   }
@@ -10216,7 +10216,7 @@ export namespace Prisma {
   }
 
   export type ProjectSumAggregateOutputType = {
-    sortOrder: number | null
+    sortOrder: bigint | null
   }
 
   export type ProjectMinAggregateOutputType = {
@@ -10226,7 +10226,7 @@ export namespace Prisma {
     url: string | null
     repoUrl: string | null
     description: string | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -10238,7 +10238,7 @@ export namespace Prisma {
     url: string | null
     repoUrl: string | null
     description: string | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -10395,7 +10395,7 @@ export namespace Prisma {
     url: string
     repoUrl: string
     description: string
-    sortOrder: number
+    sortOrder: bigint
     createdAt: Date
     updatedAt: Date
     _count: ProjectCountAggregateOutputType | null
@@ -10493,7 +10493,7 @@ export namespace Prisma {
       url: string
       repoUrl: string
       description: string
-      sortOrder: number
+      sortOrder: bigint
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["project"]>
@@ -10926,7 +10926,7 @@ export namespace Prisma {
     readonly url: FieldRef<"Project", 'String'>
     readonly repoUrl: FieldRef<"Project", 'String'>
     readonly description: FieldRef<"Project", 'String'>
-    readonly sortOrder: FieldRef<"Project", 'Int'>
+    readonly sortOrder: FieldRef<"Project", 'BigInt'>
     readonly createdAt: FieldRef<"Project", 'DateTime'>
     readonly updatedAt: FieldRef<"Project", 'DateTime'>
   }
@@ -11360,7 +11360,7 @@ export namespace Prisma {
   }
 
   export type LinkSumAggregateOutputType = {
-    sortOrder: number | null
+    sortOrder: bigint | null
   }
 
   export type LinkMinAggregateOutputType = {
@@ -11368,7 +11368,7 @@ export namespace Prisma {
     resumeId: string | null
     title: string | null
     url: string | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -11378,7 +11378,7 @@ export namespace Prisma {
     resumeId: string | null
     title: string | null
     url: string | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -11525,7 +11525,7 @@ export namespace Prisma {
     resumeId: string
     title: string
     url: string
-    sortOrder: number
+    sortOrder: bigint
     createdAt: Date
     updatedAt: Date
     _count: LinkCountAggregateOutputType | null
@@ -11613,7 +11613,7 @@ export namespace Prisma {
       resumeId: string
       title: string
       url: string
-      sortOrder: number
+      sortOrder: bigint
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["link"]>
@@ -12044,7 +12044,7 @@ export namespace Prisma {
     readonly resumeId: FieldRef<"Link", 'String'>
     readonly title: FieldRef<"Link", 'String'>
     readonly url: FieldRef<"Link", 'String'>
-    readonly sortOrder: FieldRef<"Link", 'Int'>
+    readonly sortOrder: FieldRef<"Link", 'BigInt'>
     readonly createdAt: FieldRef<"Link", 'DateTime'>
     readonly updatedAt: FieldRef<"Link", 'DateTime'>
   }
@@ -12478,7 +12478,7 @@ export namespace Prisma {
   }
 
   export type SkillSumAggregateOutputType = {
-    sortOrder: number | null
+    sortOrder: bigint | null
   }
 
   export type SkillMinAggregateOutputType = {
@@ -12486,7 +12486,7 @@ export namespace Prisma {
     resumeId: string | null
     title: string | null
     level: $Enums.SkillLevel | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -12496,7 +12496,7 @@ export namespace Prisma {
     resumeId: string | null
     title: string | null
     level: $Enums.SkillLevel | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -12643,7 +12643,7 @@ export namespace Prisma {
     resumeId: string
     title: string
     level: $Enums.SkillLevel
-    sortOrder: number
+    sortOrder: bigint
     createdAt: Date
     updatedAt: Date
     _count: SkillCountAggregateOutputType | null
@@ -12731,7 +12731,7 @@ export namespace Prisma {
       resumeId: string
       title: string
       level: $Enums.SkillLevel
-      sortOrder: number
+      sortOrder: bigint
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["skill"]>
@@ -13162,7 +13162,7 @@ export namespace Prisma {
     readonly resumeId: FieldRef<"Skill", 'String'>
     readonly title: FieldRef<"Skill", 'String'>
     readonly level: FieldRef<"Skill", 'SkillLevel'>
-    readonly sortOrder: FieldRef<"Skill", 'Int'>
+    readonly sortOrder: FieldRef<"Skill", 'BigInt'>
     readonly createdAt: FieldRef<"Skill", 'DateTime'>
     readonly updatedAt: FieldRef<"Skill", 'DateTime'>
   }
@@ -13596,7 +13596,7 @@ export namespace Prisma {
   }
 
   export type LanguageSumAggregateOutputType = {
-    sortOrder: number | null
+    sortOrder: bigint | null
   }
 
   export type LanguageMinAggregateOutputType = {
@@ -13604,7 +13604,7 @@ export namespace Prisma {
     resumeId: string | null
     language: string | null
     level: $Enums.LanguageLevel | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -13614,7 +13614,7 @@ export namespace Prisma {
     resumeId: string | null
     language: string | null
     level: $Enums.LanguageLevel | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -13761,7 +13761,7 @@ export namespace Prisma {
     resumeId: string
     language: string
     level: $Enums.LanguageLevel
-    sortOrder: number
+    sortOrder: bigint
     createdAt: Date
     updatedAt: Date
     _count: LanguageCountAggregateOutputType | null
@@ -13849,7 +13849,7 @@ export namespace Prisma {
       resumeId: string
       language: string
       level: $Enums.LanguageLevel
-      sortOrder: number
+      sortOrder: bigint
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["language"]>
@@ -14280,7 +14280,7 @@ export namespace Prisma {
     readonly resumeId: FieldRef<"Language", 'String'>
     readonly language: FieldRef<"Language", 'String'>
     readonly level: FieldRef<"Language", 'LanguageLevel'>
-    readonly sortOrder: FieldRef<"Language", 'Int'>
+    readonly sortOrder: FieldRef<"Language", 'BigInt'>
     readonly createdAt: FieldRef<"Language", 'DateTime'>
     readonly updatedAt: FieldRef<"Language", 'DateTime'>
   }
@@ -14714,7 +14714,7 @@ export namespace Prisma {
   }
 
   export type CourseSumAggregateOutputType = {
-    sortOrder: number | null
+    sortOrder: bigint | null
   }
 
   export type CourseMinAggregateOutputType = {
@@ -14723,7 +14723,7 @@ export namespace Prisma {
     title: string | null
     institution: string | null
     date: Date | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -14734,7 +14734,7 @@ export namespace Prisma {
     title: string | null
     institution: string | null
     date: Date | null
-    sortOrder: number | null
+    sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -14886,7 +14886,7 @@ export namespace Prisma {
     title: string
     institution: string
     date: Date | null
-    sortOrder: number
+    sortOrder: bigint
     createdAt: Date
     updatedAt: Date
     _count: CourseCountAggregateOutputType | null
@@ -14979,7 +14979,7 @@ export namespace Prisma {
       title: string
       institution: string
       date: Date | null
-      sortOrder: number
+      sortOrder: bigint
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["course"]>
@@ -15411,7 +15411,7 @@ export namespace Prisma {
     readonly title: FieldRef<"Course", 'String'>
     readonly institution: FieldRef<"Course", 'String'>
     readonly date: FieldRef<"Course", 'DateTime'>
-    readonly sortOrder: FieldRef<"Course", 'Int'>
+    readonly sortOrder: FieldRef<"Course", 'BigInt'>
     readonly createdAt: FieldRef<"Course", 'DateTime'>
     readonly updatedAt: FieldRef<"Course", 'DateTime'>
   }
@@ -17228,16 +17228,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'BigInt'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
     
 
 
   /**
-   * Reference to a field of type 'Int[]'
+   * Reference to a field of type 'BigInt[]'
    */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
     
 
 
@@ -17273,6 +17273,20 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -17701,7 +17715,7 @@ export namespace Prisma {
     startDate?: DateTimeNullableFilter<"WorkExperience"> | Date | string | null
     endDate?: DateTimeNullableFilter<"WorkExperience"> | Date | string | null
     description?: StringFilter<"WorkExperience"> | string
-    sortOrder?: IntFilter<"WorkExperience"> | number
+    sortOrder?: BigIntFilter<"WorkExperience"> | bigint | number
     createdAt?: DateTimeFilter<"WorkExperience"> | Date | string
     updatedAt?: DateTimeFilter<"WorkExperience"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -17734,7 +17748,7 @@ export namespace Prisma {
     startDate?: DateTimeNullableFilter<"WorkExperience"> | Date | string | null
     endDate?: DateTimeNullableFilter<"WorkExperience"> | Date | string | null
     description?: StringFilter<"WorkExperience"> | string
-    sortOrder?: IntFilter<"WorkExperience"> | number
+    sortOrder?: BigIntFilter<"WorkExperience"> | bigint | number
     createdAt?: DateTimeFilter<"WorkExperience"> | Date | string
     updatedAt?: DateTimeFilter<"WorkExperience"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -17771,7 +17785,7 @@ export namespace Prisma {
     startDate?: DateTimeNullableWithAggregatesFilter<"WorkExperience"> | Date | string | null
     endDate?: DateTimeNullableWithAggregatesFilter<"WorkExperience"> | Date | string | null
     description?: StringWithAggregatesFilter<"WorkExperience"> | string
-    sortOrder?: IntWithAggregatesFilter<"WorkExperience"> | number
+    sortOrder?: BigIntWithAggregatesFilter<"WorkExperience"> | bigint | number
     createdAt?: DateTimeWithAggregatesFilter<"WorkExperience"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"WorkExperience"> | Date | string
   }
@@ -17788,7 +17802,7 @@ export namespace Prisma {
     startDate?: DateTimeNullableFilter<"Education"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Education"> | Date | string | null
     description?: StringFilter<"Education"> | string
-    sortOrder?: IntFilter<"Education"> | number
+    sortOrder?: BigIntFilter<"Education"> | bigint | number
     createdAt?: DateTimeFilter<"Education"> | Date | string
     updatedAt?: DateTimeFilter<"Education"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -17821,7 +17835,7 @@ export namespace Prisma {
     startDate?: DateTimeNullableFilter<"Education"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Education"> | Date | string | null
     description?: StringFilter<"Education"> | string
-    sortOrder?: IntFilter<"Education"> | number
+    sortOrder?: BigIntFilter<"Education"> | bigint | number
     createdAt?: DateTimeFilter<"Education"> | Date | string
     updatedAt?: DateTimeFilter<"Education"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -17858,7 +17872,7 @@ export namespace Prisma {
     startDate?: DateTimeNullableWithAggregatesFilter<"Education"> | Date | string | null
     endDate?: DateTimeNullableWithAggregatesFilter<"Education"> | Date | string | null
     description?: StringWithAggregatesFilter<"Education"> | string
-    sortOrder?: IntWithAggregatesFilter<"Education"> | number
+    sortOrder?: BigIntWithAggregatesFilter<"Education"> | bigint | number
     createdAt?: DateTimeWithAggregatesFilter<"Education"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Education"> | Date | string
   }
@@ -17873,7 +17887,7 @@ export namespace Prisma {
     url?: StringFilter<"Project"> | string
     repoUrl?: StringFilter<"Project"> | string
     description?: StringFilter<"Project"> | string
-    sortOrder?: IntFilter<"Project"> | number
+    sortOrder?: BigIntFilter<"Project"> | bigint | number
     createdAt?: DateTimeFilter<"Project"> | Date | string
     updatedAt?: DateTimeFilter<"Project"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -17902,7 +17916,7 @@ export namespace Prisma {
     url?: StringFilter<"Project"> | string
     repoUrl?: StringFilter<"Project"> | string
     description?: StringFilter<"Project"> | string
-    sortOrder?: IntFilter<"Project"> | number
+    sortOrder?: BigIntFilter<"Project"> | bigint | number
     createdAt?: DateTimeFilter<"Project"> | Date | string
     updatedAt?: DateTimeFilter<"Project"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -17935,7 +17949,7 @@ export namespace Prisma {
     url?: StringWithAggregatesFilter<"Project"> | string
     repoUrl?: StringWithAggregatesFilter<"Project"> | string
     description?: StringWithAggregatesFilter<"Project"> | string
-    sortOrder?: IntWithAggregatesFilter<"Project"> | number
+    sortOrder?: BigIntWithAggregatesFilter<"Project"> | bigint | number
     createdAt?: DateTimeWithAggregatesFilter<"Project"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Project"> | Date | string
   }
@@ -17948,7 +17962,7 @@ export namespace Prisma {
     resumeId?: StringFilter<"Link"> | string
     title?: StringFilter<"Link"> | string
     url?: StringFilter<"Link"> | string
-    sortOrder?: IntFilter<"Link"> | number
+    sortOrder?: BigIntFilter<"Link"> | bigint | number
     createdAt?: DateTimeFilter<"Link"> | Date | string
     updatedAt?: DateTimeFilter<"Link"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -17973,7 +17987,7 @@ export namespace Prisma {
     resumeId?: StringFilter<"Link"> | string
     title?: StringFilter<"Link"> | string
     url?: StringFilter<"Link"> | string
-    sortOrder?: IntFilter<"Link"> | number
+    sortOrder?: BigIntFilter<"Link"> | bigint | number
     createdAt?: DateTimeFilter<"Link"> | Date | string
     updatedAt?: DateTimeFilter<"Link"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -18002,7 +18016,7 @@ export namespace Prisma {
     resumeId?: StringWithAggregatesFilter<"Link"> | string
     title?: StringWithAggregatesFilter<"Link"> | string
     url?: StringWithAggregatesFilter<"Link"> | string
-    sortOrder?: IntWithAggregatesFilter<"Link"> | number
+    sortOrder?: BigIntWithAggregatesFilter<"Link"> | bigint | number
     createdAt?: DateTimeWithAggregatesFilter<"Link"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Link"> | Date | string
   }
@@ -18015,7 +18029,7 @@ export namespace Prisma {
     resumeId?: StringFilter<"Skill"> | string
     title?: StringFilter<"Skill"> | string
     level?: EnumSkillLevelFilter<"Skill"> | $Enums.SkillLevel
-    sortOrder?: IntFilter<"Skill"> | number
+    sortOrder?: BigIntFilter<"Skill"> | bigint | number
     createdAt?: DateTimeFilter<"Skill"> | Date | string
     updatedAt?: DateTimeFilter<"Skill"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -18040,7 +18054,7 @@ export namespace Prisma {
     resumeId?: StringFilter<"Skill"> | string
     title?: StringFilter<"Skill"> | string
     level?: EnumSkillLevelFilter<"Skill"> | $Enums.SkillLevel
-    sortOrder?: IntFilter<"Skill"> | number
+    sortOrder?: BigIntFilter<"Skill"> | bigint | number
     createdAt?: DateTimeFilter<"Skill"> | Date | string
     updatedAt?: DateTimeFilter<"Skill"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -18069,7 +18083,7 @@ export namespace Prisma {
     resumeId?: StringWithAggregatesFilter<"Skill"> | string
     title?: StringWithAggregatesFilter<"Skill"> | string
     level?: EnumSkillLevelWithAggregatesFilter<"Skill"> | $Enums.SkillLevel
-    sortOrder?: IntWithAggregatesFilter<"Skill"> | number
+    sortOrder?: BigIntWithAggregatesFilter<"Skill"> | bigint | number
     createdAt?: DateTimeWithAggregatesFilter<"Skill"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Skill"> | Date | string
   }
@@ -18082,7 +18096,7 @@ export namespace Prisma {
     resumeId?: StringFilter<"Language"> | string
     language?: StringFilter<"Language"> | string
     level?: EnumLanguageLevelFilter<"Language"> | $Enums.LanguageLevel
-    sortOrder?: IntFilter<"Language"> | number
+    sortOrder?: BigIntFilter<"Language"> | bigint | number
     createdAt?: DateTimeFilter<"Language"> | Date | string
     updatedAt?: DateTimeFilter<"Language"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -18107,7 +18121,7 @@ export namespace Prisma {
     resumeId?: StringFilter<"Language"> | string
     language?: StringFilter<"Language"> | string
     level?: EnumLanguageLevelFilter<"Language"> | $Enums.LanguageLevel
-    sortOrder?: IntFilter<"Language"> | number
+    sortOrder?: BigIntFilter<"Language"> | bigint | number
     createdAt?: DateTimeFilter<"Language"> | Date | string
     updatedAt?: DateTimeFilter<"Language"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -18136,7 +18150,7 @@ export namespace Prisma {
     resumeId?: StringWithAggregatesFilter<"Language"> | string
     language?: StringWithAggregatesFilter<"Language"> | string
     level?: EnumLanguageLevelWithAggregatesFilter<"Language"> | $Enums.LanguageLevel
-    sortOrder?: IntWithAggregatesFilter<"Language"> | number
+    sortOrder?: BigIntWithAggregatesFilter<"Language"> | bigint | number
     createdAt?: DateTimeWithAggregatesFilter<"Language"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Language"> | Date | string
   }
@@ -18150,7 +18164,7 @@ export namespace Prisma {
     title?: StringFilter<"Course"> | string
     institution?: StringFilter<"Course"> | string
     date?: DateTimeNullableFilter<"Course"> | Date | string | null
-    sortOrder?: IntFilter<"Course"> | number
+    sortOrder?: BigIntFilter<"Course"> | bigint | number
     createdAt?: DateTimeFilter<"Course"> | Date | string
     updatedAt?: DateTimeFilter<"Course"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -18177,7 +18191,7 @@ export namespace Prisma {
     title?: StringFilter<"Course"> | string
     institution?: StringFilter<"Course"> | string
     date?: DateTimeNullableFilter<"Course"> | Date | string | null
-    sortOrder?: IntFilter<"Course"> | number
+    sortOrder?: BigIntFilter<"Course"> | bigint | number
     createdAt?: DateTimeFilter<"Course"> | Date | string
     updatedAt?: DateTimeFilter<"Course"> | Date | string
     resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
@@ -18208,7 +18222,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Course"> | string
     institution?: StringWithAggregatesFilter<"Course"> | string
     date?: DateTimeNullableWithAggregatesFilter<"Course"> | Date | string | null
-    sortOrder?: IntWithAggregatesFilter<"Course"> | number
+    sortOrder?: BigIntWithAggregatesFilter<"Course"> | bigint | number
     createdAt?: DateTimeWithAggregatesFilter<"Course"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Course"> | Date | string
   }
@@ -18735,7 +18749,7 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
     resume: ResumeCreateNestedOneWithoutWorkExperienceInput
@@ -18750,7 +18764,7 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18763,7 +18777,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUpdateOneRequiredWithoutWorkExperienceNestedInput
@@ -18778,7 +18792,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18792,7 +18806,7 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18805,7 +18819,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18819,7 +18833,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18832,7 +18846,7 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
     resume: ResumeCreateNestedOneWithoutEducationInput
@@ -18847,7 +18861,7 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18860,7 +18874,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUpdateOneRequiredWithoutEducationNestedInput
@@ -18875,7 +18889,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18889,7 +18903,7 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18902,7 +18916,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18916,7 +18930,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18927,7 +18941,7 @@ export namespace Prisma {
     url: string
     repoUrl: string
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
     resume: ResumeCreateNestedOneWithoutProjectsInput
@@ -18940,7 +18954,7 @@ export namespace Prisma {
     url: string
     repoUrl: string
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18951,7 +18965,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     repoUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUpdateOneRequiredWithoutProjectsNestedInput
@@ -18964,7 +18978,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     repoUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18976,7 +18990,7 @@ export namespace Prisma {
     url: string
     repoUrl: string
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18987,7 +19001,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     repoUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18999,7 +19013,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     repoUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19008,7 +19022,7 @@ export namespace Prisma {
     id?: string
     title: string
     url: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
     resume: ResumeCreateNestedOneWithoutLinksInput
@@ -19019,7 +19033,7 @@ export namespace Prisma {
     resumeId: string
     title: string
     url: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -19028,7 +19042,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUpdateOneRequiredWithoutLinksNestedInput
@@ -19039,7 +19053,7 @@ export namespace Prisma {
     resumeId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19049,7 +19063,7 @@ export namespace Prisma {
     resumeId: string
     title: string
     url: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -19058,7 +19072,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19068,7 +19082,7 @@ export namespace Prisma {
     resumeId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19077,7 +19091,7 @@ export namespace Prisma {
     id?: string
     title: string
     level: $Enums.SkillLevel
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
     resume: ResumeCreateNestedOneWithoutSkillsInput
@@ -19088,7 +19102,7 @@ export namespace Prisma {
     resumeId: string
     title: string
     level: $Enums.SkillLevel
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -19097,7 +19111,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUpdateOneRequiredWithoutSkillsNestedInput
@@ -19108,7 +19122,7 @@ export namespace Prisma {
     resumeId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19118,7 +19132,7 @@ export namespace Prisma {
     resumeId: string
     title: string
     level: $Enums.SkillLevel
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -19127,7 +19141,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19137,7 +19151,7 @@ export namespace Prisma {
     resumeId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19146,7 +19160,7 @@ export namespace Prisma {
     id?: string
     language: string
     level: $Enums.LanguageLevel
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
     resume: ResumeCreateNestedOneWithoutLanguagesInput
@@ -19157,7 +19171,7 @@ export namespace Prisma {
     resumeId: string
     language: string
     level: $Enums.LanguageLevel
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -19166,7 +19180,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
     level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUpdateOneRequiredWithoutLanguagesNestedInput
@@ -19177,7 +19191,7 @@ export namespace Prisma {
     resumeId?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
     level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19187,7 +19201,7 @@ export namespace Prisma {
     resumeId: string
     language: string
     level: $Enums.LanguageLevel
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -19196,7 +19210,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
     level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19206,7 +19220,7 @@ export namespace Prisma {
     resumeId?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
     level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19216,7 +19230,7 @@ export namespace Prisma {
     title: string
     institution: string
     date?: Date | string | null
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
     resume: ResumeCreateNestedOneWithoutCoursesInput
@@ -19228,7 +19242,7 @@ export namespace Prisma {
     title: string
     institution: string
     date?: Date | string | null
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -19238,7 +19252,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUpdateOneRequiredWithoutCoursesNestedInput
@@ -19250,7 +19264,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19261,7 +19275,7 @@ export namespace Prisma {
     title: string
     institution: string
     date?: Date | string | null
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -19271,7 +19285,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19282,7 +19296,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19753,15 +19767,15 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
   export type ResumeScalarRelationFilter = {
@@ -19819,20 +19833,20 @@ export namespace Prisma {
     sortOrder?: SortOrder
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
     _count?: NestedIntFilter<$PrismaModel>
     _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type EducationCountOrderByAggregateInput = {
@@ -20592,12 +20606,12 @@ export namespace Prisma {
     connect?: ResumeWhereUniqueInput
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type BigIntFieldUpdateOperationsInput = {
+    set?: bigint | number
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
   }
 
   export type ResumeUpdateOneRequiredWithoutWorkExperienceNestedInput = {
@@ -20964,20 +20978,31 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
     _count?: NestedIntFilter<$PrismaModel>
     _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -21304,7 +21329,7 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21317,7 +21342,7 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21340,7 +21365,7 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21353,7 +21378,7 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21374,7 +21399,7 @@ export namespace Prisma {
     url: string
     repoUrl: string
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21385,7 +21410,7 @@ export namespace Prisma {
     url: string
     repoUrl: string
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21404,7 +21429,7 @@ export namespace Prisma {
     id?: string
     title: string
     url: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21413,7 +21438,7 @@ export namespace Prisma {
     id?: string
     title: string
     url: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21432,7 +21457,7 @@ export namespace Prisma {
     id?: string
     title: string
     level: $Enums.SkillLevel
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21441,7 +21466,7 @@ export namespace Prisma {
     id?: string
     title: string
     level: $Enums.SkillLevel
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21460,7 +21485,7 @@ export namespace Prisma {
     id?: string
     language: string
     level: $Enums.LanguageLevel
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21469,7 +21494,7 @@ export namespace Prisma {
     id?: string
     language: string
     level: $Enums.LanguageLevel
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21489,7 +21514,7 @@ export namespace Prisma {
     title: string
     institution: string
     date?: Date | string | null
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21499,7 +21524,7 @@ export namespace Prisma {
     title: string
     institution: string
     date?: Date | string | null
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21600,7 +21625,7 @@ export namespace Prisma {
     startDate?: DateTimeNullableFilter<"WorkExperience"> | Date | string | null
     endDate?: DateTimeNullableFilter<"WorkExperience"> | Date | string | null
     description?: StringFilter<"WorkExperience"> | string
-    sortOrder?: IntFilter<"WorkExperience"> | number
+    sortOrder?: BigIntFilter<"WorkExperience"> | bigint | number
     createdAt?: DateTimeFilter<"WorkExperience"> | Date | string
     updatedAt?: DateTimeFilter<"WorkExperience"> | Date | string
   }
@@ -21633,7 +21658,7 @@ export namespace Prisma {
     startDate?: DateTimeNullableFilter<"Education"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Education"> | Date | string | null
     description?: StringFilter<"Education"> | string
-    sortOrder?: IntFilter<"Education"> | number
+    sortOrder?: BigIntFilter<"Education"> | bigint | number
     createdAt?: DateTimeFilter<"Education"> | Date | string
     updatedAt?: DateTimeFilter<"Education"> | Date | string
   }
@@ -21664,7 +21689,7 @@ export namespace Prisma {
     url?: StringFilter<"Project"> | string
     repoUrl?: StringFilter<"Project"> | string
     description?: StringFilter<"Project"> | string
-    sortOrder?: IntFilter<"Project"> | number
+    sortOrder?: BigIntFilter<"Project"> | bigint | number
     createdAt?: DateTimeFilter<"Project"> | Date | string
     updatedAt?: DateTimeFilter<"Project"> | Date | string
   }
@@ -21693,7 +21718,7 @@ export namespace Prisma {
     resumeId?: StringFilter<"Link"> | string
     title?: StringFilter<"Link"> | string
     url?: StringFilter<"Link"> | string
-    sortOrder?: IntFilter<"Link"> | number
+    sortOrder?: BigIntFilter<"Link"> | bigint | number
     createdAt?: DateTimeFilter<"Link"> | Date | string
     updatedAt?: DateTimeFilter<"Link"> | Date | string
   }
@@ -21722,7 +21747,7 @@ export namespace Prisma {
     resumeId?: StringFilter<"Skill"> | string
     title?: StringFilter<"Skill"> | string
     level?: EnumSkillLevelFilter<"Skill"> | $Enums.SkillLevel
-    sortOrder?: IntFilter<"Skill"> | number
+    sortOrder?: BigIntFilter<"Skill"> | bigint | number
     createdAt?: DateTimeFilter<"Skill"> | Date | string
     updatedAt?: DateTimeFilter<"Skill"> | Date | string
   }
@@ -21751,7 +21776,7 @@ export namespace Prisma {
     resumeId?: StringFilter<"Language"> | string
     language?: StringFilter<"Language"> | string
     level?: EnumLanguageLevelFilter<"Language"> | $Enums.LanguageLevel
-    sortOrder?: IntFilter<"Language"> | number
+    sortOrder?: BigIntFilter<"Language"> | bigint | number
     createdAt?: DateTimeFilter<"Language"> | Date | string
     updatedAt?: DateTimeFilter<"Language"> | Date | string
   }
@@ -21781,7 +21806,7 @@ export namespace Prisma {
     title?: StringFilter<"Course"> | string
     institution?: StringFilter<"Course"> | string
     date?: DateTimeNullableFilter<"Course"> | Date | string | null
-    sortOrder?: IntFilter<"Course"> | number
+    sortOrder?: BigIntFilter<"Course"> | bigint | number
     createdAt?: DateTimeFilter<"Course"> | Date | string
     updatedAt?: DateTimeFilter<"Course"> | Date | string
   }
@@ -22835,7 +22860,7 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -22848,7 +22873,7 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -22859,7 +22884,7 @@ export namespace Prisma {
     url: string
     repoUrl: string
     description: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -22868,7 +22893,7 @@ export namespace Prisma {
     id?: string
     title: string
     url: string
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -22877,7 +22902,7 @@ export namespace Prisma {
     id?: string
     title: string
     level: $Enums.SkillLevel
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -22886,7 +22911,7 @@ export namespace Prisma {
     id?: string
     language: string
     level: $Enums.LanguageLevel
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -22896,7 +22921,7 @@ export namespace Prisma {
     title: string
     institution: string
     date?: Date | string | null
-    sortOrder: number
+    sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -22909,7 +22934,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -22922,7 +22947,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -22935,7 +22960,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -22948,7 +22973,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -22961,7 +22986,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -22974,7 +22999,7 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -22985,7 +23010,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     repoUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -22996,7 +23021,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     repoUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23007,7 +23032,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     repoUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23016,7 +23041,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23025,7 +23050,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23034,7 +23059,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23043,7 +23068,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23052,7 +23077,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23061,7 +23086,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23070,7 +23095,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
     level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23079,7 +23104,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
     level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23088,7 +23113,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     language?: StringFieldUpdateOperationsInput | string
     level?: EnumLanguageLevelFieldUpdateOperationsInput | $Enums.LanguageLevel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23098,7 +23123,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23108,7 +23133,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23118,7 +23143,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
     date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

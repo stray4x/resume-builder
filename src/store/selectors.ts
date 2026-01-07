@@ -19,27 +19,6 @@ export function useSectionItems<T>(section: ResumeSections) {
   );
 }
 
-// export function useSectionActions(section: ResumeSections) {
-//   const add = useResume((state) => state.addSectionItem);
-//   const remove = useResume((state) => state.deleteSectionItem);
-
-//   const addItem = useCallback(() => {
-//     add(section);
-//   }, [add, section]);
-
-//   const deleteItem = useCallback(
-//     (id: string) => {
-//       remove(section, id);
-//     },
-//     [remove, section],
-//   );
-
-//   return {
-//     addItem,
-//     deleteItem,
-//   };
-// }
-
 export function useSectionActions<S extends keyof ResumeSectionDrafts>(
   section: S,
 ) {
@@ -47,6 +26,7 @@ export function useSectionActions<S extends keyof ResumeSectionDrafts>(
 
   const add = useResume((s) => s.addSectionItem);
   const update = useResume((s) => s.updateSectionItem);
+  const move = useResume((s) => s.moveSectionItem);
   const remove = useResume((s) => s.deleteSectionItem);
 
   const addItem = useCallback(() => {
@@ -60,6 +40,13 @@ export function useSectionActions<S extends keyof ResumeSectionDrafts>(
     [update, section],
   );
 
+  const moveItem = useCallback(
+    (activeId: string, overId: string) => {
+      move(section, activeId, overId);
+    },
+    [move, section],
+  );
+
   const deleteItem = useCallback(
     (id: string) => {
       remove(section, id);
@@ -70,6 +57,7 @@ export function useSectionActions<S extends keyof ResumeSectionDrafts>(
   return {
     addItem,
     updateItem,
+    moveItem,
     deleteItem,
   };
 }

@@ -19,7 +19,7 @@ export const defaultWorkExperience: WorkExperienceDraft = {
   startDate: null,
   endDate: null,
   description: "",
-  sortOrder: 0,
+  sortOrder: 0n,
   status: ItemStatus.Added,
 };
 
@@ -31,7 +31,7 @@ export const defaultEducation: EducationDraft = {
   startDate: null,
   endDate: null,
   description: "",
-  sortOrder: 0,
+  sortOrder: 0n,
   status: ItemStatus.Added,
 };
 
@@ -41,7 +41,7 @@ export const defaultProject: ProjectDraft = {
   url: "",
   repoUrl: "",
   description: "",
-  sortOrder: 0,
+  sortOrder: 0n,
   status: ItemStatus.Added,
 };
 
@@ -49,7 +49,7 @@ export const defaultLink: LinkDraft = {
   id: "",
   title: "",
   url: "",
-  sortOrder: 0,
+  sortOrder: 0n,
   status: ItemStatus.Added,
 };
 
@@ -57,7 +57,7 @@ export const defaultSkill: SkillDraft = {
   id: "",
   title: "",
   level: SkillLevel.Novice,
-  sortOrder: 0,
+  sortOrder: 0n,
   status: ItemStatus.Added,
 };
 
@@ -65,7 +65,7 @@ export const defaultLanguage: LanguageDraft = {
   id: "",
   language: "",
   level: LanguageLevel.A1,
-  sortOrder: 0,
+  sortOrder: 0n,
   status: ItemStatus.Added,
 };
 
@@ -74,6 +74,6 @@ export const defaultCourse: CourseDraft = {
   title: "",
   institution: "",
   date: null,
-  sortOrder: 0,
+  sortOrder: 0n,
   status: ItemStatus.Added,
 };
