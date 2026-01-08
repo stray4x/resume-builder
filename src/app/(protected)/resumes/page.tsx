@@ -1,12 +1,12 @@
+import { revalidatePath } from "next/cache";
+import Link from "next/link";
+
 import { DeleteResumeButton } from "@/components/resume/DeleteResumeButton";
 import { Button } from "@/components/ui/button";
-import { getSession, requireSession } from "@/server/better-auth/server";
+import { requireSession } from "@/server/better-auth/server";
 import { db } from "@/server/db";
 import { api } from "@/trpc/server";
 import { clientUrls } from "@/utils/urls";
-
-import { revalidatePath } from "next/cache";
-import Link from "next/link";
 
 export default async function ResumesPage() {
   const session = await requireSession();
@@ -38,7 +38,7 @@ export default async function ResumesPage() {
             </div>
             <div className="flex gap-4">
               <Button>
-                <Link href={clientUrls.resumeId(resume.id)}>edit</Link>
+                <Link href={clientUrls.editResume(resume.id)}>edit</Link>
               </Button>
 
               <form>

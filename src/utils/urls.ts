@@ -4,5 +4,5 @@ export const clientUrls = {
   authSignUp: "/auth/sign-up",
   resumes: "/resumes",
   createResume: "/resumes/new",
-  resumeId: (id: string) => `/resumes/${id}`,
+  editResume: (id: string) => `/resumes/${id}`,
 };
