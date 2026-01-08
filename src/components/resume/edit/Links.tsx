@@ -7,6 +7,7 @@ import { useSectionActions, useSectionItems } from "@/store/selectors";
 
 import { LinkItem } from "./LinkItem";
 import { DndContainer } from "./ui/DndContainer";
+import { SectionTitle } from "./ui/SectionTitle";
 import { SortableItem } from "./ui/SortableItem";
 
 import type { LinkDraft } from "@/store/types";
@@ -18,7 +19,7 @@ export const Links: React.FC = () => {
 
   return (
     <div>
-      <h6 className="mb-4 text-xl font-bold">Links</h6>
+      <SectionTitle>Links</SectionTitle>
       <div className="flex flex-col gap-4">
         <DndContainer moveItem={moveItem} items={links.map((item) => item.id)}>
           {links.map((item) => {

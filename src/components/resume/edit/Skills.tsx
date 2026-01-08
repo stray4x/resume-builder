@@ -7,6 +7,7 @@ import { useSectionActions, useSectionItems } from "@/store/selectors";
 
 import { SkillItem } from "./SkillItem";
 import { DndContainer } from "./ui/DndContainer";
+import { SectionTitle } from "./ui/SectionTitle";
 import { SortableItem } from "./ui/SortableItem";
 
 import type { SkillDraft } from "@/store/types";
@@ -18,7 +19,7 @@ export const Skills: React.FC = () => {
 
   return (
     <div>
-      <h6 className="mb-4 text-xl font-bold">Skills</h6>
+      <SectionTitle>Skills</SectionTitle>
       <div className="flex flex-col gap-4">
         <DndContainer moveItem={moveItem} items={skills.map((item) => item.id)}>
           {skills.map((item) => {

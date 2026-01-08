@@ -13,6 +13,7 @@ import { Education } from "./Education";
 import { Languages } from "./Languages";
 import { Links } from "./Links";
 import { Projects } from "./Projects";
+import { Settings } from "./Settings";
 import { Skills } from "./Skills";
 import { Summary } from "./Summary";
 import { WorkExperience } from "./WorkExperience";
@@ -24,8 +25,6 @@ type Props = {
 };
 
 export const EditResumeForm: React.FC<Props> = ({ resume }) => {
-  const resumeName = useResume((state) => state.resumeName);
-  const setResumeName = useResume((state) => state.setField);
   const setResume = useResume((state) => state.setResume);
 
   useEffect(() => {
@@ -34,17 +33,7 @@ export const EditResumeForm: React.FC<Props> = ({ resume }) => {
 
   return (
     <div className="mb-8 flex flex-col gap-12">
-      <div>
-        <Label htmlFor="resumeName" className="mb-2">
-          Resume Name
-        </Label>
-        <Input
-          id="resumeName"
-          placeholder="Resume Name"
-          value={resumeName}
-          onChange={(e) => setResumeName("resumeName", e.target.value)}
-        />
-      </div>
+      <Settings />
       <Details />
       <Summary />
       <WorkExperience />

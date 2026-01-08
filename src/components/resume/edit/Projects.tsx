@@ -7,6 +7,7 @@ import { useSectionActions, useSectionItems } from "@/store/selectors";
 
 import { ProjectItem } from "./ProjectItem";
 import { DndContainer } from "./ui/DndContainer";
+import { SectionTitle } from "./ui/SectionTitle";
 import { SortableItem } from "./ui/SortableItem";
 
 import type { ProjectDraft } from "@/store/types";
@@ -18,7 +19,7 @@ export const Projects: React.FC = () => {
 
   return (
     <div>
-      <h6 className="mb-4 text-xl font-bold">Projects</h6>
+      <SectionTitle>Projects</SectionTitle>
       <div className="flex flex-col gap-4">
         <DndContainer
           moveItem={moveItem}

@@ -7,6 +7,7 @@ import { useSectionActions, useSectionItems } from "@/store/selectors";
 
 import { BackgroundDescription } from "./BackgroundDescription";
 import { DndContainer } from "./ui/DndContainer";
+import { SectionTitle } from "./ui/SectionTitle";
 
 import type { CourseDraft } from "@/store/types";
 
@@ -17,7 +18,7 @@ export const Courses: React.FC = () => {
 
   return (
     <div>
-      <h6 className="mb-4 text-xl font-bold">Courses</h6>
+      <SectionTitle>Courses</SectionTitle>
       <div className="flex flex-col gap-4">
         <DndContainer
           moveItem={moveItem}

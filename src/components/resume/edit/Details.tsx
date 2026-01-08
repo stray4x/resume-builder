@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useResume } from "@/store/store";
 
+import { SectionTitle } from "./ui/SectionTitle";
+
 export const Details: React.FC = () => {
   const jobTitle = useResume((state) => state.jobTitle);
   const firstName = useResume((state) => state.firstName);
@@ -20,8 +22,7 @@ export const Details: React.FC = () => {
 
   return (
     <div className="mb-8">
-      <h6 className="mb-4 text-xl font-bold">Details</h6>
-
+      <SectionTitle>Details</SectionTitle>
       <div className="grid grid-cols-2 gap-8">
         <div>
           <Label htmlFor="jobTitle" className="mb-2">
