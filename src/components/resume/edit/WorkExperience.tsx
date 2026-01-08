@@ -50,7 +50,13 @@ export const WorkExperience: React.FC = () => {
           })}
         </DndContainer>
       </div>
-      <Button onClick={addItem} className="mt-4" size="lg" variant="link">
+      <Button
+        className="mt-4"
+        size="lg"
+        variant="link"
+        onClick={addItem}
+        disabled={workExp.length >= 20}
+      >
         {!workExp.length ? "Add employment" : "Add one more employment"}
       </Button>
     </div>

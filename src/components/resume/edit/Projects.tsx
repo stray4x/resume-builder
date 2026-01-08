@@ -44,7 +44,13 @@ export const Projects: React.FC = () => {
           })}
         </DndContainer>
       </div>
-      <Button onClick={addItem} className="mt-4" size="lg" variant="link">
+      <Button
+        className="mt-4"
+        size="lg"
+        variant="link"
+        onClick={addItem}
+        disabled={projects.length >= 10}
+      >
         {!projects.length ? "Add project" : "Add one more project"}
       </Button>
     </div>

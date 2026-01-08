@@ -34,7 +34,13 @@ export const Links: React.FC = () => {
           })}
         </DndContainer>
       </div>
-      <Button onClick={addItem} className="mt-4" size="lg" variant="link">
+      <Button
+        className="mt-4"
+        size="lg"
+        variant="link"
+        onClick={addItem}
+        disabled={links.length >= 10}
+      >
         {!links.length ? "Add link" : "Add one more link"}
       </Button>
     </div>

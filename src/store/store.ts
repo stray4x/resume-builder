@@ -109,10 +109,15 @@ export const useResume = create<ResumeStore>((set, get, store) => ({
     }
     set((state: ResumeDraft) => ({
       [section]: state[section].map((item) =>
-        item.id === id &&
-        (item.status === ItemStatus.Unchanged ||
-          item.status === ItemStatus.Updated)
-          ? { ...item, [field]: value, status: ItemStatus.Updated }
+        item.id === id && item.status !== ItemStatus.Deleted
+          ? {
+              ...item,
+              [field]: value,
+              status:
+                item.status === ItemStatus.Added
+                  ? ItemStatus.Added
+                  : ItemStatus.Updated,
+            }
           : item,
       ),
     }));

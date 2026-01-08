@@ -34,7 +34,13 @@ export const Languages: React.FC = () => {
           })}
         </DndContainer>
       </div>
-      <Button onClick={addItem} className="mt-4" size="lg" variant="link">
+      <Button
+        className="mt-4"
+        size="lg"
+        variant="link"
+        onClick={addItem}
+        disabled={langs.length >= 10}
+      >
         {!langs.length ? "Add language" : "Add one more language"}
       </Button>
     </div>

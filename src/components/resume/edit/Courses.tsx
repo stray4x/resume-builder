@@ -45,7 +45,13 @@ export const Courses: React.FC = () => {
           })}
         </DndContainer>
       </div>
-      <Button onClick={addItem} className="mt-4" size="lg" variant="link">
+      <Button
+        className="mt-4"
+        size="lg"
+        variant="link"
+        onClick={addItem}
+        disabled={courses.length >= 10}
+      >
         {!courses.length ? "Add course" : "Add one more course"}
       </Button>
     </div>

@@ -34,7 +34,13 @@ export const Skills: React.FC = () => {
           })}
         </DndContainer>
       </div>
-      <Button onClick={addItem} className="mt-4" size="lg" variant="link">
+      <Button
+        className="mt-4"
+        size="lg"
+        variant="link"
+        onClick={addItem}
+        disabled={skills.length >= 40}
+      >
         {!skills.length ? "Add skill" : "Add one more skill"}
       </Button>
     </div>
