@@ -1,5 +1,6 @@
-import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 import z from "zod";
+
+import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 
 export const resumeRouter = createTRPCRouter({
   getAllResumeTemplates: protectedProcedure.query(async ({ ctx }) => {
@@ -32,6 +33,38 @@ export const resumeRouter = createTRPCRouter({
       });
 
       return newResume;
+    }),
+
+  updateResume: protectedProcedure
+    .input(
+      z.object({
+        id: z.string().min(1),
+        templateId: z.string().min(1),
+        resumeName: z.string().max(100),
+        firstName: z.string().max(50),
+        lastName: z.string().max(50),
+        jobTitle: z.string().max(50),
+        city: z.string().max(100),
+        email: z.string().max(50),
+        country: z.string().max(50),
+        phone: z.string().max(25),
+        summary: z.string().max(1000),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.session.user.id;
+
+      const { id, ...data } = input;
+
+      const updated = await ctx.db.resume.update({
+        where: {
+          id: id,
+          ownerId: userId,
+        },
+        data,
+      });
+
+      return updated;
     }),
 
   deleteResume: protectedProcedure

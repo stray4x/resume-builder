@@ -1,6 +1,5 @@
 "use client";
 
-import dayjs from "dayjs";
 import { CalendarIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -13,6 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import dayjs from "@/lib/dayjs";
 
 function formatDate(date: Date | null | undefined) {
   if (!date) {
