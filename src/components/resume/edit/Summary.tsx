@@ -2,8 +2,9 @@
 
 import React from "react";
 
-import { Textarea } from "@/components/ui/textarea";
 import { useResume } from "@/store/store";
+
+import { TextEditor } from "../../ui/TextEditor";
 
 export const Summary: React.FC = () => {
   const summary = useResume((state) => state.summary);
@@ -12,10 +13,9 @@ export const Summary: React.FC = () => {
   return (
     <div>
       <h6 className="mb-4 text-xl font-bold">Summary</h6>
-      <Textarea
-        rows={10}
+      <TextEditor
         value={summary}
-        onChange={(e) => updateSummary("summary", e.target.value)}
+        onChange={(v) => updateSummary("summary", v)}
       />
     </div>
   );

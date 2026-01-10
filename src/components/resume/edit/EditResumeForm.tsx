@@ -2,8 +2,6 @@
 
 import React, { useEffect } from "react";
 
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useResume } from "@/store/store";
 import { normalizeResume } from "@/utils/normalizeResume";
 
