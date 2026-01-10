@@ -73,7 +73,8 @@ export const defaultCourse: CourseDraft = {
   id: "",
   title: "",
   institution: "",
-  date: null,
+  startDate: null,
+  endDate: null,
   sortOrder: 0n,
   status: ItemStatus.Added,
 };
