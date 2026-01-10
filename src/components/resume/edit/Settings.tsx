@@ -4,29 +4,65 @@ import React from "react";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useResume } from "@/store/store";
+import { api } from "@/trpc/react";
 
 import { SectionTitle } from "./ui/SectionTitle";
 
 export const Settings: React.FC = () => {
   const resumeName = useResume((state) => state.resumeName);
-  const setResumeName = useResume((state) => state.setField);
+  const resumeTemplate = useResume((state) => state.templateId);
+  const updResume = useResume((state) => state.setField);
+
+  const { data } = api.resume.getAllResumeTemplates.useQuery();
 
   return (
     <div>
       <SectionTitle>Resume Settings</SectionTitle>
-      <div>
-        <Label htmlFor="resumeName" className="mb-2">
-          Resume Name
-        </Label>
-        <Input
-          id="resumeName"
-          placeholder="Resume Name"
-          value={resumeName}
-          onChange={(e) => setResumeName("resumeName", e.target.value)}
-        />
+      <div className="flex justify-between gap-8">
+        <div className="w-full">
+          <Label htmlFor="resumeName" className="mb-2">
+            Resume Name
+          </Label>
+          <Input
+            id="resumeName"
+            placeholder="Resume Name"
+            value={resumeName}
+            onChange={(e) => updResume("resumeName", e.target.value)}
+          />
+        </div>
+        <div className="w-full">
+          <Label className="mb-2">Template</Label>
+          <Select
+            disabled={!data?.templates.length}
+            value={resumeTemplate}
+            onValueChange={(v) => updResume("templateId", v)}
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select a your skill level" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Select resume template</SelectLabel>
+                {data?.templates?.map((item) => (
+                  <SelectItem key={item.id} value={item.id}>
+                    {item.name}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
-      {/* todo: add template */}
       {/* todo: add color */}
     </div>
   );

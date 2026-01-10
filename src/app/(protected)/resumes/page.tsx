@@ -15,6 +15,7 @@ export default async function ResumesPage() {
     where: {
       ownerId: session.user.id,
     },
+    orderBy: { updatedAt: "desc" },
   });
 
   return (

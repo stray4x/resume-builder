@@ -17,7 +17,12 @@ export const Navbar: React.FC = async () => {
 
   return (
     <header className="bg-background sticky top-0 flex h-16 w-full items-center justify-between p-4">
-      <div>
+      <div className="flex gap-4">
+        {session && (
+          <Button variant="link" asChild>
+            <Link href={clientUrls.resumes}>my resumes</Link>
+          </Button>
+        )}
         <SaveChangesButton />
       </div>
       <div className="flex gap-4">

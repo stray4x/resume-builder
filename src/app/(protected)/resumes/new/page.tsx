@@ -1,8 +1,19 @@
+import { unstable_cache } from "next/cache";
+
 import { CreateResumeButton } from "@/components/resume/new/CreateResumeButton";
-import { api } from "@/trpc/server";
+import { db } from "@/server/db";
+
+const getTemplates = unstable_cache(
+  async () => {
+    const templates = await db.resumeTemplate.findMany();
+    return templates ?? [];
+  },
+  [],
+  { revalidate: 60 * 60 * 12 },
+);
 
 export default async function NewResumePage() {
-  const { templates } = await api.resume.getAllResumeTemplates();
+  const templates = await getTemplates();
 
   return (
     <div>
