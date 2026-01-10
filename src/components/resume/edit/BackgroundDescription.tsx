@@ -6,7 +6,7 @@ import { AccordionContent, AccordionTrigger } from "@/components/ui/accordion";
 import { DatePicker } from "@/components/ui/date-picker";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { TextEditor } from "@/components/ui/TextEditor";
 
 import { ResumeAccordion } from "./ui/EditResumeAccordion";
 import { SortableItem } from "./ui/SortableItem";
@@ -61,7 +61,7 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
     <SortableItem id={id}>
       <ResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
         <AccordionTrigger>{getItemTitle(inputOne, inputTwo)}</AccordionTrigger>
-        <AccordionContent>
+        <AccordionContent className="h-fit">
           <div className="mt-1 grid grid-cols-2 gap-8">
             <div className="flex flex-col gap-4">
               <div>
@@ -118,14 +118,10 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
 
           {type !== "course" && (
             <>
-              <Label htmlFor={`desc-${id}`} className="mt-8 mb-2">
-                Description
-              </Label>
-              <Textarea
-                id={`desc-${id}`}
-                value={description ?? ""}
-                placeholder="Description"
-                onChange={(e) => updateDescription?.(e.target.value)}
+              <Label className="mt-8 mb-2">Description</Label>
+              <TextEditor
+                value={description ?? "{}"}
+                onChange={(v) => updateDescription?.(v)}
               />
             </>
           )}

@@ -34,14 +34,16 @@ export const TextEditor: React.FC<Props> = ({ className, value, onChange }) => {
   });
 
   useEffect(() => {
-    if (!editor) return;
+    if (!editor) {
+      return;
+    }
 
     const current = editor.getJSON().content;
 
-    if (JSON.stringify(current) !== value) {
+    if (value.length && JSON.stringify(current) !== value) {
       editor.commands.setContent(JSON.parse(value) as Fragment);
     }
-  }, [value]);
+  }, [value, editor]);
 
   useEffect(() => {
     if (!editor) return;
@@ -69,8 +71,6 @@ export const TextEditor: React.FC<Props> = ({ className, value, onChange }) => {
 
   const getVariant = (btn: EditorBtn) =>
     activeBtns.includes(btn) ? "default" : "outline";
-
-  console.log({ text: editor?.getText(), json: editor?.getJSON() });
 
   return (
     <div>
