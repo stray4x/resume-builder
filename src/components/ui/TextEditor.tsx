@@ -74,7 +74,7 @@ export const TextEditor: React.FC<Props> = ({ className, value, onChange }) => {
 
   return (
     <div>
-      <div className="mb-1 flex gap-1">
+      <div className="mb-2 flex gap-1">
         <Button
           className="w-8 font-bold"
           variant={getVariant("bold")}

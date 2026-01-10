@@ -34,13 +34,15 @@ export const EditResumeForm: React.FC<Props> = ({ resume }) => {
       <Settings />
       <Details />
       <Summary />
-      <WorkExperience />
-      <Projects />
-      <Education />
-      <Links />
-      <Skills />
-      <Languages />
-      <Courses />
+      <div className="-mr-10 flex flex-col gap-12">
+        <WorkExperience />
+        <Projects />
+        <Education />
+        <Links />
+        <Skills />
+        <Languages />
+        <Courses />
+      </div>
     </div>
   );
 };
