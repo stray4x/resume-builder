@@ -1,6 +1,6 @@
 "use client";
 
-import { Page, Text, View, StyleSheet, Link, Font } from "@react-pdf/renderer";
+import { Page, Text, View, StyleSheet, Link } from "@react-pdf/renderer";
 import React, { type JSX } from "react";
 
 import { parseTiptapToPdfJsx } from "@/utils/parseTiptapToJSX";
@@ -30,42 +30,6 @@ enum Colors {
   grayBgPdf = "#525659",
   mainBlue = "#1976d2",
 }
-
-Font.register({
-  family: "Open Sans",
-  fontWeight: 400,
-  src: "/fonts/OpenSans-Regular.ttf",
-});
-Font.register({
-  family: "Open Sans",
-  fontWeight: 400,
-  fontStyle: "italic",
-  src: "/fonts/OpenSans-Italic.ttf",
-});
-
-Font.register({
-  family: "Open Sans",
-  fontWeight: 500,
-  src: "/fonts/OpenSans-Medium.ttf",
-});
-
-Font.register({
-  family: "Open Sans",
-  fontWeight: 600,
-  src: "/fonts/OpenSans-SemiBold.ttf",
-});
-
-Font.register({
-  family: "Open Sans",
-  fontWeight: 700,
-  src: "/fonts/OpenSans-Bold.ttf",
-});
-Font.register({
-  family: "Open Sans",
-  fontWeight: 700,
-  fontStyle: "italic",
-  src: "/fonts/OpenSans-BoldItalic.ttf",
-});
 
 const styles = StyleSheet.create({
   page: {
@@ -125,7 +89,7 @@ const stylesCommon = StyleSheet.create({
 export const LeftSectionTitle: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  return <Text style={stylesLeft.sectionTitle}>{children}</Text>;
+  return <Text style={{ ...stylesLeft.sectionTitle }}>{children}</Text>;
 };
 
 export const LeftItemContainer: React.FC<React.PropsWithChildren> = ({
@@ -156,11 +120,13 @@ export const RightSectionTitle: React.FC<React.PropsWithChildren> = ({
 interface IRightItemWithLevelProps extends React.PropsWithChildren {
   title: string;
   levelInPercent: number;
+  color: string;
 }
 
 export const RightItemWithLevel: React.FC<IRightItemWithLevelProps> = ({
   title,
   levelInPercent,
+  color,
 }) => {
   return (
     <View style={stylesRight.itemWithLevelContainer}>
@@ -171,6 +137,8 @@ export const RightItemWithLevel: React.FC<IRightItemWithLevelProps> = ({
             style={{
               ...stylesRight.itemLevelBarInner,
               width: `${levelInPercent}%`,
+              backgroundColor:
+                color || stylesRight.itemLevelBarInner.backgroundColor,
             }}
           />
         </View>
@@ -192,6 +160,7 @@ export const ItemText: React.FC<React.PropsWithChildren> = ({ children }) => {
 
 interface ILinkCustomProps extends React.PropsWithChildren {
   src: string;
+  color: string;
   isEmail?: boolean;
 }
 
@@ -199,9 +168,13 @@ export const LinkCustom: React.FC<ILinkCustomProps> = ({
   src,
   isEmail,
   children,
+  color,
 }) => {
   return (
-    <Link src={isEmail ? `mailto:${src}` : src} style={stylesCommon.link}>
+    <Link
+      src={isEmail ? `mailto:${src}` : src}
+      style={{ ...stylesCommon.link, color: color || stylesCommon.link.color }}
+    >
       {children}
     </Link>
   );
@@ -209,14 +182,15 @@ export const LinkCustom: React.FC<ILinkCustomProps> = ({
 
 interface ILinksProps {
   links: LinkDraft[];
+  color: string;
 }
 
-export const Links: React.FC<ILinksProps> = ({ links }) => {
+export const Links: React.FC<ILinksProps> = ({ links, color }) => {
   return (
     <SectionContainer>
       <RightSectionTitle>Links</RightSectionTitle>
       {links.map(({ id, title, url }) => (
-        <LinkCustom key={id} src={url}>
+        <LinkCustom key={id} src={url} color={color}>
           {title}
         </LinkCustom>
       ))}
@@ -226,6 +200,7 @@ export const Links: React.FC<ILinksProps> = ({ links }) => {
 
 interface ISkillsProps {
   skills: SkillDraft[];
+  color: string;
 }
 
 const getSkillLevel = (lvl: SkillLevel): number => {
@@ -247,7 +222,7 @@ const getSkillLevel = (lvl: SkillLevel): number => {
   }
 };
 
-export const Skills: React.FC<ISkillsProps> = ({ skills }) => {
+export const Skills: React.FC<ISkillsProps> = ({ skills, color }) => {
   return (
     <SectionContainer>
       <RightSectionTitle>Skills</RightSectionTitle>
@@ -256,6 +231,7 @@ export const Skills: React.FC<ISkillsProps> = ({ skills }) => {
           key={`${id}-${idx}`}
           title={title}
           levelInPercent={getSkillLevel(level)}
+          color={color}
         />
       ))}
     </SectionContainer>
@@ -269,6 +245,7 @@ type DetailsProps = {
   country: string;
   phone: string;
   email: string;
+  color: string;
 };
 interface IHeaderProps {
   firstName: string;
@@ -322,6 +299,7 @@ export const Header: React.FC<IHeaderProps> = ({
 
 interface ILanguagesProps {
   languages: LanguageDraft[];
+  color: string;
 }
 
 const getLevelInPercent = (level: string) => {
@@ -343,7 +321,7 @@ const getLevelInPercent = (level: string) => {
   }
 };
 
-export const Languages: React.FC<ILanguagesProps> = ({ languages }) => {
+export const Languages: React.FC<ILanguagesProps> = ({ languages, color }) => {
   return (
     <SectionContainer>
       <RightSectionTitle>Languages</RightSectionTitle>
@@ -353,6 +331,7 @@ export const Languages: React.FC<ILanguagesProps> = ({ languages }) => {
             key={`${id}-${idx}`}
             title={language}
             levelInPercent={getLevelInPercent(level)}
+            color={color}
           />
         );
       })}
@@ -385,7 +364,13 @@ export const Courses: React.FC<ICoursesProps> = ({ courses }) => {
   );
 };
 
-const Details: React.FC<DetailsProps> = ({ city, country, phone, email }) => {
+const Details: React.FC<DetailsProps> = ({
+  city,
+  country,
+  phone,
+  email,
+  color,
+}) => {
   if (![city, country, phone, email].filter(Boolean).length) {
     return null;
   }
@@ -396,7 +381,7 @@ const Details: React.FC<DetailsProps> = ({ city, country, phone, email }) => {
       <ItemText>{city}</ItemText>
       <ItemText>{country}</ItemText>
       <ItemText>{phone}</ItemText>
-      <LinkCustom src={email} isEmail>
+      <LinkCustom src={email} isEmail color={color}>
         {email}
       </LinkCustom>
     </SectionContainer>
@@ -474,9 +459,10 @@ export const Education: React.FC<IEducationProps> = ({ education }) => {
 
 interface ProjectsProps {
   projects: ProjectDraft[];
+  color: string;
 }
 
-export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
+export const Projects: React.FC<ProjectsProps> = ({ projects, color }) => {
   return (
     <SectionContainer>
       <LeftSectionTitle>Projects</LeftSectionTitle>
@@ -489,7 +475,9 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
             <View>
               {url && (
                 <View style={{ marginRight: 10 }}>
-                  <LinkCustom src={url}>Project</LinkCustom>
+                  <LinkCustom src={url} color={color}>
+                    Project
+                  </LinkCustom>
                 </View>
               )}
             </View>
@@ -499,7 +487,11 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
               </View>
             )}
             <View>
-              {repoUrl && <LinkCustom src={repoUrl}>Repository</LinkCustom>}
+              {repoUrl && (
+                <LinkCustom src={repoUrl} color={color}>
+                  Repository
+                </LinkCustom>
+              )}
             </View>
           </View>
           {parseTiptapToPdfJsx(description)}
@@ -519,6 +511,7 @@ export const DefaultTemplate: React.FC<Props> = ({ resume }) => {
     skills,
     languages,
     courses,
+    themeColor,
   } = resume;
 
   return (
@@ -536,7 +529,9 @@ export const DefaultTemplate: React.FC<Props> = ({ resume }) => {
           {!!workExperience.length && (
             <EmploymentHistory workExperience={workExperience} />
           )}
-          {!!projects.length && <Projects projects={projects} />}
+          {!!projects.length && (
+            <Projects projects={projects} color={themeColor} />
+          )}
           {!!education.length && <Education education={education} />}
           {!!courses.length && <Courses courses={courses} />}
         </View>
@@ -546,10 +541,13 @@ export const DefaultTemplate: React.FC<Props> = ({ resume }) => {
             country={resume.country}
             phone={resume.phone}
             email={resume.email}
+            color={themeColor}
           />
-          {!!links.length && <Links links={resume.links} />}
-          {!!skills.length && <Skills skills={skills} />}
-          {!!languages.length && <Languages languages={languages} />}
+          {!!links.length && <Links links={resume.links} color={themeColor} />}
+          {!!skills.length && <Skills skills={skills} color={themeColor} />}
+          {!!languages.length && (
+            <Languages languages={languages} color={themeColor} />
+          )}
         </View>
       </View>
     </Page>

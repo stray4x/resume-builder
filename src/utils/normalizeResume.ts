@@ -5,6 +5,8 @@ import {
   ItemStatus,
 } from "@/store/types";
 
+import { resumeColors } from "./constants/resumeColors";
+
 export const normalizeResume = (resume: ResumeWithRelations): ResumeDraft => {
   return {
     id: resume.id,
@@ -18,7 +20,7 @@ export const normalizeResume = (resume: ResumeWithRelations): ResumeDraft => {
     country: resume.country,
     city: resume.city,
     summary: resume.summary,
-    themeColor: resume.themeColor,
+    themeColor: resume.themeColor || resumeColors.Blue,
 
     workExperience: resume.workExperience.map(
       ({ resumeId, createdAt, updatedAt, ...item }) => ({
