@@ -18,6 +18,7 @@ import type {
   SkillDraft,
   WorkExperienceDraft,
 } from "@/store/types";
+
 enum Colors {
   white = "#fff",
   red = "#d32f2f",
@@ -30,14 +31,48 @@ enum Colors {
   mainBlue = "#1976d2",
 }
 
-//
+Font.register({
+  family: "Open Sans",
+  fontWeight: 400,
+  src: "/fonts/OpenSans-Regular.ttf",
+});
+Font.register({
+  family: "Open Sans",
+  fontWeight: 400,
+  fontStyle: "italic",
+  src: "/fonts/OpenSans-Italic.ttf",
+});
+
+Font.register({
+  family: "Open Sans",
+  fontWeight: 500,
+  src: "/fonts/OpenSans-Medium.ttf",
+});
+
+Font.register({
+  family: "Open Sans",
+  fontWeight: 600,
+  src: "/fonts/OpenSans-SemiBold.ttf",
+});
+
+Font.register({
+  family: "Open Sans",
+  fontWeight: 700,
+  src: "/fonts/OpenSans-Bold.ttf",
+});
+Font.register({
+  family: "Open Sans",
+  fontWeight: 700,
+  fontStyle: "italic",
+  src: "/fonts/OpenSans-BoldItalic.ttf",
+});
 
 const styles = StyleSheet.create({
   page: {
     paddingVertical: 25,
     paddingHorizontal: 35,
     backgroundColor: "#fff",
-    // fontFamily: "Roboto",
+    fontFamily: "Open Sans",
   },
   sectionsContainer: {
     display: "flex",
