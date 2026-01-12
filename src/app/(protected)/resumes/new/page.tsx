@@ -26,7 +26,7 @@ export default async function NewResumePage() {
             key={template.id}
             className="bg-card mb-2 flex items-center justify-between p-2"
           >
-            <h3 className="text-xl font-semibold">{template.name}</h3>
+            <h3 className="text-xl font-semibold">{template.displayName}</h3>
             <CreateResumeButton templateId={template.id} />
           </li>
         ))}

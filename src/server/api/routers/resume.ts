@@ -31,7 +31,7 @@ export const resumeRouter = createTRPCRouter({
   }),
 
   createNewResume: protectedProcedure
-    .input(z.object({ templateId: z.string().min(1) }))
+    .input(z.object({ templateId: z.string().cuid() }))
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.session.user.id;
 
@@ -46,6 +46,7 @@ export const resumeRouter = createTRPCRouter({
           country: "",
           phone: "",
           summary: "",
+          themeColor: "",
           owner: { connect: { id: userId } },
           template: { connect: { id: input.templateId } },
         },
@@ -58,7 +59,7 @@ export const resumeRouter = createTRPCRouter({
     .input(
       z.object({
         id: z.string().cuid(),
-        templateId: z.string().min(1),
+        templateId: z.string().cuid(),
         resumeName: z.string().max(100),
         firstName: z.string().max(50),
         lastName: z.string().max(50),
@@ -68,6 +69,7 @@ export const resumeRouter = createTRPCRouter({
         country: z.string().max(50),
         phone: z.string().max(25),
         summary: z.string().max(1000),
+        themeColor: z.string().max(10),
       }),
     )
     .mutation(async ({ ctx, input }) => {
@@ -87,7 +89,7 @@ export const resumeRouter = createTRPCRouter({
     }),
 
   deleteResume: protectedProcedure
-    .input(z.object({ resumeId: z.string().min(1) }))
+    .input(z.object({ resumeId: z.string().cuid() }))
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.session.user.id;
 

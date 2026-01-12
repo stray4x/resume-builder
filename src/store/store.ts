@@ -29,6 +29,7 @@ export const defaultState: ResumeDraft = {
   country: "",
   city: "",
   summary: "",
+  themeColor: "",
   workExperience: [],
   education: [],
   projects: [],

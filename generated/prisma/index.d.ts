@@ -5434,6 +5434,7 @@ export namespace Prisma {
   export type ResumeTemplateMinAggregateOutputType = {
     id: string | null
     name: string | null
+    displayName: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5441,6 +5442,7 @@ export namespace Prisma {
   export type ResumeTemplateMaxAggregateOutputType = {
     id: string | null
     name: string | null
+    displayName: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5448,6 +5450,7 @@ export namespace Prisma {
   export type ResumeTemplateCountAggregateOutputType = {
     id: number
     name: number
+    displayName: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -5457,6 +5460,7 @@ export namespace Prisma {
   export type ResumeTemplateMinAggregateInputType = {
     id?: true
     name?: true
+    displayName?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5464,6 +5468,7 @@ export namespace Prisma {
   export type ResumeTemplateMaxAggregateInputType = {
     id?: true
     name?: true
+    displayName?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5471,6 +5476,7 @@ export namespace Prisma {
   export type ResumeTemplateCountAggregateInputType = {
     id?: true
     name?: true
+    displayName?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -5551,6 +5557,7 @@ export namespace Prisma {
   export type ResumeTemplateGroupByOutputType = {
     id: string
     name: string
+    displayName: string
     createdAt: Date
     updatedAt: Date
     _count: ResumeTemplateCountAggregateOutputType | null
@@ -5575,6 +5582,7 @@ export namespace Prisma {
   export type ResumeTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    displayName?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     resume?: boolean | ResumeTemplate$resumeArgs<ExtArgs>
@@ -5584,6 +5592,7 @@ export namespace Prisma {
   export type ResumeTemplateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    displayName?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["resumeTemplate"]>
@@ -5591,6 +5600,7 @@ export namespace Prisma {
   export type ResumeTemplateSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    displayName?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["resumeTemplate"]>
@@ -5598,11 +5608,12 @@ export namespace Prisma {
   export type ResumeTemplateSelectScalar = {
     id?: boolean
     name?: boolean
+    displayName?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ResumeTemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["resumeTemplate"]>
+  export type ResumeTemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "displayName" | "createdAt" | "updatedAt", ExtArgs["result"]["resumeTemplate"]>
   export type ResumeTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     resume?: boolean | ResumeTemplate$resumeArgs<ExtArgs>
     _count?: boolean | ResumeTemplateCountOutputTypeDefaultArgs<ExtArgs>
@@ -5618,6 +5629,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
+      displayName: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["resumeTemplate"]>
@@ -6046,6 +6058,7 @@ export namespace Prisma {
   interface ResumeTemplateFieldRefs {
     readonly id: FieldRef<"ResumeTemplate", 'String'>
     readonly name: FieldRef<"ResumeTemplate", 'String'>
+    readonly displayName: FieldRef<"ResumeTemplate", 'String'>
     readonly createdAt: FieldRef<"ResumeTemplate", 'DateTime'>
     readonly updatedAt: FieldRef<"ResumeTemplate", 'DateTime'>
   }
@@ -6493,6 +6506,7 @@ export namespace Prisma {
     templateId: string | null
     ownerId: string | null
     resumeName: string | null
+    themeColor: string | null
     jobTitle: string | null
     firstName: string | null
     lastName: string | null
@@ -6510,6 +6524,7 @@ export namespace Prisma {
     templateId: string | null
     ownerId: string | null
     resumeName: string | null
+    themeColor: string | null
     jobTitle: string | null
     firstName: string | null
     lastName: string | null
@@ -6527,6 +6542,7 @@ export namespace Prisma {
     templateId: number
     ownerId: number
     resumeName: number
+    themeColor: number
     jobTitle: number
     firstName: number
     lastName: number
@@ -6546,6 +6562,7 @@ export namespace Prisma {
     templateId?: true
     ownerId?: true
     resumeName?: true
+    themeColor?: true
     jobTitle?: true
     firstName?: true
     lastName?: true
@@ -6563,6 +6580,7 @@ export namespace Prisma {
     templateId?: true
     ownerId?: true
     resumeName?: true
+    themeColor?: true
     jobTitle?: true
     firstName?: true
     lastName?: true
@@ -6580,6 +6598,7 @@ export namespace Prisma {
     templateId?: true
     ownerId?: true
     resumeName?: true
+    themeColor?: true
     jobTitle?: true
     firstName?: true
     lastName?: true
@@ -6670,6 +6689,7 @@ export namespace Prisma {
     templateId: string
     ownerId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -6704,6 +6724,7 @@ export namespace Prisma {
     templateId?: boolean
     ownerId?: boolean
     resumeName?: boolean
+    themeColor?: boolean
     jobTitle?: boolean
     firstName?: boolean
     lastName?: boolean
@@ -6731,6 +6752,7 @@ export namespace Prisma {
     templateId?: boolean
     ownerId?: boolean
     resumeName?: boolean
+    themeColor?: boolean
     jobTitle?: boolean
     firstName?: boolean
     lastName?: boolean
@@ -6750,6 +6772,7 @@ export namespace Prisma {
     templateId?: boolean
     ownerId?: boolean
     resumeName?: boolean
+    themeColor?: boolean
     jobTitle?: boolean
     firstName?: boolean
     lastName?: boolean
@@ -6769,6 +6792,7 @@ export namespace Prisma {
     templateId?: boolean
     ownerId?: boolean
     resumeName?: boolean
+    themeColor?: boolean
     jobTitle?: boolean
     firstName?: boolean
     lastName?: boolean
@@ -6781,7 +6805,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ResumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateId" | "ownerId" | "resumeName" | "jobTitle" | "firstName" | "lastName" | "email" | "phone" | "country" | "city" | "summary" | "createdAt" | "updatedAt", ExtArgs["result"]["resume"]>
+  export type ResumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateId" | "ownerId" | "resumeName" | "themeColor" | "jobTitle" | "firstName" | "lastName" | "email" | "phone" | "country" | "city" | "summary" | "createdAt" | "updatedAt", ExtArgs["result"]["resume"]>
   export type ResumeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     template?: boolean | ResumeTemplateDefaultArgs<ExtArgs>
     owner?: boolean | UserDefaultArgs<ExtArgs>
@@ -6821,6 +6845,7 @@ export namespace Prisma {
       templateId: string
       ownerId: string
       resumeName: string
+      themeColor: string
       jobTitle: string
       firstName: string
       lastName: string
@@ -7267,6 +7292,7 @@ export namespace Prisma {
     readonly templateId: FieldRef<"Resume", 'String'>
     readonly ownerId: FieldRef<"Resume", 'String'>
     readonly resumeName: FieldRef<"Resume", 'String'>
+    readonly themeColor: FieldRef<"Resume", 'String'>
     readonly jobTitle: FieldRef<"Resume", 'String'>
     readonly firstName: FieldRef<"Resume", 'String'>
     readonly lastName: FieldRef<"Resume", 'String'>
@@ -17042,6 +17068,7 @@ export namespace Prisma {
   export const ResumeTemplateScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    displayName: 'displayName',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -17054,6 +17081,7 @@ export namespace Prisma {
     templateId: 'templateId',
     ownerId: 'ownerId',
     resumeName: 'resumeName',
+    themeColor: 'themeColor',
     jobTitle: 'jobTitle',
     firstName: 'firstName',
     lastName: 'lastName',
@@ -17549,6 +17577,7 @@ export namespace Prisma {
     NOT?: ResumeTemplateWhereInput | ResumeTemplateWhereInput[]
     id?: StringFilter<"ResumeTemplate"> | string
     name?: StringFilter<"ResumeTemplate"> | string
+    displayName?: StringFilter<"ResumeTemplate"> | string
     createdAt?: DateTimeFilter<"ResumeTemplate"> | Date | string
     updatedAt?: DateTimeFilter<"ResumeTemplate"> | Date | string
     resume?: ResumeListRelationFilter
@@ -17557,6 +17586,7 @@ export namespace Prisma {
   export type ResumeTemplateOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    displayName?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     resume?: ResumeOrderByRelationAggregateInput
@@ -17564,18 +17594,20 @@ export namespace Prisma {
 
   export type ResumeTemplateWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    name?: string
     AND?: ResumeTemplateWhereInput | ResumeTemplateWhereInput[]
     OR?: ResumeTemplateWhereInput[]
     NOT?: ResumeTemplateWhereInput | ResumeTemplateWhereInput[]
-    name?: StringFilter<"ResumeTemplate"> | string
+    displayName?: StringFilter<"ResumeTemplate"> | string
     createdAt?: DateTimeFilter<"ResumeTemplate"> | Date | string
     updatedAt?: DateTimeFilter<"ResumeTemplate"> | Date | string
     resume?: ResumeListRelationFilter
-  }, "id">
+  }, "id" | "name">
 
   export type ResumeTemplateOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    displayName?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ResumeTemplateCountOrderByAggregateInput
@@ -17589,6 +17621,7 @@ export namespace Prisma {
     NOT?: ResumeTemplateScalarWhereWithAggregatesInput | ResumeTemplateScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"ResumeTemplate"> | string
     name?: StringWithAggregatesFilter<"ResumeTemplate"> | string
+    displayName?: StringWithAggregatesFilter<"ResumeTemplate"> | string
     createdAt?: DateTimeWithAggregatesFilter<"ResumeTemplate"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ResumeTemplate"> | Date | string
   }
@@ -17601,6 +17634,7 @@ export namespace Prisma {
     templateId?: StringFilter<"Resume"> | string
     ownerId?: StringFilter<"Resume"> | string
     resumeName?: StringFilter<"Resume"> | string
+    themeColor?: StringFilter<"Resume"> | string
     jobTitle?: StringFilter<"Resume"> | string
     firstName?: StringFilter<"Resume"> | string
     lastName?: StringFilter<"Resume"> | string
@@ -17627,6 +17661,7 @@ export namespace Prisma {
     templateId?: SortOrder
     ownerId?: SortOrder
     resumeName?: SortOrder
+    themeColor?: SortOrder
     jobTitle?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
@@ -17656,6 +17691,7 @@ export namespace Prisma {
     templateId?: StringFilter<"Resume"> | string
     ownerId?: StringFilter<"Resume"> | string
     resumeName?: StringFilter<"Resume"> | string
+    themeColor?: StringFilter<"Resume"> | string
     jobTitle?: StringFilter<"Resume"> | string
     firstName?: StringFilter<"Resume"> | string
     lastName?: StringFilter<"Resume"> | string
@@ -17682,6 +17718,7 @@ export namespace Prisma {
     templateId?: SortOrder
     ownerId?: SortOrder
     resumeName?: SortOrder
+    themeColor?: SortOrder
     jobTitle?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
@@ -17705,6 +17742,7 @@ export namespace Prisma {
     templateId?: StringWithAggregatesFilter<"Resume"> | string
     ownerId?: StringWithAggregatesFilter<"Resume"> | string
     resumeName?: StringWithAggregatesFilter<"Resume"> | string
+    themeColor?: StringWithAggregatesFilter<"Resume"> | string
     jobTitle?: StringWithAggregatesFilter<"Resume"> | string
     firstName?: StringWithAggregatesFilter<"Resume"> | string
     lastName?: StringWithAggregatesFilter<"Resume"> | string
@@ -18565,6 +18603,7 @@ export namespace Prisma {
   export type ResumeTemplateCreateInput = {
     id?: string
     name: string
+    displayName: string
     createdAt?: Date | string
     updatedAt?: Date | string
     resume?: ResumeCreateNestedManyWithoutTemplateInput
@@ -18573,6 +18612,7 @@ export namespace Prisma {
   export type ResumeTemplateUncheckedCreateInput = {
     id?: string
     name: string
+    displayName: string
     createdAt?: Date | string
     updatedAt?: Date | string
     resume?: ResumeUncheckedCreateNestedManyWithoutTemplateInput
@@ -18581,6 +18621,7 @@ export namespace Prisma {
   export type ResumeTemplateUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    displayName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUpdateManyWithoutTemplateNestedInput
@@ -18589,6 +18630,7 @@ export namespace Prisma {
   export type ResumeTemplateUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    displayName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUncheckedUpdateManyWithoutTemplateNestedInput
@@ -18597,6 +18639,7 @@ export namespace Prisma {
   export type ResumeTemplateCreateManyInput = {
     id?: string
     name: string
+    displayName: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18604,6 +18647,7 @@ export namespace Prisma {
   export type ResumeTemplateUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    displayName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18611,6 +18655,7 @@ export namespace Prisma {
   export type ResumeTemplateUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    displayName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18618,6 +18663,7 @@ export namespace Prisma {
   export type ResumeCreateInput = {
     id?: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -18644,6 +18690,7 @@ export namespace Prisma {
     templateId: string
     ownerId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -18666,6 +18713,7 @@ export namespace Prisma {
   export type ResumeUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -18692,6 +18740,7 @@ export namespace Prisma {
     templateId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -18716,6 +18765,7 @@ export namespace Prisma {
     templateId: string
     ownerId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -18731,6 +18781,7 @@ export namespace Prisma {
   export type ResumeUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -18748,6 +18799,7 @@ export namespace Prisma {
     templateId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -19649,6 +19701,7 @@ export namespace Prisma {
   export type ResumeTemplateCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    displayName?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -19656,6 +19709,7 @@ export namespace Prisma {
   export type ResumeTemplateMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    displayName?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -19663,6 +19717,7 @@ export namespace Prisma {
   export type ResumeTemplateMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    displayName?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -19747,6 +19802,7 @@ export namespace Prisma {
     templateId?: SortOrder
     ownerId?: SortOrder
     resumeName?: SortOrder
+    themeColor?: SortOrder
     jobTitle?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
@@ -19764,6 +19820,7 @@ export namespace Prisma {
     templateId?: SortOrder
     ownerId?: SortOrder
     resumeName?: SortOrder
+    themeColor?: SortOrder
     jobTitle?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
@@ -19781,6 +19838,7 @@ export namespace Prisma {
     templateId?: SortOrder
     ownerId?: SortOrder
     resumeName?: SortOrder
+    themeColor?: SortOrder
     jobTitle?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
@@ -21215,6 +21273,7 @@ export namespace Prisma {
   export type ResumeCreateWithoutTemplateInput = {
     id?: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -21239,6 +21298,7 @@ export namespace Prisma {
     id?: string
     ownerId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -21292,6 +21352,7 @@ export namespace Prisma {
     templateId?: StringFilter<"Resume"> | string
     ownerId?: StringFilter<"Resume"> | string
     resumeName?: StringFilter<"Resume"> | string
+    themeColor?: StringFilter<"Resume"> | string
     jobTitle?: StringFilter<"Resume"> | string
     firstName?: StringFilter<"Resume"> | string
     lastName?: StringFilter<"Resume"> | string
@@ -21307,6 +21368,7 @@ export namespace Prisma {
   export type ResumeTemplateCreateWithoutResumeInput = {
     id?: string
     name: string
+    displayName: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21314,6 +21376,7 @@ export namespace Prisma {
   export type ResumeTemplateUncheckedCreateWithoutResumeInput = {
     id?: string
     name: string
+    displayName: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21584,6 +21647,7 @@ export namespace Prisma {
   export type ResumeTemplateUpdateWithoutResumeInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    displayName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21591,6 +21655,7 @@ export namespace Prisma {
   export type ResumeTemplateUncheckedUpdateWithoutResumeInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    displayName?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21846,6 +21911,7 @@ export namespace Prisma {
   export type ResumeCreateWithoutWorkExperienceInput = {
     id?: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -21871,6 +21937,7 @@ export namespace Prisma {
     templateId: string
     ownerId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -21908,6 +21975,7 @@ export namespace Prisma {
   export type ResumeUpdateWithoutWorkExperienceInput = {
     id?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -21933,6 +22001,7 @@ export namespace Prisma {
     templateId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -21954,6 +22023,7 @@ export namespace Prisma {
   export type ResumeCreateWithoutEducationInput = {
     id?: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -21979,6 +22049,7 @@ export namespace Prisma {
     templateId: string
     ownerId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22016,6 +22087,7 @@ export namespace Prisma {
   export type ResumeUpdateWithoutEducationInput = {
     id?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22041,6 +22113,7 @@ export namespace Prisma {
     templateId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22062,6 +22135,7 @@ export namespace Prisma {
   export type ResumeCreateWithoutProjectsInput = {
     id?: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22087,6 +22161,7 @@ export namespace Prisma {
     templateId: string
     ownerId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22124,6 +22199,7 @@ export namespace Prisma {
   export type ResumeUpdateWithoutProjectsInput = {
     id?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22149,6 +22225,7 @@ export namespace Prisma {
     templateId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22170,6 +22247,7 @@ export namespace Prisma {
   export type ResumeCreateWithoutLinksInput = {
     id?: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22195,6 +22273,7 @@ export namespace Prisma {
     templateId: string
     ownerId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22232,6 +22311,7 @@ export namespace Prisma {
   export type ResumeUpdateWithoutLinksInput = {
     id?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22257,6 +22337,7 @@ export namespace Prisma {
     templateId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22278,6 +22359,7 @@ export namespace Prisma {
   export type ResumeCreateWithoutSkillsInput = {
     id?: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22303,6 +22385,7 @@ export namespace Prisma {
     templateId: string
     ownerId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22340,6 +22423,7 @@ export namespace Prisma {
   export type ResumeUpdateWithoutSkillsInput = {
     id?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22365,6 +22449,7 @@ export namespace Prisma {
     templateId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22386,6 +22471,7 @@ export namespace Prisma {
   export type ResumeCreateWithoutLanguagesInput = {
     id?: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22411,6 +22497,7 @@ export namespace Prisma {
     templateId: string
     ownerId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22448,6 +22535,7 @@ export namespace Prisma {
   export type ResumeUpdateWithoutLanguagesInput = {
     id?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22473,6 +22561,7 @@ export namespace Prisma {
     templateId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22494,6 +22583,7 @@ export namespace Prisma {
   export type ResumeCreateWithoutCoursesInput = {
     id?: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22519,6 +22609,7 @@ export namespace Prisma {
     templateId: string
     ownerId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22556,6 +22647,7 @@ export namespace Prisma {
   export type ResumeUpdateWithoutCoursesInput = {
     id?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22581,6 +22673,7 @@ export namespace Prisma {
     templateId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22672,6 +22765,7 @@ export namespace Prisma {
   export type ResumeCreateWithoutOwnerInput = {
     id?: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22696,6 +22790,7 @@ export namespace Prisma {
     id?: string
     templateId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22810,6 +22905,7 @@ export namespace Prisma {
     id?: string
     ownerId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -22825,6 +22921,7 @@ export namespace Prisma {
   export type ResumeUpdateWithoutTemplateInput = {
     id?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22849,6 +22946,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -22872,6 +22970,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -23213,6 +23312,7 @@ export namespace Prisma {
     id?: string
     templateId: string
     resumeName: string
+    themeColor: string
     jobTitle: string
     firstName: string
     lastName: string
@@ -23303,6 +23403,7 @@ export namespace Prisma {
   export type ResumeUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -23327,6 +23428,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     templateId?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -23350,6 +23452,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     templateId?: StringFieldUpdateOperationsInput | string
     resumeName?: StringFieldUpdateOperationsInput | string
+    themeColor?: StringFieldUpdateOperationsInput | string
     jobTitle?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string

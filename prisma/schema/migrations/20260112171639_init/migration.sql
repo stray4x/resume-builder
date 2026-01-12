@@ -1,3 +1,9 @@
+-- CreateEnum
+CREATE TYPE "SkillLevel" AS ENUM ('Novice', 'Apprentice', 'Adept', 'Expert', 'Master', 'Legendary');
+
+-- CreateEnum
+CREATE TYPE "LanguageLevel" AS ENUM ('A1', 'A2', 'B1', 'B2', 'C1', 'C2');
+
 -- CreateTable
 CREATE TABLE "session" (
     "id" TEXT NOT NULL,
@@ -47,6 +53,7 @@ CREATE TABLE "verification" (
 CREATE TABLE "ResumeTemplate" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "displayName" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -59,6 +66,7 @@ CREATE TABLE "Resume" (
     "templateId" TEXT NOT NULL,
     "ownerId" TEXT NOT NULL,
     "resumeName" TEXT NOT NULL,
+    "themeColor" TEXT NOT NULL,
     "jobTitle" TEXT NOT NULL,
     "firstName" TEXT NOT NULL,
     "lastName" TEXT NOT NULL,
@@ -83,7 +91,7 @@ CREATE TABLE "WorkExperience" (
     "startDate" TIMESTAMP(3),
     "endDate" TIMESTAMP(3),
     "description" TEXT NOT NULL,
-    "sortOrder" INTEGER NOT NULL,
+    "sortOrder" BIGINT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -100,7 +108,7 @@ CREATE TABLE "Education" (
     "startDate" TIMESTAMP(3),
     "endDate" TIMESTAMP(3),
     "description" TEXT NOT NULL,
-    "sortOrder" INTEGER NOT NULL,
+    "sortOrder" BIGINT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -115,7 +123,7 @@ CREATE TABLE "Project" (
     "url" TEXT NOT NULL,
     "repoUrl" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "sortOrder" INTEGER NOT NULL,
+    "sortOrder" BIGINT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -128,7 +136,7 @@ CREATE TABLE "Link" (
     "resumeId" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "url" TEXT NOT NULL,
-    "sortOrder" INTEGER NOT NULL,
+    "sortOrder" BIGINT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -140,8 +148,8 @@ CREATE TABLE "Skill" (
     "id" TEXT NOT NULL,
     "resumeId" TEXT NOT NULL,
     "title" TEXT NOT NULL,
-    "level" TEXT NOT NULL,
-    "sortOrder" INTEGER NOT NULL,
+    "level" "SkillLevel" NOT NULL,
+    "sortOrder" BIGINT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -153,8 +161,8 @@ CREATE TABLE "Language" (
     "id" TEXT NOT NULL,
     "resumeId" TEXT NOT NULL,
     "language" TEXT NOT NULL,
-    "level" TEXT NOT NULL,
-    "sortOrder" INTEGER NOT NULL,
+    "level" "LanguageLevel" NOT NULL,
+    "sortOrder" BIGINT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -167,8 +175,9 @@ CREATE TABLE "Course" (
     "resumeId" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "institution" TEXT NOT NULL,
-    "date" TIMESTAMP(3),
-    "sortOrder" INTEGER NOT NULL,
+    "startDate" TIMESTAMP(3),
+    "endDate" TIMESTAMP(3),
+    "sortOrder" BIGINT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -181,7 +190,6 @@ CREATE TABLE "user" (
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "emailVerified" BOOLEAN NOT NULL DEFAULT false,
-    "image" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -193,6 +201,9 @@ CREATE UNIQUE INDEX "session_token_key" ON "session"("token");
 
 -- CreateIndex
 CREATE INDEX "ResumeTemplate_name_idx" ON "ResumeTemplate"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ResumeTemplate_name_key" ON "ResumeTemplate"("name");
 
 -- CreateIndex
 CREATE INDEX "WorkExperience_resumeId_sortOrder_idx" ON "WorkExperience"("resumeId", "sortOrder");

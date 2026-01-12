@@ -160,6 +160,7 @@ exports.Prisma.VerificationScalarFieldEnum = {
 exports.Prisma.ResumeTemplateScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  displayName: 'displayName',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -169,6 +170,7 @@ exports.Prisma.ResumeScalarFieldEnum = {
   templateId: 'templateId',
   ownerId: 'ownerId',
   resumeName: 'resumeName',
+  themeColor: 'themeColor',
   jobTitle: 'jobTitle',
   firstName: 'firstName',
   lastName: 'lastName',

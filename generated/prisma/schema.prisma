@@ -61,12 +61,14 @@ model Verification {
 }
 
 model ResumeTemplate {
-  id        String   @id @default(cuid())
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  resume    Resume[]
+  id          String   @id @default(cuid())
+  name        String
+  displayName String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  resume      Resume[]
 
+  @@unique([name])
   @@index([name])
 }
 
@@ -75,6 +77,7 @@ model Resume {
   templateId String
   ownerId    String
   resumeName String
+  themeColor String
   jobTitle   String
   firstName  String
   lastName   String
