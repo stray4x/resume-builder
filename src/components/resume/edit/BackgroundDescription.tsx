@@ -31,7 +31,7 @@ interface IBackgroundDescProps {
   updateInputTwo: (value: string) => void;
 }
 
-const getItemTitle = (inpOne: string, inpTwo: string) => {
+export const getItemTitle = (inpOne: string, inpTwo: string) => {
   if (inpOne && inpTwo) {
     return `${inpOne} at ${inpTwo}`;
   }

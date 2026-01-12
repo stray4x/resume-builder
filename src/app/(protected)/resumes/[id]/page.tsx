@@ -1,4 +1,5 @@
 import { EditResumeForm } from "@/components/resume/edit/EditResumeForm";
+import { ResumePreview } from "@/components/resume/preview/ResumePreview";
 import { requireSession } from "@/server/better-auth/server";
 import { db } from "@/server/db";
 
@@ -30,7 +31,7 @@ export default async function ResumePage({
       <div className="no-arrow-scroll h-[calc(screen-64px)] overflow-y-auto p-12">
         <EditResumeForm resume={resume as ResumeWithRelations} />
       </div>
-      <div className="bg-amber-50 p-4">resume preview</div>
+      <ResumePreview />
     </div>
   );
 }
