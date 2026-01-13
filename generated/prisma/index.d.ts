@@ -7913,6 +7913,7 @@ export namespace Prisma {
     city: string | null
     startDate: Date | null
     endDate: Date | null
+    endDateIsCurrent: boolean | null
     description: string | null
     sortOrder: bigint | null
     createdAt: Date | null
@@ -7927,6 +7928,7 @@ export namespace Prisma {
     city: string | null
     startDate: Date | null
     endDate: Date | null
+    endDateIsCurrent: boolean | null
     description: string | null
     sortOrder: bigint | null
     createdAt: Date | null
@@ -7941,6 +7943,7 @@ export namespace Prisma {
     city: number
     startDate: number
     endDate: number
+    endDateIsCurrent: number
     description: number
     sortOrder: number
     createdAt: number
@@ -7965,6 +7968,7 @@ export namespace Prisma {
     city?: true
     startDate?: true
     endDate?: true
+    endDateIsCurrent?: true
     description?: true
     sortOrder?: true
     createdAt?: true
@@ -7979,6 +7983,7 @@ export namespace Prisma {
     city?: true
     startDate?: true
     endDate?: true
+    endDateIsCurrent?: true
     description?: true
     sortOrder?: true
     createdAt?: true
@@ -7993,6 +7998,7 @@ export namespace Prisma {
     city?: true
     startDate?: true
     endDate?: true
+    endDateIsCurrent?: true
     description?: true
     sortOrder?: true
     createdAt?: true
@@ -8094,6 +8100,7 @@ export namespace Prisma {
     city: string
     startDate: Date | null
     endDate: Date | null
+    endDateIsCurrent: boolean
     description: string
     sortOrder: bigint
     createdAt: Date
@@ -8127,6 +8134,7 @@ export namespace Prisma {
     city?: boolean
     startDate?: boolean
     endDate?: boolean
+    endDateIsCurrent?: boolean
     description?: boolean
     sortOrder?: boolean
     createdAt?: boolean
@@ -8142,6 +8150,7 @@ export namespace Prisma {
     city?: boolean
     startDate?: boolean
     endDate?: boolean
+    endDateIsCurrent?: boolean
     description?: boolean
     sortOrder?: boolean
     createdAt?: boolean
@@ -8157,6 +8166,7 @@ export namespace Prisma {
     city?: boolean
     startDate?: boolean
     endDate?: boolean
+    endDateIsCurrent?: boolean
     description?: boolean
     sortOrder?: boolean
     createdAt?: boolean
@@ -8172,13 +8182,14 @@ export namespace Prisma {
     city?: boolean
     startDate?: boolean
     endDate?: boolean
+    endDateIsCurrent?: boolean
     description?: boolean
     sortOrder?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type WorkExperienceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "resumeId" | "jobTitle" | "employer" | "city" | "startDate" | "endDate" | "description" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["workExperience"]>
+  export type WorkExperienceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "resumeId" | "jobTitle" | "employer" | "city" | "startDate" | "endDate" | "endDateIsCurrent" | "description" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["workExperience"]>
   export type WorkExperienceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     resume?: boolean | ResumeDefaultArgs<ExtArgs>
   }
@@ -8202,6 +8213,7 @@ export namespace Prisma {
       city: string
       startDate: Date | null
       endDate: Date | null
+      endDateIsCurrent: boolean
       description: string
       sortOrder: bigint
       createdAt: Date
@@ -8637,6 +8649,7 @@ export namespace Prisma {
     readonly city: FieldRef<"WorkExperience", 'String'>
     readonly startDate: FieldRef<"WorkExperience", 'DateTime'>
     readonly endDate: FieldRef<"WorkExperience", 'DateTime'>
+    readonly endDateIsCurrent: FieldRef<"WorkExperience", 'Boolean'>
     readonly description: FieldRef<"WorkExperience", 'String'>
     readonly sortOrder: FieldRef<"WorkExperience", 'BigInt'>
     readonly createdAt: FieldRef<"WorkExperience", 'DateTime'>
@@ -9083,6 +9096,7 @@ export namespace Prisma {
     city: string | null
     startDate: Date | null
     endDate: Date | null
+    endDateIsCurrent: boolean | null
     description: string | null
     sortOrder: bigint | null
     createdAt: Date | null
@@ -9097,6 +9111,7 @@ export namespace Prisma {
     city: string | null
     startDate: Date | null
     endDate: Date | null
+    endDateIsCurrent: boolean | null
     description: string | null
     sortOrder: bigint | null
     createdAt: Date | null
@@ -9111,6 +9126,7 @@ export namespace Prisma {
     city: number
     startDate: number
     endDate: number
+    endDateIsCurrent: number
     description: number
     sortOrder: number
     createdAt: number
@@ -9135,6 +9151,7 @@ export namespace Prisma {
     city?: true
     startDate?: true
     endDate?: true
+    endDateIsCurrent?: true
     description?: true
     sortOrder?: true
     createdAt?: true
@@ -9149,6 +9166,7 @@ export namespace Prisma {
     city?: true
     startDate?: true
     endDate?: true
+    endDateIsCurrent?: true
     description?: true
     sortOrder?: true
     createdAt?: true
@@ -9163,6 +9181,7 @@ export namespace Prisma {
     city?: true
     startDate?: true
     endDate?: true
+    endDateIsCurrent?: true
     description?: true
     sortOrder?: true
     createdAt?: true
@@ -9264,6 +9283,7 @@ export namespace Prisma {
     city: string
     startDate: Date | null
     endDate: Date | null
+    endDateIsCurrent: boolean
     description: string
     sortOrder: bigint
     createdAt: Date
@@ -9297,6 +9317,7 @@ export namespace Prisma {
     city?: boolean
     startDate?: boolean
     endDate?: boolean
+    endDateIsCurrent?: boolean
     description?: boolean
     sortOrder?: boolean
     createdAt?: boolean
@@ -9312,6 +9333,7 @@ export namespace Prisma {
     city?: boolean
     startDate?: boolean
     endDate?: boolean
+    endDateIsCurrent?: boolean
     description?: boolean
     sortOrder?: boolean
     createdAt?: boolean
@@ -9327,6 +9349,7 @@ export namespace Prisma {
     city?: boolean
     startDate?: boolean
     endDate?: boolean
+    endDateIsCurrent?: boolean
     description?: boolean
     sortOrder?: boolean
     createdAt?: boolean
@@ -9342,13 +9365,14 @@ export namespace Prisma {
     city?: boolean
     startDate?: boolean
     endDate?: boolean
+    endDateIsCurrent?: boolean
     description?: boolean
     sortOrder?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type EducationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "resumeId" | "school" | "degree" | "city" | "startDate" | "endDate" | "description" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["education"]>
+  export type EducationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "resumeId" | "school" | "degree" | "city" | "startDate" | "endDate" | "endDateIsCurrent" | "description" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["education"]>
   export type EducationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     resume?: boolean | ResumeDefaultArgs<ExtArgs>
   }
@@ -9372,6 +9396,7 @@ export namespace Prisma {
       city: string
       startDate: Date | null
       endDate: Date | null
+      endDateIsCurrent: boolean
       description: string
       sortOrder: bigint
       createdAt: Date
@@ -9807,6 +9832,7 @@ export namespace Prisma {
     readonly city: FieldRef<"Education", 'String'>
     readonly startDate: FieldRef<"Education", 'DateTime'>
     readonly endDate: FieldRef<"Education", 'DateTime'>
+    readonly endDateIsCurrent: FieldRef<"Education", 'Boolean'>
     readonly description: FieldRef<"Education", 'String'>
     readonly sortOrder: FieldRef<"Education", 'BigInt'>
     readonly createdAt: FieldRef<"Education", 'DateTime'>
@@ -14750,6 +14776,7 @@ export namespace Prisma {
     institution: string | null
     startDate: Date | null
     endDate: Date | null
+    endDateIsCurrent: boolean | null
     sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -14762,6 +14789,7 @@ export namespace Prisma {
     institution: string | null
     startDate: Date | null
     endDate: Date | null
+    endDateIsCurrent: boolean | null
     sortOrder: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -14774,6 +14802,7 @@ export namespace Prisma {
     institution: number
     startDate: number
     endDate: number
+    endDateIsCurrent: number
     sortOrder: number
     createdAt: number
     updatedAt: number
@@ -14796,6 +14825,7 @@ export namespace Prisma {
     institution?: true
     startDate?: true
     endDate?: true
+    endDateIsCurrent?: true
     sortOrder?: true
     createdAt?: true
     updatedAt?: true
@@ -14808,6 +14838,7 @@ export namespace Prisma {
     institution?: true
     startDate?: true
     endDate?: true
+    endDateIsCurrent?: true
     sortOrder?: true
     createdAt?: true
     updatedAt?: true
@@ -14820,6 +14851,7 @@ export namespace Prisma {
     institution?: true
     startDate?: true
     endDate?: true
+    endDateIsCurrent?: true
     sortOrder?: true
     createdAt?: true
     updatedAt?: true
@@ -14919,6 +14951,7 @@ export namespace Prisma {
     institution: string
     startDate: Date | null
     endDate: Date | null
+    endDateIsCurrent: boolean
     sortOrder: bigint
     createdAt: Date
     updatedAt: Date
@@ -14950,6 +14983,7 @@ export namespace Prisma {
     institution?: boolean
     startDate?: boolean
     endDate?: boolean
+    endDateIsCurrent?: boolean
     sortOrder?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -14963,6 +14997,7 @@ export namespace Prisma {
     institution?: boolean
     startDate?: boolean
     endDate?: boolean
+    endDateIsCurrent?: boolean
     sortOrder?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -14976,6 +15011,7 @@ export namespace Prisma {
     institution?: boolean
     startDate?: boolean
     endDate?: boolean
+    endDateIsCurrent?: boolean
     sortOrder?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -14989,12 +15025,13 @@ export namespace Prisma {
     institution?: boolean
     startDate?: boolean
     endDate?: boolean
+    endDateIsCurrent?: boolean
     sortOrder?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CourseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "resumeId" | "title" | "institution" | "startDate" | "endDate" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["course"]>
+  export type CourseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "resumeId" | "title" | "institution" | "startDate" | "endDate" | "endDateIsCurrent" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["course"]>
   export type CourseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     resume?: boolean | ResumeDefaultArgs<ExtArgs>
   }
@@ -15017,6 +15054,7 @@ export namespace Prisma {
       institution: string
       startDate: Date | null
       endDate: Date | null
+      endDateIsCurrent: boolean
       sortOrder: bigint
       createdAt: Date
       updatedAt: Date
@@ -15450,6 +15488,7 @@ export namespace Prisma {
     readonly institution: FieldRef<"Course", 'String'>
     readonly startDate: FieldRef<"Course", 'DateTime'>
     readonly endDate: FieldRef<"Course", 'DateTime'>
+    readonly endDateIsCurrent: FieldRef<"Course", 'Boolean'>
     readonly sortOrder: FieldRef<"Course", 'BigInt'>
     readonly createdAt: FieldRef<"Course", 'DateTime'>
     readonly updatedAt: FieldRef<"Course", 'DateTime'>
@@ -17105,6 +17144,7 @@ export namespace Prisma {
     city: 'city',
     startDate: 'startDate',
     endDate: 'endDate',
+    endDateIsCurrent: 'endDateIsCurrent',
     description: 'description',
     sortOrder: 'sortOrder',
     createdAt: 'createdAt',
@@ -17122,6 +17162,7 @@ export namespace Prisma {
     city: 'city',
     startDate: 'startDate',
     endDate: 'endDate',
+    endDateIsCurrent: 'endDateIsCurrent',
     description: 'description',
     sortOrder: 'sortOrder',
     createdAt: 'createdAt',
@@ -17192,6 +17233,7 @@ export namespace Prisma {
     institution: 'institution',
     startDate: 'startDate',
     endDate: 'endDate',
+    endDateIsCurrent: 'endDateIsCurrent',
     sortOrder: 'sortOrder',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -17270,6 +17312,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'BigInt'
    */
   export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
@@ -17308,13 +17357,6 @@ export namespace Prisma {
    * Reference to a field of type 'LanguageLevel[]'
    */
   export type ListEnumLanguageLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LanguageLevel[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -17766,6 +17808,7 @@ export namespace Prisma {
     city?: StringFilter<"WorkExperience"> | string
     startDate?: DateTimeNullableFilter<"WorkExperience"> | Date | string | null
     endDate?: DateTimeNullableFilter<"WorkExperience"> | Date | string | null
+    endDateIsCurrent?: BoolFilter<"WorkExperience"> | boolean
     description?: StringFilter<"WorkExperience"> | string
     sortOrder?: BigIntFilter<"WorkExperience"> | bigint | number
     createdAt?: DateTimeFilter<"WorkExperience"> | Date | string
@@ -17781,6 +17824,7 @@ export namespace Prisma {
     city?: SortOrder
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
+    endDateIsCurrent?: SortOrder
     description?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
@@ -17799,6 +17843,7 @@ export namespace Prisma {
     city?: StringFilter<"WorkExperience"> | string
     startDate?: DateTimeNullableFilter<"WorkExperience"> | Date | string | null
     endDate?: DateTimeNullableFilter<"WorkExperience"> | Date | string | null
+    endDateIsCurrent?: BoolFilter<"WorkExperience"> | boolean
     description?: StringFilter<"WorkExperience"> | string
     sortOrder?: BigIntFilter<"WorkExperience"> | bigint | number
     createdAt?: DateTimeFilter<"WorkExperience"> | Date | string
@@ -17814,6 +17859,7 @@ export namespace Prisma {
     city?: SortOrder
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
+    endDateIsCurrent?: SortOrder
     description?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
@@ -17836,6 +17882,7 @@ export namespace Prisma {
     city?: StringWithAggregatesFilter<"WorkExperience"> | string
     startDate?: DateTimeNullableWithAggregatesFilter<"WorkExperience"> | Date | string | null
     endDate?: DateTimeNullableWithAggregatesFilter<"WorkExperience"> | Date | string | null
+    endDateIsCurrent?: BoolWithAggregatesFilter<"WorkExperience"> | boolean
     description?: StringWithAggregatesFilter<"WorkExperience"> | string
     sortOrder?: BigIntWithAggregatesFilter<"WorkExperience"> | bigint | number
     createdAt?: DateTimeWithAggregatesFilter<"WorkExperience"> | Date | string
@@ -17853,6 +17900,7 @@ export namespace Prisma {
     city?: StringFilter<"Education"> | string
     startDate?: DateTimeNullableFilter<"Education"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Education"> | Date | string | null
+    endDateIsCurrent?: BoolFilter<"Education"> | boolean
     description?: StringFilter<"Education"> | string
     sortOrder?: BigIntFilter<"Education"> | bigint | number
     createdAt?: DateTimeFilter<"Education"> | Date | string
@@ -17868,6 +17916,7 @@ export namespace Prisma {
     city?: SortOrder
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
+    endDateIsCurrent?: SortOrder
     description?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
@@ -17886,6 +17935,7 @@ export namespace Prisma {
     city?: StringFilter<"Education"> | string
     startDate?: DateTimeNullableFilter<"Education"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Education"> | Date | string | null
+    endDateIsCurrent?: BoolFilter<"Education"> | boolean
     description?: StringFilter<"Education"> | string
     sortOrder?: BigIntFilter<"Education"> | bigint | number
     createdAt?: DateTimeFilter<"Education"> | Date | string
@@ -17901,6 +17951,7 @@ export namespace Prisma {
     city?: SortOrder
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
+    endDateIsCurrent?: SortOrder
     description?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
@@ -17923,6 +17974,7 @@ export namespace Prisma {
     city?: StringWithAggregatesFilter<"Education"> | string
     startDate?: DateTimeNullableWithAggregatesFilter<"Education"> | Date | string | null
     endDate?: DateTimeNullableWithAggregatesFilter<"Education"> | Date | string | null
+    endDateIsCurrent?: BoolWithAggregatesFilter<"Education"> | boolean
     description?: StringWithAggregatesFilter<"Education"> | string
     sortOrder?: BigIntWithAggregatesFilter<"Education"> | bigint | number
     createdAt?: DateTimeWithAggregatesFilter<"Education"> | Date | string
@@ -18217,6 +18269,7 @@ export namespace Prisma {
     institution?: StringFilter<"Course"> | string
     startDate?: DateTimeNullableFilter<"Course"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Course"> | Date | string | null
+    endDateIsCurrent?: BoolFilter<"Course"> | boolean
     sortOrder?: BigIntFilter<"Course"> | bigint | number
     createdAt?: DateTimeFilter<"Course"> | Date | string
     updatedAt?: DateTimeFilter<"Course"> | Date | string
@@ -18230,6 +18283,7 @@ export namespace Prisma {
     institution?: SortOrder
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
+    endDateIsCurrent?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18246,6 +18300,7 @@ export namespace Prisma {
     institution?: StringFilter<"Course"> | string
     startDate?: DateTimeNullableFilter<"Course"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Course"> | Date | string | null
+    endDateIsCurrent?: BoolFilter<"Course"> | boolean
     sortOrder?: BigIntFilter<"Course"> | bigint | number
     createdAt?: DateTimeFilter<"Course"> | Date | string
     updatedAt?: DateTimeFilter<"Course"> | Date | string
@@ -18259,6 +18314,7 @@ export namespace Prisma {
     institution?: SortOrder
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
+    endDateIsCurrent?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18279,6 +18335,7 @@ export namespace Prisma {
     institution?: StringWithAggregatesFilter<"Course"> | string
     startDate?: DateTimeNullableWithAggregatesFilter<"Course"> | Date | string | null
     endDate?: DateTimeNullableWithAggregatesFilter<"Course"> | Date | string | null
+    endDateIsCurrent?: BoolWithAggregatesFilter<"Course"> | boolean
     sortOrder?: BigIntWithAggregatesFilter<"Course"> | bigint | number
     createdAt?: DateTimeWithAggregatesFilter<"Course"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Course"> | Date | string
@@ -18819,6 +18876,7 @@ export namespace Prisma {
     city: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     description: string
     sortOrder: bigint | number
     createdAt?: Date | string
@@ -18834,6 +18892,7 @@ export namespace Prisma {
     city: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     description: string
     sortOrder: bigint | number
     createdAt?: Date | string
@@ -18847,6 +18906,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18862,6 +18922,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18876,6 +18937,7 @@ export namespace Prisma {
     city: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     description: string
     sortOrder: bigint | number
     createdAt?: Date | string
@@ -18889,6 +18951,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18903,6 +18966,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18916,6 +18980,7 @@ export namespace Prisma {
     city: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     description: string
     sortOrder: bigint | number
     createdAt?: Date | string
@@ -18931,6 +18996,7 @@ export namespace Prisma {
     city: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     description: string
     sortOrder: bigint | number
     createdAt?: Date | string
@@ -18944,6 +19010,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18959,6 +19026,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18973,6 +19041,7 @@ export namespace Prisma {
     city: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     description: string
     sortOrder: bigint | number
     createdAt?: Date | string
@@ -18986,6 +19055,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19000,6 +19070,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19302,6 +19373,7 @@ export namespace Prisma {
     institution: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -19315,6 +19387,7 @@ export namespace Prisma {
     institution: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -19326,6 +19399,7 @@ export namespace Prisma {
     institution?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19339,6 +19413,7 @@ export namespace Prisma {
     institution?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19351,6 +19426,7 @@ export namespace Prisma {
     institution: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -19362,6 +19438,7 @@ export namespace Prisma {
     institution?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19374,6 +19451,7 @@ export namespace Prisma {
     institution?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19851,6 +19929,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -19875,6 +19958,7 @@ export namespace Prisma {
     city?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    endDateIsCurrent?: SortOrder
     description?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
@@ -19893,6 +19977,7 @@ export namespace Prisma {
     city?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    endDateIsCurrent?: SortOrder
     description?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
@@ -19907,6 +19992,7 @@ export namespace Prisma {
     city?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    endDateIsCurrent?: SortOrder
     description?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
@@ -19915,6 +20001,14 @@ export namespace Prisma {
 
   export type WorkExperienceSumOrderByAggregateInput = {
     sortOrder?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -19941,6 +20035,7 @@ export namespace Prisma {
     city?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    endDateIsCurrent?: SortOrder
     description?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
@@ -19959,6 +20054,7 @@ export namespace Prisma {
     city?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    endDateIsCurrent?: SortOrder
     description?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
@@ -19973,6 +20069,7 @@ export namespace Prisma {
     city?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    endDateIsCurrent?: SortOrder
     description?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
@@ -20182,6 +20279,7 @@ export namespace Prisma {
     institution?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    endDateIsCurrent?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -20198,6 +20296,7 @@ export namespace Prisma {
     institution?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    endDateIsCurrent?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -20210,6 +20309,7 @@ export namespace Prisma {
     institution?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    endDateIsCurrent?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -20217,11 +20317,6 @@ export namespace Prisma {
 
   export type CourseSumOrderByAggregateInput = {
     sortOrder?: SortOrder
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type SessionListRelationFilter = {
@@ -20269,14 +20364,6 @@ export namespace Prisma {
     emailVerified?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -20693,6 +20780,10 @@ export namespace Prisma {
     connect?: ResumeWhereUniqueInput
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
@@ -20841,10 +20932,6 @@ export namespace Prisma {
     connectOrCreate?: ResumeCreateOrConnectWithoutOwnerInput | ResumeCreateOrConnectWithoutOwnerInput[]
     createMany?: ResumeCreateManyOwnerInputEnvelope
     connect?: ResumeWhereUniqueInput | ResumeWhereUniqueInput[]
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type SessionUpdateManyWithoutUserNestedInput = {
@@ -21065,6 +21152,11 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedBigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -21074,6 +21166,14 @@ export namespace Prisma {
     gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -21135,19 +21235,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumLanguageLevelFilter<$PrismaModel>
     _max?: NestedEnumLanguageLevelFilter<$PrismaModel>
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -21420,6 +21507,7 @@ export namespace Prisma {
     city: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     description: string
     sortOrder: bigint | number
     createdAt?: Date | string
@@ -21433,6 +21521,7 @@ export namespace Prisma {
     city: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     description: string
     sortOrder: bigint | number
     createdAt?: Date | string
@@ -21456,6 +21545,7 @@ export namespace Prisma {
     city: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     description: string
     sortOrder: bigint | number
     createdAt?: Date | string
@@ -21469,6 +21559,7 @@ export namespace Prisma {
     city: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     description: string
     sortOrder: bigint | number
     createdAt?: Date | string
@@ -21607,6 +21698,7 @@ export namespace Prisma {
     institution: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21618,6 +21710,7 @@ export namespace Prisma {
     institution: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -21720,6 +21813,7 @@ export namespace Prisma {
     city?: StringFilter<"WorkExperience"> | string
     startDate?: DateTimeNullableFilter<"WorkExperience"> | Date | string | null
     endDate?: DateTimeNullableFilter<"WorkExperience"> | Date | string | null
+    endDateIsCurrent?: BoolFilter<"WorkExperience"> | boolean
     description?: StringFilter<"WorkExperience"> | string
     sortOrder?: BigIntFilter<"WorkExperience"> | bigint | number
     createdAt?: DateTimeFilter<"WorkExperience"> | Date | string
@@ -21753,6 +21847,7 @@ export namespace Prisma {
     city?: StringFilter<"Education"> | string
     startDate?: DateTimeNullableFilter<"Education"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Education"> | Date | string | null
+    endDateIsCurrent?: BoolFilter<"Education"> | boolean
     description?: StringFilter<"Education"> | string
     sortOrder?: BigIntFilter<"Education"> | bigint | number
     createdAt?: DateTimeFilter<"Education"> | Date | string
@@ -21903,6 +21998,7 @@ export namespace Prisma {
     institution?: StringFilter<"Course"> | string
     startDate?: DateTimeNullableFilter<"Course"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Course"> | Date | string | null
+    endDateIsCurrent?: BoolFilter<"Course"> | boolean
     sortOrder?: BigIntFilter<"Course"> | bigint | number
     createdAt?: DateTimeFilter<"Course"> | Date | string
     updatedAt?: DateTimeFilter<"Course"> | Date | string
@@ -22990,6 +23086,7 @@ export namespace Prisma {
     city: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     description: string
     sortOrder: bigint | number
     createdAt?: Date | string
@@ -23003,6 +23100,7 @@ export namespace Prisma {
     city: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     description: string
     sortOrder: bigint | number
     createdAt?: Date | string
@@ -23053,6 +23151,7 @@ export namespace Prisma {
     institution: string
     startDate?: Date | string | null
     endDate?: Date | string | null
+    endDateIsCurrent?: boolean
     sortOrder: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -23065,6 +23164,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23078,6 +23178,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23091,6 +23192,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23104,6 +23206,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23117,6 +23220,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23130,6 +23234,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23256,6 +23361,7 @@ export namespace Prisma {
     institution?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23267,6 +23373,7 @@ export namespace Prisma {
     institution?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23278,6 +23385,7 @@ export namespace Prisma {
     institution?: StringFieldUpdateOperationsInput | string
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDateIsCurrent?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

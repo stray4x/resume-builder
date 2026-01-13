@@ -36,6 +36,7 @@ export const WorkExperience: React.FC = () => {
                 description={item.description}
                 startDate={item.startDate}
                 endDate={item.endDate}
+                endDateIsCurrent={item.endDateIsCurrent}
                 type="workExperience"
                 inputLabelOne="Job Title"
                 inputLabelTwo="Employer"
@@ -45,6 +46,9 @@ export const WorkExperience: React.FC = () => {
                 updateInputTwo={(v) => updateItem(item.id, v, "employer")}
                 updateCity={(v) => updateItem(item.id, v, "city")}
                 updateDescription={(v) => updateItem(item.id, v, "description")}
+                updateEndDateIsCurrent={(v) =>
+                  updateItem(item.id, v, "endDateIsCurrent")
+                }
                 handleDeleteItem={deleteItem}
               />
             );

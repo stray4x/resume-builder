@@ -33,6 +33,7 @@ export const Courses: React.FC = () => {
                 inputTwo={item.institution}
                 startDate={item.startDate}
                 endDate={item.startDate}
+                endDateIsCurrent={item.endDateIsCurrent}
                 type="course"
                 inputLabelOne="Course"
                 inputLabelTwo="Institution"
@@ -41,6 +42,9 @@ export const Courses: React.FC = () => {
                 updateEndDate={(v) => updateItem(item.id, v, "endDate")}
                 updateInputOne={(v) => updateItem(item.id, v, "title")}
                 updateInputTwo={(v) => updateItem(item.id, v, "institution")}
+                updateEndDateIsCurrent={(v) =>
+                  updateItem(item.id, v, "endDateIsCurrent")
+                }
               />
             );
           })}

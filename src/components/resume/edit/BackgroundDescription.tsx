@@ -6,6 +6,7 @@ import { AccordionContent, AccordionTrigger } from "@/components/ui/accordion";
 import { DatePicker } from "@/components/ui/date-picker";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 import { TextEditor } from "@/components/ui/TextEditor";
 
 import { ResumeAccordion } from "./ui/EditResumeAccordion";
@@ -21,11 +22,13 @@ interface IBackgroundDescProps {
   city?: string;
   startDate: Date | null;
   endDate: Date | null;
+  endDateIsCurrent: boolean;
   type: "workExperience" | "education" | "course";
   handleDeleteItem: (id: string) => void;
   updateDescription?: (value: string) => void;
   updateStartDate: (value: Date | null) => void;
   updateEndDate: (value: Date | null) => void;
+  updateEndDateIsCurrent: (value: boolean) => void;
   updateCity?: (value: string) => void;
   updateInputOne: (value: string) => void;
   updateInputTwo: (value: string) => void;
@@ -49,6 +52,7 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
   description,
   startDate,
   endDate,
+  endDateIsCurrent,
   handleDeleteItem,
   updateDescription,
   updateStartDate,
@@ -56,11 +60,16 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
   updateCity,
   updateInputOne,
   updateInputTwo,
+  updateEndDateIsCurrent,
 }) => {
   return (
     <SortableItem id={id}>
       <ResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
-        <AccordionTrigger>{getItemTitle(inputOne, inputTwo)}</AccordionTrigger>
+        <AccordionTrigger>
+          {type === "education"
+            ? getItemTitle(inputTwo, inputOne)
+            : getItemTitle(inputOne, inputTwo)}
+        </AccordionTrigger>
         <AccordionContent className="h-fit">
           <div className="mt-1 grid grid-cols-2 gap-8">
             <div className="flex flex-col gap-4">
@@ -111,8 +120,21 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
               <DatePicker
                 label="End Date"
                 value={endDate}
+                disabled={endDateIsCurrent}
                 onChange={updateEndDate}
               />
+              <div className="flex gap-2">
+                <Switch
+                  id={`end-date-current-${id}`}
+                  checked={endDateIsCurrent}
+                  onCheckedChange={updateEndDateIsCurrent}
+                />
+                <Label htmlFor={`end-date-current-${id}`}>
+                  {type === "workExperience" && "Currently work here"}
+                  {type === "education" && "Currently study here"}
+                  {type === "course" && "Currently taking this course"}
+                </Label>
+              </div>
             </div>
           </div>
 

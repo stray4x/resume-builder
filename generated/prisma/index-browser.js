@@ -191,6 +191,7 @@ exports.Prisma.WorkExperienceScalarFieldEnum = {
   city: 'city',
   startDate: 'startDate',
   endDate: 'endDate',
+  endDateIsCurrent: 'endDateIsCurrent',
   description: 'description',
   sortOrder: 'sortOrder',
   createdAt: 'createdAt',
@@ -205,6 +206,7 @@ exports.Prisma.EducationScalarFieldEnum = {
   city: 'city',
   startDate: 'startDate',
   endDate: 'endDate',
+  endDateIsCurrent: 'endDateIsCurrent',
   description: 'description',
   sortOrder: 'sortOrder',
   createdAt: 'createdAt',
@@ -260,6 +262,7 @@ exports.Prisma.CourseScalarFieldEnum = {
   institution: 'institution',
   startDate: 'startDate',
   endDate: 'endDate',
+  endDateIsCurrent: 'endDateIsCurrent',
   sortOrder: 'sortOrder',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

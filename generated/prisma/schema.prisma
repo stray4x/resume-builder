@@ -101,15 +101,16 @@ model Resume {
 }
 
 model WorkExperience {
-  id          String    @id @default(cuid())
-  resumeId    String
-  jobTitle    String
-  employer    String
-  city        String
-  startDate   DateTime?
-  endDate     DateTime?
-  description String    @db.Text
-  sortOrder   BigInt
+  id               String    @id @default(cuid())
+  resumeId         String
+  jobTitle         String
+  employer         String
+  city             String
+  startDate        DateTime?
+  endDate          DateTime?
+  endDateIsCurrent Boolean   @default(false)
+  description      String    @db.Text
+  sortOrder        BigInt
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -120,15 +121,16 @@ model WorkExperience {
 }
 
 model Education {
-  id          String    @id @default(cuid())
-  resumeId    String
-  school      String
-  degree      String
-  city        String
-  startDate   DateTime?
-  endDate     DateTime?
-  description String    @db.Text
-  sortOrder   BigInt
+  id               String    @id @default(cuid())
+  resumeId         String
+  school           String
+  degree           String
+  city             String
+  startDate        DateTime?
+  endDate          DateTime?
+  endDateIsCurrent Boolean   @default(false)
+  description      String    @db.Text
+  sortOrder        BigInt
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -219,13 +221,14 @@ model Language {
 }
 
 model Course {
-  id          String    @id @default(cuid())
-  resumeId    String
-  title       String
-  institution String
-  startDate   DateTime?
-  endDate     DateTime?
-  sortOrder   BigInt
+  id               String    @id @default(cuid())
+  resumeId         String
+  title            String
+  institution      String
+  startDate        DateTime?
+  endDate          DateTime?
+  endDateIsCurrent Boolean   @default(false)
+  sortOrder        BigInt
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

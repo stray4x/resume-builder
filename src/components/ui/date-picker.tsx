@@ -26,10 +26,17 @@ type Props = {
   id?: string;
   label: string;
   value?: Date | null;
+  disabled?: boolean;
   onChange?: (date: Date | null) => void;
 };
 
-export function DatePicker({ id = "date", label, value, onChange }: Props) {
+export function DatePicker({
+  id = "date",
+  label,
+  value,
+  disabled,
+  onChange,
+}: Props) {
   const [open, setOpen] = useState(false);
   const [month, setMonth] = useState<Date | undefined>(value ?? undefined);
 
@@ -73,6 +80,7 @@ export function DatePicker({ id = "date", label, value, onChange }: Props) {
           placeholder="DD/MM/YYYY"
           className="bg-background pr-10"
           onChange={handleInputChange}
+          disabled={disabled}
           error={error && "Invalid date"}
           onKeyDown={(e) => {
             if (e.key === "ArrowDown") {
@@ -82,7 +90,15 @@ export function DatePicker({ id = "date", label, value, onChange }: Props) {
           }}
         />
 
-        <Popover open={open} onOpenChange={setOpen}>
+        <Popover
+          open={open}
+          onOpenChange={(v) => {
+            if (disabled) {
+              return;
+            }
+            setOpen(v);
+          }}
+        >
           <PopoverTrigger asChild>
             <Button
               variant="ghost"

@@ -3,6 +3,7 @@
 import { Page, Text, View, StyleSheet, Link } from "@react-pdf/renderer";
 import React, { type JSX } from "react";
 
+import dayjs from "@/lib/dayjs";
 import { parseTiptapToPdfJsx } from "@/utils/parseTiptapToJSX";
 import { SkillLevel } from "generated/prisma";
 
@@ -30,6 +31,8 @@ enum Colors {
   grayBgPdf = "#525659",
   mainBlue = "#1976d2",
 }
+
+const getMonthYear = (date: Date | null) => dayjs(date).format("MMM, YYYY");
 
 const styles = StyleSheet.create({
   page: {
@@ -350,16 +353,22 @@ export const Courses: React.FC<ICoursesProps> = ({ courses }) => {
   return (
     <SectionContainer>
       <LeftSectionTitle>Courses</LeftSectionTitle>
-      {courses.map(({ id, title, institution, startDate, endDate }, idx) => (
-        <LeftItemContainer key={`${id}-${idx}`}>
-          <LeftItemTitle>
-            {combineWordsWithComma(title, institution)}
-          </LeftItemTitle>
-          <LeftItemSubtitle>
-            {startDate?.toDateString()} - {endDate?.toDateString()}
-          </LeftItemSubtitle>
-        </LeftItemContainer>
-      ))}
+      {courses.map(
+        (
+          { id, title, institution, startDate, endDate, endDateIsCurrent },
+          idx,
+        ) => (
+          <LeftItemContainer key={`${id}-${idx}`}>
+            <LeftItemTitle>
+              {combineWordsWithComma(title, institution)}
+            </LeftItemTitle>
+            <LeftItemSubtitle>
+              {getMonthYear(startDate)} -{" "}
+              {endDateIsCurrent ? "Present" : getMonthYear(endDate)}
+            </LeftItemSubtitle>
+          </LeftItemContainer>
+        ),
+      )}
     </SectionContainer>
   );
 };
@@ -412,14 +421,24 @@ export const EmploymentHistory: React.FC<IEmploymentHistoryProps> = ({
     <SectionContainer>
       <LeftSectionTitle>Work Experience</LeftSectionTitle>
       {workExperience.map(
-        ({ id, jobTitle, employer, city, startDate, endDate, description }) => (
+        ({
+          id,
+          jobTitle,
+          employer,
+          city,
+          startDate,
+          endDate,
+          endDateIsCurrent,
+          description,
+        }) => (
           <LeftItemContainer key={id}>
             <LeftItemTitle>
               {getItemTitle(jobTitle, employer)}
               {city && `, ${city}`}
             </LeftItemTitle>
             <LeftItemSubtitle>
-              {startDate?.toDateString()} - {endDate?.toDateString()}
+              {getMonthYear(startDate)} -{" "}
+              {endDateIsCurrent ? "Present" : getMonthYear(endDate)}
             </LeftItemSubtitle>
             {parseTiptapToPdfJsx(description)}
           </LeftItemContainer>
@@ -439,7 +458,16 @@ export const Education: React.FC<IEducationProps> = ({ education }) => {
       <LeftSectionTitle>Education</LeftSectionTitle>
       {education.map(
         (
-          { id, school, degree, city, startDate, endDate, description },
+          {
+            id,
+            school,
+            degree,
+            city,
+            startDate,
+            endDate,
+            endDateIsCurrent,
+            description,
+          },
           idx,
         ) => (
           <LeftItemContainer key={`${id}-${idx}`}>
@@ -447,7 +475,8 @@ export const Education: React.FC<IEducationProps> = ({ education }) => {
               {combineWordsWithComma(degree, school, city)}
             </LeftItemTitle>
             <LeftItemSubtitle>
-              {startDate?.toDateString()} - {endDate?.toDateString()}
+              {getMonthYear(startDate)} -{" "}
+              {endDateIsCurrent ? "Present" : getMonthYear(endDate)}
             </LeftItemSubtitle>
             {parseTiptapToPdfJsx(description)}
           </LeftItemContainer>

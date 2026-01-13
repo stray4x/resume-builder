@@ -9,7 +9,7 @@ export const WorkExperienceInput = z.object({
   city: z.string().max(100),
   startDate: z.coerce.date().optional().nullable(),
   endDate: z.coerce.date().optional().nullable(),
-  description: z.string().max(2000),
+  description: z.string().max(2500),
   sortOrder: SortOrder,
 });
 
@@ -19,7 +19,7 @@ export const EducationInput = z.object({
   city: z.string().max(100),
   startDate: z.coerce.date().optional().nullable(),
   endDate: z.coerce.date().optional().nullable(),
-  description: z.string().max(2000),
+  description: z.string().max(2500),
   sortOrder: SortOrder,
 });
 
@@ -27,7 +27,7 @@ export const ProjectInput = z.object({
   title: z.string().max(100),
   url: z.string().url().or(z.literal("")),
   repoUrl: z.string().url().or(z.literal("")),
-  description: z.string().max(2000),
+  description: z.string().max(2500),
   sortOrder: SortOrder,
 });
 
