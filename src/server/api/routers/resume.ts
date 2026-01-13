@@ -132,7 +132,7 @@ export const resumeRouter = createTRPCRouter({
       });
 
       if (!resume) {
-        throw new TRPCError({ code: "NOT_FOUND" });
+        throw new TRPCError({ code: "NOT_FOUND", message: "Resume not found" });
       }
 
       await validateMaxItemsCount(
@@ -203,7 +203,7 @@ export const resumeRouter = createTRPCRouter({
       });
 
       if (!resume) {
-        throw new TRPCError({ code: "NOT_FOUND" });
+        throw new TRPCError({ code: "NOT_FOUND", message: "Resume not found" });
       }
 
       await ctx.db.$transaction([
@@ -289,7 +289,7 @@ export const resumeRouter = createTRPCRouter({
       });
 
       if (!resume) {
-        throw new TRPCError({ code: "NOT_FOUND" });
+        throw new TRPCError({ code: "NOT_FOUND", message: "Resume not found" });
       }
 
       await ctx.db.$transaction([

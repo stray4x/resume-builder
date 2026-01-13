@@ -8,7 +8,7 @@ import { getSession } from "@/server/better-auth/server";
 import { clientUrls } from "@/utils/urls";
 
 import { DarkModeButton } from "./DarkModeButton";
-import { SaveChangesButton } from "../resume/edit/SaveChangesButton";
+import { EditResumeNavbar } from "../resume/edit/EditResumeNavbar";
 import { Button } from "../ui/button";
 import { GithubIcon } from "../ui/icons/Github";
 
@@ -23,7 +23,7 @@ export const Navbar: React.FC = async () => {
             <Link href={clientUrls.resumes}>my resumes</Link>
           </Button>
         )}
-        <SaveChangesButton />
+        <EditResumeNavbar />
       </div>
       <div className="flex gap-4">
         <Button asChild variant="ghost">

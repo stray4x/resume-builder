@@ -6,6 +6,7 @@ import React from "react";
 
 import { useResume } from "@/store/store";
 
+import { PreviewSpinner } from "./PreviewSpinner";
 import { DefaultTemplate } from "./templates/Default";
 
 const PDFViewer = dynamic(
@@ -53,9 +54,13 @@ export const ResumePreview: React.FC = () => {
   const state = useResume((state) => state);
 
   return (
-    <div>
-      <PDFViewer className="h-[calc(100vh-64px)] w-full">
-        <Document title={state.resumeName}>
+    <div className="relative">
+      <PreviewSpinner />
+      <PDFViewer
+        className="absolute h-[calc(100vh-64px)] w-full"
+        showToolbar={false}
+      >
+        <Document>
           <DefaultTemplate resume={state} />
         </Document>
       </PDFViewer>

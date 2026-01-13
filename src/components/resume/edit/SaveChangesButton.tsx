@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 
@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 import { useResume } from "@/store/store";
 import { ItemStatus } from "@/store/types";
 import { api } from "@/trpc/react";
-import { clientUrls } from "@/utils/urls";
+
+import type { TRPCClientErrorLike } from "@trpc/client";
 
 const getItemsToAdd = <T extends { status: ItemStatus }>(items: T[]) => {
   return items.filter((item) => item.status === ItemStatus.Added);
@@ -26,50 +27,51 @@ const getIdsToDelete = <T extends { id: string; status: ItemStatus }>(
     .map((item) => item.id);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const handleError = (e: TRPCClientErrorLike<any>, errorText: string) => {
+  try {
+    const messages = JSON.parse(e.message) as {
+      message: string;
+      path: string[];
+    }[];
+
+    messages.forEach((item) => {
+      toast.error(`${item.path[0]}: ${item.message}`);
+    });
+  } catch (_) {
+    toast.error(errorText);
+  }
+};
+
 export const SaveChangesButton: React.FC = () => {
   const router = useRouter();
-  const path = usePathname();
-  const { id } = useParams();
 
   const resume = useResume((state) => state);
 
   const { mutateAsync: updateResume, isPending } =
     api.resume.updateResume.useMutation({
-      onSuccess: (data) => {
-        console.log(data);
+      onError: (e) => {
+        handleError(e, "Something went wrong while updating resume");
       },
     });
 
   const { mutateAsync: addSections } = api.resume.addSections.useMutation({
-    onSuccess: (data) => {
-      console.log(data);
-    },
-    onError: () => {
-      toast.error("Something went wrong while adding sections");
+    onError: (e) => {
+      handleError(e, "Something went wrong while adding sections");
     },
   });
 
   const { mutateAsync: updSections } = api.resume.updateSections.useMutation({
-    onSuccess: (data) => {
-      console.log(data);
-    },
-    onError: () => {
-      toast.error("Something went wrong while updating sections");
+    onError: (e) => {
+      handleError(e, "Something went wrong while updating sections");
     },
   });
 
   const { mutateAsync: delSections } = api.resume.deleteSections.useMutation({
-    onSuccess: (data) => {
-      console.log(data);
-    },
-    onError: () => {
-      toast.error("Something went wrong while deleting sections");
+    onError: (e) => {
+      handleError(e, "Something went wrong while deleting sections");
     },
   });
-
-  if (!path.includes(clientUrls.editResume(id as string))) {
-    return null;
-  }
 
   const handleSave = async () => {
     const sectionsToAdd = {
@@ -102,8 +104,7 @@ export const SaveChangesButton: React.FC = () => {
       languages: getIdsToDelete(resume.languages),
     };
 
-    // todo: handle errors
-    await Promise.all([
+    void Promise.allSettled([
       updateResume({
         id: resume.id,
         templateId: resume.templateId,
@@ -121,9 +122,12 @@ export const SaveChangesButton: React.FC = () => {
       addSections({ resumeId: resume.id, ...sectionsToAdd }),
       delSections({ resumeId: resume.id, ...sectionsToDelete }),
       updSections({ resumeId: resume.id, ...sectionToUpdate }),
-    ]).then(() => toast.success("Saved successfully!"));
-
-    router.refresh();
+    ]).then((result) => {
+      if (result.every((item) => item.status === "fulfilled")) {
+        toast.success("Saved successfully!");
+        router.refresh();
+      }
+    });
   };
 
   return (
