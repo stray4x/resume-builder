@@ -70,7 +70,9 @@ export const resumeRouter = createTRPCRouter({
         phone: z.string().max(25),
         summary: z.string().max(2000),
         themeColor: z.string().max(10),
-        photoUrl: z.string().max(5000), // temporary - todo:fix this
+        photoUrl: z.string().max(5000, {
+          message: "Image is too large",
+        }), // temporary - todo:fix this
       }),
     )
     .mutation(async ({ ctx, input }) => {
