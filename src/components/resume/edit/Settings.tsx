@@ -99,7 +99,6 @@ export const Settings: React.FC = () => {
           </Select>
         </div>
       </div>
-      {/* todo: add color */}
     </div>
   );
 };

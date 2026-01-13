@@ -20,6 +20,10 @@ import type {
   WorkExperienceDraft,
 } from "@/store/types";
 
+// --------------------------------------------------------------------------------
+// types
+// --------------------------------------------------------------------------------
+
 enum Colors {
   white = "#fff",
   red = "#d32f2f",
@@ -32,7 +36,123 @@ enum Colors {
   mainBlue = "#1976d2",
 }
 
+type SummaryProps = {
+  summary: JSX.Element;
+};
+
+type HeaderProps = {
+  firstName: string;
+  lastName: string;
+  jobTitle: string;
+};
+
+type RightItemWithLevelProps = React.PropsWithChildren<{
+  title: string;
+  levelInPercent: number;
+  color: string;
+}>;
+
+type LinkCustomProps = React.PropsWithChildren<{
+  src: string;
+  color: string;
+  isEmail?: boolean;
+}>;
+
+type LinksProps = {
+  links: LinkDraft[];
+  color: string;
+};
+
+type SkillsProps = {
+  skills: SkillDraft[];
+  color: string;
+};
+
+type LanguagesProps = {
+  languages: LanguageDraft[];
+  color: string;
+};
+
+type CoursesProps = {
+  courses: CourseDraft[];
+};
+
+type EmploymentHistoryProps = {
+  workExperience: WorkExperienceDraft[];
+};
+
+type EducationProps = {
+  education: EducationDraft[];
+};
+
+type ProjectsProps = {
+  projects: ProjectDraft[];
+  color: string;
+};
+
+type DetailsProps = {
+  city: string;
+  country: string;
+  phone: string;
+  email: string;
+  color: string;
+};
+
+type DefaultTemplateProps = {
+  resume: ResumeDraft;
+};
+
+// --------------------------------------------------------------------------------
+// helpers
+// --------------------------------------------------------------------------------
+
 const getMonthYear = (date: Date | null) => dayjs(date).format("MMM, YYYY");
+
+const combineWordsWithComma = (...args: string[]) => {
+  return [...args].filter(Boolean).join(", ");
+};
+
+const getSkillLevel = (lvl: SkillLevel): number => {
+  switch (lvl) {
+    case SkillLevel.Novice:
+      return 5;
+    case SkillLevel.Apprentice:
+      return 21;
+    case SkillLevel.Adept:
+      return 42;
+    case SkillLevel.Expert:
+      return 63;
+    case SkillLevel.Master:
+      return 84;
+    case SkillLevel.Legendary:
+      return 100;
+    default:
+      return 0;
+  }
+};
+
+const getLevelInPercent = (level: string) => {
+  switch (level) {
+    case "A1":
+      return 17;
+    case "A2":
+      return 35;
+    case "B1":
+      return 55;
+    case "B2":
+      return 70;
+    case "C1":
+      return 90;
+    case "C2":
+      return 100;
+    default:
+      return 0;
+  }
+};
+
+// --------------------------------------------------------------------------------
+// styles
+// --------------------------------------------------------------------------------
 
 const styles = StyleSheet.create({
   page: {
@@ -82,11 +202,41 @@ const stylesRight = StyleSheet.create({
   },
 });
 
+const headerstyles = StyleSheet.create({
+  section: {
+    display: "flex",
+    flexDirection: "row",
+    width: "100%",
+    marginBottom: 20,
+  },
+  image: {
+    width: 50,
+    height: 50,
+    objectFit: "cover",
+    borderRadius: 5,
+    marginRight: 15,
+  },
+  textBlock: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  title: { fontWeight: 600 },
+  subtitle: {
+    fontSize: 11,
+    color: Colors.grayTextDark,
+  },
+});
+
 const stylesCommon = StyleSheet.create({
   sectionContainer: { marginBottom: 20 },
   itemText: { fontSize: 11 },
   link: { color: Colors.mainBlue, fontSize: 11, textDecoration: "none" },
 });
+
+// --------------------------------------------------------------------------------
+// components
+// --------------------------------------------------------------------------------
 
 // left section
 export const LeftSectionTitle: React.FC<React.PropsWithChildren> = ({
@@ -120,13 +270,7 @@ export const RightSectionTitle: React.FC<React.PropsWithChildren> = ({
   return <Text style={stylesRight.sectionTitle}>{children}</Text>;
 };
 
-interface IRightItemWithLevelProps extends React.PropsWithChildren {
-  title: string;
-  levelInPercent: number;
-  color: string;
-}
-
-export const RightItemWithLevel: React.FC<IRightItemWithLevelProps> = ({
+export const RightItemWithLevel: React.FC<RightItemWithLevelProps> = ({
   title,
   levelInPercent,
   color,
@@ -161,13 +305,7 @@ export const ItemText: React.FC<React.PropsWithChildren> = ({ children }) => {
   return <Text style={stylesCommon.itemText}>{children}</Text>;
 };
 
-interface ILinkCustomProps extends React.PropsWithChildren {
-  src: string;
-  color: string;
-  isEmail?: boolean;
-}
-
-export const LinkCustom: React.FC<ILinkCustomProps> = ({
+export const LinkCustom: React.FC<LinkCustomProps> = ({
   src,
   isEmail,
   children,
@@ -183,12 +321,7 @@ export const LinkCustom: React.FC<ILinkCustomProps> = ({
   );
 };
 
-interface ILinksProps {
-  links: LinkDraft[];
-  color: string;
-}
-
-export const Links: React.FC<ILinksProps> = ({ links, color }) => {
+export const Links: React.FC<LinksProps> = ({ links, color }) => {
   return (
     <SectionContainer>
       <RightSectionTitle>Links</RightSectionTitle>
@@ -201,31 +334,7 @@ export const Links: React.FC<ILinksProps> = ({ links, color }) => {
   );
 };
 
-interface ISkillsProps {
-  skills: SkillDraft[];
-  color: string;
-}
-
-const getSkillLevel = (lvl: SkillLevel): number => {
-  switch (lvl) {
-    case SkillLevel.Novice:
-      return 5;
-    case SkillLevel.Apprentice:
-      return 21;
-    case SkillLevel.Adept:
-      return 42;
-    case SkillLevel.Expert:
-      return 63;
-    case SkillLevel.Master:
-      return 84;
-    case SkillLevel.Legendary:
-      return 100;
-    default:
-      return 0;
-  }
-};
-
-export const Skills: React.FC<ISkillsProps> = ({ skills, color }) => {
+export const Skills: React.FC<SkillsProps> = ({ skills, color }) => {
   return (
     <SectionContainer>
       <RightSectionTitle>Skills</RightSectionTitle>
@@ -241,48 +350,7 @@ export const Skills: React.FC<ISkillsProps> = ({ skills, color }) => {
   );
 };
 
-type Props = { resume: ResumeDraft };
-
-type DetailsProps = {
-  city: string;
-  country: string;
-  phone: string;
-  email: string;
-  color: string;
-};
-interface IHeaderProps {
-  firstName: string;
-  lastName: string;
-  jobTitle: string;
-}
-
-const headerstyles = StyleSheet.create({
-  section: {
-    display: "flex",
-    flexDirection: "row",
-    width: "100%",
-    marginBottom: 20,
-  },
-  image: {
-    width: 50,
-    height: 50,
-    objectFit: "cover",
-    borderRadius: 5,
-    marginRight: 15,
-  },
-  textBlock: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-  },
-  title: { fontWeight: 600 },
-  subtitle: {
-    fontSize: 11,
-    color: Colors.grayTextDark,
-  },
-});
-
-export const Header: React.FC<IHeaderProps> = ({
+export const Header: React.FC<HeaderProps> = ({
   firstName,
   lastName,
   jobTitle,
@@ -300,31 +368,7 @@ export const Header: React.FC<IHeaderProps> = ({
   );
 };
 
-interface ILanguagesProps {
-  languages: LanguageDraft[];
-  color: string;
-}
-
-const getLevelInPercent = (level: string) => {
-  switch (level) {
-    case "A1":
-      return 17;
-    case "A2":
-      return 35;
-    case "B1":
-      return 55;
-    case "B2":
-      return 70;
-    case "C1":
-      return 90;
-    case "C2":
-      return 100;
-    default:
-      return 0;
-  }
-};
-
-export const Languages: React.FC<ILanguagesProps> = ({ languages, color }) => {
+export const Languages: React.FC<LanguagesProps> = ({ languages, color }) => {
   return (
     <SectionContainer>
       <RightSectionTitle>Languages</RightSectionTitle>
@@ -342,14 +386,7 @@ export const Languages: React.FC<ILanguagesProps> = ({ languages, color }) => {
   );
 };
 
-interface ICoursesProps {
-  courses: CourseDraft[];
-}
-const combineWordsWithComma = (...args: string[]) => {
-  return [...args].filter(Boolean).join(", ");
-};
-
-export const Courses: React.FC<ICoursesProps> = ({ courses }) => {
+export const Courses: React.FC<CoursesProps> = ({ courses }) => {
   return (
     <SectionContainer>
       <LeftSectionTitle>Courses</LeftSectionTitle>
@@ -397,11 +434,7 @@ const Details: React.FC<DetailsProps> = ({
   );
 };
 
-interface ISummaryProps {
-  summary: JSX.Element;
-}
-
-export const SummarySection: React.FC<ISummaryProps> = ({ summary }) => {
+export const SummarySection: React.FC<SummaryProps> = ({ summary }) => {
   return (
     <SectionContainer>
       <LeftSectionTitle>Summary</LeftSectionTitle>
@@ -410,11 +443,7 @@ export const SummarySection: React.FC<ISummaryProps> = ({ summary }) => {
   );
 };
 
-interface IEmploymentHistoryProps {
-  workExperience: WorkExperienceDraft[];
-}
-
-export const EmploymentHistory: React.FC<IEmploymentHistoryProps> = ({
+export const EmploymentHistory: React.FC<EmploymentHistoryProps> = ({
   workExperience,
 }) => {
   return (
@@ -448,11 +477,7 @@ export const EmploymentHistory: React.FC<IEmploymentHistoryProps> = ({
   );
 };
 
-interface IEducationProps {
-  education: EducationDraft[];
-}
-
-export const Education: React.FC<IEducationProps> = ({ education }) => {
+export const Education: React.FC<EducationProps> = ({ education }) => {
   return (
     <SectionContainer>
       <LeftSectionTitle>Education</LeftSectionTitle>
@@ -485,11 +510,6 @@ export const Education: React.FC<IEducationProps> = ({ education }) => {
     </SectionContainer>
   );
 };
-
-interface ProjectsProps {
-  projects: ProjectDraft[];
-  color: string;
-}
 
 export const Projects: React.FC<ProjectsProps> = ({ projects, color }) => {
   return (
@@ -530,7 +550,11 @@ export const Projects: React.FC<ProjectsProps> = ({ projects, color }) => {
   );
 };
 
-export const DefaultTemplate: React.FC<Props> = ({ resume }) => {
+// --------------------------------------------------------------------------------
+// template component
+// --------------------------------------------------------------------------------
+
+export const DefaultTemplate: React.FC<DefaultTemplateProps> = ({ resume }) => {
   const {
     summary,
     workExperience,

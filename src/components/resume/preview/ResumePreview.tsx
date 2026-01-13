@@ -55,7 +55,7 @@ export const ResumePreview: React.FC = () => {
   return (
     <div>
       <PDFViewer className="h-[calc(100vh-64px)] w-full">
-        <Document>
+        <Document title={state.resumeName}>
           <DefaultTemplate resume={state} />
         </Document>
       </PDFViewer>
