@@ -18,6 +18,7 @@ export const defaultWorkExperience: WorkExperienceDraft = {
   city: "",
   startDate: null,
   endDate: null,
+  endDateIsCurrent: false,
   description: "",
   sortOrder: 0n,
   status: ItemStatus.Added,
@@ -30,6 +31,7 @@ export const defaultEducation: EducationDraft = {
   city: "",
   startDate: null,
   endDate: null,
+  endDateIsCurrent: false,
   description: "",
   sortOrder: 0n,
   status: ItemStatus.Added,
@@ -75,6 +77,7 @@ export const defaultCourse: CourseDraft = {
   institution: "",
   startDate: null,
   endDate: null,
+  endDateIsCurrent: false,
   sortOrder: 0n,
   status: ItemStatus.Added,
 };

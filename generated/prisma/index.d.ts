@@ -6513,6 +6513,7 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     country: string | null
+    photoUrl: string | null
     city: string | null
     summary: string | null
     createdAt: Date | null
@@ -6531,6 +6532,7 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     country: string | null
+    photoUrl: string | null
     city: string | null
     summary: string | null
     createdAt: Date | null
@@ -6549,6 +6551,7 @@ export namespace Prisma {
     email: number
     phone: number
     country: number
+    photoUrl: number
     city: number
     summary: number
     createdAt: number
@@ -6569,6 +6572,7 @@ export namespace Prisma {
     email?: true
     phone?: true
     country?: true
+    photoUrl?: true
     city?: true
     summary?: true
     createdAt?: true
@@ -6587,6 +6591,7 @@ export namespace Prisma {
     email?: true
     phone?: true
     country?: true
+    photoUrl?: true
     city?: true
     summary?: true
     createdAt?: true
@@ -6605,6 +6610,7 @@ export namespace Prisma {
     email?: true
     phone?: true
     country?: true
+    photoUrl?: true
     city?: true
     summary?: true
     createdAt?: true
@@ -6696,6 +6702,7 @@ export namespace Prisma {
     email: string
     phone: string
     country: string
+    photoUrl: string
     city: string
     summary: string
     createdAt: Date
@@ -6731,6 +6738,7 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     country?: boolean
+    photoUrl?: boolean
     city?: boolean
     summary?: boolean
     createdAt?: boolean
@@ -6759,6 +6767,7 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     country?: boolean
+    photoUrl?: boolean
     city?: boolean
     summary?: boolean
     createdAt?: boolean
@@ -6779,6 +6788,7 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     country?: boolean
+    photoUrl?: boolean
     city?: boolean
     summary?: boolean
     createdAt?: boolean
@@ -6799,13 +6809,14 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     country?: boolean
+    photoUrl?: boolean
     city?: boolean
     summary?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ResumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateId" | "ownerId" | "resumeName" | "themeColor" | "jobTitle" | "firstName" | "lastName" | "email" | "phone" | "country" | "city" | "summary" | "createdAt" | "updatedAt", ExtArgs["result"]["resume"]>
+  export type ResumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "templateId" | "ownerId" | "resumeName" | "themeColor" | "jobTitle" | "firstName" | "lastName" | "email" | "phone" | "country" | "photoUrl" | "city" | "summary" | "createdAt" | "updatedAt", ExtArgs["result"]["resume"]>
   export type ResumeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     template?: boolean | ResumeTemplateDefaultArgs<ExtArgs>
     owner?: boolean | UserDefaultArgs<ExtArgs>
@@ -6852,6 +6863,7 @@ export namespace Prisma {
       email: string
       phone: string
       country: string
+      photoUrl: string
       city: string
       summary: string
       createdAt: Date
@@ -7299,6 +7311,7 @@ export namespace Prisma {
     readonly email: FieldRef<"Resume", 'String'>
     readonly phone: FieldRef<"Resume", 'String'>
     readonly country: FieldRef<"Resume", 'String'>
+    readonly photoUrl: FieldRef<"Resume", 'String'>
     readonly city: FieldRef<"Resume", 'String'>
     readonly summary: FieldRef<"Resume", 'String'>
     readonly createdAt: FieldRef<"Resume", 'DateTime'>
@@ -17127,6 +17140,7 @@ export namespace Prisma {
     email: 'email',
     phone: 'phone',
     country: 'country',
+    photoUrl: 'photoUrl',
     city: 'city',
     summary: 'summary',
     createdAt: 'createdAt',
@@ -17683,6 +17697,7 @@ export namespace Prisma {
     email?: StringFilter<"Resume"> | string
     phone?: StringFilter<"Resume"> | string
     country?: StringFilter<"Resume"> | string
+    photoUrl?: StringFilter<"Resume"> | string
     city?: StringFilter<"Resume"> | string
     summary?: StringFilter<"Resume"> | string
     createdAt?: DateTimeFilter<"Resume"> | Date | string
@@ -17710,6 +17725,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     country?: SortOrder
+    photoUrl?: SortOrder
     city?: SortOrder
     summary?: SortOrder
     createdAt?: SortOrder
@@ -17740,6 +17756,7 @@ export namespace Prisma {
     email?: StringFilter<"Resume"> | string
     phone?: StringFilter<"Resume"> | string
     country?: StringFilter<"Resume"> | string
+    photoUrl?: StringFilter<"Resume"> | string
     city?: StringFilter<"Resume"> | string
     summary?: StringFilter<"Resume"> | string
     createdAt?: DateTimeFilter<"Resume"> | Date | string
@@ -17767,6 +17784,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     country?: SortOrder
+    photoUrl?: SortOrder
     city?: SortOrder
     summary?: SortOrder
     createdAt?: SortOrder
@@ -17791,6 +17809,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"Resume"> | string
     phone?: StringWithAggregatesFilter<"Resume"> | string
     country?: StringWithAggregatesFilter<"Resume"> | string
+    photoUrl?: StringWithAggregatesFilter<"Resume"> | string
     city?: StringWithAggregatesFilter<"Resume"> | string
     summary?: StringWithAggregatesFilter<"Resume"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Resume"> | Date | string
@@ -18721,14 +18740,15 @@ export namespace Prisma {
     id?: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     template: ResumeTemplateCreateNestedOneWithoutResumeInput
@@ -18748,14 +18768,15 @@ export namespace Prisma {
     ownerId: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     workExperience?: WorkExperienceUncheckedCreateNestedManyWithoutResumeInput
@@ -18777,6 +18798,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18804,6 +18826,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18823,14 +18846,15 @@ export namespace Prisma {
     ownerId: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18845,6 +18869,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18863,6 +18888,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19887,6 +19913,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     country?: SortOrder
+    photoUrl?: SortOrder
     city?: SortOrder
     summary?: SortOrder
     createdAt?: SortOrder
@@ -19905,6 +19932,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     country?: SortOrder
+    photoUrl?: SortOrder
     city?: SortOrder
     summary?: SortOrder
     createdAt?: SortOrder
@@ -19923,6 +19951,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     country?: SortOrder
+    photoUrl?: SortOrder
     city?: SortOrder
     summary?: SortOrder
     createdAt?: SortOrder
@@ -21361,14 +21390,15 @@ export namespace Prisma {
     id?: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutResumesInput
@@ -21386,14 +21416,15 @@ export namespace Prisma {
     ownerId: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     workExperience?: WorkExperienceUncheckedCreateNestedManyWithoutResumeInput
@@ -21446,6 +21477,7 @@ export namespace Prisma {
     email?: StringFilter<"Resume"> | string
     phone?: StringFilter<"Resume"> | string
     country?: StringFilter<"Resume"> | string
+    photoUrl?: StringFilter<"Resume"> | string
     city?: StringFilter<"Resume"> | string
     summary?: StringFilter<"Resume"> | string
     createdAt?: DateTimeFilter<"Resume"> | Date | string
@@ -22008,14 +22040,15 @@ export namespace Prisma {
     id?: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     template: ResumeTemplateCreateNestedOneWithoutResumeInput
@@ -22034,14 +22067,15 @@ export namespace Prisma {
     ownerId: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     education?: EducationUncheckedCreateNestedManyWithoutResumeInput
@@ -22078,6 +22112,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22104,6 +22139,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22120,14 +22156,15 @@ export namespace Prisma {
     id?: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     template: ResumeTemplateCreateNestedOneWithoutResumeInput
@@ -22146,14 +22183,15 @@ export namespace Prisma {
     ownerId: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     workExperience?: WorkExperienceUncheckedCreateNestedManyWithoutResumeInput
@@ -22190,6 +22228,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22216,6 +22255,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22232,14 +22272,15 @@ export namespace Prisma {
     id?: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     template: ResumeTemplateCreateNestedOneWithoutResumeInput
@@ -22258,14 +22299,15 @@ export namespace Prisma {
     ownerId: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     workExperience?: WorkExperienceUncheckedCreateNestedManyWithoutResumeInput
@@ -22302,6 +22344,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22328,6 +22371,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22344,14 +22388,15 @@ export namespace Prisma {
     id?: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     template: ResumeTemplateCreateNestedOneWithoutResumeInput
@@ -22370,14 +22415,15 @@ export namespace Prisma {
     ownerId: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     workExperience?: WorkExperienceUncheckedCreateNestedManyWithoutResumeInput
@@ -22414,6 +22460,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22440,6 +22487,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22456,14 +22504,15 @@ export namespace Prisma {
     id?: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     template: ResumeTemplateCreateNestedOneWithoutResumeInput
@@ -22482,14 +22531,15 @@ export namespace Prisma {
     ownerId: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     workExperience?: WorkExperienceUncheckedCreateNestedManyWithoutResumeInput
@@ -22526,6 +22576,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22552,6 +22603,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22568,14 +22620,15 @@ export namespace Prisma {
     id?: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     template: ResumeTemplateCreateNestedOneWithoutResumeInput
@@ -22594,14 +22647,15 @@ export namespace Prisma {
     ownerId: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     workExperience?: WorkExperienceUncheckedCreateNestedManyWithoutResumeInput
@@ -22638,6 +22692,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22664,6 +22719,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22680,14 +22736,15 @@ export namespace Prisma {
     id?: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     template: ResumeTemplateCreateNestedOneWithoutResumeInput
@@ -22706,14 +22763,15 @@ export namespace Prisma {
     ownerId: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     workExperience?: WorkExperienceUncheckedCreateNestedManyWithoutResumeInput
@@ -22750,6 +22808,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22776,6 +22835,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22862,14 +22922,15 @@ export namespace Prisma {
     id?: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     template: ResumeTemplateCreateNestedOneWithoutResumeInput
@@ -22887,14 +22948,15 @@ export namespace Prisma {
     templateId: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     workExperience?: WorkExperienceUncheckedCreateNestedManyWithoutResumeInput
@@ -23002,14 +23064,15 @@ export namespace Prisma {
     ownerId: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -23024,6 +23087,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23049,6 +23113,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23073,6 +23138,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23421,14 +23487,15 @@ export namespace Prisma {
     templateId: string
     resumeName: string
     themeColor: string
-    jobTitle: string
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    country: string
-    city: string
-    summary: string
+    jobTitle?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+    country?: string
+    photoUrl?: string
+    city?: string
+    summary?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -23518,6 +23585,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23543,6 +23611,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23567,6 +23636,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
+    photoUrl?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

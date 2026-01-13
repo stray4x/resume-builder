@@ -60,7 +60,7 @@ export const resumeRouter = createTRPCRouter({
       z.object({
         id: z.string().cuid(),
         templateId: z.string().cuid(),
-        resumeName: z.string().max(100),
+        resumeName: z.string().max(50),
         firstName: z.string().max(50),
         lastName: z.string().max(50),
         jobTitle: z.string().max(50),
@@ -70,6 +70,7 @@ export const resumeRouter = createTRPCRouter({
         phone: z.string().max(25),
         summary: z.string().max(2000),
         themeColor: z.string().max(10),
+        photoUrl: z.string().max(5000), // temporary - todo:fix this
       }),
     )
     .mutation(async ({ ctx, input }) => {

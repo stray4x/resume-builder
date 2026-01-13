@@ -118,6 +118,7 @@ export const SaveChangesButton: React.FC = () => {
         phone: resume.phone,
         summary: resume.summary,
         themeColor: resume.themeColor,
+        photoUrl: resume.photoUrl,
       }),
       addSections({ resumeId: resume.id, ...sectionsToAdd }),
       delSections({ resumeId: resume.id, ...sectionsToDelete }),

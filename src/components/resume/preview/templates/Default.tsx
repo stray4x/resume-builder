@@ -1,6 +1,6 @@
 "use client";
 
-import { Page, Text, View, StyleSheet, Link } from "@react-pdf/renderer";
+import { Page, Text, View, StyleSheet, Link, Image } from "@react-pdf/renderer";
 import React, { type JSX } from "react";
 
 import dayjs from "@/lib/dayjs";
@@ -8,6 +8,7 @@ import { parseTiptapToPdfJsx } from "@/utils/parseTiptapToJSX";
 import { SkillLevel } from "generated/prisma";
 
 import { getItemTitle } from "../../edit/BackgroundDescription";
+import { base64ToBlob } from "../../edit/ui/ImageInput";
 
 import type {
   CourseDraft,
@@ -44,6 +45,7 @@ type HeaderProps = {
   firstName: string;
   lastName: string;
   jobTitle: string;
+  photoUrl: string;
 };
 
 type RightItemWithLevelProps = React.PropsWithChildren<{
@@ -354,10 +356,17 @@ export const Header: React.FC<HeaderProps> = ({
   firstName,
   lastName,
   jobTitle,
+  photoUrl,
 }) => {
   return (
     <View style={headerstyles.section}>
-      {/* {photoUrl && <Image src={photoUrl} style={headerstyles.image} />} */}
+      {photoUrl && (
+        // eslint-disable-next-line jsx-a11y/alt-text
+        <Image
+          src={URL.createObjectURL(base64ToBlob(photoUrl))}
+          style={headerstyles.image}
+        />
+      )}
       <View style={headerstyles.textBlock}>
         <Text style={headerstyles.title}>
           {firstName} {lastName}
@@ -573,6 +582,7 @@ export const DefaultTemplate: React.FC<DefaultTemplateProps> = ({ resume }) => {
         firstName={resume.firstName}
         lastName={resume.lastName}
         jobTitle={resume.jobTitle}
+        photoUrl={resume.photoUrl}
       />
       <View style={styles.sectionsContainer}>
         <View style={styles.left}>

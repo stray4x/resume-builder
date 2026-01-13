@@ -21,6 +21,7 @@ export const normalizeResume = (resume: ResumeWithRelations): ResumeDraft => {
     city: resume.city,
     summary: resume.summary,
     themeColor: resume.themeColor || resumeColors.Blue,
+    photoUrl: resume.photoUrl,
 
     workExperience: resume.workExperience.map(
       ({ resumeId, createdAt, updatedAt, ...item }) => ({

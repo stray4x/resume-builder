@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useResume } from "@/store/store";
 
+import { ImageInput } from "./ui/ImageInput";
 import { SectionTitle } from "./ui/SectionTitle";
 
 export const Details: React.FC = () => {
@@ -17,6 +18,7 @@ export const Details: React.FC = () => {
   const phone = useResume((state) => state.phone);
   const country = useResume((state) => state.country);
   const city = useResume((state) => state.city);
+  const photoUrl = useResume((state) => state.photoUrl);
 
   const setField = useResume((state) => state.setField);
 
@@ -38,7 +40,7 @@ export const Details: React.FC = () => {
           />
         </div>
 
-        <div>
+        {/* <div>
           <Label htmlFor="photo" className="mb-2">
             Photo
           </Label>
@@ -50,8 +52,11 @@ export const Details: React.FC = () => {
               className="w-full"
             />
           </Button>
-        </div>
-
+        </div> */}
+        <ImageInput
+          image={photoUrl}
+          setImage={(v) => setField("photoUrl", v)}
+        />
         <div>
           <Label htmlFor="firstName" className="mb-2">
             First Name

@@ -28,6 +28,7 @@ export const defaultState: ResumeDraft = {
   phone: "",
   country: "",
   city: "",
+  photoUrl: "",
   summary: "",
   themeColor: "",
   workExperience: [],
