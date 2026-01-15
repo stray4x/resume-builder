@@ -8,8 +8,8 @@ const getTemplates = unstable_cache(
     const templates = await db.resumeTemplate.findMany();
     return templates ?? [];
   },
-  [],
-  { revalidate: 60 * 60 * 12 },
+  ["resume-templates"],
+  { revalidate: 60 * 60 * 1 },
 );
 
 export default async function NewResumePage() {
