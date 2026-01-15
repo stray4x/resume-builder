@@ -108,7 +108,26 @@ type DefaultTemplateProps = {
 // helpers
 // --------------------------------------------------------------------------------
 
-const getMonthYear = (date: Date | null) => dayjs(date).format("MMM, YYYY");
+const getMonthYear = (date: Date | null) =>
+  date ? dayjs(date).format("MMM, YYYY") : "";
+
+const getStartEndDate = (
+  startDate: Date | null,
+  endDate: Date | null,
+  endDateIsCurrent: boolean,
+) => {
+  const start = getMonthYear(startDate);
+  const end = endDateIsCurrent ? "Present" : getMonthYear(endDate);
+
+  if (start && end) {
+    return `${start} - ${end}`;
+  }
+
+  if (start) return start;
+  if (end) return end;
+
+  return "";
+};
 
 const combineWordsWithComma = (...args: string[]) => {
   return [...args].filter(Boolean).join(", ");
@@ -327,8 +346,8 @@ export const Links: React.FC<LinksProps> = ({ links, color }) => {
   return (
     <SectionContainer>
       <RightSectionTitle>Links</RightSectionTitle>
-      {links.map(({ id, title, url }) => (
-        <LinkCustom key={id} src={url} color={color}>
+      {links.map(({ id, title, url }, idx) => (
+        <LinkCustom key={`${id}-${idx}`} src={url} color={color}>
           {title}
         </LinkCustom>
       ))}
@@ -409,8 +428,7 @@ export const Courses: React.FC<CoursesProps> = ({ courses }) => {
               {combineWordsWithComma(title, institution)}
             </LeftItemTitle>
             <LeftItemSubtitle>
-              {getMonthYear(startDate)} -{" "}
-              {endDateIsCurrent ? "Present" : getMonthYear(endDate)}
+              {getStartEndDate(startDate, endDate, endDateIsCurrent)}
             </LeftItemSubtitle>
           </LeftItemContainer>
         ),
@@ -459,24 +477,26 @@ export const EmploymentHistory: React.FC<EmploymentHistoryProps> = ({
     <SectionContainer>
       <LeftSectionTitle>Work Experience</LeftSectionTitle>
       {workExperience.map(
-        ({
-          id,
-          jobTitle,
-          employer,
-          city,
-          startDate,
-          endDate,
-          endDateIsCurrent,
-          description,
-        }) => (
-          <LeftItemContainer key={id}>
+        (
+          {
+            id,
+            jobTitle,
+            employer,
+            city,
+            startDate,
+            endDate,
+            endDateIsCurrent,
+            description,
+          },
+          idx,
+        ) => (
+          <LeftItemContainer key={`${id}-${idx}`}>
             <LeftItemTitle>
               {getItemTitle(jobTitle, employer)}
               {city && `, ${city}`}
             </LeftItemTitle>
             <LeftItemSubtitle>
-              {getMonthYear(startDate)} -{" "}
-              {endDateIsCurrent ? "Present" : getMonthYear(endDate)}
+              {getStartEndDate(startDate, endDate, endDateIsCurrent)}
             </LeftItemSubtitle>
             {parseTiptapToPdfJsx(description)}
           </LeftItemContainer>
@@ -509,8 +529,7 @@ export const Education: React.FC<EducationProps> = ({ education }) => {
               {combineWordsWithComma(degree, school, city)}
             </LeftItemTitle>
             <LeftItemSubtitle>
-              {getMonthYear(startDate)} -{" "}
-              {endDateIsCurrent ? "Present" : getMonthYear(endDate)}
+              {getStartEndDate(startDate, endDate, endDateIsCurrent)}
             </LeftItemSubtitle>
             {parseTiptapToPdfJsx(description)}
           </LeftItemContainer>
