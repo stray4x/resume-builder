@@ -1,5 +1,6 @@
-import { getSession } from "@/server/better-auth/server";
 import { redirect } from "next/navigation";
+
+import { getSession } from "@/server/better-auth/server";
 import { clientUrls } from "@/utils/urls";
 
 export default async function AuthLayout({
