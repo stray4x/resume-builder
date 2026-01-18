@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { Button } from "../ui/button";
 import { useFormStatus } from "react-dom";
-import toast from "react-hot-toast";
+
+import { Button } from "../ui/button";
 
 type Props = {
   formAction: () => Promise<void>;

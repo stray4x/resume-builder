@@ -1,20 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Suspense, useState } from "react";
 
 import { authClient } from "@/server/better-auth/client";
 import { clientUrls } from "@/utils/urls";
 
 import { DarkModeButton } from "./DarkModeButton";
-import { EditResumeNavbar } from "../resume/edit/EditResumeNavbar";
+import { ResumeNavbar } from "../resume/ResumeNavbar";
 import { Button } from "../ui/button";
 import { GithubIcon } from "../ui/icons/Github";
 
 export const Navbar: React.FC = () => {
   const router = useRouter();
-  const path = usePathname();
 
   const [isSigningOut, setIsSigningOut] = useState(false);
 
@@ -33,12 +32,9 @@ export const Navbar: React.FC = () => {
   return (
     <header className="bg-background sticky top-0 flex h-16 w-full items-center justify-between p-4">
       <div className="flex gap-4">
-        {path.includes(clientUrls.resumes) && (
-          <Button variant="link" asChild>
-            <Link href={clientUrls.resumes}>my resumes</Link>
-          </Button>
-        )}
-        <EditResumeNavbar />
+        <Suspense>
+          <ResumeNavbar />
+        </Suspense>
       </div>
       <div className="flex gap-4">
         <Button asChild variant="ghost">

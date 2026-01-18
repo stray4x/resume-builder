@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
+import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 
 import { Navbar } from "@/components/navbar/Navbar";
@@ -29,7 +30,7 @@ export default function RootLayout({
           <TRPCReactProvider>
             <Navbar />
             <Toaster />
-            {children}
+            <Suspense>{children}</Suspense>
           </TRPCReactProvider>
         </ThemeProvider>
       </body>
