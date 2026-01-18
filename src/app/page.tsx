@@ -16,8 +16,9 @@ export default async function Home() {
         <Button size="lg" asChild>
           <Link href={clientUrls.authSignIn}>Sign in</Link>
         </Button>
-        {/* todo: add some functionality */}
-        <Button size="lg">Create Resume</Button>
+        <Button size="lg" variant="link">
+          <Link href={clientUrls.resumeBuilder}>Create Resume</Link>
+        </Button>
       </div>
     </main>
   );

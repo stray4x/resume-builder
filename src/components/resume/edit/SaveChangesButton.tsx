@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 
@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { useResume } from "@/store/store";
 import { ItemStatus } from "@/store/types";
 import { api } from "@/trpc/react";
+import { stringifyResume } from "@/utils/normalizeResume";
+import { clientUrls } from "@/utils/urls";
 
 import type { TRPCClientErrorLike } from "@trpc/client";
 
@@ -45,6 +47,7 @@ const handleError = (e: TRPCClientErrorLike<any>, errorText: string) => {
 
 export const SaveChangesButton: React.FC = () => {
   const router = useRouter();
+  const path = usePathname();
 
   const resume = useResume((state) => state);
 
@@ -74,6 +77,12 @@ export const SaveChangesButton: React.FC = () => {
   });
 
   const handleSave = async () => {
+    if (path === clientUrls.resumeBuilder) {
+      localStorage.setItem("resume", stringifyResume(resume));
+      toast.success("Saved successfully!");
+      return;
+    }
+
     const sectionsToAdd = {
       workExperience: getItemsToAdd(resume.workExperience),
       education: getItemsToAdd(resume.education),

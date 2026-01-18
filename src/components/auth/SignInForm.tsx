@@ -19,6 +19,7 @@ const signUpSchema = z.object({
 export const SignInForm: React.FC = () => {
   const router = useRouter();
 
+  const [isPending, setIsPending] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -53,6 +54,8 @@ export const SignInForm: React.FC = () => {
     }
 
     try {
+      setIsPending(true);
+
       const res = await authClient.signIn.email({
         email: data.email,
         password: data.password,
@@ -66,6 +69,8 @@ export const SignInForm: React.FC = () => {
       }
     } catch (_) {
       toast.error("Something went wrong");
+    } finally {
+      setIsPending(false);
     }
   };
 
@@ -102,7 +107,7 @@ export const SignInForm: React.FC = () => {
         />
       </div>
 
-      <Button type="submit" size="lg">
+      <Button type="submit" size="lg" disabled={isPending}>
         Sign in
       </Button>
     </form>

@@ -65,3 +65,21 @@ export const normalizeResume = (resume: ResumeWithRelations): ResumeDraft => {
     ),
   };
 };
+
+export const stringifyResume = (resume: ResumeDraft) =>
+  JSON.stringify(resume, (key, value) =>
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    key === "sortOrder"
+      ? { __type: "bigint", value: (value as bigint).toString() }
+      : value,
+  );
+
+export const parseResume = () =>
+  JSON.parse(
+    localStorage.getItem("resume") ?? "{}",
+    // bigint parse
+    (_, value: { __type: string; value: string }) =>
+      value && typeof value === "object" && value.__type === "bigint"
+        ? BigInt(value.value)
+        : value,
+  ) as ResumeDraft;

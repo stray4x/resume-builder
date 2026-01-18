@@ -21,7 +21,8 @@ export const ResumeNavbar: React.FC = () => {
           <Link href={clientUrls.resumes}>my resumes</Link>
         </Button>
       )}
-      {path.includes(clientUrls.editResume(id as string)) && (
+      {(path === clientUrls.editResume(id as string) ||
+        path === clientUrls.resumeBuilder) && (
         <div className="flex gap-4">
           <SaveChangesButton />
           <DownloadPdfButton />

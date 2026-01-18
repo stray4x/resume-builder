@@ -1,7 +1,11 @@
 import { TRPCError } from "@trpc/server";
 import z from "zod";
 
-import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
+import {
+  createTRPCRouter,
+  protectedProcedure,
+  publicProcedure,
+} from "@/server/api/trpc";
 
 import {
   CourseInput,
@@ -22,9 +26,9 @@ import {
 import { validateMaxItemsCount } from "../services/resume-sections.service";
 
 export const resumeRouter = createTRPCRouter({
-  getAllResumeTemplates: protectedProcedure.query(async ({ ctx }) => {
+  getAllResumeTemplates: publicProcedure.query(async ({ ctx }) => {
     const data = await ctx.db.resumeTemplate.findMany();
-
+    console.log(11111111111111111111);
     return {
       templates: data ?? [],
     };

@@ -1,9 +1,11 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 
 import { useResume } from "@/store/store";
-import { normalizeResume } from "@/utils/normalizeResume";
+import { normalizeResume, parseResume } from "@/utils/normalizeResume";
+import { clientUrls } from "@/utils/urls";
 
 import { Courses } from "./Courses";
 import { Details } from "./Details";
@@ -23,6 +25,8 @@ type Props = {
 };
 
 export const EditResumeForm: React.FC<Props> = ({ resume }) => {
+  const path = usePathname();
+
   const setResume = useResume((state) => state.setResume);
   const resetResume = useResume((state) => state.reset);
 
@@ -35,6 +39,16 @@ export const EditResumeForm: React.FC<Props> = ({ resume }) => {
       resetResume();
     };
   }, [resume]);
+
+  useEffect(() => {
+    if (path === clientUrls.resumeBuilder) {
+      const resume = parseResume();
+
+      if (Object.keys(resume).length) {
+        setResume(resume);
+      }
+    }
+  }, []);
 
   return (
     <div className="mb-8 flex flex-col gap-12">
