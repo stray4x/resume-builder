@@ -3,9 +3,7 @@ import { ResumePreview } from "@/components/resume/preview/ResumePreview";
 import { requireSession } from "@/server/better-auth/server";
 import { db } from "@/server/db";
 
-import type { ResumeWithRelations } from "@/store/types";
-
-export default async function ResumePage({
+export default async function EditResumePage({
   params,
 }: {
   params: Promise<{ id: string }>;
@@ -29,7 +27,7 @@ export default async function ResumePage({
   return (
     <div className="grid h-[calc(100vh-64px)] grid-cols-2 overflow-y-hidden">
       <div className="no-arrow-scroll h-[calc(screen-64px)] overflow-y-auto p-12">
-        <EditResumeForm resume={resume as ResumeWithRelations} />
+        <EditResumeForm resume={resume} />
       </div>
       <ResumePreview />
     </div>

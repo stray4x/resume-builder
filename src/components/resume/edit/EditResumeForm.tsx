@@ -19,14 +19,21 @@ import { WorkExperience } from "./WorkExperience";
 import type { ResumeWithRelations } from "@/store/types";
 
 type Props = {
-  resume: ResumeWithRelations;
+  resume?: ResumeWithRelations | null;
 };
 
 export const EditResumeForm: React.FC<Props> = ({ resume }) => {
   const setResume = useResume((state) => state.setResume);
+  const resetResume = useResume((state) => state.reset);
 
   useEffect(() => {
-    setResume(normalizeResume(resume));
+    if (resume) {
+      setResume(normalizeResume(resume));
+    }
+
+    return () => {
+      resetResume();
+    };
   }, [resume]);
 
   return (

@@ -18,6 +18,7 @@ export const CreateResumeButton: React.FC<Props> = ({ templateId }) => {
 
   const { mutate, isPending } = api.resume.createNewResume.useMutation({
     onSuccess: (data) => {
+      router.refresh();
       router.push(clientUrls.editResume(data.id));
     },
     onError: (error) => {

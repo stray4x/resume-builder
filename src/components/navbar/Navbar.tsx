@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { authClient } from "@/server/better-auth/client";
@@ -14,6 +14,7 @@ import { GithubIcon } from "../ui/icons/Github";
 
 export const Navbar: React.FC = () => {
   const router = useRouter();
+  const path = usePathname();
 
   const [isSigningOut, setIsSigningOut] = useState(false);
 
@@ -32,7 +33,7 @@ export const Navbar: React.FC = () => {
   return (
     <header className="bg-background sticky top-0 flex h-16 w-full items-center justify-between p-4">
       <div className="flex gap-4">
-        {data?.session && (
+        {path.includes(clientUrls.resumes) && (
           <Button variant="link" asChild>
             <Link href={clientUrls.resumes}>my resumes</Link>
           </Button>

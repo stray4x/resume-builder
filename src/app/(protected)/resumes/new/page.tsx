@@ -9,7 +9,7 @@ const getTemplates = unstable_cache(
     return templates ?? [];
   },
   ["resume-templates"],
-  { revalidate: 60 * 60 * 1 },
+  { revalidate: 3600 * 1, tags: ["resume-templates"] },
 );
 
 export default async function NewResumePage() {

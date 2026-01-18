@@ -12,8 +12,8 @@ import type { Fragment } from "@tiptap/pm/model";
 type EditorBtn = "bold" | "italic" | "bulletList" | "orderedList";
 
 type Props = {
-  value: string;
-  onChange: (v: string) => void;
+  value?: string;
+  onChange?: (v: string) => void;
   className?: string;
 };
 
@@ -29,7 +29,7 @@ export const TextEditor: React.FC<Props> = ({ className, value, onChange }) => {
       },
     },
     onUpdate({ editor }) {
-      onChange(JSON.stringify(editor.getJSON().content));
+      onChange?.(JSON.stringify(editor.getJSON().content));
     },
   });
 
@@ -40,7 +40,7 @@ export const TextEditor: React.FC<Props> = ({ className, value, onChange }) => {
 
     const current = editor.getJSON().content;
 
-    if (value.length && JSON.stringify(current) !== value) {
+    if (value?.length && JSON.stringify(current) !== value) {
       editor.commands.setContent(JSON.parse(value) as Fragment);
     }
   }, [value, editor]);

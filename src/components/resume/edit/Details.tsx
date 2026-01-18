@@ -2,7 +2,6 @@
 
 import React from "react";
 
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useResume } from "@/store/store";
@@ -39,20 +38,6 @@ export const Details: React.FC = () => {
             onChange={(e) => setField("jobTitle", e.target.value)}
           />
         </div>
-
-        {/* <div>
-          <Label htmlFor="photo" className="mb-2">
-            Photo
-          </Label>
-          <Button asChild variant="outline" className="flex items-center pt-1">
-            <input
-              id="photo"
-              type="file"
-              accept=".jpg, .jpeg, .png"
-              className="w-full"
-            />
-          </Button>
-        </div> */}
         <ImageInput
           image={photoUrl}
           setImage={(v) => setField("photoUrl", v)}
