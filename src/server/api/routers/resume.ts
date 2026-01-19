@@ -24,20 +24,31 @@ import {
   WorkExperienceUpdateInput,
 } from "../dto/resume-sections";
 import { validateMaxItemsCount } from "../services/resume-sections.service";
+import { assertUserCanCreateResume } from "../services/resume.service";
 
 export const resumeRouter = createTRPCRouter({
   getAllResumeTemplates: publicProcedure.query(async ({ ctx }) => {
     const data = await ctx.db.resumeTemplate.findMany();
-    console.log(11111111111111111111);
+
     return {
       templates: data ?? [],
     };
+  }),
+
+  isUserAllowedToCreateNewResume: protectedProcedure.query(async ({ ctx }) => {
+    const userId = ctx.session.user.id;
+
+    const result = await assertUserCanCreateResume({ db: ctx.db, userId });
+
+    return result;
   }),
 
   createNewResume: protectedProcedure
     .input(z.object({ templateId: z.string().cuid() }))
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.session.user.id;
+
+      await assertUserCanCreateResume({ db: ctx.db, userId, throwError: true });
 
       const newResume = await ctx.db.resume.create({
         data: {
