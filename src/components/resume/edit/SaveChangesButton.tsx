@@ -145,7 +145,11 @@ export const SaveChangesButton: React.FC<Props> = ({ disabled }) => {
   };
 
   return (
-    <Button onClick={handleSave} disabled={isPending || disabled}>
+    <Button
+      onClick={handleSave}
+      disabled={isPending || disabled}
+      variant="outline"
+    >
       Save Changes
     </Button>
   );

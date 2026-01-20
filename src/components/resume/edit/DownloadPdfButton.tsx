@@ -2,6 +2,7 @@
 
 import { pdf, Document } from "@react-pdf/renderer";
 import saveAs from "file-saver";
+import { Download } from "lucide-react";
 import React from "react";
 import toast from "react-hot-toast";
 
@@ -28,5 +29,10 @@ export const DownloadPdfButton: React.FC = () => {
       });
   };
 
-  return <Button onClick={saveFile}>Download Resume</Button>;
+  return (
+    <Button onClick={saveFile}>
+      Download Resume
+      <Download />
+    </Button>
+  );
 };

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -13,7 +12,6 @@ import { clientUrls } from "@/utils/urls";
 
 import { DownloadPdfButton } from "./edit/DownloadPdfButton";
 import { SaveChangesButton } from "./edit/SaveChangesButton";
-import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { Switch } from "../ui/switch";
 
@@ -63,32 +61,31 @@ export const ResumeNavbar: React.FC = () => {
     };
   }, [autosaveOn, path]);
 
+  if (
+    path !== clientUrls.editResume(id as string) &&
+    path !== clientUrls.resumeBuilder
+  ) {
+    return null;
+  }
+
   return (
-    <>
-      {path.includes(clientUrls.resumes) && (
-        <Button variant="link" asChild>
-          <Link href={clientUrls.resumes}>my resumes</Link>
-        </Button>
-      )}
-      {(path === clientUrls.editResume(id as string) ||
-        path === clientUrls.resumeBuilder) && (
-        <div className="flex items-center gap-4">
-          <SaveChangesButton disabled={autosaveOn} />
-          <DownloadPdfButton />
-          {path === clientUrls.resumeBuilder && (
-            <div className="flex gap-2">
-              <Switch
-                id="autosave-resume"
-                checked={autosaveOn}
-                onCheckedChange={handleAutosaveChange}
-              />
-              <Label htmlFor="autosave-resume" className="cursor-pointer">
-                Autosave
-              </Label>
-            </div>
-          )}
+    <div className="flex items-center gap-4">
+      <DownloadPdfButton />
+      <SaveChangesButton
+        disabled={path === clientUrls.resumeBuilder && autosaveOn}
+      />
+      {path === clientUrls.resumeBuilder && (
+        <div className="flex gap-2">
+          <Switch
+            id="autosave-resume"
+            checked={autosaveOn}
+            onCheckedChange={handleAutosaveChange}
+          />
+          <Label htmlFor="autosave-resume" className="cursor-pointer">
+            Autosave
+          </Label>
         </div>
       )}
-    </>
+    </div>
   );
 };
