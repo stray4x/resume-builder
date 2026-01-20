@@ -1,11 +1,10 @@
 "use client";
 
-import { CalendarIcon } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Popover,
@@ -14,13 +13,34 @@ import {
 } from "@/components/ui/popover";
 import dayjs from "@/lib/dayjs";
 
-function formatDate(date: Date | null | undefined) {
-  if (!date) {
-    return "";
-  }
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "./select";
 
-  return dayjs(date).format("DD/MM/YYYY");
-}
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const currentYear = new Date().getFullYear();
+
+const years = [...new Array(50)].map((_, idx) => currentYear - idx);
 
 type Props = {
   id?: string;
@@ -30,42 +50,19 @@ type Props = {
   onChange?: (date: Date | null) => void;
 };
 
-export function DatePicker({
-  id = "date",
-  label,
-  value,
-  disabled,
-  onChange,
-}: Props) {
+export function DatePicker({ id, label, value, disabled, onChange }: Props) {
   const [open, setOpen] = useState(false);
-  const [month, setMonth] = useState<Date | undefined>(value ?? undefined);
 
-  const [inputValue, setInputValue] = useState(formatDate(value));
-
-  const [error, setError] = useState(false);
+  const [displayMonth, setDisplayMonth] = useState<Date>(value ?? new Date());
 
   useEffect(() => {
-    setMonth(value ?? undefined);
+    if (value) {
+      setDisplayMonth(value);
+    }
   }, [value]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const nextValue = e.target.value;
-    //todo: add mask
-    if (!/^[0-9/]*$/.test(nextValue) || nextValue.length > 10) {
-      return;
-    }
-
-    setInputValue(nextValue);
-
-    const parsed = dayjs(nextValue, "DD/MM/YYYY", true);
-    if (parsed.isValid() || !nextValue.length) {
-      onChange?.(parsed.isValid() ? parsed.toDate() : null);
-      setMonth(parsed.isValid() ? parsed.toDate() : undefined);
-      setError(false);
-    } else {
-      setError(true);
-    }
-  };
+  const selectedMonth = dayjs(displayMonth).month(); // 0–11
+  const selectedYear = dayjs(displayMonth).year();
 
   return (
     <div className="flex flex-col">
@@ -73,63 +70,84 @@ export function DatePicker({
         {label}
       </Label>
 
-      <div className="relative">
-        <Input
-          id={id}
-          value={inputValue}
-          placeholder="DD/MM/YYYY"
-          className="bg-background pr-10"
-          onChange={handleInputChange}
-          disabled={disabled}
-          error={error && "Invalid date"}
-          onKeyDown={(e) => {
-            if (e.key === "ArrowDown") {
-              e.preventDefault();
-              setOpen(true);
-            }
-          }}
-        />
-
-        <Popover
-          open={open}
-          onOpenChange={(v) => {
-            if (disabled) {
-              return;
-            }
-            setOpen(v);
-          }}
-        >
-          <PopoverTrigger asChild>
-            <Button
-              variant="ghost"
-              className="absolute top-1/2 right-2 size-6 -translate-y-1/2"
-            >
-              <CalendarIcon className="size-3.5" />
-              <span className="sr-only">Select date</span>
-            </Button>
-          </PopoverTrigger>
-
-          <PopoverContent
-            className="w-auto overflow-hidden p-0"
-            align="end"
-            alignOffset={-8}
-            sideOffset={10}
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            id={id}
+            className="w-full justify-between font-normal"
+            disabled={disabled}
           >
-            <Calendar
-              mode="single"
-              selected={value ?? undefined}
-              captionLayout="dropdown"
-              month={month}
-              onMonthChange={setMonth}
-              onSelect={(date) => {
-                onChange?.(date ?? null);
-                setInputValue(formatDate(date));
-                setOpen(false);
+            {value ? dayjs(value).format("D MMMM YYYY") : "Select date"}
+            <ChevronDownIcon />
+          </Button>
+        </PopoverTrigger>
+
+        <PopoverContent
+          className="w-auto overflow-hidden p-0"
+          align="end"
+          alignOffset={-8}
+          sideOffset={10}
+        >
+          <div className="flex gap-2 p-2">
+            <Select
+              value={selectedMonth.toString()}
+              onValueChange={(v) => {
+                const newDate = dayjs(displayMonth).month(Number(v)).toDate();
+                setDisplayMonth(newDate);
               }}
-            />
-          </PopoverContent>
-        </Popover>
-      </div>
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue />
+              </SelectTrigger>
+
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Month</SelectLabel>
+                  {months.map((mon, idx) => (
+                    <SelectItem key={mon} value={idx.toString()}>
+                      {mon}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+
+            <Select
+              value={selectedYear.toString()}
+              onValueChange={(v) => {
+                const newDate = dayjs(displayMonth).year(Number(v)).toDate();
+                setDisplayMonth(newDate);
+              }}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue />
+              </SelectTrigger>
+
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Year</SelectLabel>
+                  {years.map((y) => (
+                    <SelectItem key={y} value={y.toString()}>
+                      {y}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+          <Calendar
+            mode="single"
+            selected={value ?? undefined}
+            month={displayMonth}
+            onMonthChange={setDisplayMonth}
+            onSelect={(date) => {
+              onChange?.(date ?? null);
+              setOpen(false);
+            }}
+          />
+        </PopoverContent>
+      </Popover>
     </div>
   );
 }

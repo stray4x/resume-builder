@@ -113,11 +113,13 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
             </div>
             <div className="flex flex-col gap-4">
               <DatePicker
+                id={`start-date-${id}`}
                 label="Start Date"
                 value={startDate}
                 onChange={updateStartDate}
               />
               <DatePicker
+                id={`end-date-${id}`}
                 label="End Date"
                 value={endDate}
                 disabled={endDateIsCurrent}
