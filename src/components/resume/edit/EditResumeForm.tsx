@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 
 import { useResume } from "@/store/store";
-import { normalizeResume, parseResume } from "@/utils/normalizeResume";
+import { normalizeResume, parseResume } from "@/utils/resume";
 import { clientUrls } from "@/utils/urls";
 
 import { Courses } from "./Courses";

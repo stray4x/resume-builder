@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useResume } from "@/store/store";
 import { ItemStatus } from "@/store/types";
 import { api } from "@/trpc/react";
-import { stringifyResume } from "@/utils/normalizeResume";
+import { saveResumeToLocalStorage } from "@/utils/resume";
 import { clientUrls } from "@/utils/urls";
 
 import type { TRPCClientErrorLike } from "@trpc/client";
@@ -45,7 +45,11 @@ const handleError = (e: TRPCClientErrorLike<any>, errorText: string) => {
   }
 };
 
-export const SaveChangesButton: React.FC = () => {
+type Props = {
+  disabled?: boolean;
+};
+
+export const SaveChangesButton: React.FC<Props> = ({ disabled }) => {
   const router = useRouter();
   const path = usePathname();
 
@@ -78,7 +82,7 @@ export const SaveChangesButton: React.FC = () => {
 
   const handleSave = async () => {
     if (path === clientUrls.resumeBuilder) {
-      localStorage.setItem("resume", stringifyResume(resume));
+      saveResumeToLocalStorage(resume);
       toast.success("Saved successfully!");
       return;
     }
@@ -141,7 +145,7 @@ export const SaveChangesButton: React.FC = () => {
   };
 
   return (
-    <Button onClick={handleSave} disabled={isPending}>
+    <Button onClick={handleSave} disabled={isPending || disabled}>
       Save Changes
     </Button>
   );

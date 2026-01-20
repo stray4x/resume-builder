@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import toast from "react-hot-toast";
+
 import {
   type ResumeWithRelations,
   type ResumeDraft,
   ItemStatus,
 } from "@/store/types";
 
+import { localStorageKeys } from "./constants/localStorage";
 import { resumeColors } from "./constants/resumeColors";
 
 export const normalizeResume = (resume: ResumeWithRelations): ResumeDraft => {
@@ -76,10 +79,14 @@ export const stringifyResume = (resume: ResumeDraft) =>
 
 export const parseResume = () =>
   JSON.parse(
-    localStorage.getItem("resume") ?? "{}",
+    localStorage.getItem(localStorageKeys.RESUME) ?? "{}",
     // bigint parse
     (_, value: { __type: string; value: string }) =>
       value && typeof value === "object" && value.__type === "bigint"
         ? BigInt(value.value)
         : value,
   ) as ResumeDraft;
+
+export const saveResumeToLocalStorage = (resume: ResumeDraft) => {
+  localStorage.setItem(localStorageKeys.RESUME, stringifyResume(resume));
+};

@@ -1,0 +1,1 @@
+export const SAVE_TO_LOCAL_STORAGE_TIMEOUT = 300;
