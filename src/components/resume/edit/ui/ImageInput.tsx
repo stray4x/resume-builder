@@ -95,19 +95,18 @@ export const ImageInput: React.FC<Props> = ({ image, setImage }) => {
         {imageBlob && (
           <Image
             src={URL.createObjectURL(imageBlob)}
-            alt="photo"
+            alt="resume photo"
             width={40}
             height={40}
             className="object-cover"
           />
         )}
         <Button
-          asChild
           variant="outline"
           className={`${imageBlob ? "w-[calc(100%-110px)]" : "w-full"} transition-none`}
           onClick={handleUploadClick}
         >
-          <span>{imageBlob ? "Change " : "Upload "} photo</span>
+          {imageBlob ? "Change " : "Upload "} photo
         </Button>
         {imageBlob && (
           <Button onClick={handleDeleteImg} variant="destructive">
