@@ -52,6 +52,7 @@ export const LanguageItem: React.FC<Props> = ({
               id={`lang-${id}`}
               value={language}
               placeholder="Language"
+              maxLength={60}
               onChange={(e) => handleUpdateItem(id, e.target.value, "language")}
             />
           </div>

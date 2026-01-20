@@ -52,6 +52,7 @@ export const SkillItem: React.FC<Props> = ({
               id={`skill-${id}`}
               value={title}
               placeholder="Skill"
+              maxLength={60}
               onChange={(e) => handleUpdateItem(id, e.target.value, "title")}
             />
           </div>

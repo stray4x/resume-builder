@@ -35,6 +35,7 @@ export const Details: React.FC = () => {
             placeholder="Wanted Job Title"
             className="w-full"
             value={jobTitle}
+            maxLength={50}
             onChange={(e) => setField("jobTitle", e.target.value)}
           />
         </div>
@@ -52,6 +53,7 @@ export const Details: React.FC = () => {
             placeholder="First Name"
             className="w-full"
             value={firstName}
+            maxLength={50}
             onChange={(e) => setField("firstName", e.target.value)}
           />
         </div>
@@ -66,6 +68,7 @@ export const Details: React.FC = () => {
             placeholder="Last Name"
             className="w-full"
             value={lastName}
+            maxLength={50}
             onChange={(e) => setField("lastName", e.target.value)}
           />
         </div>
@@ -80,6 +83,7 @@ export const Details: React.FC = () => {
             placeholder="Email"
             className="w-full"
             value={email}
+            maxLength={50}
             onChange={(e) => setField("email", e.target.value)}
           />
         </div>
@@ -94,6 +98,7 @@ export const Details: React.FC = () => {
             placeholder="Phone"
             className="w-full"
             value={phone}
+            maxLength={25}
             onChange={(e) => setField("phone", e.target.value)}
           />
         </div>
@@ -108,6 +113,7 @@ export const Details: React.FC = () => {
             placeholder="Country"
             className="w-full"
             value={country}
+            maxLength={50}
             onChange={(e) => setField("country", e.target.value)}
           />
         </div>
@@ -122,6 +128,7 @@ export const Details: React.FC = () => {
             placeholder="City"
             className="w-full"
             value={city}
+            maxLength={100}
             onChange={(e) => setField("city", e.target.value)}
           />
         </div>

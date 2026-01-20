@@ -83,7 +83,7 @@ export const resumeRouter = createTRPCRouter({
         email: z.string().max(50),
         country: z.string().max(50),
         phone: z.string().max(25),
-        summary: z.string().max(2000),
+        summary: z.string().max(2500),
         themeColor: z.string().max(10),
         photoUrl: z.string().max(5000, {
           message: "Image is too large",

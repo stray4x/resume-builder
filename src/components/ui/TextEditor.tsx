@@ -4,6 +4,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { List, ListOrdered } from "lucide-react";
 import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 
 import { Button } from "@/components/ui/button";
 
@@ -15,9 +16,15 @@ type Props = {
   value?: string;
   onChange?: (v: string) => void;
   className?: string;
+  maxLength?: number;
 };
 
-export const TextEditor: React.FC<Props> = ({ className, value, onChange }) => {
+export const TextEditor: React.FC<Props> = ({
+  className,
+  value,
+  maxLength,
+  onChange,
+}) => {
   const [activeBtns, setActiveBtns] = useState<EditorBtn[]>([]);
 
   const editor = useEditor({
@@ -27,7 +34,39 @@ export const TextEditor: React.FC<Props> = ({ className, value, onChange }) => {
       attributes: {
         class: `tiptap-editor h-48 overflow-auto border p-2 rounded-lg ${className}`,
       },
+      handlePaste(view, _, slice) {
+        if (!maxLength) {
+          return false;
+        }
+
+        const currentLength = JSON.stringify(
+          view.state.doc.content.toJSON(),
+        ).length;
+        const sliceLength = JSON.stringify(slice.content.toJSON()).length;
+        const newLength = currentLength + sliceLength;
+
+        if (newLength > maxLength) {
+          toast.error("Text is too long");
+          return true;
+        }
+
+        return false;
+      },
+      handleTextInput(view, _from, _to, text) {
+        if (!maxLength) {
+          return false;
+        }
+
+        const currentLength = JSON.stringify(
+          view.state.doc.content.toJSON(),
+        ).length;
+        const newLength =
+          currentLength + JSON.stringify([{ type: "text", text }]).length;
+
+        return newLength > maxLength;
+      },
     },
+
     onUpdate({ editor }) {
       onChange?.(JSON.stringify(editor.getJSON().content));
     },

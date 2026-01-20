@@ -41,6 +41,7 @@ export const Settings: React.FC = () => {
               id="resumeName"
               placeholder="Resume Name"
               value={resumeName}
+              maxLength={50}
               onChange={(e) => updResume("resumeName", e.target.value)}
             />
           </div>

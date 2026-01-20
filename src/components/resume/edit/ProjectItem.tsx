@@ -50,6 +50,7 @@ export const ProjectItem: React.FC<Props> = ({
                 id={`proj-title-${id}`}
                 value={title}
                 placeholder="Project Name"
+                maxLength={60}
                 onChange={(e) => handleUpdateItem(id, e.target.value, "title")}
               />
             </div>
@@ -61,6 +62,7 @@ export const ProjectItem: React.FC<Props> = ({
                 id={`proj-repo-${id}`}
                 value={repoUrl}
                 placeholder="Repository Link"
+                maxLength={100}
                 onChange={(e) =>
                   handleUpdateItem(id, e.target.value, "repoUrl")
                 }
@@ -77,6 +79,7 @@ export const ProjectItem: React.FC<Props> = ({
                 id={`proj-url-${id}`}
                 value={url}
                 placeholder="Project Link"
+                maxLength={100}
                 onChange={(e) => handleUpdateItem(id, e.target.value, "url")}
               />
             </div>
@@ -86,6 +89,7 @@ export const ProjectItem: React.FC<Props> = ({
         <Label className="mb-2">Description</Label>
         <TextEditor
           value={description ?? "{}"}
+          maxLength={3000}
           onChange={(v) => updateDescription(v)}
         />
       </AccordionContent>

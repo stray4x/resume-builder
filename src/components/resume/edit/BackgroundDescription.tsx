@@ -81,6 +81,7 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
                   id={`inp-one-${id}`}
                   value={inputOne}
                   placeholder={inputLabelOne}
+                  maxLength={60}
                   onChange={(e) => updateInputOne(e.target.value)}
                 />
               </div>
@@ -92,6 +93,7 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
                   id={`inp-two-${id}`}
                   value={inputTwo}
                   placeholder={inputLabelTwo}
+                  maxLength={60}
                   onChange={(e) => updateInputTwo(e.target.value)}
                 />
               </div>
@@ -105,6 +107,7 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
                       id={`city-${id}`}
                       value={city ?? ""}
                       placeholder="City"
+                      maxLength={100}
                       onChange={(e) => updateCity?.(e.target.value)}
                     />
                   </div>
@@ -145,6 +148,7 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
               <Label className="mt-8 mb-2">Description</Label>
               <TextEditor
                 value={description ?? "{}"}
+                maxLength={3000}
                 onChange={(v) => updateDescription?.(v)}
               />
             </>

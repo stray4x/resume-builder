@@ -36,6 +36,7 @@ export const LinkItem: React.FC<Props> = ({
               id={`link-title-${id}`}
               value={title}
               placeholder="Label"
+              maxLength={100}
               onChange={(e) => handleUpdateItem(id, e.target.value, "title")}
             />
           </div>
@@ -48,6 +49,7 @@ export const LinkItem: React.FC<Props> = ({
               value={url}
               type="url"
               placeholder="Link"
+              maxLength={100}
               onChange={(e) => handleUpdateItem(id, e.target.value, "url")}
             />
           </div>
