@@ -1,16 +1,12 @@
 import React from "react";
 
-import { Button } from "@/components/ui/button";
-
 export const ResumesPageSkeleton: React.FC = () => {
   return (
-    <div className="mx-auto w-full max-w-10/12 lg:max-w-8/12">
-      <div className="mb-16">
-        <Button>Create new resume</Button>
-      </div>
-      <ul>
+    <div className="mx-auto w-full max-w-xl p-4">
+      <h1 className="mb-8 text-center text-2xl font-bold">Resumes</h1>
+      <ul className="mb-4 flex flex-col gap-4">
         {[...Array(3)].map((_, i) => (
-          <li key={i} className="bg-muted mb-2 h-12 animate-pulse" />
+          <li key={i} className="bg-muted mb-2 h-18 animate-pulse" />
         ))}
       </ul>
     </div>

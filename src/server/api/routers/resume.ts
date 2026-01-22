@@ -75,7 +75,7 @@ export const resumeRouter = createTRPCRouter({
       z.object({
         id: z.string().cuid(),
         templateId: z.string().cuid(),
-        resumeName: z.string().max(50),
+        resumeName: z.string().max(50).nonempty(),
         firstName: z.string().max(50),
         lastName: z.string().max(50),
         jobTitle: z.string().max(50),
