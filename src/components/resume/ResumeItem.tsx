@@ -31,7 +31,7 @@ export const ResumeItem: React.FC<Props> = ({ resume }) => {
       >
         <Link
           href={clientUrls.editResume(resume.id)}
-          className="flex w-full flex-col gap-0.5 py-3"
+          className="flex max-w-[80%] flex-col gap-0.5 py-3 sm:w-full"
         >
           <span className="truncate text-base font-medium">
             {resume.resumeName}
