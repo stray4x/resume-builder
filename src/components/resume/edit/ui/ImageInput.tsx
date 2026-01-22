@@ -116,6 +116,7 @@ export const ImageInput: React.FC<Props> = ({ image, setImage }) => {
         <input
           ref={inputRef}
           type="file"
+          id="photo"
           onChange={handleInputChange}
           accept=".jpg, .jpeg, .png"
           style={{ display: "none" }}

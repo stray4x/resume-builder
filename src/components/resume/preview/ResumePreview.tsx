@@ -5,9 +5,20 @@ import dynamic from "next/dynamic";
 import React, { useEffect, useRef, useState } from "react";
 
 import { Spinner } from "@/components/ui/spinner";
+import { useSectionItems } from "@/store/selectors";
 import { useResume } from "@/store/store";
 
 import { DefaultTemplate } from "./templates/Default";
+
+import type {
+  CourseDraft,
+  EducationDraft,
+  LanguageDraft,
+  LinkDraft,
+  ProjectDraft,
+  SkillDraft,
+  WorkExperienceDraft,
+} from "@/store/types";
 
 const PDFViewer = dynamic(
   () => import("@react-pdf/renderer").then((mod) => mod.PDFViewer),
@@ -53,6 +64,24 @@ Font.register({
 export const ResumePreview: React.FC = () => {
   const state = useResume((state) => state);
 
+  const educ: EducationDraft[] = useSectionItems("education");
+  const workExp: WorkExperienceDraft[] = useSectionItems("workExperience");
+  const proj: ProjectDraft[] = useSectionItems("projects");
+  const links: LinkDraft[] = useSectionItems("links");
+  const skills: SkillDraft[] = useSectionItems("skills");
+  const langs: LanguageDraft[] = useSectionItems("languages");
+  const courses: CourseDraft[] = useSectionItems("courses");
+
+  const stateCopy = { ...state };
+
+  stateCopy.workExperience = workExp;
+  stateCopy.education = educ;
+  stateCopy.projects = proj;
+  stateCopy.courses = courses;
+  stateCopy.links = links;
+  stateCopy.skills = skills;
+  stateCopy.languages = langs;
+
   const [isChanged, setIsChanged] = useState(false);
   const timerId = useRef<NodeJS.Timeout>(null);
 
@@ -80,7 +109,7 @@ export const ResumePreview: React.FC = () => {
           showToolbar={false}
         >
           <Document>
-            <DefaultTemplate resume={state} />
+            <DefaultTemplate resume={stateCopy} />
           </Document>
         </PDFViewer>
       )}

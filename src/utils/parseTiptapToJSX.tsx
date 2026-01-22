@@ -74,6 +74,9 @@ export const parseTiptapToPdfJsx = (json: string) => {
       case "bulletList":
         blocks.push(...parseBulletList(node));
         break;
+
+      default:
+        blocks.push(parseParagraph(node));
     }
   });
 

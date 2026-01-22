@@ -62,23 +62,26 @@ export const SaveChangesButton: React.FC<Props> = ({ disabled }) => {
       },
     });
 
-  const { mutateAsync: addSections } = api.resume.addSections.useMutation({
-    onError: (e) => {
-      handleError(e, "Something went wrong while adding sections");
-    },
-  });
+  const { mutateAsync: addSections, isPending: isAddingSections } =
+    api.resume.addSections.useMutation({
+      onError: (e) => {
+        handleError(e, "Something went wrong while adding sections");
+      },
+    });
 
-  const { mutateAsync: updSections } = api.resume.updateSections.useMutation({
-    onError: (e) => {
-      handleError(e, "Something went wrong while updating sections");
-    },
-  });
+  const { mutateAsync: updSections, isPending: isUpdatingSections } =
+    api.resume.updateSections.useMutation({
+      onError: (e) => {
+        handleError(e, "Something went wrong while updating sections");
+      },
+    });
 
-  const { mutateAsync: delSections } = api.resume.deleteSections.useMutation({
-    onError: (e) => {
-      handleError(e, "Something went wrong while deleting sections");
-    },
-  });
+  const { mutateAsync: delSections, isPending: isDeletingSections } =
+    api.resume.deleteSections.useMutation({
+      onError: (e) => {
+        handleError(e, "Something went wrong while deleting sections");
+      },
+    });
 
   const handleSave = async () => {
     if (path === clientUrls.resumeBuilder) {
@@ -147,7 +150,13 @@ export const SaveChangesButton: React.FC<Props> = ({ disabled }) => {
   return (
     <Button
       onClick={handleSave}
-      disabled={isPending || disabled}
+      disabled={
+        isPending ||
+        isAddingSections ||
+        isUpdatingSections ||
+        isDeletingSections ||
+        disabled
+      }
       variant="outline"
     >
       Save Changes
