@@ -161,6 +161,7 @@ exports.Prisma.ResumeTemplateScalarFieldEnum = {
   id: 'id',
   name: 'name',
   displayName: 'displayName',
+  imageUrl: 'imageUrl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

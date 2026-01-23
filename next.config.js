@@ -5,6 +5,16 @@
 import "./src/env.js";
 
 /** @type {import("next").NextConfig} */
-const config = { cacheComponents: true };
+const config = {
+  cacheComponents: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "tzrcbnswqjcbbgylldql.supabase.co",
+      },
+    ],
+  },
+};
 
 export default config;

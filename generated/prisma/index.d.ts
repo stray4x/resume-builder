@@ -5435,6 +5435,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     displayName: string | null
+    imageUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5443,6 +5444,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     displayName: string | null
+    imageUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5451,6 +5453,7 @@ export namespace Prisma {
     id: number
     name: number
     displayName: number
+    imageUrl: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -5461,6 +5464,7 @@ export namespace Prisma {
     id?: true
     name?: true
     displayName?: true
+    imageUrl?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5469,6 +5473,7 @@ export namespace Prisma {
     id?: true
     name?: true
     displayName?: true
+    imageUrl?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5477,6 +5482,7 @@ export namespace Prisma {
     id?: true
     name?: true
     displayName?: true
+    imageUrl?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -5558,6 +5564,7 @@ export namespace Prisma {
     id: string
     name: string
     displayName: string
+    imageUrl: string
     createdAt: Date
     updatedAt: Date
     _count: ResumeTemplateCountAggregateOutputType | null
@@ -5583,6 +5590,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     displayName?: boolean
+    imageUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     resume?: boolean | ResumeTemplate$resumeArgs<ExtArgs>
@@ -5593,6 +5601,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     displayName?: boolean
+    imageUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["resumeTemplate"]>
@@ -5601,6 +5610,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     displayName?: boolean
+    imageUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["resumeTemplate"]>
@@ -5609,11 +5619,12 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     displayName?: boolean
+    imageUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ResumeTemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "displayName" | "createdAt" | "updatedAt", ExtArgs["result"]["resumeTemplate"]>
+  export type ResumeTemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "displayName" | "imageUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["resumeTemplate"]>
   export type ResumeTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     resume?: boolean | ResumeTemplate$resumeArgs<ExtArgs>
     _count?: boolean | ResumeTemplateCountOutputTypeDefaultArgs<ExtArgs>
@@ -5630,6 +5641,7 @@ export namespace Prisma {
       id: string
       name: string
       displayName: string
+      imageUrl: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["resumeTemplate"]>
@@ -6059,6 +6071,7 @@ export namespace Prisma {
     readonly id: FieldRef<"ResumeTemplate", 'String'>
     readonly name: FieldRef<"ResumeTemplate", 'String'>
     readonly displayName: FieldRef<"ResumeTemplate", 'String'>
+    readonly imageUrl: FieldRef<"ResumeTemplate", 'String'>
     readonly createdAt: FieldRef<"ResumeTemplate", 'DateTime'>
     readonly updatedAt: FieldRef<"ResumeTemplate", 'DateTime'>
   }
@@ -17121,6 +17134,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     displayName: 'displayName',
+    imageUrl: 'imageUrl',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -17634,6 +17648,7 @@ export namespace Prisma {
     id?: StringFilter<"ResumeTemplate"> | string
     name?: StringFilter<"ResumeTemplate"> | string
     displayName?: StringFilter<"ResumeTemplate"> | string
+    imageUrl?: StringFilter<"ResumeTemplate"> | string
     createdAt?: DateTimeFilter<"ResumeTemplate"> | Date | string
     updatedAt?: DateTimeFilter<"ResumeTemplate"> | Date | string
     resume?: ResumeListRelationFilter
@@ -17643,6 +17658,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     displayName?: SortOrder
+    imageUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     resume?: ResumeOrderByRelationAggregateInput
@@ -17655,6 +17671,7 @@ export namespace Prisma {
     OR?: ResumeTemplateWhereInput[]
     NOT?: ResumeTemplateWhereInput | ResumeTemplateWhereInput[]
     displayName?: StringFilter<"ResumeTemplate"> | string
+    imageUrl?: StringFilter<"ResumeTemplate"> | string
     createdAt?: DateTimeFilter<"ResumeTemplate"> | Date | string
     updatedAt?: DateTimeFilter<"ResumeTemplate"> | Date | string
     resume?: ResumeListRelationFilter
@@ -17664,6 +17681,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     displayName?: SortOrder
+    imageUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ResumeTemplateCountOrderByAggregateInput
@@ -17678,6 +17696,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"ResumeTemplate"> | string
     name?: StringWithAggregatesFilter<"ResumeTemplate"> | string
     displayName?: StringWithAggregatesFilter<"ResumeTemplate"> | string
+    imageUrl?: StringWithAggregatesFilter<"ResumeTemplate"> | string
     createdAt?: DateTimeWithAggregatesFilter<"ResumeTemplate"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ResumeTemplate"> | Date | string
   }
@@ -18680,6 +18699,7 @@ export namespace Prisma {
     id?: string
     name: string
     displayName: string
+    imageUrl?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     resume?: ResumeCreateNestedManyWithoutTemplateInput
@@ -18689,6 +18709,7 @@ export namespace Prisma {
     id?: string
     name: string
     displayName: string
+    imageUrl?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     resume?: ResumeUncheckedCreateNestedManyWithoutTemplateInput
@@ -18698,6 +18719,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     displayName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUpdateManyWithoutTemplateNestedInput
@@ -18707,6 +18729,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     displayName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUncheckedUpdateManyWithoutTemplateNestedInput
@@ -18716,6 +18739,7 @@ export namespace Prisma {
     id?: string
     name: string
     displayName: string
+    imageUrl?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18724,6 +18748,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     displayName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18732,6 +18757,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     displayName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19806,6 +19832,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     displayName?: SortOrder
+    imageUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -19814,6 +19841,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     displayName?: SortOrder
+    imageUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -19822,6 +19850,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     displayName?: SortOrder
+    imageUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -21488,6 +21517,7 @@ export namespace Prisma {
     id?: string
     name: string
     displayName: string
+    imageUrl?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21496,6 +21526,7 @@ export namespace Prisma {
     id?: string
     name: string
     displayName: string
+    imageUrl?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21773,6 +21804,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     displayName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21781,6 +21813,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     displayName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

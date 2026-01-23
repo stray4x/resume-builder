@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache";
 
-import { CreateResumeButton } from "@/components/resume/new/CreateResumeButton";
+import { ResumeTemplateItem } from "@/components/resume/new/ResumeTemplateItem";
 import { db } from "@/server/db";
 
 const getTemplates = unstable_cache(
@@ -17,18 +17,10 @@ export default async function NewResumePage() {
 
   return (
     <div>
-      <h2 className="mb-4 text-center text-3xl font-bold">Create new resume</h2>
-      <p className="mb-16 text-center">choose resume template</p>
-
-      <ul className="mx-auto w-full max-w-3xl">
+      <h2 className="mb-8 text-center text-2xl font-bold">Create new resume</h2>
+      <ul className="xxs:justify-start mx-auto flex w-full max-w-98 flex-wrap justify-center gap-4 px-4 md:max-w-3xl">
         {templates.map((template) => (
-          <li
-            key={template.id}
-            className="bg-card mb-2 flex items-center justify-between p-2"
-          >
-            <h3 className="text-xl font-semibold">{template.displayName}</h3>
-            <CreateResumeButton templateId={template.id} />
-          </li>
+          <ResumeTemplateItem key={template.id} template={template} />
         ))}
       </ul>
     </div>

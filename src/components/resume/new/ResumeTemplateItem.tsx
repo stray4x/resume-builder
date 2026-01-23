@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import toast from "react-hot-toast";
@@ -7,13 +8,13 @@ import toast from "react-hot-toast";
 import { api } from "@/trpc/react";
 import { clientUrls } from "@/utils/urls";
 
-import { Button } from "../../ui/button";
+import type { ResumeTemplate } from "generated/prisma";
 
 type Props = {
-  templateId: string;
+  template: ResumeTemplate;
 };
 
-export const CreateResumeButton: React.FC<Props> = ({ templateId }) => {
+export const ResumeTemplateItem: React.FC<Props> = ({ template }) => {
   const router = useRouter();
 
   const { data: isAllowedResult } =
@@ -30,7 +31,7 @@ export const CreateResumeButton: React.FC<Props> = ({ templateId }) => {
   });
 
   const handleCreateResume = () => {
-    mutate({ templateId });
+    mutate({ templateId: template.id });
   };
 
   useEffect(() => {
@@ -40,8 +41,22 @@ export const CreateResumeButton: React.FC<Props> = ({ templateId }) => {
   }, [isAllowedResult, router]);
 
   return (
-    <Button onClick={handleCreateResume} disabled={isPending}>
-      Create
-    </Button>
+    <li
+      key={template.id}
+      className="mb-2 flex cursor-pointer flex-col items-center justify-center gap-2"
+      onClick={handleCreateResume}
+    >
+      <span className="text-lg">{template.displayName}</span>
+      <div className="hover:border-foreground rounded border bg-white">
+        <Image
+          src={template.imageUrl}
+          width={172}
+          height={240}
+          alt="Default Template"
+          objectFit="cover"
+          className={isPending ? "opacity-50" : ""}
+        />
+      </div>
+    </li>
   );
 };
