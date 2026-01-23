@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React from "react";
 
 import { Input } from "@/components/ui/input";
@@ -78,23 +79,50 @@ export const Settings: React.FC = () => {
           </div>
         </div>
         <div className="w-full">
-          <Label className="mb-2">Template</Label>
+          <Label className="mb-2" htmlFor="resume-template">
+            Template
+          </Label>
           <Select
             disabled={!data?.templates.length}
             value={resumeTemplate}
             onValueChange={(v) => updResume("templateId", v)}
           >
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select resume template" />
+            <SelectTrigger className="w-full" id="resume-template">
+              <SelectValue placeholder="Select resume template">
+                <span>
+                  {resumeTemplate
+                    ? data?.templates.find((t) => t.id === resumeTemplate)
+                        ?.displayName
+                    : "Select resume template"}
+                </span>
+              </SelectValue>
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>Select resume template</SelectLabel>
-                {data?.templates?.map((item) => (
-                  <SelectItem key={item.id} value={item.id}>
-                    {item.displayName}
-                  </SelectItem>
-                ))}
+                <SelectLabel className="text-center">
+                  Select resume template
+                </SelectLabel>
+                <div className="grid grid-cols-2 gap-1">
+                  {data?.templates?.map((item) => (
+                    <SelectItem
+                      key={item.id}
+                      value={item.id}
+                      className="col-span-1"
+                    >
+                      <div>
+                        <span className="block text-center">
+                          {item.displayName}
+                        </span>
+                        <Image
+                          src={item.imageUrl}
+                          alt={item.displayName}
+                          width={160}
+                          height={100}
+                        />
+                      </div>
+                    </SelectItem>
+                  ))}
+                </div>
               </SelectGroup>
             </SelectContent>
           </Select>
