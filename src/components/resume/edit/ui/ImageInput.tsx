@@ -14,6 +14,8 @@ type Props = {
   setImage: (value: string) => void;
 };
 
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
 export const base64ToBlob = (base64: string) => {
   const byteCharacters = atob(base64);
 
@@ -59,7 +61,13 @@ export const ImageInput: React.FC<Props> = ({ image, setImage }) => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+
     if (file) {
+      if (file.size > MAX_FILE_SIZE) {
+        toast.error("File is too large");
+        return;
+      }
+
       new Compressor(file, {
         quality: 0.6,
         width: 120,

@@ -8,13 +8,16 @@ type TextFragment = {
 
 type Block = {
   fragments: TextFragment[];
-  listType?: "bullet";
+  listType?: "bullet" | "ordered";
+  listIndex?: number;
 };
+
 type TipTapNode = {
   type: string;
   content?: TipTapNode[];
   text?: string;
   marks?: { type: "bold" | "italic" }[];
+  attrs?: { start?: number; type?: string };
 };
 
 const parseTextNode = (node: TipTapNode): TextFragment | null => {
@@ -54,6 +57,25 @@ const parseBulletList = (node: TipTapNode): Block[] => {
   return blocks;
 };
 
+const parseOrderedList = (node: TipTapNode): Block[] => {
+  const blocks: Block[] = [];
+  let index = node.attrs?.start ?? 1;
+
+  node.content?.forEach((listItem) => {
+    listItem.content?.forEach((child) => {
+      if (child.type === "paragraph") {
+        const block = parseParagraph(child);
+        block.listType = "ordered";
+        block.listIndex = index;
+        index++;
+        blocks.push(block);
+      }
+    });
+  });
+
+  return blocks;
+};
+
 export const parseTiptapToPdfJsx = (json: string) => {
   let parsed: TipTapNode[] = [];
 
@@ -75,6 +97,10 @@ export const parseTiptapToPdfJsx = (json: string) => {
         blocks.push(...parseBulletList(node));
         break;
 
+      case "orderedList":
+        blocks.push(...parseOrderedList(node));
+        break;
+
       default:
         blocks.push(parseParagraph(node));
     }
@@ -91,8 +117,13 @@ export const parseTiptapToPdfJsx = (json: string) => {
             marginBottom: 4,
           }}
         >
-          {block.listType && (
+          {block.listType === "bullet" && (
             <Text style={{ fontSize: 11, marginRight: 5 }}>{"\u2022"}</Text>
+          )}
+          {block.listType === "ordered" && (
+            <Text style={{ fontSize: 11, marginRight: 5 }}>
+              {block.listIndex}.
+            </Text>
           )}
 
           <Text style={{ fontSize: 11, flexWrap: "wrap" }}>
