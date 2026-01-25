@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import React from "react";
 
 import { api } from "@/trpc/react";
@@ -26,6 +27,7 @@ export const DeleteResumeModal: React.FC<Props> = ({
   open,
   onOpenChange,
 }) => {
+  const router = useRouter();
   const { mutate: deleteResume, isPending } =
     api.resume.deleteResume.useMutation();
 
@@ -34,6 +36,7 @@ export const DeleteResumeModal: React.FC<Props> = ({
       { resumeId },
       {
         onSuccess: () => {
+          router.refresh();
           onOpenChange(false);
         },
       },
