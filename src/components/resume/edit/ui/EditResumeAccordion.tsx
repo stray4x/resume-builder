@@ -27,7 +27,7 @@ export const ResumeAccordion: React.FC<Props> = ({
       <Button
         onClick={deleteItem}
         variant="ghost"
-        className="mt-3 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+        className="mt-3 transition-opacity duration-200 group-hover:opacity-100 lg:opacity-0"
       >
         <Trash />
       </Button>

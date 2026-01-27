@@ -1,5 +1,6 @@
 "use client";
 
+import { Save } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
@@ -47,9 +48,10 @@ const handleError = (e: TRPCClientErrorLike<any>, errorText: string) => {
 
 type Props = {
   disabled?: boolean;
+  isMobile?: boolean;
 };
 
-export const SaveChangesButton: React.FC<Props> = ({ disabled }) => {
+export const SaveChangesButton: React.FC<Props> = ({ disabled, isMobile }) => {
   const router = useRouter();
   const path = usePathname();
 
@@ -147,18 +149,25 @@ export const SaveChangesButton: React.FC<Props> = ({ disabled }) => {
     });
   };
 
-  return (
+  const disableBtn =
+    isPending ||
+    isAddingSections ||
+    isUpdatingSections ||
+    isDeletingSections ||
+    disabled;
+
+  return isMobile ? (
     <Button
       onClick={handleSave}
-      disabled={
-        isPending ||
-        isAddingSections ||
-        isUpdatingSections ||
-        isDeletingSections ||
-        disabled
-      }
-      variant="outline"
+      disabled={disableBtn}
+      variant="ghost"
+      className="flex w-full justify-start gap-4"
     >
+      <Save />
+      Save Changes
+    </Button>
+  ) : (
+    <Button onClick={handleSave} disabled={disableBtn} variant="outline">
       Save Changes
     </Button>
   );

@@ -15,7 +15,7 @@ export const SortableItem: React.FC<Props> = ({ id, children }) => {
   };
 
   return (
-    <div style={style} className="-ml-10 flex items-start">
+    <div style={style} className="flex items-start lg:-ml-10">
       <button
         ref={setNodeRef}
         {...attributes}
@@ -24,7 +24,7 @@ export const SortableItem: React.FC<Props> = ({ id, children }) => {
       >
         <GripVertical />
       </button>
-      <div className="w-full">{children}</div>
+      <div className="w-[calc(100%-80px)] lg:w-full">{children}</div>
     </div>
   );
 };

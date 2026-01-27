@@ -51,18 +51,20 @@ export const EditResumeForm: React.FC<Props> = ({ resume }) => {
   }, []);
 
   return (
-    <div className="mb-8 flex flex-col gap-12">
-      <Settings />
-      <Details />
-      <Summary />
-      <div className="-mr-10 flex flex-col gap-12">
-        <WorkExperience />
-        <Projects />
-        <Education />
-        <Links />
-        <Skills />
-        <Languages />
-        <Courses />
+    <div className="no-arrow-scroll h-[calc(screen-64px)] overflow-x-hidden overflow-y-auto px-4 py-4 lg:p-12">
+      <div className="mb-8 flex flex-col gap-12">
+        <Settings />
+        <Details />
+        <Summary />
+        <div className="-mr-10 flex flex-col gap-12">
+          <WorkExperience />
+          <Projects />
+          <Education />
+          <Links />
+          <Skills />
+          <Languages />
+          <Courses />
+        </div>
       </div>
     </div>
   );

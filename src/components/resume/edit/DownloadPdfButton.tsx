@@ -11,7 +11,11 @@ import { useResume } from "@/store/store";
 
 import { DefaultTemplate } from "../preview/templates/Default";
 
-export const DownloadPdfButton: React.FC = () => {
+type Props = {
+  isMobile?: boolean;
+};
+
+export const DownloadPdfButton: React.FC<Props> = ({ isMobile }) => {
   const resume = useResume((state) => state);
 
   const saveFile = () => {
@@ -29,7 +33,11 @@ export const DownloadPdfButton: React.FC = () => {
       });
   };
 
-  return (
+  return isMobile ? (
+    <Button onClick={saveFile} className="flex gap-4" variant="ghost">
+      <Download /> Download Resume
+    </Button>
+  ) : (
     <Button onClick={saveFile}>
       Download Resume
       <Download />

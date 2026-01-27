@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 
 type Props = {
   image: string;
+  className?: string;
   setImage: (value: string) => void;
 };
 
@@ -29,7 +30,7 @@ export const base64ToBlob = (base64: string) => {
   return new Blob([byteArray], { type: "application/octet-stream" });
 };
 
-export const ImageInput: React.FC<Props> = ({ image, setImage }) => {
+export const ImageInput: React.FC<Props> = ({ className, image, setImage }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [file, setFile] = useState<File | null>(null);
@@ -95,7 +96,7 @@ export const ImageInput: React.FC<Props> = ({ image, setImage }) => {
   };
 
   return (
-    <div>
+    <div className={className}>
       <Label htmlFor="photo" className="mb-2">
         Photo
       </Label>
