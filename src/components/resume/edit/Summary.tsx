@@ -16,6 +16,7 @@ export const Summary: React.FC = () => {
       <TextEditor
         value={summary}
         maxLength={2500}
+        className="bg-card"
         onChange={(v) => updateSummary("summary", v)}
       />
     </div>

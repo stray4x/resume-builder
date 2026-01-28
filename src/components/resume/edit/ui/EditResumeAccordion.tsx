@@ -21,7 +21,7 @@ export const ResumeAccordion: React.FC<Props> = ({
 
   return (
     <div className="group flex items-start gap-2" {...props}>
-      <Accordion type="single" collapsible className="border py-2">
+      <Accordion type="single" collapsible className="bg-card border py-2">
         <AccordionItem value={id}>{children}</AccordionItem>
       </Accordion>
       <Button
