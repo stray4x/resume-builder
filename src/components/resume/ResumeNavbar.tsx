@@ -27,9 +27,16 @@ import { Switch } from "../ui/switch";
 
 let unsubscribe: (() => void) | null = null;
 
+const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+  e.preventDefault();
+  e.returnValue = "";
+};
+
 export const ResumeNavbar: React.FC = () => {
   const path = usePathname();
   const { id } = useParams();
+
+  const isDirty = useResume((state) => state.isDirty);
 
   const [autosaveOn, setAutosaveOn] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
@@ -71,6 +78,19 @@ export const ResumeNavbar: React.FC = () => {
       }
     };
   }, [autosaveOn, path]);
+
+  useEffect(() => {
+    if (!isDirty || autosaveOn) {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      return;
+    }
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [isDirty, autosaveOn]);
 
   useEffect(() => {
     const handleResize = () => {

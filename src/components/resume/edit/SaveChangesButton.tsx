@@ -56,6 +56,7 @@ export const SaveChangesButton: React.FC<Props> = ({ disabled, isMobile }) => {
   const path = usePathname();
 
   const resume = useResume((state) => state);
+  const markSaved = useResume((state) => state.markSaved);
 
   const { mutateAsync: updateResume, isPending } =
     api.resume.updateResume.useMutation({
@@ -88,6 +89,7 @@ export const SaveChangesButton: React.FC<Props> = ({ disabled, isMobile }) => {
   const handleSave = async () => {
     if (path === clientUrls.resumeBuilder) {
       saveResumeToLocalStorage(resume);
+      markSaved();
       toast.success("Saved successfully!");
       return;
     }
@@ -143,6 +145,7 @@ export const SaveChangesButton: React.FC<Props> = ({ disabled, isMobile }) => {
       updSections({ resumeId: resume.id, ...sectionToUpdate }),
     ]).then((result) => {
       if (result.every((item) => item.status === "fulfilled")) {
+        markSaved();
         toast.success("Saved successfully!");
         router.refresh();
       }

@@ -32,6 +32,7 @@ export type ResumeDraft = Omit<
   skills: SkillDraft[];
   languages: LanguageDraft[];
   courses: CourseDraft[];
+  isDirty: boolean;
 };
 
 type OmitFields = "createdAt" | "updatedAt" | "resumeId";

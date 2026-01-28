@@ -38,9 +38,10 @@ export const defaultState: ResumeDraft = {
   skills: [],
   languages: [],
   courses: [],
+  isDirty: false,
 };
 
-type ResumeStore = ResumeDraft & {
+export type ResumeStore = ResumeDraft & {
   setField: (field: string, value: string) => void;
   setResume: (resume: ResumeDraft) => void;
   addSectionItem: (section: ResumeSections) => void;
@@ -57,14 +58,20 @@ type ResumeStore = ResumeDraft & {
   ) => void;
   deleteSectionItem: (section: ResumeSections, id: string) => void;
   reset: () => void;
+  markSaved: () => void;
 };
 
 export const useResume = create<ResumeStore>((set, get, store) => ({
   ...defaultState,
 
-  setField: (field: string, value: string) => set(() => ({ [field]: value })),
+  setField: (field: string, value: string) =>
+    set(() => ({
+      isDirty: true,
+      [field]: value,
+    })),
 
-  setResume: (resume: ResumeDraft) => set(() => ({ ...resume })),
+  setResume: (resume: ResumeDraft) =>
+    set(() => ({ ...resume, isDirty: false })),
 
   addSectionItem: (section) => {
     let newItem = {} as ResumeSectionDrafts[typeof section];
@@ -94,6 +101,7 @@ export const useResume = create<ResumeStore>((set, get, store) => ({
     }
 
     set((state) => ({
+      isDirty: true,
       [section]: [
         ...state[section],
         {
@@ -110,6 +118,7 @@ export const useResume = create<ResumeStore>((set, get, store) => ({
       throw new Error("oh no");
     }
     set((state: ResumeDraft) => ({
+      isDirty: true,
       [section]: state[section].map((item) =>
         item.id === id && item.status !== ItemStatus.Deleted
           ? {
@@ -150,12 +159,13 @@ export const useResume = create<ResumeStore>((set, get, store) => ({
         movedItem.status = ItemStatus.Updated;
       }
 
-      return { ...state, [section]: newList };
+      return { ...state, isDirty: true, [section]: newList };
     });
   },
 
   deleteSectionItem: (section: ResumeSections, id: string) =>
     set((state: ResumeDraft) => ({
+      isDirty: true,
       [section]: state[section].map((item) => ({
         ...item,
         status: id === item.id ? ItemStatus.Deleted : item.status,
@@ -165,4 +175,5 @@ export const useResume = create<ResumeStore>((set, get, store) => ({
   reset: () => {
     set(store.getInitialState());
   },
+  markSaved: () => set({ isDirty: false }),
 }));

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import toast from "react-hot-toast";
 
+import { type ResumeStore } from "@/store/store";
 import {
   type ResumeWithRelations,
   type ResumeDraft,
@@ -12,6 +12,7 @@ import { resumeColors } from "./constants/resumeColors";
 
 export const normalizeResume = (resume: ResumeWithRelations): ResumeDraft => {
   return {
+    isDirty: false,
     id: resume.id,
     templateId: resume.templateId,
     resumeName: resume.resumeName,
@@ -87,6 +88,6 @@ export const parseResume = () =>
         : value,
   ) as ResumeDraft;
 
-export const saveResumeToLocalStorage = (resume: ResumeDraft) => {
+export const saveResumeToLocalStorage = (resume: ResumeStore) => {
   localStorage.setItem(localStorageKeys.RESUME, stringifyResume(resume));
 };
