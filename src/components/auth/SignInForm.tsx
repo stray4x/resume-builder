@@ -12,8 +12,11 @@ import { authClient } from "@/server/better-auth/client";
 import { clientUrls } from "@/utils/urls";
 
 const signUpSchema = z.object({
-  email: z.string().email("Invalid email"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
+  email: z.string().email("Invalid email").max(50, "50 characters max"),
+  password: z
+    .string()
+    .min(8, "Password must be at least 8 characters")
+    .max(50, "50 characters max"),
 });
 
 export const SignInForm: React.FC = () => {
