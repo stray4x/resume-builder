@@ -47,7 +47,7 @@ export const DeleteResumeModal: React.FC<Props> = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="mb-2">
+          <DialogTitle className="xxs:w-70 mb-2 w-60 truncate">
             Delete &quot;{resumeName}&quot; ?
           </DialogTitle>
         </DialogHeader>
