@@ -8,9 +8,8 @@ export default async function Home() {
     <main className="from-background to-muted flex h-[calc(100vh-64px)] w-full flex-col items-center justify-center gap-8 bg-linear-to-b">
       <h1 className="text-center text-5xl font-bold">Resume Builder</h1>
       <h3 className="mb-12 max-w-3xl px-8 text-center md:text-lg">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique iste
-        a quibusdam tempore, corporis possimus enim accusantium. Ratione, nihil
-        libero?
+        A modern, minimalistic resume builder — create, customize, and export
+        professional resumes with ease.
       </h3>
       <div className="flex items-center gap-4">
         <Button size="lg" asChild variant="link">

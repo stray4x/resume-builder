@@ -1,29 +1,79 @@
-# Create T3 App
+# Resume Builder
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+A modern, minimalistic resume builder — create, customize, and export professional resumes with ease.
 
-## What's next? How do I make an app with this?
+## Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- 💯&nbsp;Free & open-source.
+- 🎨&nbsp;Multiple resume templates (not yet)
+- ⚡&nbsp;Real-time preview
+- 🖼️&nbsp;Resume photo support
+- 🎨&nbsp;Template & color customization
+- 📋&nbsp;Duplicate resumes
+- 📄&nbsp;Export to PDF
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Quick start
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+### Clone the repo
 
-## Learn More
+```bash
+git clone https://github.com/stray4x/resume-builder.git
+```
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+### Install the dependencies
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+```bash
+yarn
+```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### Setup environment
 
-## How do I deploy this?
+Create a local .env from the example file:
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+```bash
+cp .env.example .env
+```
+
+Fill in the variables:
+
+```bash
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+
+BETTER_AUTH_SECRET="your-secret"
+BETTER_AUTH_GITHUB_CLIENT_ID="your-client-id"
+BETTER_AUTH_GITHUB_CLIENT_SECRET="your-client-secret"
+
+# Main database URL
+# If you are using Docker locally, make sure this matches your Docker credentials
+DATABASE_URL="postgresql://user:password@host:port/database"
+
+# Direct database URL for running migrations in production / serverless environments
+# When running locally via Docker, this can be the same as DATABASE_URL
+DATABASE_DIRECT_URL="postgresql://user:password@host:port/database"
+
+# Local Docker database configuration
+DOCKER_DB_NAME="database"
+DOCKER_DB_USER="user"
+DOCKER_DB_PASSWORD="password"
+DOCKER_DB_HOST="host"
+DOCKER_DB_PORT=port
+```
+
+### Start a local PostgreSQL database with Docker
+
+```bash
+docker-compose up -d
+```
+
+### Apply Prisma migrations
+
+```bash
+npx prisma migrate dev --name init
+npx prisma generate
+```
+
+### Start the dev server
+
+```bash
+yarn dev
+```
