@@ -340,4 +340,107 @@ export const resumeRouter = createTRPCRouter({
         }),
       ]);
     }),
+
+  copyResume: protectedProcedure
+    .input(z.object({ resumeId: z.string().cuid() }))
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.session.user.id;
+
+      const originalResume = await ctx.db.resume.findFirst({
+        where: { id: input.resumeId, ownerId: userId },
+        include: {
+          workExperience: true,
+          education: true,
+          projects: true,
+          courses: true,
+          skills: true,
+          links: true,
+          languages: true,
+        },
+      });
+
+      if (!originalResume) {
+        throw new TRPCError({ code: "NOT_FOUND", message: "Resume not found" });
+      }
+
+      const {
+        id,
+        ownerId,
+        createdAt,
+        updatedAt,
+        templateId,
+        workExperience,
+        education,
+        projects,
+        courses,
+        skills,
+        links,
+        languages,
+        ...resumeData
+      } = originalResume;
+
+      const newResume = await ctx.db.resume.create({
+        data: {
+          ...resumeData,
+          resumeName: `${originalResume.resumeName} copy`,
+          owner: { connect: { id: userId } },
+          template: { connect: { id: templateId } },
+        },
+      });
+
+      await ctx.db.$transaction([
+        ctx.db.workExperience.createMany({
+          data: workExperience.map(
+            ({ id, resumeId, createdAt, updatedAt, ...w }) => ({
+              ...w,
+              resumeId: newResume.id,
+            }),
+          ),
+        }),
+        ctx.db.education.createMany({
+          data: education.map(
+            ({ id, resumeId, createdAt, updatedAt, ...e }) => ({
+              ...e,
+              resumeId: newResume.id,
+            }),
+          ),
+        }),
+        ctx.db.project.createMany({
+          data: projects.map(
+            ({ id, resumeId, createdAt, updatedAt, ...p }) => ({
+              ...p,
+              resumeId: newResume.id,
+            }),
+          ),
+        }),
+        ctx.db.course.createMany({
+          data: courses.map(({ id, resumeId, createdAt, updatedAt, ...c }) => ({
+            ...c,
+            resumeId: newResume.id,
+          })),
+        }),
+        ctx.db.link.createMany({
+          data: links.map(({ id, resumeId, createdAt, updatedAt, ...l }) => ({
+            ...l,
+            resumeId: newResume.id,
+          })),
+        }),
+        ctx.db.skill.createMany({
+          data: skills.map(({ id, resumeId, createdAt, updatedAt, ...s }) => ({
+            ...s,
+            resumeId: newResume.id,
+          })),
+        }),
+        ctx.db.language.createMany({
+          data: languages.map(
+            ({ id, resumeId, createdAt, updatedAt, ...l }) => ({
+              ...l,
+              resumeId: newResume.id,
+            }),
+          ),
+        }),
+      ]);
+
+      return newResume;
+    }),
 });
