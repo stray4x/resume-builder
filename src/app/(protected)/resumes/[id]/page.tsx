@@ -25,10 +25,8 @@ export default async function EditResumePage({
   });
 
   return (
-    <div className="grid h-[calc(100vh-64px)] grid-cols-2 overflow-y-hidden">
-      <div className="no-arrow-scroll h-[calc(screen-64px)] overflow-y-auto p-12">
-        <EditResumeForm resume={resume} />
-      </div>
+    <div className="grid h-[calc(100vh-64px)] grid-cols-1 overflow-y-hidden lg:grid-cols-2">
+      <EditResumeForm resume={resume} />
       <ResumePreview />
     </div>
   );

@@ -65,13 +65,13 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
   return (
     <SortableItem id={id}>
       <ResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
-        <AccordionTrigger>
+        <AccordionTrigger className="text-xs sm:text-sm">
           {type === "education"
             ? getItemTitle(inputTwo, inputOne)
             : getItemTitle(inputOne, inputTwo)}
         </AccordionTrigger>
         <AccordionContent className="h-fit">
-          <div className="mt-1 grid grid-cols-2 gap-8">
+          <div className="xs:grid-cols-2 xs:gap-8 mt-1 grid grid-cols-1 gap-4">
             <div className="flex flex-col gap-4">
               <div>
                 <Label htmlFor={`inp-one-${id}`} className="mb-2">

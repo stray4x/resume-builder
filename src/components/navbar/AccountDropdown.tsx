@@ -49,7 +49,9 @@ export const AccountDropdown: React.FC<Props> = ({ user }) => {
           <DropdownMenuItem asChild>
             <Link href={clientUrls.resumes}>My Resumes</Link>
           </DropdownMenuItem>
-          {/* <DropdownMenuItem disabled>Settings</DropdownMenuItem> */}
+          <DropdownMenuItem asChild>
+            <Link href={clientUrls.settings}>Settings</Link>
+          </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleSignOut} disabled={isSigningOut}>
             Sign out

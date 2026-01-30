@@ -42,8 +42,8 @@ export const SkillItem: React.FC<Props> = ({
       <AccordionTrigger>
         {title || "(Empty)"} {level && `- ${level}`}
       </AccordionTrigger>
-      <AccordionContent>
-        <div className="flex justify-between gap-8">
+      <AccordionContent className="h-fit">
+        <div className="xs:flex-row xs:gap-8 flex flex-col justify-between gap-4">
           <div className="w-full">
             <Label htmlFor={`skill-${id}`} className="mb-2">
               Skill

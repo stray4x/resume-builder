@@ -2,8 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import React from "react";
+import toast from "react-hot-toast";
 
 import { api } from "@/trpc/react";
+import { clientUrls } from "@/utils/urls";
 
 import { Button } from "../ui/button";
 import {
@@ -15,44 +17,33 @@ import {
 } from "../ui/dialog";
 
 type Props = {
-  resumeId: string;
-  resumeName: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 };
 
-export const DeleteResumeModal: React.FC<Props> = ({
-  resumeId,
-  resumeName,
-  open,
-  onOpenChange,
-}) => {
+export const DeleteAccountModal: React.FC<Props> = ({ open, onOpenChange }) => {
   const router = useRouter();
-  const { mutate: deleteResume, isPending } =
-    api.resume.deleteResume.useMutation();
+  const { isPending, mutate: deleteUser } = api.user.deleteUser.useMutation({
+    onSuccess: () => {
+      toast.success("Your account was deleted");
+      router.refresh();
+      router.push(clientUrls.home);
+    },
+  });
 
   const handleDelete = () => {
-    deleteResume(
-      { resumeId },
-      {
-        onSuccess: () => {
-          router.refresh();
-          onOpenChange(false);
-        },
-      },
-    );
+    deleteUser();
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="xxs:w-70 mb-2 w-60 truncate">
-            Delete &quot;{resumeName}&quot; ?
-          </DialogTitle>
+          <DialogTitle className="mb-2">Delete account?</DialogTitle>
         </DialogHeader>
         <DialogDescription>
-          This action cannot be undone. The resume will be permanently deleted.
+          This action cannot be undone. Your account will be permanently
+          deleted.
         </DialogDescription>
         <div className="flex justify-end gap-2">
           <Button variant="outline" onClick={() => onOpenChange(false)}>

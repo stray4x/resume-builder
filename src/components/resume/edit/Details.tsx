@@ -24,7 +24,7 @@ export const Details: React.FC = () => {
   return (
     <div className="mb-8">
       <SectionTitle>Details</SectionTitle>
-      <div className="grid grid-cols-2 gap-8">
+      <div className="xs:grid-cols-2 grid grid-cols-1 gap-8">
         <div>
           <Label htmlFor="jobTitle" className="mb-2">
             Wanted Job Title
@@ -42,6 +42,7 @@ export const Details: React.FC = () => {
         <ImageInput
           image={photoUrl}
           setImage={(v) => setField("photoUrl", v)}
+          className="xs:order-0 order-first"
         />
         <div>
           <Label htmlFor="firstName" className="mb-2">

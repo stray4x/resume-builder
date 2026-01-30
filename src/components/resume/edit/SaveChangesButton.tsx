@@ -1,5 +1,6 @@
 "use client";
 
+import { Save } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
@@ -47,13 +48,15 @@ const handleError = (e: TRPCClientErrorLike<any>, errorText: string) => {
 
 type Props = {
   disabled?: boolean;
+  isMobile?: boolean;
 };
 
-export const SaveChangesButton: React.FC<Props> = ({ disabled }) => {
+export const SaveChangesButton: React.FC<Props> = ({ disabled, isMobile }) => {
   const router = useRouter();
   const path = usePathname();
 
   const resume = useResume((state) => state);
+  const markSaved = useResume((state) => state.markSaved);
 
   const { mutateAsync: updateResume, isPending } =
     api.resume.updateResume.useMutation({
@@ -86,6 +89,7 @@ export const SaveChangesButton: React.FC<Props> = ({ disabled }) => {
   const handleSave = async () => {
     if (path === clientUrls.resumeBuilder) {
       saveResumeToLocalStorage(resume);
+      markSaved();
       toast.success("Saved successfully!");
       return;
     }
@@ -141,24 +145,32 @@ export const SaveChangesButton: React.FC<Props> = ({ disabled }) => {
       updSections({ resumeId: resume.id, ...sectionToUpdate }),
     ]).then((result) => {
       if (result.every((item) => item.status === "fulfilled")) {
+        markSaved();
         toast.success("Saved successfully!");
         router.refresh();
       }
     });
   };
 
-  return (
+  const disableBtn =
+    isPending ||
+    isAddingSections ||
+    isUpdatingSections ||
+    isDeletingSections ||
+    disabled;
+
+  return isMobile ? (
     <Button
       onClick={handleSave}
-      disabled={
-        isPending ||
-        isAddingSections ||
-        isUpdatingSections ||
-        isDeletingSections ||
-        disabled
-      }
-      variant="outline"
+      disabled={disableBtn}
+      variant="ghost"
+      className="flex w-full justify-start gap-4"
     >
+      <Save />
+      Save Changes
+    </Button>
+  ) : (
+    <Button onClick={handleSave} disabled={disableBtn} variant="outline">
       Save Changes
     </Button>
   );

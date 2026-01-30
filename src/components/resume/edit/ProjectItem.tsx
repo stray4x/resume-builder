@@ -40,7 +40,7 @@ export const ProjectItem: React.FC<Props> = ({
     <ResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
       <AccordionTrigger>{title || "(Empty)"}</AccordionTrigger>
       <AccordionContent className="h-fit">
-        <div className="mt-1 mb-8 grid grid-cols-2 gap-8">
+        <div className="xs:grid-cols-2 xs:gap-8 mt-1 mb-8 grid grid-cols-1 gap-4">
           <div className="flex flex-col gap-4">
             <div>
               <Label htmlFor={`proj-title-${id}`} className="mb-2">

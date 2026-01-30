@@ -22,7 +22,7 @@ export const Navbar: React.FC = () => {
           <ResumeNavbar />
         </Suspense>
       </div>
-      <div className="flex gap-4">
+      <div className="xxs:gap-4 flex gap-2">
         <Button asChild variant="ghost">
           <Link
             href="https://github.com/stray4x/resume-builder"

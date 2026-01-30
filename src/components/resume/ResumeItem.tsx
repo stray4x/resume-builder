@@ -15,7 +15,7 @@ type Props = {
 
 export const ResumeItem: React.FC<Props> = ({ resume }) => {
   return (
-    <li className="group hover:bg-accent flex items-center justify-between rounded-lg border px-4 text-sm">
+    <li className="group bg-card hover:bg-accent flex items-center justify-between rounded-lg border px-4 text-sm">
       <Link
         href={clientUrls.editResume(resume.id)}
         className="flex max-w-[80%] flex-col gap-0.5 py-3 sm:w-full"
