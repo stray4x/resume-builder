@@ -27,9 +27,6 @@ export const Navbar: React.FC = () => {
         </Suspense>
       </div>
       <div className="xxs:gap-4 flex gap-2">
-        <Suspense>
-          <LanguageSwitcher />
-        </Suspense>
         <Button asChild variant="ghost">
           <Link
             href="https://github.com/stray4x/resume-builder"
@@ -39,7 +36,13 @@ export const Navbar: React.FC = () => {
             <GithubIcon />
           </Link>
         </Button>
+        <Suspense>
+          <LanguageSwitcher />
+        </Suspense>
         <DarkModeButton />
+        {isPending && (
+          <div className="bg-muted h-8 w-16 animate-pulse rounded" />
+        )}
         {data?.session && <AccountDropdown user={data.user} />}
         {!data?.session && !isPending && (
           <Button variant="link" asChild>

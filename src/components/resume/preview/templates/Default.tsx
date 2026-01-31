@@ -496,7 +496,7 @@ export const EmploymentHistory: React.FC<EmploymentHistoryProps> = ({
         ) => (
           <LeftItemContainer key={`${id}-${idx}`}>
             <LeftItemTitle>
-              {getItemTitle(jobTitle, employer, t("at"), t("empty"))}
+              {getItemTitle(jobTitle, employer, "at", "empty")}
               {city && `, ${city}`}
             </LeftItemTitle>
             <LeftItemSubtitle>
