@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -12,13 +13,15 @@ import { SectionTitle } from "./ui/SectionTitle";
 import type { EducationDraft } from "@/store/types";
 
 export const Education: React.FC = () => {
+  const t = useTranslations();
+
   const educ: EducationDraft[] = useSectionItems("education");
   const { addItem, updateItem, deleteItem, moveItem } =
     useSectionActions("education");
 
   return (
     <div>
-      <SectionTitle>Education</SectionTitle>
+      <SectionTitle>{t("education")}</SectionTitle>
       <div className="flex flex-col gap-4">
         <DndContainer moveItem={moveItem} items={educ.map((item) => item.id)}>
           {educ.map((item) => {
@@ -34,8 +37,8 @@ export const Education: React.FC = () => {
                 endDate={item.endDate}
                 endDateIsCurrent={item.endDateIsCurrent}
                 type="education"
-                inputLabelOne="School"
-                inputLabelTwo="Degree"
+                inputLabelOne={t("school")}
+                inputLabelTwo={t("degree")}
                 handleDeleteItem={deleteItem}
                 updateStartDate={(v) => updateItem(item.id, v, "startDate")}
                 updateEndDate={(v) => updateItem(item.id, v, "endDate")}
@@ -58,7 +61,9 @@ export const Education: React.FC = () => {
         onClick={addItem}
         disabled={educ.length >= 10}
       >
-        {!educ.length ? "Add education" : "Add one more education"}
+        {!educ.length
+          ? t("buttons.addEducation")
+          : t("buttons.addOneMoreEducation")}
       </Button>
     </div>
   );

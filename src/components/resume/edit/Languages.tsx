@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -13,13 +14,15 @@ import { SortableItem } from "./ui/SortableItem";
 import type { LanguageDraft } from "@/store/types";
 
 export const Languages: React.FC = () => {
+  const t = useTranslations();
+
   const langs: LanguageDraft[] = useSectionItems("languages");
   const { addItem, updateItem, deleteItem, moveItem } =
     useSectionActions("languages");
 
   return (
     <div>
-      <SectionTitle>Languages</SectionTitle>
+      <SectionTitle>{t("languages")}</SectionTitle>
       <div className="flex flex-col gap-4">
         <DndContainer moveItem={moveItem} items={langs.map((item) => item.id)}>
           {langs.map((item) => {
@@ -42,7 +45,9 @@ export const Languages: React.FC = () => {
         onClick={addItem}
         disabled={langs.length >= 10}
       >
-        {!langs.length ? "Add language" : "Add one more language"}
+        {!langs.length
+          ? t("buttons.addLanguage")
+          : t("buttons.addOneMoreLanguage")}
       </Button>
     </div>
   );

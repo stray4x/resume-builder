@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,7 @@ import { SectionTitle } from "./ui/SectionTitle";
 import type { WorkExperienceDraft } from "@/store/types";
 
 export const WorkExperience: React.FC = () => {
+  const t = useTranslations();
   const workExp: WorkExperienceDraft[] = useSectionItems("workExperience");
 
   const { addItem, updateItem, deleteItem, moveItem } =
@@ -19,7 +21,7 @@ export const WorkExperience: React.FC = () => {
 
   return (
     <div>
-      <SectionTitle>Work Experience</SectionTitle>
+      <SectionTitle>{t("workExperience")}</SectionTitle>
       <div className="flex flex-col gap-4">
         <DndContainer
           moveItem={moveItem}
@@ -38,8 +40,8 @@ export const WorkExperience: React.FC = () => {
                 endDate={item.endDate}
                 endDateIsCurrent={item.endDateIsCurrent}
                 type="workExperience"
-                inputLabelOne="Job Title"
-                inputLabelTwo="Employer"
+                inputLabelOne={t("jobTitle")}
+                inputLabelTwo={t("employer")}
                 updateStartDate={(v) => updateItem(item.id, v, "startDate")}
                 updateEndDate={(v) => updateItem(item.id, v, "endDate")}
                 updateInputOne={(v) => updateItem(item.id, v, "jobTitle")}
@@ -62,7 +64,9 @@ export const WorkExperience: React.FC = () => {
         onClick={addItem}
         disabled={workExp.length >= 20}
       >
-        {!workExp.length ? "Add employment" : "Add one more employment"}
+        {!workExp.length
+          ? t("buttons.addEmployment")
+          : t("buttons.addOneMoreEmployment")}
       </Button>
     </div>
   );

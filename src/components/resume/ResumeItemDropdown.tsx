@@ -1,10 +1,11 @@
 "use client";
 
 import { EllipsisVertical } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useTranslations, type _Translator } from "next-intl";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
+import { useRouter } from "@/i18n/navigation";
 import { api } from "@/trpc/react";
 
 import { DeleteResumeModal } from "./DeleteResumeModal";
@@ -26,16 +27,17 @@ type Props = {
 
 export const ResumeItemDropdown: React.FC<Props> = ({ resume }) => {
   const router = useRouter();
+  const t = useTranslations();
 
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
   const { mutate: copyResume, isPending } = api.resume.copyResume.useMutation({
     onSuccess: () => {
-      toast.success("Resume was copied successfully");
+      toast.success(t("toasts.resumeCopied"));
       router.refresh();
     },
     onError: () => {
-      toast.error("Something went wrong");
+      toast.error(t("toasts.sumTingWong"));
     },
   });
 
@@ -55,12 +57,14 @@ export const ResumeItemDropdown: React.FC<Props> = ({ resume }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuGroup>
-            <DropdownMenuItem onClick={handleCopyResume}>Copy</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleCopyResume}>
+              {t("buttons.copy")}
+            </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => setDeleteModalOpen(true)}
               variant="destructive"
             >
-              Delete
+              {t("buttons.delete")}
             </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>

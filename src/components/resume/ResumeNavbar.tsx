@@ -1,9 +1,11 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import { useParams, usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 
+import { usePathname } from "@/i18n/navigation";
 import { useResume } from "@/store/store";
 import { breakpoints } from "@/utils/constants/breakpoints";
 import { localStorageKeys } from "@/utils/constants/localStorage";
@@ -35,6 +37,7 @@ const handleBeforeUnload = (e: BeforeUnloadEvent) => {
 export const ResumeNavbar: React.FC = () => {
   const path = usePathname();
   const { id } = useParams();
+  const t = useTranslations("buttons");
 
   const isDirty = useResume((state) => state.isDirty);
 
@@ -156,7 +159,7 @@ export const ResumeNavbar: React.FC = () => {
             htmlFor="autosave-resume"
             className="cursor-pointer text-xs sm:text-sm"
           >
-            Autosave
+            {t("autosave")}
           </Label>
         </div>
       )}

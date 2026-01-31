@@ -1,11 +1,23 @@
+import { getTranslations } from "next-intl/server";
+
 import { DeleteAccountBtn } from "@/components/settings/DeleteAccountBtn";
+
 // import { Input } from "@/components/ui/input";
 // import { Label } from "@/components/ui/label";
 
-export default async function Page() {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function Page({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
+
   return (
     <div className="mx-auto w-full max-w-xl p-4">
-      <h1 className="mb-8 text-center text-2xl font-bold">Settings</h1>
+      <h1 className="mb-8 text-center text-2xl font-bold">
+        {t("settings.settings")}
+      </h1>
       <div className="mb-4 flex flex-col gap-4">
         {/* <div>
           <Label htmlFor="name" className="mb-2">
@@ -16,9 +28,9 @@ export default async function Page() {
         <div className="border"></div>
         <div className="xs:flex-row xs:items-center flex flex-col items-start justify-between gap-4">
           <div>
-            <b>Delete account</b>
+            <b>{t("settings.deleteAccount")}</b>
             <p className="text-sm">
-              Once you delete your account, there is no going back.
+              {t("settings.onceDeleteAccountThereIsNoGoingBack")}
             </p>
           </div>
           <DeleteAccountBtn />

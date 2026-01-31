@@ -20,6 +20,7 @@ import type {
   SkillDraft,
   WorkExperienceDraft,
 } from "@/store/types";
+import type { _Translator } from "next-intl";
 
 // --------------------------------------------------------------------------------
 // types
@@ -81,6 +82,7 @@ type CoursesProps = {
 
 type EmploymentHistoryProps = {
   workExperience: WorkExperienceDraft[];
+  t: _Translator;
 };
 
 type EducationProps = {
@@ -102,6 +104,7 @@ type DetailsProps = {
 
 type DefaultTemplateProps = {
   resume: ResumeDraft;
+  t: _Translator;
 };
 
 // --------------------------------------------------------------------------------
@@ -472,10 +475,11 @@ export const SummarySection: React.FC<SummaryProps> = ({ summary }) => {
 
 export const EmploymentHistory: React.FC<EmploymentHistoryProps> = ({
   workExperience,
+  t,
 }) => {
   return (
     <SectionContainer>
-      <LeftSectionTitle>Work Experience</LeftSectionTitle>
+      <LeftSectionTitle>{t("workExperience")}</LeftSectionTitle>
       {workExperience.map(
         (
           {
@@ -492,7 +496,7 @@ export const EmploymentHistory: React.FC<EmploymentHistoryProps> = ({
         ) => (
           <LeftItemContainer key={`${id}-${idx}`}>
             <LeftItemTitle>
-              {getItemTitle(jobTitle, employer)}
+              {getItemTitle(jobTitle, employer, t("at"), t("empty"))}
               {city && `, ${city}`}
             </LeftItemTitle>
             <LeftItemSubtitle>
@@ -582,7 +586,10 @@ export const Projects: React.FC<ProjectsProps> = ({ projects, color }) => {
 // template component
 // --------------------------------------------------------------------------------
 
-export const DefaultTemplate: React.FC<DefaultTemplateProps> = ({ resume }) => {
+export const DefaultTemplate: React.FC<DefaultTemplateProps> = ({
+  resume,
+  t,
+}) => {
   const {
     summary,
     workExperience,
@@ -609,7 +616,7 @@ export const DefaultTemplate: React.FC<DefaultTemplateProps> = ({ resume }) => {
             <SummarySection summary={parseTiptapToPdfJsx(summary)} />
           )}
           {!!workExperience.length && (
-            <EmploymentHistory workExperience={workExperience} />
+            <EmploymentHistory workExperience={workExperience} t={t} />
           )}
           {!!projects.length && (
             <Projects projects={projects} color={themeColor} />

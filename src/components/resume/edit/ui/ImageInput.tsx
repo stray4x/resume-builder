@@ -3,6 +3,7 @@
 import Compressor from "compressorjs";
 import { Trash } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -31,6 +32,7 @@ export const base64ToBlob = (base64: string) => {
 };
 
 export const ImageInput: React.FC<Props> = ({ className, image, setImage }) => {
+  const t = useTranslations();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [file, setFile] = useState<File | null>(null);
@@ -98,7 +100,7 @@ export const ImageInput: React.FC<Props> = ({ className, image, setImage }) => {
   return (
     <div className={className}>
       <Label htmlFor="photo" className="mb-2">
-        Photo
+        {t("photo")}
       </Label>
       <div className="flex gap-4">
         {imageBlob && (
@@ -115,7 +117,7 @@ export const ImageInput: React.FC<Props> = ({ className, image, setImage }) => {
           className={`${imageBlob ? "w-[calc(100%-110px)]" : "w-full"} transition-none`}
           onClick={handleUploadClick}
         >
-          {imageBlob ? "Change " : "Upload "} photo
+          {imageBlob ? t("changePhoto") : t("uploadPhoto")}
         </Button>
         {imageBlob && (
           <Button onClick={handleDeleteImg} variant="destructive">

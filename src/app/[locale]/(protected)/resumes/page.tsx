@@ -3,10 +3,14 @@ import { Suspense } from "react";
 import { ResumesPage } from "@/components/resume/ResumesPage";
 import { ResumesPageSkeleton } from "@/components/resume/skeleton/ResumesPageSkeleton";
 
-export default async function Page() {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function Page({ params }: Props) {
   return (
     <Suspense fallback={<ResumesPageSkeleton />}>
-      <ResumesPage />
+      <ResumesPage params={params} />
     </Suspense>
   );
 }

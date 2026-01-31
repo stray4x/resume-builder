@@ -2,6 +2,7 @@
 
 import { Document, Font } from "@react-pdf/renderer";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 import React, { useEffect, useRef, useState } from "react";
 
 import { Spinner } from "@/components/ui/spinner";
@@ -62,6 +63,8 @@ Font.register({
 });
 
 export const ResumePreview: React.FC = () => {
+  const t = useTranslations();
+
   const state = useResume((state) => state);
 
   const educ: EducationDraft[] = useSectionItems("education");
@@ -109,7 +112,7 @@ export const ResumePreview: React.FC = () => {
           showToolbar={false}
         >
           <Document>
-            <DefaultTemplate resume={stateCopy} />
+            <DefaultTemplate resume={stateCopy} t={t} />
           </Document>
         </PDFViewer>
       )}
