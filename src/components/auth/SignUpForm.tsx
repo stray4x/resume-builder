@@ -21,7 +21,7 @@ export const SignUpForm: React.FC = () => {
       z.object({
         name: z
           .string()
-          .min(2, t("validation.minLength"))
+          .min(2, t("validation.minLength", { count: 2 }))
           .max(50, t("validation.maxLength", { count: 50 })),
         email: z
           .string()
