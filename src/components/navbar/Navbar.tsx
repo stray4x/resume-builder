@@ -40,14 +40,17 @@ export const Navbar: React.FC = () => {
           <LanguageSwitcher />
         </Suspense>
         <DarkModeButton />
-        {isPending && (
+        {isPending ? (
           <div className="bg-muted h-8 w-16 animate-pulse rounded" />
-        )}
-        {data?.session && <AccountDropdown user={data.user} />}
-        {!data?.session && !isPending && (
-          <Button variant="link" asChild>
-            <Link href={clientUrls.authSignIn}>{t("signIn")}</Link>
-          </Button>
+        ) : (
+          <>
+            {data?.session && <AccountDropdown user={data.user} />}
+            {!data?.session && (
+              <Button variant="link" asChild>
+                <Link href={clientUrls.authSignIn}>{t("signIn")}</Link>
+              </Button>
+            )}
+          </>
         )}
       </div>
     </header>
