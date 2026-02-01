@@ -1,12 +1,12 @@
 "use client";
 
 import { Save } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import React from "react";
 import toast from "react-hot-toast";
 
 import { Button } from "@/components/ui/button";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { useResume } from "@/store/store";
 import { ItemStatus } from "@/store/types";
 import { api } from "@/trpc/react";
