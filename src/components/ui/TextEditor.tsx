@@ -87,6 +87,10 @@ export const TextEditor: React.FC<Props> = ({
       editor.commands.setContent(JSON.parse(value) as Fragment);
       isInitialMount.current = false;
     }
+
+    return () => {
+      isInitialMount.current = true;
+    };
   }, [value, editor]);
 
   useEffect(() => {
