@@ -3,7 +3,7 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { List, ListOrdered } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import toast from "react-hot-toast";
 
 import { Button } from "@/components/ui/button";
@@ -26,6 +26,7 @@ export const TextEditor: React.FC<Props> = ({
   onChange,
 }) => {
   const [activeBtns, setActiveBtns] = useState<EditorBtn[]>([]);
+  const isInitialMount = useRef(true);
 
   const editor = useEditor({
     extensions: [StarterKit],
@@ -68,6 +69,9 @@ export const TextEditor: React.FC<Props> = ({
     },
 
     onUpdate({ editor }) {
+      if (isInitialMount.current) {
+        return;
+      }
       onChange?.(JSON.stringify(editor.getJSON().content));
     },
   });
@@ -81,6 +85,7 @@ export const TextEditor: React.FC<Props> = ({
 
     if (value?.length && JSON.stringify(current) !== value) {
       editor.commands.setContent(JSON.parse(value) as Fragment);
+      isInitialMount.current = false;
     }
   }, [value, editor]);
 
