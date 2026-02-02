@@ -1,31 +1,43 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useTranslations } from "next-intl";
+import React, { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "@/i18n/navigation";
 import { authClient } from "@/server/better-auth/client";
 import { clientUrls } from "@/utils/urls";
 
-const signUpSchema = z.object({
-  name: z.string().min(1, "Name is required").max(50, "50 characters max"),
-  email: z.string().email("Invalid email").max(50, "50 characters max"),
-  password: z
-    .string()
-    .min(8, "Password must be at least 8 characters")
-    .max(50, "50 characters max"),
-  passwordConfirm: z
-    .string()
-    .min(8, "Please confirm your password")
-    .max(50, "50 characters max"),
-});
-
 export const SignUpForm: React.FC = () => {
   const router = useRouter();
+  const t = useTranslations();
+
+  const signUpSchema = useMemo(
+    () =>
+      z.object({
+        name: z
+          .string()
+          .min(2, t("validation.minLength", { count: 2 }))
+          .max(50, t("validation.maxLength", { count: 50 })),
+        email: z
+          .string()
+          .email(t("validation.invalidEmail"))
+          .max(50, t("validation.maxLength", { count: 50 })),
+        password: z
+          .string()
+          .min(8, t("validation.minPasswordLength", { count: 8 }))
+          .max(50, t("validation.maxLength", { count: 50 })),
+        passwordConfirm: z
+          .string()
+          .min(8, t("validation.confirmPassword"))
+          .max(50, t("validation.maxLength", { count: 50 })),
+      }),
+    [t],
+  );
 
   const [isPending, setIsPending] = useState(false);
   const [formData, setFormData] = useState({
@@ -64,7 +76,7 @@ export const SignUpForm: React.FC = () => {
         });
         errs = { ...fieldErrors };
       } else if (data.password !== data.passwordConfirm) {
-        errs = { ...errs, passwordConfirm: "Passwords do not match" };
+        errs = { ...errs, passwordConfirm: t("validation.passwordsNotMatch") };
       }
 
       setErrors({ ...errs });
@@ -83,10 +95,10 @@ export const SignUpForm: React.FC = () => {
         router.push(clientUrls.resumes);
         router.refresh();
       } else if (res.error) {
-        toast.error(res.error.message ?? "Something went wrong");
+        toast.error(res.error.message ?? t("toasts.sumTingWong"));
       }
     } catch (_) {
-      toast.error("Something went wrong");
+      toast.error(t("toasts.sumTingWong"));
     } finally {
       setIsPending(false);
     }
@@ -96,13 +108,13 @@ export const SignUpForm: React.FC = () => {
     <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4">
       <div className="mb-4">
         <Label htmlFor="name" className="mb-2">
-          Name
+          {t("forms.name")}
         </Label>
         <Input
           id="name"
           type="text"
           name="name"
-          placeholder="Name"
+          placeholder={t("forms.name")}
           value={formData.name}
           onChange={handleChange}
           error={errors.name}
@@ -111,13 +123,13 @@ export const SignUpForm: React.FC = () => {
 
       <div className="mb-4">
         <Label htmlFor="email" className="mb-2">
-          Email
+          {t("forms.email")}
         </Label>
         <Input
           id="email"
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={t("forms.email")}
           value={formData.email}
           onChange={handleChange}
           error={errors.email}
@@ -126,13 +138,13 @@ export const SignUpForm: React.FC = () => {
 
       <div className="mb-4">
         <Label htmlFor="password" className="mb-2">
-          Password
+          {t("forms.password")}
         </Label>
         <Input
           id="password"
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder={t("forms.password")}
           value={formData.password}
           onChange={handleChange}
           error={errors.password}
@@ -141,13 +153,13 @@ export const SignUpForm: React.FC = () => {
       </div>
       <div className="mb-4">
         <Label htmlFor="passwordConfirm" className="mb-2">
-          Confirm Password
+          {t("forms.confirmPassword")}
         </Label>
         <Input
           id="passwordConfirm"
           type="password"
           name="passwordConfirm"
-          placeholder="Confirm password"
+          placeholder={t("forms.confirmPassword")}
           value={formData.passwordConfirm}
           onChange={handleChange}
           error={errors.passwordConfirm}
@@ -156,7 +168,7 @@ export const SignUpForm: React.FC = () => {
       </div>
 
       <Button type="submit" size="lg" disabled={isPending}>
-        Sign Up
+        {t("buttons.signUp")}
       </Button>
     </form>
   );

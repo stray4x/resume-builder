@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { AccordionContent, AccordionTrigger } from "@/components/ui/accordion";
@@ -22,33 +23,34 @@ export const LinkItem: React.FC<Props> = ({
   handleDeleteItem,
 }) => {
   const { id, url, title } = item;
+  const t = useTranslations();
 
   return (
     <ResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
-      <AccordionTrigger>{title || "(Empty)"}</AccordionTrigger>
+      <AccordionTrigger>{title || `(${t("empty")})`}</AccordionTrigger>
       <AccordionContent className="h-fit">
         <div className="xs:flex-row xs:gap-8 flex flex-col justify-between gap-4">
           <div className="w-full">
             <Label htmlFor={`link-title-${id}`} className="mb-2">
-              Label
+              {t("label")}
             </Label>
             <Input
               id={`link-title-${id}`}
               value={title}
-              placeholder="Label"
+              placeholder={t("label")}
               maxLength={100}
               onChange={(e) => handleUpdateItem(id, e.target.value, "title")}
             />
           </div>
           <div className="w-full">
             <Label htmlFor={`link-url-${id}`} className="mb-2">
-              Link
+              {t("link")}
             </Label>
             <Input
               id={`link-url-${id}`}
               value={url}
               type="url"
-              placeholder="Link"
+              placeholder={t("link")}
               maxLength={100}
               onChange={(e) => handleUpdateItem(id, e.target.value, "url")}
             />

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { AccordionContent, AccordionTrigger } from "@/components/ui/accordion";
@@ -34,11 +35,16 @@ interface IBackgroundDescProps {
   updateInputTwo: (value: string) => void;
 }
 
-export const getItemTitle = (inpOne: string, inpTwo: string) => {
+export const getItemTitle = (
+  inpOne: string,
+  inpTwo: string,
+  conjunction: string,
+  placeholder: string,
+) => {
   if (inpOne && inpTwo) {
-    return `${inpOne} at ${inpTwo}`;
+    return `${inpOne} ${conjunction} ${inpTwo}`;
   }
-  return inpOne || inpTwo || "(Empty)";
+  return inpOne || inpTwo || `(${placeholder})`;
 };
 
 export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
@@ -62,13 +68,15 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
   updateInputTwo,
   updateEndDateIsCurrent,
 }) => {
+  const t = useTranslations();
+
   return (
     <SortableItem id={id}>
       <ResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
         <AccordionTrigger className="text-xs sm:text-sm">
           {type === "education"
-            ? getItemTitle(inputTwo, inputOne)
-            : getItemTitle(inputOne, inputTwo)}
+            ? getItemTitle(inputTwo, inputOne, t("at"), t("empty"))
+            : getItemTitle(inputOne, inputTwo, t("at"), t("empty"))}
         </AccordionTrigger>
         <AccordionContent className="h-fit">
           <div className="xs:grid-cols-2 xs:gap-8 mt-1 grid grid-cols-1 gap-4">
@@ -101,12 +109,12 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
                 {type !== "course" && (
                   <div>
                     <Label htmlFor={`city-${id}`} className="mb-2">
-                      City
+                      {t("city")}
                     </Label>
                     <Input
                       id={`city-${id}`}
                       value={city ?? ""}
-                      placeholder="City"
+                      placeholder={t("city")}
                       maxLength={100}
                       onChange={(e) => updateCity?.(e.target.value)}
                     />
@@ -117,13 +125,13 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
             <div className="flex flex-col gap-4">
               <DatePicker
                 id={`start-date-${id}`}
-                label="Start Date"
+                label={t("startDate")}
                 value={startDate}
                 onChange={updateStartDate}
               />
               <DatePicker
                 id={`end-date-${id}`}
-                label="End Date"
+                label={t("endDate")}
                 value={endDate}
                 disabled={endDateIsCurrent}
                 onChange={updateEndDate}
@@ -135,9 +143,9 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
                   onCheckedChange={updateEndDateIsCurrent}
                 />
                 <Label htmlFor={`end-date-current-${id}`}>
-                  {type === "workExperience" && "Currently work here"}
-                  {type === "education" && "Currently study here"}
-                  {type === "course" && "Currently taking this course"}
+                  {type === "workExperience" && t("currentlyWorkHere")}
+                  {type === "education" && t("currentlyStudyHere")}
+                  {type === "course" && t("currentlyTakingThisCourse")}
                 </Label>
               </div>
             </div>
@@ -145,7 +153,7 @@ export const BackgroundDescription: React.FC<IBackgroundDescProps> = ({
 
           {type !== "course" && (
             <>
-              <Label className="mt-8 mb-2">Description</Label>
+              <Label className="mt-8 mb-2">{t("description")}</Label>
               <TextEditor
                 value={description ?? "{}"}
                 maxLength={3000}

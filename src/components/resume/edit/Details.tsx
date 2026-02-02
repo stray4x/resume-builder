@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { Input } from "@/components/ui/input";
@@ -10,6 +11,8 @@ import { ImageInput } from "./ui/ImageInput";
 import { SectionTitle } from "./ui/SectionTitle";
 
 export const Details: React.FC = () => {
+  const t = useTranslations();
+
   const jobTitle = useResume((state) => state.jobTitle);
   const firstName = useResume((state) => state.firstName);
   const lastName = useResume((state) => state.lastName);
@@ -23,16 +26,16 @@ export const Details: React.FC = () => {
 
   return (
     <div className="mb-8">
-      <SectionTitle>Details</SectionTitle>
+      <SectionTitle>{t("details")}</SectionTitle>
       <div className="xs:grid-cols-2 grid grid-cols-1 gap-8">
         <div>
           <Label htmlFor="jobTitle" className="mb-2">
-            Wanted Job Title
+            {t("wantedJobTitle")}
           </Label>
           <Input
             id="jobTitle"
             type="text"
-            placeholder="Wanted Job Title"
+            placeholder={t("wantedJobTitle")}
             className="w-full"
             value={jobTitle}
             maxLength={50}
@@ -46,12 +49,12 @@ export const Details: React.FC = () => {
         />
         <div>
           <Label htmlFor="firstName" className="mb-2">
-            First Name
+            {t("firstName")}
           </Label>
           <Input
             id="firstName"
             type="text"
-            placeholder="First Name"
+            placeholder={t("firstName")}
             className="w-full"
             value={firstName}
             maxLength={50}
@@ -61,12 +64,12 @@ export const Details: React.FC = () => {
 
         <div>
           <Label htmlFor="lastName" className="mb-2">
-            Last Name
+            {t("lastName")}
           </Label>
           <Input
             id="lastName"
             type="text"
-            placeholder="Last Name"
+            placeholder={t("lastName")}
             className="w-full"
             value={lastName}
             maxLength={50}
@@ -76,12 +79,12 @@ export const Details: React.FC = () => {
 
         <div>
           <Label htmlFor="email" className="mb-2">
-            Email
+            {t("email")}
           </Label>
           <Input
             id="email"
             type="email"
-            placeholder="Email"
+            placeholder={t("email")}
             className="w-full"
             value={email}
             maxLength={50}
@@ -91,12 +94,12 @@ export const Details: React.FC = () => {
 
         <div>
           <Label htmlFor="phone" className="mb-2">
-            Phone
+            {t("phone")}
           </Label>
           <Input
             id="phone"
             type="tel"
-            placeholder="Phone"
+            placeholder={t("phone")}
             className="w-full"
             value={phone}
             maxLength={25}
@@ -106,12 +109,12 @@ export const Details: React.FC = () => {
 
         <div>
           <Label htmlFor="country" className="mb-2">
-            Country
+            {t("country")}
           </Label>
           <Input
             id="country"
             type="text"
-            placeholder="Country"
+            placeholder={t("country")}
             className="w-full"
             value={country}
             maxLength={50}
@@ -121,12 +124,12 @@ export const Details: React.FC = () => {
 
         <div>
           <Label htmlFor="city" className="mb-2">
-            City
+            {t("city")}
           </Label>
           <Input
             id="city"
             type="text"
-            placeholder="City"
+            placeholder={t("city")}
             className="w-full"
             value={city}
             maxLength={100}

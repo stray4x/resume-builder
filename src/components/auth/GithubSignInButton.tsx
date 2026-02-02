@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { authClient } from "@/server/better-auth/client";
@@ -8,6 +9,8 @@ import { clientUrls } from "@/utils/urls";
 import { Button } from "../ui/button";
 
 export const GithubSignInButton: React.FC = () => {
+  const t = useTranslations("buttons");
+
   const handleSignIn = () => {
     void authClient.signIn.social({
       provider: "github",
@@ -17,7 +20,7 @@ export const GithubSignInButton: React.FC = () => {
 
   return (
     <Button className="w-full" variant="outline" onClick={handleSignIn}>
-      Sign in with Github
+      {t("signInGithub")}
     </Button>
   );
 };

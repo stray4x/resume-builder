@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import React from "react";
 
 import { requireSession } from "@/server/better-auth/server";
@@ -9,7 +10,14 @@ import { ResumeItem } from "./ResumeItem";
 import { Button } from "../ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
-export const ResumesPage: React.FC = async () => {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export const ResumesPage: React.FC<Props> = async ({ params }) => {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
+
   const session = await requireSession();
 
   const resumes = await db.resume.findMany({
@@ -21,14 +29,10 @@ export const ResumesPage: React.FC = async () => {
 
   return (
     <div className="mx-auto w-full max-w-xl p-4">
-      <h1 className="mb-8 text-center text-2xl font-bold">Resumes</h1>
+      <h1 className="mb-8 text-center text-2xl font-bold">{t("resumes")}</h1>
       <ul className="mb-4 flex flex-col gap-4">
-        {resumes.map((resume, idx, arr) => (
-          <ResumeItem
-            isLast={idx === arr.length - 1}
-            key={resume.id}
-            resume={resume}
-          />
+        {resumes.map((resume) => (
+          <ResumeItem key={resume.id} resume={resume} t={t} />
         ))}
       </ul>
 
@@ -39,7 +43,7 @@ export const ResumesPage: React.FC = async () => {
               href={clientUrls.createResume}
               className="block w-full px-4 py-8"
             >
-              Create new resume
+              {t("buttons.createNewResume")}
             </Link>
           </Button>
         ) : (
@@ -47,12 +51,12 @@ export const ResumesPage: React.FC = async () => {
             <TooltipTrigger asChild>
               <span>
                 <Button disabled className="w-full px-4 py-8">
-                  Create new resume
+                  {t("buttons.createNewResume")}
                 </Button>
               </span>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Cannot have more than {10} resumes</p>
+              <p>{t("cannotHaveMoreThanXResumes", { count: 10 })}</p>
             </TooltipContent>
           </Tooltip>
         )}

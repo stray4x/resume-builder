@@ -1,9 +1,12 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import { useParams, usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 
+import { useNavigationBlock } from "@/hooks/useNavigationBlock";
+import { usePathname } from "@/i18n/navigation";
 import { useResume } from "@/store/store";
 import { breakpoints } from "@/utils/constants/breakpoints";
 import { localStorageKeys } from "@/utils/constants/localStorage";
@@ -27,19 +30,17 @@ import { Switch } from "../ui/switch";
 
 let unsubscribe: (() => void) | null = null;
 
-const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-  e.preventDefault();
-  e.returnValue = "";
-};
-
 export const ResumeNavbar: React.FC = () => {
   const path = usePathname();
   const { id } = useParams();
+  const t = useTranslations("buttons");
 
   const isDirty = useResume((state) => state.isDirty);
 
   const [autosaveOn, setAutosaveOn] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
+
+  useNavigationBlock(isDirty && !autosaveOn);
 
   const handleAutosaveChange = (v: boolean) => {
     localStorage.setItem(localStorageKeys.AUTOSAVE_RESUME, JSON.stringify(v));
@@ -78,19 +79,6 @@ export const ResumeNavbar: React.FC = () => {
       }
     };
   }, [autosaveOn, path]);
-
-  useEffect(() => {
-    if (!isDirty || autosaveOn) {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-      return;
-    }
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, [isDirty, autosaveOn]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -156,7 +144,7 @@ export const ResumeNavbar: React.FC = () => {
             htmlFor="autosave-resume"
             className="cursor-pointer text-xs sm:text-sm"
           >
-            Autosave
+            {t("autosave")}
           </Label>
         </div>
       )}

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { Input } from "@/components/ui/input";
@@ -21,6 +22,8 @@ import { resumeColors } from "@/utils/constants/resumeColors";
 import { SectionTitle } from "./ui/SectionTitle";
 
 export const Settings: React.FC = () => {
+  const t = useTranslations();
+
   const resumeName = useResume((state) => state.resumeName);
   const resumeTemplate = useResume((state) => state.templateId);
   const resumeColor = useResume((state) => state.themeColor);
@@ -31,16 +34,16 @@ export const Settings: React.FC = () => {
 
   return (
     <div>
-      <SectionTitle>Resume Settings</SectionTitle>
+      <SectionTitle>{t("resumeSettings")}</SectionTitle>
       <div className="flex justify-between gap-8">
         <div className="w-full">
           <div className="mb-8">
             <Label htmlFor="resumeName" className="mb-2">
-              Resume Name
+              {t("resumeName")}
             </Label>
             <Input
               id="resumeName"
-              placeholder="Resume Name"
+              placeholder={t("resumeName")}
               value={resumeName}
               maxLength={50}
               onChange={(e) => updResume("resumeName", e.target.value)}
@@ -48,18 +51,18 @@ export const Settings: React.FC = () => {
           </div>
           <div>
             <Label htmlFor="resumeName" className="mb-2">
-              Resume color
+              {t("resumeColor")}
             </Label>
             <Select
               value={resumeColor}
               onValueChange={(v) => updResume("themeColor", v)}
             >
               <SelectTrigger className="flex w-full items-center gap-2">
-                <SelectValue placeholder="Select a color" />
+                <SelectValue placeholder={t("selectColor")} />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Select resume color</SelectLabel>
+                  <SelectLabel>{t("selectResumeColor")}</SelectLabel>
                   {Object.entries(resumeColors).map(([key, val]) => (
                     <SelectItem
                       key={val}
@@ -70,7 +73,7 @@ export const Settings: React.FC = () => {
                         className="h-3 w-3 rounded-full"
                         style={{ backgroundColor: val }}
                       />
-                      <span>{key}</span>
+                      <span>{t(key)}</span>
                     </SelectItem>
                   ))}
                 </SelectGroup>
@@ -80,7 +83,7 @@ export const Settings: React.FC = () => {
         </div>
         <div className="w-full">
           <Label className="mb-2" htmlFor="resume-template">
-            Template
+            {t("template")}
           </Label>
           <Select
             disabled={!data?.templates.length}
@@ -88,19 +91,19 @@ export const Settings: React.FC = () => {
             onValueChange={(v) => updResume("templateId", v)}
           >
             <SelectTrigger className="w-full" id="resume-template">
-              <SelectValue placeholder="Select resume template">
+              <SelectValue placeholder={t("selectResumeTemplate")}>
                 <span>
                   {resumeTemplate
                     ? data?.templates.find((t) => t.id === resumeTemplate)
                         ?.displayName
-                    : "Select resume template"}
+                    : t("selectResumeTemplate")}
                 </span>
               </SelectValue>
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 <SelectLabel className="text-center">
-                  Select resume template
+                  {t("selectResumeTemplate")}
                 </SelectLabel>
                 <div className="grid grid-cols-2 gap-1">
                   {data?.templates?.map((item) => (

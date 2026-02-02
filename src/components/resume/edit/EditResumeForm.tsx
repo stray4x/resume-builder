@@ -1,8 +1,8 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 
+import { usePathname } from "@/i18n/navigation";
 import { useResume } from "@/store/store";
 import { normalizeResume, parseResume } from "@/utils/resume";
 import { clientUrls } from "@/utils/urls";

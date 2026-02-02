@@ -1,26 +1,35 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useTranslations } from "next-intl";
+import React, { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "@/i18n/navigation";
 import { authClient } from "@/server/better-auth/client";
 import { clientUrls } from "@/utils/urls";
 
-const signUpSchema = z.object({
-  email: z.string().email("Invalid email").max(50, "50 characters max"),
-  password: z
-    .string()
-    .min(8, "Password must be at least 8 characters")
-    .max(50, "50 characters max"),
-});
-
 export const SignInForm: React.FC = () => {
   const router = useRouter();
+  const t = useTranslations();
+
+  const signInSchema = useMemo(
+    () =>
+      z.object({
+        email: z
+          .string()
+          .email(t("validation.invalidEmail"))
+          .max(50, t("validation.maxLength", { count: 50 })),
+        password: z
+          .string()
+          .min(8, t("validation.minPasswordLength", { count: 8 }))
+          .max(50, t("validation.maxLength", { count: 50 })),
+      }),
+    [t],
+  );
 
   const [isPending, setIsPending] = useState(false);
   const [formData, setFormData] = useState({
@@ -43,7 +52,7 @@ export const SignInForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const { data, success, error } = signUpSchema.safeParse(formData);
+    const { data, success, error } = signInSchema.safeParse(formData);
 
     if (!success) {
       const fieldErrors: Partial<Record<keyof typeof formData, string>> = {};
@@ -81,13 +90,13 @@ export const SignInForm: React.FC = () => {
     <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4">
       <div className="mb-4">
         <Label htmlFor="email" className="mb-2">
-          Email
+          {t("forms.email")}
         </Label>
         <Input
           id="email"
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={t("forms.email")}
           value={formData.email}
           onChange={handleChange}
           error={errors.email}
@@ -96,13 +105,13 @@ export const SignInForm: React.FC = () => {
 
       <div className="mb-4">
         <Label htmlFor="password" className="mb-2">
-          Password
+          {t("forms.password")}
         </Label>
         <Input
           id="password"
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder={t("forms.password")}
           value={formData.password}
           onChange={handleChange}
           error={errors.password}
@@ -111,7 +120,7 @@ export const SignInForm: React.FC = () => {
       </div>
 
       <Button type="submit" size="lg" disabled={isPending}>
-        Sign in
+        {t("buttons.signIn")}
       </Button>
     </form>
   );

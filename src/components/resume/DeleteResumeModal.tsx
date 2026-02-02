@@ -1,8 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import React from "react";
 
+import { useRouter } from "@/i18n/navigation";
 import { api } from "@/trpc/react";
 
 import { Button } from "../ui/button";
@@ -28,6 +29,8 @@ export const DeleteResumeModal: React.FC<Props> = ({
   onOpenChange,
 }) => {
   const router = useRouter();
+  const t = useTranslations();
+
   const { mutate: deleteResume, isPending } =
     api.resume.deleteResume.useMutation();
 
@@ -48,22 +51,22 @@ export const DeleteResumeModal: React.FC<Props> = ({
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="xxs:w-70 mb-2 w-60 truncate">
-            Delete &quot;{resumeName}&quot; ?
+            {t("buttons.delete")} &quot;{resumeName}&quot; ?
           </DialogTitle>
         </DialogHeader>
         <DialogDescription>
-          This action cannot be undone. The resume will be permanently deleted.
+          {t("thisActionCannotBeUndoneResumeWillBeDeleted")}
         </DialogDescription>
         <div className="flex justify-end gap-2">
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
+            {t("buttons.cancel")}
           </Button>
           <Button
             variant="destructive"
             onClick={handleDelete}
             disabled={isPending}
           >
-            {isPending ? "Deleting..." : "Delete"}
+            {isPending ? t("deleting") : t("buttons.delete")}
           </Button>
         </div>
       </DialogContent>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -13,13 +14,15 @@ import { SortableItem } from "./ui/SortableItem";
 import type { SkillDraft } from "@/store/types";
 
 export const Skills: React.FC = () => {
+  const t = useTranslations();
+
   const skills: SkillDraft[] = useSectionItems("skills");
   const { addItem, updateItem, deleteItem, moveItem } =
     useSectionActions("skills");
 
   return (
     <div>
-      <SectionTitle>Skills</SectionTitle>
+      <SectionTitle>{t("skills")}</SectionTitle>
       <div className="flex flex-col gap-4">
         <DndContainer moveItem={moveItem} items={skills.map((item) => item.id)}>
           {skills.map((item) => {
@@ -42,7 +45,7 @@ export const Skills: React.FC = () => {
         onClick={addItem}
         disabled={skills.length >= 40}
       >
-        {!skills.length ? "Add skill" : "Add one more skill"}
+        {!skills.length ? t("buttons.addSkill") : t("buttons.addOneMoreSkill")}
       </Button>
     </div>
   );

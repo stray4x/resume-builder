@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -13,13 +14,15 @@ import { SortableItem } from "./ui/SortableItem";
 import type { LinkDraft } from "@/store/types";
 
 export const Links: React.FC = () => {
+  const t = useTranslations();
+
   const links: LinkDraft[] = useSectionItems("links");
   const { addItem, updateItem, deleteItem, moveItem } =
     useSectionActions("links");
 
   return (
     <div>
-      <SectionTitle>Links</SectionTitle>
+      <SectionTitle>{t("links")}</SectionTitle>
       <div className="flex flex-col gap-4">
         <DndContainer moveItem={moveItem} items={links.map((item) => item.id)}>
           {links.map((item) => {
@@ -42,7 +45,7 @@ export const Links: React.FC = () => {
         onClick={addItem}
         disabled={links.length >= 10}
       >
-        {!links.length ? "Add link" : "Add one more link"}
+        {!links.length ? t("buttons.addLink") : t("buttons.addOneMoreLink")}
       </Button>
     </div>
   );

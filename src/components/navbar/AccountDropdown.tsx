@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useRouter } from "@/i18n/navigation";
 import { authClient } from "@/server/better-auth/client";
 import { clientUrls } from "@/utils/urls";
 
@@ -23,6 +24,7 @@ type Props = {
 
 export const AccountDropdown: React.FC<Props> = ({ user }) => {
   const router = useRouter();
+  const t = useTranslations("buttons");
 
   const [isSigningOut, setIsSigningOut] = useState(false);
 
@@ -47,14 +49,14 @@ export const AccountDropdown: React.FC<Props> = ({ user }) => {
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href={clientUrls.resumes}>My Resumes</Link>
+            <Link href={clientUrls.resumes}>{t("myResumes")}</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href={clientUrls.settings}>Settings</Link>
+            <Link href={clientUrls.settings}>{t("settings")}</Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleSignOut} disabled={isSigningOut}>
-            Sign out
+            {t("signOut")}
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

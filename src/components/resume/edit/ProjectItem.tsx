@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { AccordionContent, AccordionTrigger } from "@/components/ui/accordion";
@@ -36,32 +37,34 @@ export const ProjectItem: React.FC<Props> = ({
   handleUpdateItem,
   updateDescription,
 }) => {
+  const t = useTranslations();
+
   return (
     <ResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
-      <AccordionTrigger>{title || "(Empty)"}</AccordionTrigger>
+      <AccordionTrigger>{title || `(${t("empty")})`}</AccordionTrigger>
       <AccordionContent className="h-fit">
         <div className="xs:grid-cols-2 xs:gap-8 mt-1 mb-8 grid grid-cols-1 gap-4">
           <div className="flex flex-col gap-4">
             <div>
               <Label htmlFor={`proj-title-${id}`} className="mb-2">
-                Project Name
+                {t("projectName")}
               </Label>
               <Input
                 id={`proj-title-${id}`}
                 value={title}
-                placeholder="Project Name"
+                placeholder={t("projectName")}
                 maxLength={60}
                 onChange={(e) => handleUpdateItem(id, e.target.value, "title")}
               />
             </div>
             <div>
               <Label htmlFor={`proj-repo-${id}`} className="mb-2">
-                Repository Link
+                {t("repositoryLink")}
               </Label>
               <Input
                 id={`proj-repo-${id}`}
                 value={repoUrl}
-                placeholder="Repository Link"
+                placeholder={t("repositoryLink")}
                 maxLength={100}
                 onChange={(e) =>
                   handleUpdateItem(id, e.target.value, "repoUrl")
@@ -73,12 +76,12 @@ export const ProjectItem: React.FC<Props> = ({
           <div className="flex flex-col gap-4">
             <div>
               <Label htmlFor={`proj-url-${id}`} className="mb-2">
-                Project Link
+                {t("projectLink")}
               </Label>
               <Input
                 id={`proj-url-${id}`}
                 value={url}
-                placeholder="Project Link"
+                placeholder={t("projectLink")}
                 maxLength={100}
                 onChange={(e) => handleUpdateItem(id, e.target.value, "url")}
               />
@@ -86,7 +89,7 @@ export const ProjectItem: React.FC<Props> = ({
           </div>
         </div>
 
-        <Label className="mb-2">Description</Label>
+        <Label className="mb-2">{t("description")}</Label>
         <TextEditor
           value={description ?? "{}"}
           maxLength={3000}

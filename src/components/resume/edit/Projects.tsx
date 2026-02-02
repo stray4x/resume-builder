@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -13,13 +14,15 @@ import { SortableItem } from "./ui/SortableItem";
 import type { ProjectDraft } from "@/store/types";
 
 export const Projects: React.FC = () => {
+  const t = useTranslations();
+
   const projects: ProjectDraft[] = useSectionItems("projects");
   const { addItem, updateItem, moveItem, deleteItem } =
     useSectionActions("projects");
 
   return (
     <div>
-      <SectionTitle>Projects</SectionTitle>
+      <SectionTitle>{t("projects")}</SectionTitle>
       <div className="flex flex-col gap-4">
         <DndContainer
           moveItem={moveItem}
@@ -52,7 +55,9 @@ export const Projects: React.FC = () => {
         onClick={addItem}
         disabled={projects.length >= 10}
       >
-        {!projects.length ? "Add project" : "Add one more project"}
+        {!projects.length
+          ? t("buttons.addProject")
+          : t("buttons.addOneMoreProject")}
       </Button>
     </div>
   );

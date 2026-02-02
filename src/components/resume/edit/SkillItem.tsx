@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { AccordionContent, AccordionTrigger } from "@/components/ui/accordion";
@@ -37,40 +38,42 @@ export const SkillItem: React.FC<Props> = ({
 }) => {
   const { id, title, level } = item;
 
+  const t = useTranslations();
+
   return (
     <ResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
       <AccordionTrigger>
-        {title || "(Empty)"} {level && `- ${level}`}
+        {title || `(${t("empty")})`} {level && `- ${level}`}
       </AccordionTrigger>
       <AccordionContent className="h-fit">
         <div className="xs:flex-row xs:gap-8 flex flex-col justify-between gap-4">
           <div className="w-full">
             <Label htmlFor={`skill-${id}`} className="mb-2">
-              Skill
+              {t("skill")}
             </Label>
             <Input
               id={`skill-${id}`}
               value={title}
-              placeholder="Skill"
+              placeholder={t("skill")}
               maxLength={60}
               onChange={(e) => handleUpdateItem(id, e.target.value, "title")}
             />
           </div>
           <div className="w-full">
-            <Label className="mb-2">Level</Label>
+            <Label className="mb-2">{t("level")}</Label>
             <Select
               value={level}
               onValueChange={(v) => handleUpdateItem(id, v, "level")}
             >
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select a your skill level" />
+                <SelectValue placeholder={t("selectSkillLevel")} />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Select a your skill level</SelectLabel>
+                  <SelectLabel>{t("selectSkillLevel")}</SelectLabel>
                   {Object.keys(SkillLevel).map((lvl) => (
                     <SelectItem key={lvl} value={lvl}>
-                      {lvl}
+                      {t(lvl)}
                     </SelectItem>
                   ))}
                 </SelectGroup>

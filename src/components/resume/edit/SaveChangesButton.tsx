@@ -1,11 +1,12 @@
 "use client";
 
 import { Save } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import React from "react";
 import toast from "react-hot-toast";
 
 import { Button } from "@/components/ui/button";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { useResume } from "@/store/store";
 import { ItemStatus } from "@/store/types";
 import { api } from "@/trpc/react";
@@ -54,6 +55,7 @@ type Props = {
 export const SaveChangesButton: React.FC<Props> = ({ disabled, isMobile }) => {
   const router = useRouter();
   const path = usePathname();
+  const t = useTranslations();
 
   const resume = useResume((state) => state);
   const markSaved = useResume((state) => state.markSaved);
@@ -61,28 +63,28 @@ export const SaveChangesButton: React.FC<Props> = ({ disabled, isMobile }) => {
   const { mutateAsync: updateResume, isPending } =
     api.resume.updateResume.useMutation({
       onError: (e) => {
-        handleError(e, "Something went wrong while updating resume");
+        handleError(e, t("toasts.errorWhileUploadingResume"));
       },
     });
 
   const { mutateAsync: addSections, isPending: isAddingSections } =
     api.resume.addSections.useMutation({
       onError: (e) => {
-        handleError(e, "Something went wrong while adding sections");
+        handleError(e, t("toasts.errorWhileAddingSections"));
       },
     });
 
   const { mutateAsync: updSections, isPending: isUpdatingSections } =
     api.resume.updateSections.useMutation({
       onError: (e) => {
-        handleError(e, "Something went wrong while updating sections");
+        handleError(e, t("toasts.errorWhileUpdatingSections"));
       },
     });
 
   const { mutateAsync: delSections, isPending: isDeletingSections } =
     api.resume.deleteSections.useMutation({
       onError: (e) => {
-        handleError(e, "Something went wrong while deleting sections");
+        handleError(e, t("toasts.errorWhileDeletingSections"));
       },
     });
 
@@ -90,7 +92,7 @@ export const SaveChangesButton: React.FC<Props> = ({ disabled, isMobile }) => {
     if (path === clientUrls.resumeBuilder) {
       saveResumeToLocalStorage(resume);
       markSaved();
-      toast.success("Saved successfully!");
+      toast.success(t("toasts.savedSuccessfully"));
       return;
     }
 
@@ -146,7 +148,7 @@ export const SaveChangesButton: React.FC<Props> = ({ disabled, isMobile }) => {
     ]).then((result) => {
       if (result.every((item) => item.status === "fulfilled")) {
         markSaved();
-        toast.success("Saved successfully!");
+        toast.success(t("toasts.savedSuccessfully"));
         router.refresh();
       }
     });
@@ -167,11 +169,11 @@ export const SaveChangesButton: React.FC<Props> = ({ disabled, isMobile }) => {
       className="flex w-full justify-start gap-4"
     >
       <Save />
-      Save Changes
+      {t("buttons.saveChanges")}
     </Button>
   ) : (
     <Button onClick={handleSave} disabled={disableBtn} variant="outline">
-      Save Changes
+      {t("buttons.saveChanges")}
     </Button>
   );
 };
