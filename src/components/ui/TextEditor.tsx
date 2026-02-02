@@ -86,6 +86,8 @@ export const TextEditor: React.FC<Props> = ({
     if (value?.length && JSON.stringify(current) !== value) {
       editor.commands.setContent(JSON.parse(value) as Fragment);
       isInitialMount.current = false;
+    } else if (value === "") {
+      isInitialMount.current = false;
     }
   }, [value, editor]);
 
