@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 
 import { useRouter } from "@/i18n/navigation";
 import { api } from "@/trpc/react";
+import { normalizeResume, saveResumeAsPdf } from "@/utils/resume";
 
 import { DeleteResumeModal } from "./DeleteResumeModal";
 import { Button } from "../ui/button";
@@ -31,6 +32,12 @@ export const ResumeItemDropdown: React.FC<Props> = ({ resume }) => {
 
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
+  const { refetch: fetchFullResume, isFetching: isFetchingFullResume } =
+    api.resume.getResumeById.useQuery(
+      { resumeId: resume.id },
+      { enabled: false, staleTime: 1000 * 120 },
+    );
+
   const { mutate: copyResume, isPending } = api.resume.copyResume.useMutation({
     onSuccess: () => {
       toast.success(t("toasts.resumeCopied"));
@@ -45,9 +52,22 @@ export const ResumeItemDropdown: React.FC<Props> = ({ resume }) => {
     copyResume({ resumeId: resume.id });
   };
 
+  const handleDownloadResume = async () => {
+    try {
+      const result = await fetchFullResume();
+      if (!result.data) {
+        toast.error(t("toasts.sumTingWong"));
+        return;
+      }
+      saveResumeAsPdf(normalizeResume(result.data), t);
+    } catch (_) {
+      toast.error(t("toasts.sumTingWong"));
+    }
+  };
+
   return (
     <>
-      {isPending && <Spinner />}
+      {(isPending || isFetchingFullResume) && <Spinner />}
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -57,6 +77,9 @@ export const ResumeItemDropdown: React.FC<Props> = ({ resume }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuGroup>
+            <DropdownMenuItem onClick={handleDownloadResume}>
+              {t("buttons.download")}
+            </DropdownMenuItem>
             <DropdownMenuItem onClick={handleCopyResume}>
               {t("buttons.copy")}
             </DropdownMenuItem>

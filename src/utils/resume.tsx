@@ -1,4 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import { pdf } from "@react-pdf/renderer";
+import saveAs from "file-saver";
+import toast from "react-hot-toast";
 
 import { type ResumeStore } from "@/store/store";
 import {
@@ -9,6 +11,9 @@ import {
 
 import { localStorageKeys } from "./constants/localStorage";
 import { resumeColors } from "./constants/resumeColors";
+import { ResumeDocument } from "../components/resume/preview/ResumeDocument";
+
+import type { _Translator } from "next-intl";
 
 export const normalizeResume = (resume: ResumeWithRelations): ResumeDraft => {
   return {
@@ -90,4 +95,15 @@ export const parseResume = () =>
 
 export const saveResumeToLocalStorage = (resume: ResumeStore) => {
   localStorage.setItem(localStorageKeys.RESUME, stringifyResume(resume));
+};
+
+export const saveResumeAsPdf = (resume: ResumeDraft, t: _Translator) => {
+  pdf(<ResumeDocument resume={resume} t={t} />)
+    .toBlob()
+    .then((blob) => {
+      saveAs(blob, `${resume.resumeName}.pdf`);
+    })
+    .catch((_) => {
+      toast.error(t("toasts.errorWhileGeneratingPdf"));
+    });
 };

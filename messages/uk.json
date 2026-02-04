@@ -47,6 +47,7 @@
     "delete": "Видалити",
     "saveChanges": "Зберегти зміни",
     "autosave": "Автозбереження",
+    "download": "Завантажити",
     "downloadResume": "Завантажити резюме",
     "settings": "Налаштування",
     "myResumes": "Мої резюме",
@@ -70,6 +71,7 @@
 
   "toasts": {
     "sumTingWong": "Щось пішло не так",
+    "errorWhileGeneratingPdf": "Помилка під час генерації PDF",
     "errorWhileUploadingResume": "Помилка під час оновлення резюме",
     "errorWhileAddingSections": "Помилка під час додавання розділів",
     "errorWhileUpdatingSections": "Помилка під час оновлення розділів",

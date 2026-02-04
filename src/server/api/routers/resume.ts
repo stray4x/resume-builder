@@ -43,6 +43,31 @@ export const resumeRouter = createTRPCRouter({
     return result;
   }),
 
+  getResumeById: protectedProcedure
+    .input(z.object({ resumeId: z.string().cuid() }))
+    .query(async ({ ctx, input }) => {
+      const userId = ctx.session.user.id;
+
+      const resume = await ctx.db.resume.findFirst({
+        where: { id: input.resumeId, ownerId: userId },
+        include: {
+          workExperience: { orderBy: { sortOrder: "asc" } },
+          projects: { orderBy: { sortOrder: "asc" } },
+          education: { orderBy: { sortOrder: "asc" } },
+          skills: { orderBy: { sortOrder: "asc" } },
+          links: { orderBy: { sortOrder: "asc" } },
+          languages: { orderBy: { sortOrder: "asc" } },
+          courses: { orderBy: { sortOrder: "asc" } },
+        },
+      });
+
+      if (!resume) {
+        throw new TRPCError({ code: "NOT_FOUND", message: "Resume not found" });
+      }
+
+      return resume;
+    }),
+
   createNewResume: protectedProcedure
     .input(z.object({ templateId: z.string().cuid() }))
     .mutation(async ({ ctx, input }) => {

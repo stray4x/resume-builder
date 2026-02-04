@@ -1,6 +1,5 @@
 "use client";
 
-import { Document, Font } from "@react-pdf/renderer";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import React, { useEffect, useRef, useState } from "react";
@@ -9,7 +8,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { useSectionItems } from "@/store/selectors";
 import { useResume } from "@/store/store";
 
-import { DefaultTemplate } from "./templates/Default";
+import { ResumeDocument } from "./ResumeDocument";
 
 import type {
   CourseDraft,
@@ -25,42 +24,6 @@ const PDFViewer = dynamic(
   () => import("@react-pdf/renderer").then((mod) => mod.PDFViewer),
   { ssr: false },
 );
-
-Font.register({
-  family: "Open Sans",
-  fontWeight: 400,
-  src: "/fonts/OpenSans-Regular.ttf",
-});
-Font.register({
-  family: "Open Sans",
-  fontWeight: 400,
-  fontStyle: "italic",
-  src: "/fonts/OpenSans-Italic.ttf",
-});
-
-Font.register({
-  family: "Open Sans",
-  fontWeight: 500,
-  src: "/fonts/OpenSans-Medium.ttf",
-});
-
-Font.register({
-  family: "Open Sans",
-  fontWeight: 600,
-  src: "/fonts/OpenSans-SemiBold.ttf",
-});
-
-Font.register({
-  family: "Open Sans",
-  fontWeight: 700,
-  src: "/fonts/OpenSans-Bold.ttf",
-});
-Font.register({
-  family: "Open Sans",
-  fontWeight: 700,
-  fontStyle: "italic",
-  src: "/fonts/OpenSans-BoldItalic.ttf",
-});
 
 export const ResumePreview: React.FC = () => {
   const t = useTranslations();
@@ -111,9 +74,7 @@ export const ResumePreview: React.FC = () => {
           className="absolute h-[calc(100vh-64px)] w-full"
           showToolbar={false}
         >
-          <Document>
-            <DefaultTemplate resume={stateCopy} t={t} />
-          </Document>
+          <ResumeDocument resume={stateCopy} t={t} />
         </PDFViewer>
       )}
     </div>

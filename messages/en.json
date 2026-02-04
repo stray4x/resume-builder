@@ -25,6 +25,7 @@
     "name": "Name",
     "confirmPassword": "Confirm Password"
   },
+
   "validation": {
     "invalidEmail": "Invalid email",
     "minLength": "{count} characters min",
@@ -33,6 +34,7 @@
     "confirmPassword": "Please confirm your password",
     "passwordsNotMatch": "Passwords do not match"
   },
+
   "buttons": {
     "signIn": "Sign in",
     "signUp": "Sign up",
@@ -44,6 +46,7 @@
     "delete": "Delete",
     "saveChanges": "Save changes",
     "autosave": "Autosave",
+    "download": "Download",
     "downloadResume": "Download resume",
     "settings": "Settings",
     "myResumes": "My resumes",
@@ -64,8 +67,10 @@
     "addOneMoreLanguage": "Add one more language",
     "addOneMoreCourse": "Add one more course"
   },
+
   "toasts": {
     "sumTingWong": "Something went wrong",
+    "errorWhileGeneratingPdf": "Something went wrong while generating PDF",
     "errorWhileUploadingResume": "Something went wrong while updating resume",
     "errorWhileAddingSections": "Something went wrong while adding sections",
     "errorWhileUpdatingSections": "Something went wrong while updating sections",
