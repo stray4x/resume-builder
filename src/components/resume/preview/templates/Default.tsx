@@ -194,6 +194,9 @@ const styles = StyleSheet.create({
     paddingRight: 25,
   },
   right: { width: "45%" },
+  mb20: { marginBottom: 20 },
+  itemText: { fontSize: 11 },
+  link: { color: Colors.mainBlue, fontSize: 11, textDecoration: "none" },
 });
 
 const stylesLeft = StyleSheet.create({
@@ -250,12 +253,6 @@ const headerstyles = StyleSheet.create({
     fontSize: 11,
     color: Colors.grayTextDark,
   },
-});
-
-const stylesCommon = StyleSheet.create({
-  sectionContainer: { marginBottom: 20 },
-  itemText: { fontSize: 11 },
-  link: { color: Colors.mainBlue, fontSize: 11, textDecoration: "none" },
 });
 
 // --------------------------------------------------------------------------------
@@ -322,11 +319,11 @@ export const RightItemWithLevel: React.FC<RightItemWithLevelProps> = ({
 export const SectionContainer: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  return <View style={stylesCommon.sectionContainer}>{children}</View>;
+  return <View style={styles.mb20}>{children}</View>;
 };
 
 export const ItemText: React.FC<React.PropsWithChildren> = ({ children }) => {
-  return <Text style={stylesCommon.itemText}>{children}</Text>;
+  return <Text style={styles.itemText}>{children}</Text>;
 };
 
 export const LinkCustom: React.FC<LinkCustomProps> = ({
@@ -338,7 +335,7 @@ export const LinkCustom: React.FC<LinkCustomProps> = ({
   return (
     <Link
       src={isEmail ? `mailto:${src}` : src}
-      style={{ ...stylesCommon.link, color: color || stylesCommon.link.color }}
+      style={{ ...styles.link, color: color || styles.link.color }}
     >
       {children}
     </Link>
@@ -360,7 +357,7 @@ export const Links: React.FC<LinksProps> = ({ links, color }) => {
 
 export const Skills: React.FC<SkillsProps> = ({ skills, color }) => {
   return (
-    <SectionContainer>
+    <>
       <RightSectionTitle>Skills</RightSectionTitle>
       {skills.map(({ id, title, level }, idx) => (
         <RightItemWithLevel
@@ -370,7 +367,8 @@ export const Skills: React.FC<SkillsProps> = ({ skills, color }) => {
           color={color}
         />
       ))}
-    </SectionContainer>
+      <View style={styles.mb20} />
+    </>
   );
 };
 
@@ -419,7 +417,7 @@ export const Languages: React.FC<LanguagesProps> = ({ languages, color }) => {
 
 export const Courses: React.FC<CoursesProps> = ({ courses }) => {
   return (
-    <SectionContainer>
+    <>
       <LeftSectionTitle>Courses</LeftSectionTitle>
       {courses.map(
         (
@@ -436,7 +434,7 @@ export const Courses: React.FC<CoursesProps> = ({ courses }) => {
           </LeftItemContainer>
         ),
       )}
-    </SectionContainer>
+    </>
   );
 };
 
@@ -478,7 +476,7 @@ export const EmploymentHistory: React.FC<EmploymentHistoryProps> = ({
   t,
 }) => {
   return (
-    <SectionContainer>
+    <>
       <LeftSectionTitle>{t("workExperience")}</LeftSectionTitle>
       {workExperience.map(
         (
@@ -506,7 +504,8 @@ export const EmploymentHistory: React.FC<EmploymentHistoryProps> = ({
           </LeftItemContainer>
         ),
       )}
-    </SectionContainer>
+      <View style={styles.mb20} />
+    </>
   );
 };
 
