@@ -43,7 +43,7 @@ export const SkillItem: React.FC<Props> = ({
   return (
     <ResumeAccordion id={id} handleDeleteItem={handleDeleteItem}>
       <AccordionTrigger>
-        {title || `(${t("empty")})`} {level && `- ${level}`}
+        {title || `(${t("empty")})`} {level && `- ${t(level)}`}
       </AccordionTrigger>
       <AccordionContent className="h-fit">
         <div className="xs:flex-row xs:gap-8 flex flex-col justify-between gap-4">
