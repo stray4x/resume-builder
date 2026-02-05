@@ -1,4 +1,6 @@
-# Resume Builder
+# Reze Orb
+
+### Open source Resume Builder
 
 A modern, minimalistic resume builder — create, customize, and export professional resumes with ease.
 

@@ -1,7 +1,8 @@
 {
   "homepage": {
-    "title": "Resume Builder",
-    "subtitle": "A modern, minimalistic resume builder — create, customize, and export professional resumes with ease."
+    "title": "Reze ORB",
+    "subtitle": "Open source Resume Builder",
+    "description": "A modern, minimalistic tool for building professional resumes with ease."
   },
   "auth": {
     "signIn": "Sign in",
