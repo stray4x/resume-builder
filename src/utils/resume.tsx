@@ -98,7 +98,7 @@ export const saveResumeToLocalStorage = (resume: ResumeStore) => {
 };
 
 export const saveResumeAsPdf = (resume: ResumeDraft, t: _Translator) => {
-  pdf(<ResumeDocument resume={resume} t={t} />)
+  pdf(<ResumeDocument resume={resume} />)
     .toBlob()
     .then((blob) => {
       saveAs(blob, `${resume.resumeName}.pdf`);

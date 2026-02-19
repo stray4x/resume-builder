@@ -6,11 +6,9 @@ import React from "react";
 import { DefaultTemplate } from "./templates/Default";
 
 import type { ResumeDraft } from "@/store/types";
-import type { _Translator } from "next-intl";
 
 type Props = {
   resume: ResumeDraft;
-  t: _Translator;
 };
 
 Font.register({
@@ -49,10 +47,10 @@ Font.register({
   src: "/fonts/OpenSans-BoldItalic.ttf",
 });
 
-export const ResumeDocument: React.FC<Props> = ({ resume, t }) => {
+export const ResumeDocument: React.FC<Props> = ({ resume }) => {
   return (
     <Document>
-      <DefaultTemplate resume={resume} t={t} />
+      <DefaultTemplate resume={resume} />
     </Document>
   );
 };

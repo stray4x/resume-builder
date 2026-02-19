@@ -20,7 +20,6 @@ import type {
   SkillDraft,
   WorkExperienceDraft,
 } from "@/store/types";
-import type { _Translator } from "next-intl";
 
 // --------------------------------------------------------------------------------
 // types
@@ -82,7 +81,6 @@ type CoursesProps = {
 
 type EmploymentHistoryProps = {
   workExperience: WorkExperienceDraft[];
-  t: _Translator;
 };
 
 type EducationProps = {
@@ -104,7 +102,6 @@ type DetailsProps = {
 
 type DefaultTemplateProps = {
   resume: ResumeDraft;
-  t: _Translator;
 };
 
 // --------------------------------------------------------------------------------
@@ -473,11 +470,10 @@ export const SummarySection: React.FC<SummaryProps> = ({ summary }) => {
 
 export const EmploymentHistory: React.FC<EmploymentHistoryProps> = ({
   workExperience,
-  t,
 }) => {
   return (
     <>
-      <LeftSectionTitle>{t("workExperience")}</LeftSectionTitle>
+      <LeftSectionTitle>Work Experience</LeftSectionTitle>
       {workExperience.map(
         (
           {
@@ -585,10 +581,7 @@ export const Projects: React.FC<ProjectsProps> = ({ projects, color }) => {
 // template component
 // --------------------------------------------------------------------------------
 
-export const DefaultTemplate: React.FC<DefaultTemplateProps> = ({
-  resume,
-  t,
-}) => {
+export const DefaultTemplate: React.FC<DefaultTemplateProps> = ({ resume }) => {
   const {
     summary,
     workExperience,
@@ -615,7 +608,7 @@ export const DefaultTemplate: React.FC<DefaultTemplateProps> = ({
             <SummarySection summary={parseTiptapToPdfJsx(summary)} />
           )}
           {!!workExperience.length && (
-            <EmploymentHistory workExperience={workExperience} t={t} />
+            <EmploymentHistory workExperience={workExperience} />
           )}
           {!!projects.length && (
             <Projects projects={projects} color={themeColor} />

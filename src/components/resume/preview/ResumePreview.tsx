@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useTranslations } from "next-intl";
 import React, { useEffect, useRef, useState } from "react";
 
 import { Spinner } from "@/components/ui/spinner";
@@ -26,8 +25,6 @@ const PDFViewer = dynamic(
 );
 
 export const ResumePreview: React.FC = () => {
-  const t = useTranslations();
-
   const state = useResume((state) => state);
 
   const educ: EducationDraft[] = useSectionItems("education");
@@ -74,7 +71,7 @@ export const ResumePreview: React.FC = () => {
           className="absolute h-[calc(100vh-64px)] w-full"
           showToolbar={false}
         >
-          <ResumeDocument resume={stateCopy} t={t} />
+          <ResumeDocument resume={stateCopy} />
         </PDFViewer>
       )}
     </div>
